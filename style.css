@@ -775,7 +775,7 @@ p.site-title {
 .main-navigation li {
 	position: relative;
 	margin: 0;
-	padding: 1rem 2rem;
+	padding: 1rem 1.2rem;
 	background-color: var(--cor-de-fundo);
 	max-height: 3.3rem;
 }
