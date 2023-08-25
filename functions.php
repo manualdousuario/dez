@@ -497,7 +497,7 @@ add_filter( 'comment_form_defaults', 'sp_add_comment_form_before' );
  * @param Defaults $defaults Defaults.
  */
 function sp_add_comment_form_before( $defaults ) {
-	$defaults['comment_notes_before'] = '<p class="ctx-atencao">Seu e-mail não será exposto. Antes de comentar, <a href="/doc-comentarios/">leia isto</a>.</p>';
+	$defaults['comment_notes_before'] = '<p class="ctx-atencao">É possível formatar o texto do comentário com HTML ou <a href="https://pt.wikipedia.org/wiki/Markdown#Exemplos_de_sintaxe">Markdown</a>. Seu e-mail não será exposto. Antes de comentar, <a href="/doc-comentarios/">leia isto</a>.</p>';
 	return $defaults;
 }
 
