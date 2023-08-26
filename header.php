@@ -67,7 +67,7 @@
 				?>
 				<li class="menu-item d"><a href="/apoie/" class="main-apoie">Apoie</a></li>
 			</ul>
-			<!-- hidden-menu -->
+			<!-- hamburger-menu -->
 			<?php
 				// Menu link.
 				$menu_post_id  = 20907;

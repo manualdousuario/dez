@@ -2264,7 +2264,7 @@ table.dataTable-table tr:nth-child(even) {
 
 
 /*--------------------------------------------------------------
-# Dynamic menu
+# Hamburger Menu
 --------------------------------------------------------------*/
 #primary-menu.menu.nav-menu ul {
 	flex: none;
@@ -2290,9 +2290,14 @@ table.dataTable-table tr:nth-child(even) {
 	transition: filter 0.1s ease;
 }
 
-.menu-item > ul:first-of-type > li:first-of-type > a:first-child:hover::after,
-.menu-item > ul:first-of-type > li:first-of-type > span:first-child:hover::after {
-	opacity: 0.8;
+.menu-open::after {
+	transform: rotate(90deg);
+	transition: transform 0.1s ease !important;
+}
+
+.menu-close::after {
+	transform: rotate(0deg);
+	transition: transform 0.1s ease !important;
 }
 
 .menu-item .children {
