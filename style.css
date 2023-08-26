@@ -2069,13 +2069,11 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.main-navigation {
-		justify-content: space-around;
+		justify-content: center;
 	}
 	.main-navigation ul {
 		margin: 1rem 0 !important;
     	font-size: .9rem;
-    	flex-grow: 2;
-    	justify-content: right;
 	}
 
 	.nav-menu li:first-child a {
@@ -2292,12 +2290,12 @@ table.dataTable-table tr:nth-child(even) {
 
 .menu-open::after {
 	transform: rotate(90deg);
-	transition: transform 0.1s ease !important;
+	transition: transform 0.1s ease-in-out !important;
 }
 
 .menu-close::after {
 	transform: rotate(0deg);
-	transition: transform 0.1s ease !important;
+	transition: transform 0.1s ease-in-out !important;
 }
 
 .menu-item .children {
