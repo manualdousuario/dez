@@ -43,6 +43,9 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.1 - August 25 2023 =
+* Fix Dynamic/Hidden Menu
+
 = 1.0.22 - August 07 2023 =
 * Fix Dynamic Menu
 
