@@ -105,20 +105,47 @@
 					),
 				);
 
+				// Órbita menu configuration.
+				$orbita_items = array(
+					array(
+						'title' => 'Meus Posts',
+						'url'   => '/orbita/meus-posts/',
+					),
+					array(
+						'title' => 'Meus Comentários',
+						'url'   => '/orbita/meus-comentarios/',
+					),
+				);
+
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children"><a href="' . esc_url( $menu_post_url ) . '" title="Mapa"></a><ul class="children">';
 
+				// Profile/Sign in items.
+				$menu_html .= '<li class="page_item">';
+				if ( is_user_logged_in() ) {
+					$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Perfil</a>';
+				} else {
+					$menu_html .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+				}
+				$menu_html .= '</li>';
+
+				// Sign up/Sign out items.
+				if ( is_user_logged_in() ) {
+					// Órbita items.
+					foreach ( $orbita_items as $orbita_item ) {
+						$menu_html .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
+					}
+					$menu_html .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+				} else {
+					$menu_html .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
+				}
+				$menu_html .= '<li class="divider"></li>';
+				$menu_html .= '</li>';
+
+				// Custom items.
 				foreach ( $custom_items as $custom_item ) {
 					$menu_html .= '<li class="page_item"><a href="' . esc_url( $custom_item['url'] ) . '">' . esc_html( $custom_item['title'] ) . '</a></li>';
 				}
-
-				$menu_html .= '<li class="page_item">';
-					if ( is_user_logged_in() ) {
-						$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Perfil</a> / <a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
-					} else {
-						$menu_html .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a> / <a href="/cadastro/">Cadastrar</a>';
-					}
-				$menu_html .= '</li>';
 
 				$menu_html .= '</ul></li></ul></div>';
 				echo $menu_html;
