@@ -790,9 +790,11 @@ p.site-title {
 .main-navigation li:first-child a {
 	color: var(--color-link);
 }
+
 .main-navigation li:first-child a:visited {
 	color: var(--color-link-visited);
 }
+
 .main-navigation li:first-child a:focus,
 .main-navigation li:first-child a:hover,
 .main-navigation li:first-child a:active {
@@ -804,7 +806,6 @@ p.site-title {
 }
 .main-navigation li:last-child {
 	margin-right: 0;
-	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 	padding-right: 0;
 }
 
@@ -2058,9 +2059,11 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.main-navigation {
+		margin-top: 20px;
 		justify-content: center;
 	}
-	.main-navigation ul {
+
+	.main-navigation:first-child ul {
 		margin: 1rem 0 !important;
     	font-size: .9rem;
 	}
@@ -2068,22 +2071,14 @@ table.dataTable-table tr:nth-child(even) {
 	.nav-menu li:first-child a {
 		text-transform: inherit;
 	}
-	.nav-menu li:first-child {
-		margin: auto 1rem;
-		flex-grow: 2;
-	}
 
 	.menu-item .children {
 		padding-top: 1rem;
 	}
 
-	.main-navigation .b {
-		padding: 1rem;
-	}
-
-	.main-navigation a.main-apoie {
-		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
-		padding: 1.1rem 1rem;
+	.menu-item > ul:first-of-type > li:first-of-type > a:first-child,
+	.menu-item > ul:first-of-type > li:first-of-type > span:first-child {
+		line-height: 2.1em !important;
 	}
 
 	.destaques-home {
@@ -2259,6 +2254,7 @@ table.dataTable-table tr:nth-child(even) {
 
 .menu-item li:first-child {
 	padding: 1rem;
+	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 }
 
 .menu-item > ul:first-of-type > li:first-of-type > a:first-child,
