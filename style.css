@@ -17,9 +17,6 @@ Use it to make something cool, have fun, and share what you've learned.
 
 Dez is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
@@ -2092,6 +2089,7 @@ table.dataTable-table tr:nth-child(even) {
 
 .menu-item > ul:first-of-type > li:first-of-type > a:first-child {
 	line-height: 1.7em;
+	cursor: pointer;
 }
 
 .menu-item > ul:first-of-type > li:first-of-type > a:first-child::after {
