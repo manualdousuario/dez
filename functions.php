@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.22' );
+	define( '_S_VERSION', '1.1' );
 }
 
 /**
@@ -45,14 +45,6 @@ function dez_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 		add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'dez' ),
-			)
-		);
-
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.
@@ -134,7 +126,7 @@ function dez_scripts() {
 	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', array(), _S_VERSION );
 	wp_style_add_data( 'dez-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'dynamic-menu', get_template_directory_uri() . '/js/dynamicMenu.min.js', array(), _S_VERSION, [ 'strategy' => 'async' ], 99 );
+	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburgerMenu.min.js', array(), _S_VERSION, [ 'strategy' => 'async' ], 99 );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -261,7 +253,7 @@ add_action( 'after_setup_theme', 'remove_json_api' );
 
 /**
  * Disable JSON API.
- 
+
 function disable_json_api() {
 	add_filter( 'json_enabled', '__return_false' );
 	add_filter( 'json_jsonp_enabled', '__return_false' );

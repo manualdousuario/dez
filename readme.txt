@@ -21,17 +21,17 @@ Manual do Usuário Theme
 - Node.js 16+
 - PHP 5.6+
 - npm 9.7+
-- compose 2.5+
+- composer 2.5+
 
 = Development (CLI basic commands) =
 
-$ npm install - Install cependencies.
+$ npm install - Install dependencies.
 
 $ npm run minify:js - Minify JavaScript files.
 
 $ npm run minify:css - Minify CSS files.
 
-$ npm run bundle - Generate a .zip archive for distribution, excluding development and system files.
+$ npm run bundle - Generate a ZIP archive for distribution, excluding development and system files.
 
 More information: https://github.com/Automattic/_s
 
@@ -42,6 +42,9 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.1 - August 25 2023 =
+* Fix Dynamic/Hidden Menu
 
 = 1.0.22 - August 07 2023 =
 * Fix Dynamic Menu
@@ -58,4 +61,3 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 == Credits ==
 
 * Based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-* normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2018 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)

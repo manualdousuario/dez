@@ -17,9 +17,6 @@ Use it to make something cool, have fun, and share what you've learned.
 
 Dez is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
@@ -597,6 +594,7 @@ p.site-title {
 	margin-left: auto;
 	height: 100%;
 	display: flex;
+	line-height: 1.3em;
 }
 
 .main-navigation ul {
@@ -613,19 +611,6 @@ p.site-title {
 	background-color: var(--cor-de-fundo);
 	max-height: 3.3rem;
 }
-.nav-menu li:first-child {
-	position: relative;
-	padding: 0;
-	margin: auto 2rem auto 0;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-.nav-menu li:first-child,
-.menu-item li:first-child {
-	background-color: transparent;
-}
 
 .b,
 .c,
@@ -636,9 +621,11 @@ p.site-title {
 .main-navigation li:first-child a {
 	color: var(--color-link);
 }
+
 .main-navigation li:first-child a:visited {
 	color: var(--color-link-visited);
 }
+
 .main-navigation li:first-child a:focus,
 .main-navigation li:first-child a:hover,
 .main-navigation li:first-child a:active {
@@ -650,7 +637,6 @@ p.site-title {
 }
 .main-navigation li:last-child {
 	margin-right: 0;
-	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 	padding-right: 0;
 }
 
@@ -665,10 +651,11 @@ p.site-title {
 
 .main-navigation a.main-apoie {
 	color: white;
-	padding: 1.2rem 1.2rem 1rem;
-	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
+	padding: 1.1rem 1.1rem 1.2rem;
+	border-radius: var(--borda-curva);
 	transition: background .3s, box-shadow .3s;
 	background: #4169e1;
+	line-height: 1.3em;
 }
 
 .main-navigation a.main-apoie:hover,
@@ -1904,8 +1891,10 @@ table.dataTable-table tr:nth-child(even) {
 
 	.main-navigation {
 		justify-content: center;
+		margin-top: 20px;
 	}
-	.main-navigation ul {
+
+	.main-navigation:first-child ul {
 		margin: 1rem 0 !important;
     	font-size: .9rem;
 	}
@@ -1913,22 +1902,13 @@ table.dataTable-table tr:nth-child(even) {
 	.nav-menu li:first-child a {
 		text-transform: inherit;
 	}
-	.nav-menu li:first-child {
-		margin: auto 1rem;
-		flex-grow: 2;
-	}
 
 	.menu-item .children {
 		padding-top: 1rem;
 	}
 
-	.main-navigation .b {
-		padding: 1rem;
-	}
-
-	.main-navigation a.main-apoie {
-		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
-		padding: 1.1rem 1rem;
+	.menu-item > ul:first-of-type > li:first-of-type > a:first-child {
+		line-height: 2.1em !important;
 	}
 
 	.destaques-home {
@@ -2102,15 +2082,17 @@ table.dataTable-table tr:nth-child(even) {
 	flex: none;
 }
 
-.menu-item ul:first-child {
-	margin: 0 0 0 1rem;
-}
 .menu-item li:first-child {
 	padding: 1rem;
+	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 }
 
-.menu-item > ul:first-of-type > li:first-of-type > a:first-child::after,
-.menu-item > ul:first-of-type > li:first-of-type > span:first-child::after {
+.menu-item > ul:first-of-type > li:first-of-type > a:first-child {
+	line-height: 1.7em;
+	cursor: pointer;
+}
+
+.menu-item > ul:first-of-type > li:first-of-type > a:first-child::after {
 	content: "";
 	display: inline-block;
 	width: 27px;
@@ -2139,6 +2121,9 @@ table.dataTable-table tr:nth-child(even) {
 	right: 0;
 	width: max-content;
 	padding-top: 2rem;
+	user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 
 .menu-item .children li {
@@ -2155,4 +2140,8 @@ table.dataTable-table tr:nth-child(even) {
 .menu-item .children li:last-child {
 	padding-bottom: 1em;
 	border-radius: 0 0 var(--borda-curva) var(--borda-curva);
+}
+
+.divider {
+	border-top: 1px var(--border-color) solid;
 }
