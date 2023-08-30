@@ -76,27 +76,19 @@
 				// Custom menu configuration.
 				$custom_items = array(
 					array(
-						'title' => 'PC do Manual',
+						'title' => 'PC do Manual ↗',
 						'url'   => 'https://pcdomanual.com',
 					),
 					array(
-						'title' => 'Guia Prático',
-						'url'   => '/series/guia-pratico',
-					),
-					array(
-						'title' => 'Tecnocracia',
-						'url'   => '/series/tecnocracia',
-					),
-					array(
-						'title' => 'Comentários',
-						'url'   => '/doc-comentarios',
+						'title' => 'Podcasts',
+						'url'   => '/podcast/',
 					),
 					array(
 						'title' => 'Bastidores',
 						'url'   => '/category/bastidores/',
 					),
 					array(
-						'title' => 'Newsletters BR',
+						'title' => 'Diretório de newsletters',
 						'url'   => '/newsletters-brasileiras',
 					),
 					array(
@@ -123,7 +115,7 @@
 				// Profile/Sign in items.
 				$menu_html .= '<li class="page_item">';
 				if ( is_user_logged_in() ) {
-					$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Perfil</a>';
+					$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
 				} else {
 					$menu_html .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				}
