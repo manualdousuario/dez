@@ -829,3 +829,11 @@ if ( defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
 		999
 	);
 }
+
+/**
+ * Adiciona suporte a Markdown (via Jetpack) aos custom post types do Órbita e podcasts.
+ */
+add_action('init', 'md_custom_post'); function md_custom_post() {
+	add_post_type_support( 'orbita_post', 'wpcom-markdown' ); 
+	add_post_type_support( 'podcast', 'wpcom-markdown' ); 
+}
