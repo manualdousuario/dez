@@ -300,6 +300,7 @@ pre {
 	padding: 1rem;
 	font-size: 1.2rem;
 	overflow: auto;
+	margin-bottom: 1.5rem;
 }
 
 [type="checkbox"],
