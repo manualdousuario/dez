@@ -683,6 +683,9 @@ p.site-title {
 	margin-bottom: 8rem;
 	line-height: 1.4;
 }
+.single .comment-navigation {
+	margin-bottom: 4rem;
+}
 
 .comment-navigation .nav-links,
 .posts-navigation .nav-links,
