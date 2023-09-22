@@ -48,7 +48,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	- Alignments
 # Mobile
 # Dark mode
-# Dynamic menu
+# Hamburger Menu
 
 --------------------------------------------------------------*/
 
@@ -666,6 +666,10 @@ p.site-title {
 	box-shadow: none;
 	transition: background .3s, box-shadow .6s ease-in-out;
 	background: #355bd0;
+}
+
+.gridicon {
+	fill: unset !important;
 }
 
 /* Small menu. */
