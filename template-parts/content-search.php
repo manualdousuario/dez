@@ -16,7 +16,7 @@
 		<div class="entry-meta">
 			<?php the_time( 'j/n/y, G\hi' ); ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
-			&bull; <?php the_author_posts_link(); ?>
+			&middot; <?php the_author_posts_link(); ?>
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 </header><!-- .entry-header -->

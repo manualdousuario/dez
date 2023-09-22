@@ -23,7 +23,7 @@
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			&bull; <?php the_author_posts_link(); ?>
+			&middot; <?php the_author_posts_link(); ?>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -47,7 +47,7 @@
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			&bull; <?php the_author_posts_link(); ?>
+			&middot; <?php the_author_posts_link(); ?>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -71,7 +71,7 @@
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			&bull; <?php the_author_posts_link(); ?>
+			&middot; <?php the_author_posts_link(); ?>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -94,7 +94,7 @@
 				<div class="entry-meta">
 					<?php the_time( 'j/n/y, G\hi' ); ?>
 					<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
-					&bull; <?php the_author_posts_link(); ?>
+					&middot; <?php the_author_posts_link(); ?>
 				<?php endif; ?>
 			</div><?php endif; ?><!-- .entry-meta -->
 

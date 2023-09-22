@@ -13,7 +13,7 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<p>Associado à <a href="https://ajor.org.br">Ajor</a> &bull; Apoio: <a href="https://www.teramundi.com/">Teramundi</a></p>
+			<p>Associado à <a href="https://ajor.org.br">Ajor</a> &middot; Apoio: <a href="https://www.teramundi.com/">Teramundi</a></p>
 			<ul>
 				<li><a href="<?php echo esc_url( home_url( '/sobre' ) ); ?>">Sobre</a></li>
 				<li><a href="mailto:contato@manualdousuario.net">Contato</a></li>
