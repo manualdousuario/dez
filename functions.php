@@ -901,3 +901,16 @@ function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
 	}
 	return $expiration;
 }
+
+/**
+ * Aumenta o prazo de validade do login para 1 mês (sem marcar o “lembrar-me”) e 1 ano (marcando).
+ */
+add_filter('auth_cookie_expiration', 'mdu_auth_cookie_expiration', 10, 3);
+function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
+	if ( $remember ) {
+		$expiration = YEAR_IN_SECONDS;
+	} else {
+		$expiration = MONTH_IN_SECONDS;
+	}
+	return $expiration;
+}
