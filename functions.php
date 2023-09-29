@@ -888,3 +888,16 @@ add_action('init', 'md_custom_post'); function md_custom_post() {
 	add_post_type_support( 'orbita_post', 'wpcom-markdown' ); 
 	add_post_type_support( 'podcast', 'wpcom-markdown' ); 
 }
+
+/**
+ * Aumenta o prazo de validade do login para 1 mês (sem marcar o “lembrar-me”) e 1 ano (marcando).
+ */
+add_filter('auth_cookie_expiration', 'mdu_auth_cookie_expiration', 10, 3);
+function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
+	if ( $remember ) {
+		$expiration = YEAR_IN_SECONDS;
+	} else {
+		$expiration = MONTH_IN_SECONDS;
+	}
+	return $expiration;
+}
