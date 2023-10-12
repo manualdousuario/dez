@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 1.1.3
+Version: 1.1.4
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -436,7 +436,7 @@ textarea {
 	padding-bottom: 6rem;
 	border-bottom: 1px solid var(--cor-de-fundo);
 }
-.hfeed article.hentry:first-child,
+.hfeed article.hentry:nth-child(7),
 .not-found {
 	border-bottom: 0;
 }
@@ -488,7 +488,8 @@ textarea {
 }
 
 .destaques-home p {
-	font-size: var(--small);
+	font-size: inherit;
+	margin-bottom: 1rem;
 }
 
 .destaques-home input {
@@ -561,15 +562,11 @@ textarea {
 
 .topo {
 	max-width: 100%;
-	display: flex;
-	justify-content: center;
+	text-align: center;
 	padding: 2rem 0;
 	margin-bottom: 2rem;
 	box-shadow: 0 -4px 10px -6px var(--sombra) inset;
 	background-color: var(--cor-de-fundo)
-}
-.topo a {
-	display: flex;
 }
 .topo img {
 	width: auto;
@@ -646,7 +643,7 @@ p.site-title {
 .main-navigation a {
 	color: var(--color-link-alt);
 	text-transform: uppercase;
-	padding: 3px;
+	padding: 6px 0;
 }
 .main-navigation a:hover {
 	color: var(--color-link-alt-states);
@@ -1245,6 +1242,16 @@ li.orbita-post {
 	margin-top: 0;
 }
 
+.home .orbita-header {
+	display: none;
+}
+
+.home .orbita-ranking {
+	margin-bottom: 6rem;
+	padding-bottom: 6rem;
+	border-bottom: 1px solid var(--cor-de-fundo);
+}
+
 
 /* Littlefoot
 --------------------------------------------- */
@@ -1840,7 +1847,8 @@ table.dataTable-table tr:nth-child(even) {
 	.page-header,
 	.format-aside .entry-meta,
 	.format-image .entry-meta,
-	.format-quote .entry-meta {
+	.format-quote .entry-meta,
+	.home .orbita-manual {
 		padding: 0 1rem
 	}
 	.single .nav-links {
