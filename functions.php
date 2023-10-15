@@ -135,57 +135,6 @@ function dez_scripts() {
 add_action( 'wp_enqueue_scripts', 'dez_scripts' );
 
 /**
- * Auto version enqueue
- */
-add_filter( 'style_loader_src', 'dez_auto_version' );
-add_filter( 'script_loader_src', 'dez_auto_version' );
-function dez_auto_version( $src )
-{
-	$url_parts = wp_parse_url( $src );
-
-	$extension = pathinfo( $url_parts['path'], PATHINFO_EXTENSION );
-	if ( !$extension || ! in_array( $extension, array( 'css', 'js' ) ) ) {
-		return $src;
-	}
-
-	$file_path = rtrim( ABSPATH, '/' ) . urldecode( $url_parts['path'] );
-	if ( !is_file( $file_path ) ) {
-		return $src;
-	}
-
-	$timestamp = filemtime( $file_path ) ?: filemtime( $file_path );
-	if ( !$timestamp ) {
-		return $src;
-	}
-
-	if ( !isset($url_parts['query'] ) ) {
-		$url_parts['query'] = '';
-	}
-
-	$query = array();
-	parse_str( $url_parts['query'], $query );
-	unset( $query['v'] );
-	unset( $query['ver'] );
-	$query['ver'] = "$timestamp";
-	$url_parts['query'] = build_query( $query );
-
-	return dez_auto_version_uri( $url_parts );
-}
-function dez_auto_version_uri( array $parts )
-{
-	return ( isset( $parts['scheme'] ) ? "{$parts['scheme']}:" : '') .
-		( ( isset( $parts['user'] ) || isset( $parts['host'] ) ) ? '//' : '') .
-		( isset( $parts['user'] ) ? "{$parts['user']}" : '') .
-		( isset( $parts['pass'] ) ? ":{$parts['pass']}" : '') .
-		( isset( $parts['user'] ) ? '@' : '') .
-		( isset( $parts['host'] ) ? "{$parts['host']}" : '') .
-		( isset( $parts['port'] ) ? ":{$parts['port']}" : '') .
-		( isset( $parts['path'] ) ? "{$parts['path']}" : '') .
-		( isset( $parts['query'] ) ? "?{$parts['query']}" : '') .
-		( isset( $parts['fragment'] ) ? "#{$parts['fragment']}" : '');
-}
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
