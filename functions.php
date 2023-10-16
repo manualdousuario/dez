@@ -123,10 +123,10 @@ add_action( 'widgets_init', 'dez_widgets_init' );
  * Enqueue scripts and styles.
  */
 function dez_scripts() {
-	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', array(), null );
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 	wp_style_add_data( 'dez-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburgerMenu.min.js', array(), null, [ 'strategy' => 'async' ], 99 );
+	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburgerMenu.min.js', [], filemtime( get_stylesheet_directory() . '/js/hamburgerMenu.min.js' ), [ 'strategy' => 'async' ], 99 );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
