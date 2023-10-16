@@ -798,20 +798,6 @@ a:hover.comment-reply-link {
 	max-width: var(--line-length);
 }
 
-.ctx-transparencia:before,
-.ctx-atualizacao:before,
-.ctx-atencao:before,
-.ctx-dica:before,
-.ctx-editor:before,
-.podcast_player:before {
-	display: block;
-	font-size: 3rem;
-	left: 0;
-	top: -75px;
-	position: relative;
-	height: 0;
-}
-
 div.ctx-transparencia,
 div.ctx-atualizacao,
 div.ctx-atencao,
@@ -831,45 +817,6 @@ div.ctx-editor p:first-child {
 }
 div.podcast_player p:last-child {
 	margin-bottom: 0;
-}
-
-.ctx-atualizacao,
-.ctx-editor {
-	background: #f2f2f2;
-}
-.ctx-atualizacao:before {
-	content: "🕟";
-}
-.ctx-editor:before {
-	content: "📌";
-}
-
-.ctx-atencao {
-	background: #fffef0;
-}
-.ctx-atencao:before {
-	content: "⚠️";
-}
-
-.ctx-transparencia {
-	background: #f0f8ff;
-}
-.ctx-transparencia:before {
-	content: "👀";
-}
-
-.ctx-dica {
-	background: #fff5f0;
-}
-.ctx-dica:before {
-	content: "🔥";
-}
-
-.podcast_player {
-	background: #f9f4ff;
-}
-.podcast_player:before {
-	content: "🎧";
 }
 
 
