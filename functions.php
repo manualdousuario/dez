@@ -123,67 +123,16 @@ add_action( 'widgets_init', 'dez_widgets_init' );
  * Enqueue scripts and styles.
  */
 function dez_scripts() {
-	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', array(), null );
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 	wp_style_add_data( 'dez-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburgerMenu.min.js', array(), null, [ 'strategy' => 'async' ], 99 );
+	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburgerMenu.min.js', [], filemtime( get_stylesheet_directory() . '/js/hamburgerMenu.min.js' ), [ 'strategy' => 'async' ], 99 );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'dez_scripts' );
-
-/**
- * Auto version enqueue
- */
-add_filter( 'style_loader_src', 'dez_auto_version' );
-add_filter( 'script_loader_src', 'dez_auto_version' );
-function dez_auto_version( $src )
-{
-	$url_parts = wp_parse_url( $src );
-
-	$extension = pathinfo( $url_parts['path'], PATHINFO_EXTENSION );
-	if ( !$extension || ! in_array( $extension, array( 'css', 'js' ) ) ) {
-		return $src;
-	}
-
-	$file_path = rtrim( ABSPATH, '/' ) . urldecode( $url_parts['path'] );
-	if ( !is_file( $file_path ) ) {
-		return $src;
-	}
-
-	$timestamp = filemtime( $file_path ) ?: filemtime( $file_path );
-	if ( !$timestamp ) {
-		return $src;
-	}
-
-	if ( !isset($url_parts['query'] ) ) {
-		$url_parts['query'] = '';
-	}
-
-	$query = array();
-	parse_str( $url_parts['query'], $query );
-	unset( $query['v'] );
-	unset( $query['ver'] );
-	$query['ver'] = "$timestamp";
-	$url_parts['query'] = build_query( $query );
-
-	return dez_auto_version_uri( $url_parts );
-}
-function dez_auto_version_uri( array $parts )
-{
-	return ( isset( $parts['scheme'] ) ? "{$parts['scheme']}:" : '') .
-		( ( isset( $parts['user'] ) || isset( $parts['host'] ) ) ? '//' : '') .
-		( isset( $parts['user'] ) ? "{$parts['user']}" : '') .
-		( isset( $parts['pass'] ) ? ":{$parts['pass']}" : '') .
-		( isset( $parts['user'] ) ? '@' : '') .
-		( isset( $parts['host'] ) ? "{$parts['host']}" : '') .
-		( isset( $parts['port'] ) ? ":{$parts['port']}" : '') .
-		( isset( $parts['path'] ) ? "{$parts['path']}" : '') .
-		( isset( $parts['query'] ) ? "?{$parts['query']}" : '') .
-		( isset( $parts['fragment'] ) ? "#{$parts['fragment']}" : '');
-}
 
 /**
  * Custom template tags for this theme.
@@ -887,19 +836,6 @@ if ( defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
 add_action('init', 'md_custom_post'); function md_custom_post() {
 	add_post_type_support( 'orbita_post', 'wpcom-markdown' ); 
 	add_post_type_support( 'podcast', 'wpcom-markdown' ); 
-}
-
-/**
- * Aumenta o prazo de validade do login para 1 mês (sem marcar o “lembrar-me”) e 1 ano (marcando).
- */
-add_filter('auth_cookie_expiration', 'mdu_auth_cookie_expiration', 10, 3);
-function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
-	if ( $remember ) {
-		$expiration = YEAR_IN_SECONDS;
-	} else {
-		$expiration = MONTH_IN_SECONDS;
-	}
-	return $expiration;
 }
 
 /**
