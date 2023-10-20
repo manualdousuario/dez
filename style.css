@@ -794,9 +794,8 @@ a:hover.comment-reply-link {
 .ctx-dica,
 .ctx-editor,
 .podcast_player {
-	padding: 3rem 1rem 1rem;
+	padding: 1rem 1.2rem;
 	border-radius: var(--borda-curva);
-	max-width: var(--line-length);
 }
 
 div.ctx-transparencia,
