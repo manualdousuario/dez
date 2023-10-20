@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 1.1.4
+Version: 1.1.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -464,6 +464,10 @@ textarea {
 .bloco-destaques-home {
 	flex-basis: 100%;
 }
+/*.bloco-destaques-home:first-child {
+	border-right: 1px solid var(--border-color);
+	padding-right: 1rem;
+}*/
 
 .destaques-home ul {
 	margin: 0;
@@ -599,7 +603,6 @@ p.site-title {
 	margin: 0;
 	padding-left: 0;
 }
-
 .menu-item ul {
 	margin-left: 2rem;
 }
@@ -799,6 +802,20 @@ a:hover.comment-reply-link {
 	max-width: var(--line-length);
 }
 
+.ctx-transparencia:before,
+.ctx-atualizacao:before,
+.ctx-atencao:before,
+.ctx-dica:before,
+.ctx-editor:before,
+.podcast_player:before {
+	display: block;
+	font-size: 3rem;
+	left: 0;
+	top: -75px;
+	position: relative;
+	height: 0;
+}
+
 div.ctx-transparencia,
 div.ctx-atualizacao,
 div.ctx-atencao,
@@ -824,17 +841,39 @@ div.podcast_player p:last-child {
 .ctx-editor {
 	background: #f2f2f2;
 }
+.ctx-atualizacao:before {
+	content: "🕟";
+}
+.ctx-editor:before {
+	content: "📌";
+}
+
 .ctx-atencao {
 	background: #fffef0;
 }
+.ctx-atencao:before {
+	content: "⚠️";
+}
+
 .ctx-transparencia {
 	background: #f0f8ff;
 }
+.ctx-transparencia:before {
+	content: "👀";
+}
+
 .ctx-dica {
 	background: #fff5f0;
 }
+.ctx-dica:before {
+	content: "🔥";
+}
+
 .podcast_player {
 	background: #f9f4ff;
+}
+.podcast_player:before {
+	content: "🎧";
 }
 
 
@@ -1165,6 +1204,11 @@ img.avatar {
 .stcr-form p {
 	margin: 0 0 .6rem 0;
 }
+
+select#subscribe-reloaded {
+	margin-bottom: 1.5rem;
+}
+
 
 /* Órbita
 --------------------------------------------- */
