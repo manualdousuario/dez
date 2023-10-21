@@ -449,11 +449,11 @@ textarea {
 	max-width: 100%;
 	margin-bottom: 8rem;
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: column nowrap;
 	align-items: stretch;
 	justify-content: space-between;
 	background: var(--cor-de-fundo);
-	padding: 2rem;
+	padding: 2rem 2rem 1rem;
 	gap: 2rem;
 	border-radius: var(--borda-curva);
 }
@@ -463,15 +463,20 @@ textarea {
 
 .bloco-destaques-home {
 	flex-basis: 100%;
+	text-align: center;
+}
+
+.bloco-destaques-home p {
+	display: inline;
+}
+.bloco-destaques-home input {
+	font-size: 1.1rem;
 }
 
 .destaques-home ul {
 	margin: 0;
 }
 
-.destaques-home h2 {
-	margin-top: 0;
-}
 .destaques-home ul {
 	list-style: none;
 }
@@ -616,20 +621,6 @@ p.site-title {
 .c,
 .d {
 	padding-right: 0 !important;
-}
-
-.main-navigation li:first-child a {
-	color: var(--color-link);
-}
-
-.main-navigation li:first-child a:visited {
-	color: var(--color-link-visited);
-}
-
-.main-navigation li:first-child a:focus,
-.main-navigation li:first-child a:hover,
-.main-navigation li:first-child a:active {
-	color: var(--color-link-states);
 }
 
 .b {
@@ -1837,7 +1828,6 @@ table.dataTable-table tr:nth-child(even) {
 	.destaques-home {
 		border-radius: 0;
 		box-shadow: none;
-		padding: 1rem;
 	}
 
 	.home .format-quote h2.entry-title,
@@ -1887,28 +1877,24 @@ table.dataTable-table tr:nth-child(even) {
 		max-height: 3.15rem;
 	}
 
-	.nav-menu li:first-child a {
-		text-transform: inherit;
-	}
-
 	.menu-item > ul:first-of-type > li:first-of-type > a:first-child {
 		line-height: 2.1em !important;
 	}
 
 	.destaques-home {
 		flex-direction: column;
+		padding: 1rem 0;
 	}
 	.destaques-home li {
+		margin: 0 .5rem;
+	}
+	.destaques-home li:first-child {
 		margin-left: 0;
 	}
+	.destaques-home li:last-child {
+		margin-right: 0;
+	}
 
-	.bloco-destaques-home {
-		border-bottom: 1px solid var(--border-color);
-		padding-bottom: 2rem;
-	}
-	.bloco-destaques-home:first-child {
-		border-right: none;
-	}
 	.bloco-destaques-home:last-child {
 		border-bottom: none;
 		padding-bottom: 0;
@@ -1916,10 +1902,6 @@ table.dataTable-table tr:nth-child(even) {
 
 	.destaques-home input[type="email"] {
 		max-width: 60%;
-	}
-
-	.bloco-destaques-redes ul {
-		text-align: left;
 	}
 
 	.entry-header h2,
