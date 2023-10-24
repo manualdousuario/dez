@@ -69,10 +69,6 @@
 			</ul>
 			<!-- hamburger-menu -->
 			<?php
-				// Menu link.
-				$menu_post_id  = 20907;
-				$menu_post_url = get_permalink( $menu_post_id );
-
 				// Custom menu configuration.
 				$custom_items = array(
 					array(
@@ -110,7 +106,9 @@
 				);
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
-				$menu_html .= '<ul><li class="page_item page_item_has_children"><a href="' . esc_url( $menu_post_url ) . '" title="Mapa"></a><ul class="children">';
+				$menu_html .= '<ul><li class="page_item page_item_has_children">';
+				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg"/></label>';
+				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
 				// Profile/Sign in items.
 				$menu_html .= '<li class="page_item">';

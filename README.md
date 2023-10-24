@@ -14,8 +14,6 @@ O tema/template para WordPress usado no Manual do Usuário.
 
 $ `npm install` - Instalação das dependências
 
-$ `npm run minify:js` - Minificar arquivos JavaScript
-
 $ `npm run minify:css` - Minificar arquivos CSS
 
 $ `npm run bundle` - Gerar arquivo ZIP para distribuição, excluindo arquivos de desenvolvimento
