@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 1.1.4
+Version: 1.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -2005,7 +2005,7 @@ table.dataTable-table tr:nth-child(even) {
 
 	.site-title img,
 	.gridicon,
-	.menu-item>ul:first-of-type>li:first-of-type>a:first-child::after, .menu-item>ul:first-of-type>li:first-of-type>span:first-child::after {
+	.menu-toggle-icon {
 		filter: invert();
 		fill: unset;
 	}
@@ -2049,50 +2049,48 @@ table.dataTable-table tr:nth-child(even) {
 	flex: none;
 }
 
-.menu-item li:first-child {
-	padding: 1rem;
+#secondary-menu > ul > li:first-child {
+	padding: 0.8rem 0 1rem 1rem;
+    border-radius: var(--borda-curva);
+}
+
+#menu-toggle {
+	display: none;
+}
+
+.menu-toggle-icon {
+	cursor: pointer;
+	padding: 1rem 1rem 1rem 0;
 	border-radius: var(--borda-curva);
 }
 
-.menu-item > ul:first-of-type > li:first-of-type > a:first-child {
-	line-height: 1.7em;
-	cursor: pointer;
-}
-
-.menu-item > ul:first-of-type > li:first-of-type > a:first-child::after {
-	content: "";
-	display: inline-block;
+.menu-toggle-icon img {
 	width: 27px;
-	height: 17px;
-	background-image: url('/wp-content/themes/dez/img/menu-icon.svg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	transition: filter 0.1s ease;
 }
 
-.menu-open::after {
-	transform: rotate(90deg);
-	transition: transform 0.1s ease-in-out !important;
-}
-
-.menu-close::after {
-	transform: rotate(0deg);
-	transition: transform 0.1s ease-in-out !important;
-}
-
-.menu-item .children {
-	display: none;
+#menu-toggle-list {
+	overflow: hidden;
+	display: block;
 	position: absolute;
 	left: auto;
 	right: 0;
 	width: max-content;
+	max-height: 0;
 	margin-top: 1.25rem;
 	user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	box-shadow: 0 0 8px var(--sombra);
 	border-radius: 6px;
+}
+
+#menu-toggle:checked ~ #menu-toggle-list {
+	max-height: max-content;
+}
+
+#menu-toggle:checked + label > img {
+    transform: rotate(90deg);
+	transition: transform 0.1s ease-in-out;
 }
 
 .menu-item .children li {
