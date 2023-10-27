@@ -32,7 +32,7 @@
 			if ( is_front_page() && is_home() ) {
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-dez@2x.png" width="204" height="66" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-dez.svg" width="204" height="66" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
 			} elseif ( 'orbita_post' === get_post_type() || is_page( array( 33099, 33111, 33101, 33103 ) ) ) {
