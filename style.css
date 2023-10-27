@@ -1180,6 +1180,7 @@ li.orbita-post {
 }
 .orbita-list .vote .count {
 	font-size: var(--fs-1) !important;
+	color: var(--cor-link-meta-est) !important;
 }
 
 /* Littlefoot
@@ -1618,6 +1619,32 @@ table.dataTable-table tr:nth-child(even) {
 	}
 }
 
+@media screen and (max-width: 350px) {
+  .site-header {
+    padding: 0;
+  }
+
+  .main-navigation ul {
+    gap: 1rem;
+  }
+
+  .main-navigation li:first-child {
+    padding-left: 1rem;
+  }
+
+  .main-navigation a.main-apoie {
+    padding-inline: 1rem;
+  }
+
+  .menu-item ul {
+    margin-left: 0.5rem;
+  }
+
+  #secondary-menu>ul>li:first-child {
+    padding-left: 0.8rem;
+  }
+}
+
 /*--------------------------------------------------------------
 # Modo escuro
 --------------------------------------------------------------*/
@@ -1705,7 +1732,7 @@ table.dataTable-table tr:nth-child(even) {
 	max-height: max-content;
  }
 
- #menu-toggle:checked + label > img {
+ #menu-toggle + label > img {
 	transform: rotate(90deg);
 	transition: transform 0.1s ease-in-out;
  }
