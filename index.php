@@ -15,23 +15,23 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
+	<?php
+	$count = 0;
+	if ( have_posts() ) :
+
+		if ( is_home() && ! is_front_page() ) :
+			?>
+		<header>
+			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+		</header>
 		<?php
-		$count = 0;
-		if ( have_posts() ) :
+	endif;
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+	/* Start the Loop */
+	while ( have_posts() ) :
+		the_post();
 
 				/*
 				 * Include the Post-Type-specific template for the content.
@@ -43,32 +43,32 @@ get_header();
 				if ( ! is_paged() && 0 == $count ) :
 					?>
 					<div class="orbita-manual">
-					<h2>🔥 Destaques do Órbita</h2>
-					<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
-					<footer class="entry-footer">
-						<a href="/orbita/">Todas as conversas &raquo;</a>
-					</footer>
+						<h2>🔥 Destaques do Órbita</h2>
+						<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
+						<footer class="entry-footer">
+							<a href="/orbita/">Todas as conversas &raquo;</a>
+						</footer>
 					</div>
-					</div>
-				<?php elseif ( ! is_paged() && 4 == $count ) : ?>
+				</div>
+			<?php elseif ( ! is_paged() && 4 == $count ) : ?>
 					<?php echo do_shortcode( '[sc name="podcasts-home"]' ); ?>
-					<?php
+				<?php
 			endif;
 
-				$count++;
+			$count++;
 
-			endwhile;
+		endwhile;
 
-			the_posts_navigation();
+		the_posts_navigation();
 
-		else :
+	else :
 
-			get_template_part( 'template-parts/content', 'none' );
+		get_template_part( 'template-parts/content', 'none' );
 
-		endif;
-		?>
+	endif;
+	?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_sidebar();

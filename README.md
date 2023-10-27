@@ -22,5 +22,5 @@ Mais informações: https://github.com/Automattic/_s
 
 ## Créditos
 
-- Contribuidores: Rodrigo Ghedin, Clarissa R Mendes, Renan Altendorf
+- Contribuidores: Rodrigo Ghedin, Clarissa R Mendes
 - Based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
