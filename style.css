@@ -1732,10 +1732,13 @@ table.dataTable-table tr:nth-child(even) {
 	max-height: max-content;
  }
 
- #menu-toggle + label > img {
+#menu-toggle + label > img {
+	transition: transform 0.1s ease-in-out;	
+}
+
+#menu-toggle:checked + label > img {
 	transform: rotate(90deg);
-	transition: transform 0.1s ease-in-out;
- }
+}
 
 .menu-item .children li {
 	padding: 0 1rem 1rem 1rem;
