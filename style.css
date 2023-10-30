@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.0
+Version: 2.0.1
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -208,7 +208,6 @@ ol {
 }
 
 li {
-	max-width: var(--line-length);
 	margin: 0 0 .5rem 1.1rem;
 	padding: 0;
 }
@@ -347,6 +346,12 @@ select {
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: 30px;
+}
+
+.search-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
 }
 
 /* Links
@@ -499,10 +504,9 @@ a.comment-reply-link {
 
 .hfeed article.hentry,
 .not-found,
-.home .orbita-ranking {
-	margin: 0 0 8rem;
-	padding-bottom: 8rem;
-	border-bottom: 1px solid var(--cor-bordas);
+.home .orbita-manual {
+	margin: 0 0 10rem;
+	padding-bottom: 2rem 1rem;
 }
 .hfeed article.hentry:nth-child(6),
 .not-found {
@@ -510,7 +514,13 @@ a.comment-reply-link {
 }
 .single article.type-post,
 .page article.page {
-	margin: 0 0 8rem
+	margin: 2rem 1rem 8rem;
+	padding: 2rem 0 0;
+}
+
+.entry-content p,
+.entry-content li {
+	max-width:var(--line-length);
 }
 
 /* Cabeçalho
@@ -718,14 +728,18 @@ p.site-title {
 	color: var(--cor-fonte);
 	text-decoration: none
 }
+.entry-header h2 a:hover {
+	opacity: .7;
+}
 
-a.post-thumbnail img {
+a.post-thumbnail img,
+.post-thumbnail {
 	display: block;
 	margin-bottom: 1.5rem;
 }
 
 .single .entry-content {
-	margin-bottom: 4rem;
+	margin-bottom: 8rem;
 }
 
 .entry-meta span.author-1 {
@@ -818,7 +832,7 @@ div.ctx-editor p:last-child {
 	background: #fff5f0;
 }
 .podcast_player {
-	background: #f9f4ff;
+	background: #f4ebff;
 }
 
 .single .post-navigation {
@@ -902,6 +916,11 @@ div.ctx-editor p:last-child {
 	margin-left: 1.5rem;
 }
 
+.blog article.series-guia-pratico {
+	background-color: #f9f4ff;
+	border-radius: var(--borda-curva);
+}
+
 /* Comentários
 --------------------------------------------- */
 
@@ -914,20 +933,22 @@ div.ctx-editor p:last-child {
 	margin-bottom: 8rem;
 }
 .comments-area {
-	margin-bottom: 12rem;
+	margin-bottom: 8rem;
 }
 
 ol.comment-list .comment-respond {
 	margin-bottom: 4rem;
 }
 
-.comment-form { 
+.comment-form,
+.comment-list p { 
 	max-width: var(--line-length);
 }
 
 .comment-form-author label,
 .comment-form-email label,
-.comment-form-comment label {
+.comment-form-comment label,
+span.required-field-message {
 	display: none;
 }
 
@@ -1142,19 +1163,23 @@ li.orbita-post {
 	margin-bottom: 12rem;
 }
 
+.single-orbita_post .entry-header {
+	margin-bottom: 1.5rem;
+}
+
 .single-orbita_post .entry-header h1 a {
-	color: var(--color-link);
+	color: var(--cor-link-ori);
 	text-decoration: underline;
 }
 
 .single-orbita_post .entry-header h1 a:visited {
-	color: var(--color-link-visited);
+	color: var(--cor-link-vis);
 }
 
 .single-orbita_post .entry-header h1 a:hover,
 .single-orbita_post .entry-header h1 a:focus,
 .single-orbita_post .entry-header h1 a:active {
-	color: var(--color-link-states);
+	color: var(--cor-link-est);
 }
 
 .post-33099 .entry-header {
@@ -1179,8 +1204,8 @@ li.orbita-post {
 	font-size: var(--fs-0) !important;
 }
 .orbita-list .vote .count {
-	font-size: var(--fs-1) !important;
-	color: var(--cor-link-meta-est) !important;
+	font-size: var(--fs-0) !important;
+	color: var(--cor-fonte) !important;
 }
 
 /* Littlefoot
@@ -1575,6 +1600,21 @@ table.dataTable-table tr:nth-child(even) {
 		max-width: 100%;
 	}
 
+	.blog article.series-guia-pratico {
+		background-color: #f9f4ff;
+		border-radius: 0;
+	}
+
+	.hfeed article.hentry,
+	.home .orbita-ranking,
+	.not-found {
+		padding: 2rem 0 !important;
+	}
+	.page article.page,
+	.single article.type-post {
+		margin: 2rem 0 8rem;
+	}
+
 	.littlefoot__popover {
 		border-radius: 0;
 		border-width: 1px 0 0;
@@ -1676,6 +1716,16 @@ table.dataTable-table tr:nth-child(even) {
 		opacity: 0.13;
 	}
 
+	input[type="email"],
+	input[type="search"],
+	input[type="url"],
+	input[type="number"],
+	input[type="text"],
+	textarea {
+		background-color: var(--cor-caixas);
+		color: var(--cor-fonte);
+	}
+
 	.ctx-atencao {
 		background-color: #1f1c00;
 	}
@@ -1684,6 +1734,9 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.ctx-dica {
 		background-color: #2e0f00;
+	}
+	.blog article.series-guia-pratico {
+		background-color: #190039;
 	}
 	.podcast_player {
 		background-color: #100024;
