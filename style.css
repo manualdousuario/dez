@@ -879,19 +879,6 @@ div.ctx-editor p:last-child {
 	content: ".";
 }
 
-.category-numeros h1.entry-title,
-.category-numeros h2.entry-title {
-	font-size: clamp(3.3594rem, 3.656rem + -0.5519vw, 3.5456rem);
-	display: block;
-	font-family: var(--ff-serif);
-	font-weight: 400;
-	margin-bottom: 1rem;
-}
-.category-numeros h1.entry-title:after,
-.category-numeros h2.entry-title:after {
-	content: "";
-}
-
 .format-aside .comments-link,
 .format-image .comments-link,
 .format-quote .comments-link {
