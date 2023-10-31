@@ -1592,7 +1592,7 @@ table.dataTable-table tr:nth-child(even) {
 		justify-content: center;
 	}
 	.site-branding {
-		margin: 0 0 2rem;
+		margin: 0 1rem 2rem 0;
 	}
 	.comment-form-email,
 	.comment-form-author {
