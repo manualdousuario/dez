@@ -32,7 +32,7 @@
 			if ( is_front_page() && is_home() ) {
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-dez.svg" width="204" height="66" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
 			} elseif ( 'orbita_post' === get_post_type() || is_page( array( 33099, 33111, 33101, 33103 ) ) ) {
@@ -44,7 +44,7 @@
 			} else {
 				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-dez.svg" width="204" height="66" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></p>
 				<?php
 			}
@@ -107,8 +107,8 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
-				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg"/></label>';
-				$menu_html .= '<ul id="menu-toggle-list" class="children">';
+ 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg" alt="Menu principal" width="27" height="27" /></label>';
+ 				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
 				// Profile/Sign in items.
 				$menu_html .= '<li class="page_item">';
