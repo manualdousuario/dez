@@ -14,16 +14,16 @@
 		<div class="entry-content">
 			<?php
 			if ( is_singular() ) :
-				the_title( '<h1 class="entry-title">', '.</h1>' );
+				the_title( '<h1 class="entry-title">', '</h1>' );
 			else :
-				the_title( '<h2 class="entry-title">', '.</h2>' );
+				the_title( '<h2 class="entry-title">', '</h2>' );
 			endif;
 			?>
 			<?php the_content(); ?>
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
+			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -47,7 +47,7 @@
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
+			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -71,7 +71,7 @@
 		</div>
 		<div class="entry-meta">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_time( 'j/n/y, G\hi' ); ?></a>
-			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
+			<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
 			<?php
 			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 				echo '<div class="comments-link">';
@@ -86,7 +86,7 @@
 				<div class="entry-meta">
 					<?php the_time( 'j/n/y, G\hi' ); ?>
 					<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
-						<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
+						<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
 				<?php endif; ?>
 			</div><?php endif; ?><!-- .entry-meta -->
 			<?php
