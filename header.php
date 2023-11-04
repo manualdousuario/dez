@@ -107,8 +107,8 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
-				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg"/></label>';
-				$menu_html .= '<ul id="menu-toggle-list" class="children">';
+ 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg" alt="Menu principal" width="27" height="27" /></label>';
+ 				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
 				// Profile/Sign in items.
 				$menu_html .= '<li class="page_item">';
