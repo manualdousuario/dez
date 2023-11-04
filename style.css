@@ -506,7 +506,7 @@ a.comment-reply-link {
 .not-found,
 .home .orbita-manual {
 	margin: 0 0 10rem;
-	padding-bottom: 2rem 1rem;
+	padding: 2rem 1rem;
 }
 .hfeed article.hentry:nth-child(6),
 .not-found {
@@ -934,9 +934,30 @@ div.ctx-editor p:last-child {
 	margin-left: 1.5rem;
 }
 
-.blog article.series-guia-pratico {
+.blog article.series-guia-pratico,
+.blog article.category-aplicativos {
+	margin: 0 1rem 10rem;
 	background-color: #f9f4ff;
 	border-radius: var(--borda-curva);
+}
+.blog article.series-guia-pratico .entry-header,
+.blog article.series-guia-pratico .entry-content,
+.blog article.series-guia-pratico .entry-footer,
+.blog article.category-aplicativos .entry-header,
+.blog article.category-aplicativos .entry-content,
+.blog article.category-aplicativos .entry-footer {
+	padding: 0;
+}
+
+.blog article.series-guia-pratico {
+	background-color: #f9f4ff;
+}
+.blog article.category-aplicativos {
+	background-color: hsl(224, 100%, 97%);
+}
+
+article.category-aplicativos ul {
+	margin-left: 0;
 }
 
 /* Comentários
@@ -1618,19 +1639,34 @@ table.dataTable-table tr:nth-child(even) {
 		max-width: 100%;
 	}
 
-	.blog article.series-guia-pratico {
-		background-color: #f9f4ff;
-		border-radius: 0;
-	}
-
 	.hfeed article.hentry,
 	.home .orbita-ranking,
 	.not-found {
-		padding: 2rem 0 !important;
+		padding: 2rem 0;
 	}
 	.page article.page,
 	.single article.type-post {
 		margin: 2rem 0 8rem;
+	}
+
+	.blog article.category-aplicativos,
+	.blog article.series-guia-pratico {
+		border-radius: 0;
+		margin: 0 0 10rem;
+		padding: 2rem 1rem;
+	}
+
+	.category-aplicativos p:first-child {
+		display: inline-block;
+		background-color: hsl(226, 100%, 96%);
+		width: 100%;
+		text-align: center;
+		padding: 1rem 0;
+		border-radius: var(--borda-curva);
+	}
+	.category-aplicativos p:first-child img {
+		margin: 0 auto;
+		float: initial;
 	}
 
 	.littlefoot__popover {
@@ -1758,6 +1794,16 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.podcast_player {
 		background-color: #100024;
+	}
+
+	.blog article.category-aplicativos {
+		background-color: hsl(224, 100%, 9%);
+	}
+
+	@media (max-width: 620px) {
+		.category-aplicativos p:first-child {
+			background-color: hsl(224, 100%, 7.5%);
+		}
 	}
 }
 
