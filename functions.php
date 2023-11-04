@@ -55,7 +55,6 @@ function dez_setup() {
 				'search-form',
 				'comment-form',
 				'comment-list',
-				'gallery',
 				'caption',
 				'style',
 				'script',
@@ -346,7 +345,7 @@ function calls_better_favicon() {
 	<link rel="icon" href="/favicon.ico" sizes="any">
 	<link rel="icon" href="/icon.svg" type="image/svg+xml">
 	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafafa">
-	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030303">
 	<?php
 }
 
@@ -394,7 +393,7 @@ function calls_littlefoot() {
 		?>
 		<script src="/wp-content/themes/dez/js/littlefoot.js" type="application/javascript"></script>
 		<script type="application/javascript">
-			littlefoot.default()
+			littlefoot.littlefoot()
 		</script>
 		<?php
 	}
@@ -488,7 +487,7 @@ add_filter( 'comment_form_defaults', 'sp_add_comment_form_before' );
  */
 function sp_add_comment_form_before( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<p class="ctx-atencao">Antes de comentar, <a href="/doc-comentarios/">leia as regras de convivência</a>. É possível formatar o texto do comentário com HTML ou <a href="https://pt.wikipedia.org/wiki/Markdown#Exemplos_de_sintaxe">Markdown</a>. Seu e-mail não será exposto.</p><p class="ctx-editor"><a href="/cadastro/">Cadastre-se gratuitamente</a> para ter um perfil verificado e poder votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Faça login</a>.</p>';
+	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Por favor, <a href="/doc-comentarios/">leia as regras de convivência</a>. É possível formatar o comentário com HTML ou <a href="https://pt.wikipedia.org/wiki/Markdown#Exemplos_de_sintaxe">Markdown</a>.</p><p><a href="/cadastro/">Cadastre-se gratuitamente</a> para ter um perfil verificado e poder votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Faça login</a>.</p></div>';
 	return $defaults;
 }
 
@@ -502,7 +501,7 @@ function comment_form_change_cookies_consent( $fields ) {
 		$commenter         = wp_get_current_commenter();
 		$consent           = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 		$fields['cookies'] = '<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' .
-						'<label for="wp-comment-cookies-consent">Salvar dados para futuros comentários</label></p>';
+						'<label for="wp-comment-cookies-consent">Lembrar dados</label></p>';
 	}
 	return $fields;
 }
@@ -849,3 +848,39 @@ function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
 	}
 	return $expiration;
 }
+
+/**
+ * Acrescenta placeholders nos campos do formulário de comentários
+ */
+add_filter( 'comment_form_default_fields', 'crunchify_comment_placeholders' );
+function crunchify_comment_placeholders( $crunchify_textfield ) {
+    $crunchify_textfield['author'] = str_replace(
+        '<input',
+        '<input placeholder="Nome"',
+        $crunchify_textfield['author']
+    );
+    $crunchify_textfield['email'] = str_replace(
+        '<input',
+        '<input placeholder="E-mail (não será exibido)"',
+        $crunchify_textfield['email']
+    );
+    return $crunchify_textfield;
+}
+
+add_filter( 'comment_form_defaults', 'crunchify_textarea_placeholder' );  
+function crunchify_textarea_placeholder( $crunchify_textarea ) {
+    $crunchify_textarea['comment_field'] = str_replace(
+        '<textarea',
+        '<textarea placeholder="Escreva seu comentário aqui."',
+        $crunchify_textarea['comment_field']
+    );
+    return $crunchify_textarea;
+}
+
+/**
+ * Converte parágrafo do “Continue lendo” em uma div
+ */
+function wrap_readmore($more_link) {
+	return '<div class="post-readmore">'.$more_link.'</div>';
+}
+add_filter('the_content_more_link', 'wrap_readmore', 10, 1);
