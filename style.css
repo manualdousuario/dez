@@ -1793,6 +1793,10 @@ table.dataTable-table tr:nth-child(even) {
 		fill: unset;
 	}
 
+	.top {
+		border-color: #000;
+	}
+
 	blockquote:before {
 		opacity: 0.13;
 	}
