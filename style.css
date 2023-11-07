@@ -1132,7 +1132,7 @@ img.avatar {
 	float: right;
   bottom: 1rem;
   margin-right: 2rem;
-  margin-top: calc(100vh + 100px);
+  margin-top: calc(100dvh + 100px);
   width: 45px;
   aspect-ratio: 1;
   background: var(--cor-fonte);
