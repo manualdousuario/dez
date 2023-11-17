@@ -42,6 +42,8 @@
 	</footer>
 </div><!-- #page -->
 
+<a href="#" class="top" title="Voltar ao topo"></a>
+
 <?php wp_footer(); ?>
 
 </body>
