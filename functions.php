@@ -60,9 +60,6 @@ function dez_setup() {
 				'script',
 			)
 		);
-
-	// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'dez_setup' );
 
@@ -97,26 +94,6 @@ function dez_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'dez_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'dez_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function dez_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'dez' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'dez' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'dez_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -586,11 +563,6 @@ function collapse_comments() {
 	}
 }
 add_action( 'wp_footer', 'collapse_comments' );
-
-/**
- * Remove ícone de RSS do título do widget RSS.
- */
-add_filter( 'rss_widget_feed_link', '__return_false' );
 
 /**
  * Show custom post types in archives, but only in front-end.
