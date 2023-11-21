@@ -1,8 +1,8 @@
 {
   "name": "dez",
-  "version": "1.1",
+  "version": "2.1",
   "description": "Manual do Usuário Theme",
-  "author": "Automattic Theme Team",
+  "author": "Automattic, Rodrigo Ghedin, Clarissa R Mendes, Renan Altendorf",
   "license": "GPL-2.0-or-later",
   "keywords": [
     "WordPress",

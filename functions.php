@@ -8,95 +8,43 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1' );
+	define( '_S_VERSION', '2.0' );
 }
 
 /**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Sets up theme defaults and registers support for various WordPress features. Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook.
  */
 function dez_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Dez, use a find and replace
-		* to change 'dez' to the name of your theme in all the template files.
-		*/
-		load_theme_textdomain( 'dez', get_template_directory() . '/languages' );
+	// Make theme available for translation. Translations can be filed in the /languages/ directory.
+	load_theme_textdomain( 'dez', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'automatic-feed-links' );
 
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-		add_theme_support( 'title-tag' );
+	// Let WordPress manage the document title.
+	add_theme_support( 'title-tag' );
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-		add_theme_support( 'post-thumbnails' );
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'caption',
-				'style',
-				'script',
-			)
-		);
+	// Enable support for Post Thumbnails on posts and pages.
+	add_theme_support( 'post-thumbnails' );
+
+	// Switch default core markup for search form, comment form, and comments
+	add_theme_support(
+		'html5',
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'caption',
+			'style',
+			'script',
+		)
+	);
 }
 add_action( 'after_setup_theme', 'dez_setup' );
 
 /**
- * Impede o WordPress de gerar novos tamanhos de imagens.
- */
-add_filter(
-	'intermediate_image_sizes',
-	function( $sizes ) {
-		return array_diff( $sizes, array( 'medium_large' ) );  // Medium Large (768 x 0).
-	}
-);
-
-add_action( 'init', 'j0e_remove_large_image_sizes' );
-
-/**
- * Remove large image sizes.
- */
-function j0e_remove_large_image_sizes() {
-	remove_image_size( '1536x1536' );             // 2 x Medium Large (1536 x 1536)
-	remove_image_size( '2048x2048' );             // 2 x Large (2048 x 2048)
-}
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function dez_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'dez_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'dez_content_width', 0 );
-
-/**
- * Enqueue scripts and styles.
+ * Carrega scripts e folhas de estilo.
  */
 function dez_scripts() {
 	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
@@ -109,7 +57,7 @@ function dez_scripts() {
 add_action( 'wp_enqueue_scripts', 'dez_scripts' );
 
 /**
- * Custom template tags for this theme.
+ * Template tags personalizadas para o tema.
  */
 require get_template_directory() . '/inc/template-tags.php';
 
@@ -127,83 +75,143 @@ add_theme_support(
 		'aside',
 		'quote',
 		'image',
-		'link',
 	)
 );
 
 /**
- * Disable Gutemberg.
+ * Impede o WordPress de gerar novos tamanhos de imagens.
  */
+add_filter(
+	'intermediate_image_sizes',
+	function( $sizes ) {
+		return array_diff( $sizes, array( 'medium_large' ) );
+	}
+);
+
+/**
+ * Remove tamanhos de imagens padrões adicionais no upload.
+ */
+function dez_remove_large_image_sizes() {
+	remove_image_size( '1536x1536' );
+	remove_image_size( '2048x2048' );
+}
+add_action( 'init', 'dez_remove_large_image_sizes' );
+
+/**
+ * Desativa Gutemberg.
+ */
+wp_dequeue_style( 'wp-block-library' );
+wp_deregister_style( 'wp-block-library' );
+
+wp_dequeue_style( 'wp-block-library-theme' );
+wp_deregister_style( 'wp-block-library-theme' );
+
+wp_dequeue_style( 'global-styles' );
+wp_deregister_style( 'global-styles' );
+
+wp_dequeue_style( 'classic-theme-styles-css' );
+wp_deregister_style( 'classic-theme-styles-css' );
+
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles' );
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
 add_filter( 'use_block_editor_for_post', '__return_false' );
+
+add_filter( 'use_widgets_block_editor', '__return_false' );
 add_filter( 'use_widgets_blog_editor', '__return_false' );
 
+/**
+ * Desativa estilos e scripts de plugins.
+ */
 add_action(
 	'wp_enqueue_scripts',
 	function() {
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
-		wp_dequeue_style( 'global-styles' );
-		wp_dequeue_style( 'classic-theme-styles-css' );
 		wp_dequeue_style( 'user-toolkit' );
+		wp_deregister_style( 'user-toolkit' );
 
-		/**
-		 * Disable Seriously Simple Podcasting block styles.
-		 */
 		wp_dequeue_style( 'ssp-block-style' );
+		wp_deregister_style( 'ssp-block-style' );
 		wp_dequeue_style( 'ssp-block-fonts-style' );
+		wp_deregister_style( 'ssp-block-fonts-style' );
 		wp_dequeue_style( 'ssp-block-gizmo-fonts-style' );
+		wp_deregister_style( 'ssp-block-gizmo-fonts-style' );
 		wp_dequeue_style( 'ssp-recent-episodes' );
+		wp_deregister_style( 'ssp-recent-episodes' );
 
-		/**
-		 * Corrige parágrafo falho nos feeds do Seriously Simple Podcasting.
-		 */
-		add_filter(
-			'ssp_feed_item_content',
-			function ( $content ) {
-				return wpautop( $content );
-			}
-		);
-
-		/**
-		 * Disable StCR style.
-		 */
+		wp_dequeue_style( 'stcr-style' );
 		wp_deregister_style( 'stcr-style' );
 	},
 	20
 );
 
 /**
- * Head & footer cleanup.
+ * Limpeza do cabeçalho e rodapé.
  */
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'mediaelement-css' );
+remove_action( 'wp_head', 'wp_print_font_faces', 50 );
 
-add_filter( 'wp_enqueue_scripts', 'change_default_jquery', PHP_INT_MAX );
-
-/**
- * Change default jquery.
- */
-function change_default_jquery() {
-	wp_dequeue_script( 'jquery' );
-	wp_deregister_script( 'jquery' );
-}
-
-/**
- * Remove jetpack.css
- */
 add_filter( 'jetpack_implode_frontend_css', '__return_false', 99 );
 
 /**
- * Remove specific scripts.
+ * Remove alguns scripts padrões.
  */
-function wpassist_dequeue_scripts() {
+function dez_dequeue_scripts() {
+	wp_dequeue_script( 'wp-embed' );
 	wp_deregister_script( 'wp-embed' );
+	wp_dequeue_script( 'wp-mediaelement' );
 	wp_deregister_script( 'wp-mediaelement' );
+	wp_dequeue_script( 'wp-mediaelement' );
 	wp_deregister_style( 'wp-mediaelement' );
 }
-add_action( 'wp_enqueue_scripts', 'wpassist_dequeue_scripts' );
+add_action( 'wp_enqueue_scripts', 'dez_dequeue_scripts' );
+
+/**
+ * Remove jQuery.
+ */
+function dez_remove_jquery() {
+	wp_dequeue_script( 'jquery' );
+	wp_deregister_script( 'jquery' );
+}
+add_filter( 'wp_enqueue_scripts', 'dez_remove_jquery', PHP_INT_MAX );
+
+/**
+ * Remove referências à API JSON do cabeçalho.
+ */
+function dez_remove_json_api() {
+	remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+	remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+	add_filter( 'embed_oembed_discover', '__return_false' );
+	remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+}
+add_action( 'after_setup_theme', 'dez_remove_json_api' );
+
+/**
+ * Desativa JSON API.
+ */
+function dez_desativa_api_json() {
+	add_filter( 'json_enabled', '__return_false' );
+	add_filter( 'json_jsonp_enabled', '__return_false' );
+	// add_filter( 'rest_enabled', '__return_false' );
+	add_filter( 'rest_jsonp_enabled', '__return_false' );
+}
+add_action( 'after_setup_theme', 'dez_desativa_api_json' );
+
+/**
+ * Corrige e remove coisas do plugin Seriously Simple Podcasting.
+ */
+add_filter(
+	'ssp_feed_item_content', // Acrescenta parágrafos ao feed.
+	function ( $content ) {
+		return wpautop( $content );
+	}
+);
 
 global $ss_podcasting;
 remove_action( 'wp_print_footer_scripts', array( $ss_podcasting, 'html5_player_conditional_scripts' ) );
@@ -212,34 +220,9 @@ remove_action( 'wp_enqueue_scripts', array( $ss_podcasting, 'load_scripts' ) );
 remove_action( 'wp_footer', array( $ss_podcasting, 'ssp_override_player_styles' ) );
 
 /**
- * Remove JSON API references from header.
+ * Remove emojis personalizados.
  */
-function remove_json_api() {
-	// remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-	remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-	// remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-	add_filter( 'embed_oembed_discover', '__return_false' );
-	remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-}
-add_action( 'after_setup_theme', 'remove_json_api' );
-
-/**
- * Disable JSON API.
-
-function disable_json_api() {
-	add_filter( 'json_enabled', '__return_false' );
-	add_filter( 'json_jsonp_enabled', '__return_false' );
-	add_filter( 'rest_enabled', '__return_false' );
-	add_filter( 'rest_jsonp_enabled', '__return_false' );
-}
-add_action( 'after_setup_theme', 'disable_json_api' ); */
-
-/**
- * Remove custom emojis support.
- */
-function disable_wp_emojicons() {
+function dez_desativa_wp_emojicons() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -248,16 +231,11 @@ function disable_wp_emojicons() {
 	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 
-	add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+	add_filter( 'tiny_mce_plugins', 'dez_desativa_wp_emojicons_tinymce' );
 }
-add_action( 'init', 'disable_wp_emojicons' );
+add_action( 'init', 'dez_desativa_wp_emojicons' );
 
-/**
- * Disable emojicons tinymce.
- *
- * @param Plugins $plugins Plugins.
- */
-function disable_emojicons_tinymce( $plugins ) {
+function dez_desativa_wp_emojicons_tinymce( $plugins ) {
 	if ( is_array( $plugins ) ) {
 		return array_diff( $plugins, array( 'wpemoji' ) );
 	} else {
@@ -266,56 +244,47 @@ function disable_emojicons_tinymce( $plugins ) {
 }
 
 /**
- * Remove website field from comment form.
+ * Remove feed de comentários
  */
-add_filter( 'comment_form_default_fields', 'unset_url_field' );
-
-/**
- * Unset URL field.
- *
- * @param fields $fields Fields.
- */
-function unset_url_field( $fields ) {
-	if ( isset( $fields['url'] ) ) {
-		unset( $fields['url'] );
-	}
-	return $fields;
-}
-
-/**
- * Remove comments' feed.
- */
-function return_false() {
+function dez_remove_feed_comentarios() {
 	return false;
 }
-add_filter( 'feed_links_show_comments_feed', 'return_false' );
+add_filter( 'feed_links_show_comments_feed', 'dez_remove_feed_comentarios' );
 
 /**
- * Replace WordPress logo on login/signup page.
+ * Substitui logo do WordPress por personalizado na tela de cadastro/login.
  */
-function my_login_logo_one() { ?>
+function dez_login_personalizado() { ?>
 	<style type="text/css">
 		body.login div#login h1 a {
-			background-image: url(https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-do-usuario-dez@2x.png);
+			background-image: url(https://manualdousuario.net/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg);
 			padding-bottom: 30px;
 			margin: 0;
 			width: 100%;
-			background-size: 202px;
+			background-size: 256px;
 		}
 	</style>
 	<?php
 }
-add_action( 'login_enqueue_scripts', 'my_login_logo_one' );
+add_action( 'login_enqueue_scripts', 'dez_login_personalizado' );
 
 /**
- * Change link in login's page image.
+ * Troca o link da imagem na tela de cadastro/login.
  */
-add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+function dez_login_link( $url ) {
+	return 'https://manualdousuario.net/';
+}
+add_filter( 'login_headerurl', 'dez_login_link' );
 
 /**
- * Custom favicons.
+ * Remove seletor de idioma na tela de cadastro/login.
  */
-function calls_better_favicon() {
+add_filter( 'login_display_language_dropdown', '__return_false' );
+
+/**
+ * Favicons personalizados.
+ */
+function dez_favicons() {
 	?>
 	<link rel="manifest" href="/manifest.webmanifest">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -325,187 +294,75 @@ function calls_better_favicon() {
 	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030303">
 	<?php
 }
-
-add_action( 'wp_head', 'calls_better_favicon' );
-
-/**
- * Custom login logo URL.
- *
- * @param URL $url Logo URL.
- */
-function custom_loginlogo_url( $url ) {
-	return 'https://manualdousuario.net/';
-}
-
-/**
- * Remove language selector in wp-login.php
- */
-add_filter( 'login_display_language_dropdown', '__return_false' );
-
-/**
- * Fix too sensistive reply link in comments.
- */
-function fix_reply_link_comments() {
-	if ( have_comments() ) {
-		?>
-		<script type="text/javascript">
-			window.addEventListener('load', function() {
-				document.getElementById('comments').addEventListener('touchstart', function(e) {
-					if( e.target.className === 'comment-reply-link' ) {
-						e.stopPropagation();
-					}
-				}, true);
-			});
-		</script>
-		<?php
-	}
-}
-add_action( 'wp_footer', 'fix_reply_link_comments' );
-
-/**
- * Calls Littlefoot
- */
-function calls_littlefoot() {
-	if ( is_singular() ) {
-		?>
-		<script src="/wp-content/themes/dez/js/littlefoot.js" type="application/javascript"></script>
-		<script type="application/javascript">
-			littlefoot.littlefoot()
-		</script>
-		<?php
-	}
-}
-add_action( 'wp_footer', 'calls_littlefoot' );
-
-/**
- * Simple Data-Tables
- */
-function datatables_init() {
-	if ( is_page( '25504' ) /* Newsletters brasileiras */
-				|| is_single( '32681' ) /* Indicações 2022 */ ) {
-		?>
-		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript"></script>
-
-		<script type="module">
-			window.onload = () => {
-				function shuffleArray(array) {
-					for (var i = array.length - 1; i > 0; i--) {
-						var j = Math.floor(Math.random() * (i + 1));
-						var temp = array[i];
-						array[i] = array[j];
-						array[j] = temp;
-					}
-				}
-
-				const table = document.querySelector('table');
-const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
-shuffleArray(rows);
-
-for (const row of rows) {
-	table.querySelector('tbody').appendChild(row);
-}
-
-const dataTable = new simpleDatatables.DataTable("table", {
-	searchable: true,
-	fixedHeight: false,
-	columns: [ { select: [4, 5], hidden: true } ],
-	perPage: 50,
-	perPageSelect: [20, 50, 100],
-	labels: {
-		placeholder: "Pesquisar…",
-		perPage: "{select} itens por página",
-		noRows: "Nada encontrado",
-		info: "Mostrando {start} a {end} de {rows} itens",
-	}
-})
-} </script>
-		<?php
-	}
-}
-add_action( 'wp_footer', 'datatables_init' );
-
-/**
- * Remove rótulos padrões em páginas de arquivo.
- */
-add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
-
-/**
- * Theme archive title.
- *
- * @param Title $title Title.
- */
-function my_theme_archive_title( $title ) {
-	if ( is_category() ) {
-		$title = single_cat_title( '', false );
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
-	} elseif ( is_author() ) {
-		$title = '<span class="vcard">' . get_the_author() . '</span>';
-	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
-	} elseif ( is_tax() ) {
-		$title = single_term_title( '', false );
-	} elseif ( is_home() ) {
-		$title = single_post_title( '', false );
-	}
-
-	return $title;
-}
+add_action( 'wp_head', 'dez_favicons' );
 
 /**
  * Altera mensagem antes do formulário de comentar.
  */
-add_filter( 'comment_form_defaults', 'sp_add_comment_form_before' );
-
-/**
- * Add comment form before.
- *
- * @param Defaults $defaults Defaults.
- */
-function sp_add_comment_form_before( $defaults ) {
+function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
 	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Por favor, <a href="/doc-comentarios/">leia as regras de convivência</a>. É possível formatar o comentário com HTML ou <a href="https://pt.wikipedia.org/wiki/Markdown#Exemplos_de_sintaxe">Markdown</a>.</p><p><a href="/cadastro/">Cadastre-se gratuitamente</a> para ter um perfil verificado e poder votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Faça login</a>.</p></div>';
 	return $defaults;
 }
+add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
+
+/**
+ * Remove campo “website” do formulário de comentários.
+ */
+function dez_remove_campo_website_comentarios( $fields ) {
+	if ( isset( $fields['url'] ) ) {
+		unset( $fields['url'] );
+	}
+	return $fields;
+}
+add_filter( 'comment_form_default_fields', 'dez_remove_campo_website_comentarios' );
+
+/**
+ * Acrescenta placeholders nos campos do formulário de comentários
+ */
+function dez_comentarios_placeholders( $crunchify_textfield ) {
+	$crunchify_textfield['author'] = str_replace(
+		'<input',
+		'<input placeholder="Nome"',
+		$crunchify_textfield['author']
+	);
+	$crunchify_textfield['email'] = str_replace(
+		'<input',
+		'<input placeholder="E-mail (não será exibido)"',
+		$crunchify_textfield['email']
+	);
+	return $crunchify_textfield;
+}
+
+add_filter( 'comment_form_defaults', 'crunchify_textarea_placeholder' );  
+function crunchify_textarea_placeholder( $crunchify_textarea ) {
+	$crunchify_textarea['comment_field'] = str_replace(
+		'<textarea',
+		'<textarea placeholder="Escreva seu comentário aqui."',
+		$crunchify_textarea['comment_field']
+	);
+	return $crunchify_textarea;
+}
+add_filter( 'comment_form_default_fields', 'dez_comentarios_placeholders' );
 
 /**
  * Altera mensagem de cookies nos comentários.
- *
- * @param fields $fields Fields.
  */
-function comment_form_change_cookies_consent( $fields ) {
+function dez_mensagem_cookies_comentarios( $fields ) {
 	if ( ! is_admin() ) {
 		$commenter         = wp_get_current_commenter();
 		$consent           = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 		$fields['cookies'] = '<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' .
-						'<label for="wp-comment-cookies-consent">Lembrar dados</label></p>';
+		'<label for="wp-comment-cookies-consent">Lembrar dados</label></p>';
 	}
 	return $fields;
 }
-add_filter( 'comment_form_default_fields', 'comment_form_change_cookies_consent' );
+add_filter( 'comment_form_default_fields', 'dez_mensagem_cookies_comentarios' );
 
 /**
- * Altera texto do placeholder da pesquisa.
- *
- * @param Form $form Form.
+ * Ocultar e exibir comentários.
  */
-function my_search_form( $form ) {
-	$form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '" >
-    <label>
-    <span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
-    <input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" /></label>
-    <input type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" />
-    </form>';
-
-	return $form;
-}
-
-add_filter( 'get_search_form', 'my_search_form', 100 );
-
-/**
- * Colapse thread in comments.
- */
-function collapse_comments() {
+function dez_oculta_exibe_comentarios() {
 	if ( have_comments() ) {
 		?>
 		<script type="text/javascript">
@@ -562,68 +419,192 @@ function collapse_comments() {
 		<?php
 	}
 }
-add_action( 'wp_footer', 'collapse_comments' );
+add_action( 'wp_footer', 'dez_oculta_exibe_comentarios' );
 
 /**
- * Show custom post types in archives, but only in front-end.
- *
- * @param Query $query Query.
+ * Corrige sensibilidade do link “Responder”, nos comentários, em telas sensíveis a toques.
  */
-function custom_post_date_archive( $query ) {
+function dez_sensibilidade_responder() {
+	if ( have_comments() ) {
+		?>
+		<script type="text/javascript">
+			window.addEventListener('load', function() {
+				document.getElementById('comments').addEventListener('touchstart', function(e) {
+					if( e.target.className === 'comment-reply-link' ) {
+						e.stopPropagation();
+					}
+				}, true);
+			});
+		</script>
+		<?php
+	}
+}
+add_action( 'wp_footer', 'dez_sensibilidade_responder' );
+
+/**
+ * Chama o littlefoot.js.
+ */
+function dez_littlefoot() {
+	if ( is_singular() ) {
+		?>
+		<script src="/wp-content/themes/dez/js/littlefoot.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			littlefoot.littlefoot()
+		</script>
+		<?php
+	}
+}
+add_action( 'wp_footer', 'dez_littlefoot' );
+
+/**
+ * Chama script do botão “voltar para cima”.
+ */
+function dez_botao_rolar_top() { ?>
+	<script type="text/javascript">
+		window.addEventListener('scroll', function() {
+			var elementosParaRevelar = document.querySelectorAll('.top');
+      var alturaParaRevelar = 100;
+
+      elementosParaRevelar.forEach(function(elemento) {
+      	var posicaoVertical = window.scrollY || window.pageYOffset;
+
+      	if (posicaoVertical >= alturaParaRevelar) {
+      		elemento.classList.add('top-visivel');
+      	} else {
+      		elemento.classList.remove('top-visivel');
+      	}
+      });
+    });
+  </script>
+  <noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
+<?php	}
+add_action( 'wp_footer', 'dez_botao_rolar_top' );
+
+/**
+ * Chama Simple Data-Tables.
+ */
+function dez_datatables_init() {
+	if ( is_page( '25504' ) // Newsletters brasileiras
+|| is_single( '32681' ) ) { // Indicações 2022
+	?>
+	<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript"></script>
+
+	<script type="module">
+		window.onload = () => {
+			function shuffleArray(array) {
+				for (var i = array.length - 1; i > 0; i--) {
+					var j = Math.floor(Math.random() * (i + 1));
+					var temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+			}
+
+			const table = document.querySelector('table');
+const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
+shuffleArray(rows);
+
+for (const row of rows) {
+	table.querySelector('tbody').appendChild(row);
+}
+
+const dataTable = new simpleDatatables.DataTable("table", {
+	searchable: true,
+	fixedHeight: false,
+	columns: [ { select: [4, 5], hidden: true } ],
+	perPage: 50,
+	perPageSelect: [20, 50, 100],
+	labels: {
+		placeholder: "Pesquisar…",
+		perPage: "{select} itens por página",
+		noRows: "Nada encontrado",
+		info: "Mostrando {start} a {end} de {rows} itens",
+	}
+})
+} </script>
+<?php
+}
+}
+add_action( 'wp_footer', 'dez_datatables_init' );
+
+/**
+ * Remove rótulos padrões em páginas de arquivo.
+ */
+function dez_remove_rotulos_titulos( $title ) {
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( '', false );
+	} elseif ( is_author() ) {
+		$title = '<span class="vcard">' . get_the_author() . '</span>';
+	} elseif ( is_post_type_archive() ) {
+		$title = post_type_archive_title( '', false );
+	} elseif ( is_tax() ) {
+		$title = single_term_title( '', false );
+	} elseif ( is_home() ) {
+		$title = single_post_title( '', false );
+	}
+
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'dez_remove_rotulos_titulos' );
+
+/**
+ * Remove “Protegido:” de páginas e posts protegidos por senha.
+ */
+add_filter( 'protected_title_format', 'myprefix_private_title_format' );
+function myprefix_private_title_format( $format ) {
+	return '%s';
+}
+
+/**
+ * Altera texto do placeholder da pesquisa.
+ */
+function dez_form_pesquisar( $form ) {
+	$form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '" >
+	<label>
+	<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
+	<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" /></label>
+	<input type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" />
+	</form>';
+
+	return $form;
+}
+add_filter( 'get_search_form', 'dez_form_pesquisar', 100 );
+
+/**
+ * Exibe custom post types nos arquivos no front-end.
+ */
+function dez_custom_posts_arquivos( $query ) {
 	if ( ! is_admin() && ( $query->is_date || $query->is_author ) ) {
 		$query->set( 'post_type', array( 'post', 'podcast' ) ); }
-	remove_action( 'pre_get_posts', 'custom_post_author_archive' );
-}
-add_action( 'pre_get_posts', 'custom_post_date_archive' );
+		remove_action( 'pre_get_posts', 'custom_post_author_archive' );
+	}
+	add_action( 'pre_get_posts', 'dez_custom_posts_arquivos' );
 
 /**
- * Define what post types to search.
- *
- * @param Query $query Query.
+ * Define quais post types aparecem na pesquisa.
  */
-function search_all( $query ) {
+function dez_pesquisar_post_types( $query ) {
 	if ( $query->is_search ) {
 		$query->set( 'post_type', array( 'post', 'page', 'podcast' ) );
 	}
 	return $query;
 }
-add_filter( 'the_search_query', 'search_all' );
-
-
-/**
- * Add `loading="lazy"` attribute to images output by the_post_thumbnail().
- */
-add_filter( 'post_thumbnail_html', 'wpdd_modify_post_thumbnail_html', 10, 5 );
+add_filter( 'the_search_query', 'dez_pesquisar_post_types' );
 
 /**
- * Modify post thumbnail
- *
- * @param HTML              $html HTML.
- * @param Post_ID           $post_id Post_ID.
- * @param Post_Thumbnail_ID $post_thumbnail_id Post_Thumbnail_ID.
- * @param Size              $size Size.
- * @param Attributes        $attr Attributes.
+ * Adiciona o atributo `loading="lazy"` a imagens exibidas pelo `the_post_thumbnail()`.
  */
-function wpdd_modify_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-
+function dez_lazy_loading_thumbs( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	return str_replace( '<img', '<img loading="lazy"', $html );
-
 }
-
-/**
- * Acrescenta parágrafos aos posts do Seriously Simple Podcasting (SSP)
- */
-add_filter(
-	'ssp_feed_item_content',
-	function ( $content ) {
-		return wpautop( $content );
-	}
-);
+add_filter( 'post_thumbnail_html', 'dez_lazy_loading_thumbs', 10, 5 );
 
 /**
  * Remove aba “Screen options” para usuários que não são admin.
  */
-function shape_space_remove_screen_options() {
+function dez_remove_screen_options() {
 	global $current_user;
 	if ( ! current_user_can( 'administrator' ) ) {
 		return false;
@@ -631,15 +612,13 @@ function shape_space_remove_screen_options() {
 		return true;
 	}
 }
-add_filter( 'screen_options_show_screen', 'shape_space_remove_screen_options' );
+add_filter( 'screen_options_show_screen', 'dez_remove_screen_options' );
 
 /**
  * Remove todos os widgets do painel de administração de quem não é admin.
  */
-function shape_space_wp_dashboard_setup() {
-
+function dez_limpeza_dashboard() {
 	if ( ! current_user_can( 'manage_options' ) ) {
-
 		remove_action( 'welcome_panel', 'wp_welcome_panel' );
 
 		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
@@ -656,62 +635,22 @@ function shape_space_wp_dashboard_setup() {
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
 		remove_meta_box( 'ssp_castos_dashboard', 'dashboard', 'normal' );
-
 	}
-
 }
-add_action( 'wp_dashboard_setup', 'shape_space_wp_dashboard_setup' );
+add_action( 'wp_dashboard_setup', 'dez_limpeza_dashboard' );
 
 /**
  * Remove campos do perfil do usuário.
- *
- * @param Contact_Methods $contactmethods Contact Methods.
  */
-function new_contactmethods( $contactmethods ) {
+function dez_remove_campos_perfil( $contactmethods ) {
 	unset( $contactmethods['googleplus'] );
 	unset( $contactmethods['twitter'] );
 	unset( $contactmethods['facebook'] );
 
 	return $contactmethods;
 }
-add_filter( 'user_contactmethods', 'new_contactmethods', 10, 1 );
+add_filter( 'user_contactmethods', 'dez_remove_campos_perfil', 10, 1 );
 
-/**
- * Limita o tamanho dos arquivos enviados pelo Simple Local Avatars.
- */
-add_filter(
-	'simple_local_avatars_upload_limit',
-	function() {
-		return 1024 * 500; // 500 KB
-	}
-);
-
-/**
- * Remove opções de cores do wp-admin.
- */
-function admin_color_scheme() {
-	global $_wp_admin_css_colors;
-	$_wp_admin_css_colors = array();
-}
-add_action( 'admin_head', 'admin_color_scheme' );
-
-/**
- * Força paleta de cores “Fresh”.
- */
-add_filter( 'get_user_option_admin_color', 'my_force_user_color' );
-
-/**
- * Force user color.
- *
- * @param Color $color Color.
- */
-function my_force_user_color( $color ) {
-	return 'fresh';
-}
-
-/**
- * Remove opções do perfil do usuário.
- */
 add_action(
 	'admin_head',
 	function () {
@@ -731,9 +670,25 @@ add_action(
 	}
 );
 
+/**
+ * Remove opções de cores do wp-admin.
+ */
+function dez_cores_admin() {
+	global $_wp_admin_css_colors;
+	$_wp_admin_css_colors = array();
+}
+add_action( 'admin_head', 'dez_cores_admin' );
 
 /**
- * Posts do Órbita em ordem cronológica inversa por padrão.
+ * Força tema “Fresh” no dashboard.
+ */
+function dez_cor_padrao_admin( $color ) {
+	return 'fresh';
+}
+add_filter( 'get_user_option_admin_color', 'dez_cor_padrao_admin' );
+
+/**
+ * Posts do Órbita em ordem cronológica inversa por padrão no dashboard.
  *
  * @param WP_Query $wp_query WP Query.
  */
@@ -748,34 +703,10 @@ function wpse_81939_post_types_admin_order( $wp_query ) {
 }
 add_filter( 'pre_get_posts', 'wpse_81939_post_types_admin_order' );
 
-
 /**
  * Desativa o editor visual do Classic Editor.
  */
 add_filter( 'user_can_richedit', '__return_false', 50 );
-
-
-/**
- * Term permalink.
- *
- * @param URL      $url URL.
- * @param Term     $term Term.
- * @param Taxonomy $taxonomy Taxonomy.
- */
-function rudr_term_permalink( $url, $term, $taxonomy ) {
-
-	$taxonomy_name = 'category';
-	$taxonomy_slug = 'category';
-
-	if ( strpos( $url, $taxonomy_slug ) === false || $taxonomy !== $taxonomy_name ) {
-		return $url;
-	}
-
-	$url = str_replace( '/' . $taxonomy_slug, '', $url );
-
-	return $url;
-}
-
 
 /**
  * Remove comentários do código-fonte gerados pelo plugin The SEO Framework.
@@ -801,18 +732,17 @@ if ( defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
 }
 
 /**
- * Adiciona suporte a Markdown (via Jetpack) aos custom post types do Órbita e podcasts.
+ * Adiciona suporte a Markdown (via Jetpack) ao Órbita.
  */
-add_action('init', 'md_custom_post'); function md_custom_post() {
+function dez_markdown_custom_post() {
 	add_post_type_support( 'orbita_post', 'wpcom-markdown' ); 
-	add_post_type_support( 'podcast', 'wpcom-markdown' ); 
 }
+add_action('init', 'dez_markdown_custom_post');
 
 /**
  * Aumenta o prazo de validade do login para 1 mês (sem marcar o “lembrar-me”) e 1 ano (marcando).
  */
-add_filter('auth_cookie_expiration', 'mdu_auth_cookie_expiration', 10, 3);
-function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
+function dez_auth_cookie_expiration( $expiration, $user_id, $remember ) {
 	if ( $remember ) {
 		$expiration = YEAR_IN_SECONDS;
 	} else {
@@ -820,39 +750,12 @@ function mdu_auth_cookie_expiration( $expiration, $user_id, $remember ) {
 	}
 	return $expiration;
 }
+add_filter('auth_cookie_expiration', 'dez_auth_cookie_expiration', 10, 3);
 
 /**
- * Acrescenta placeholders nos campos do formulário de comentários
+ * Remove a área “Links” da barra lateral do painel administrativo.
  */
-add_filter( 'comment_form_default_fields', 'crunchify_comment_placeholders' );
-function crunchify_comment_placeholders( $crunchify_textfield ) {
-    $crunchify_textfield['author'] = str_replace(
-        '<input',
-        '<input placeholder="Nome"',
-        $crunchify_textfield['author']
-    );
-    $crunchify_textfield['email'] = str_replace(
-        '<input',
-        '<input placeholder="E-mail (não será exibido)"',
-        $crunchify_textfield['email']
-    );
-    return $crunchify_textfield;
+function dez_remove_links_menu() {
+	remove_menu_page('link-manager.php');
 }
-
-add_filter( 'comment_form_defaults', 'crunchify_textarea_placeholder' );  
-function crunchify_textarea_placeholder( $crunchify_textarea ) {
-    $crunchify_textarea['comment_field'] = str_replace(
-        '<textarea',
-        '<textarea placeholder="Escreva seu comentário aqui."',
-        $crunchify_textarea['comment_field']
-    );
-    return $crunchify_textarea;
-}
-
-/**
- * Converte parágrafo do “Continue lendo” em uma div
- */
-function wrap_readmore($more_link) {
-	return '<div class="post-readmore">'.$more_link.'</div>';
-}
-add_filter('the_content_more_link', 'wrap_readmore', 10, 1);
+add_action( 'admin_menu', 'dez_remove_links_menu' );

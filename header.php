@@ -80,6 +80,10 @@
 						'url'   => '/podcast/',
 					),
 					array(
+						'title' => 'Vídeos',
+						'url'   => '/category/videos/',
+					),
+					array(
 						'title' => 'Bastidores',
 						'url'   => '/category/bastidores/',
 					),
