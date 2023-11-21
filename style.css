@@ -1122,6 +1122,7 @@ img.avatar {
 --------------------------------------------- */
 
 .site-footer {
+	display: inline-block;
 	margin: 16rem 0 2rem;
 }
 
