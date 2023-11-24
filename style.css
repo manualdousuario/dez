@@ -281,7 +281,6 @@ form {
 
 label {
 	display: block;
-	margin-bottom: .5rem;
 }
 
 .form-obrigatorio {
@@ -629,7 +628,6 @@ p.site-title {
 .main-navigation a:focus,
 .main-navigation a:visited {
 	color: var(--cor-link-meta);
-	text-transform: uppercase;
 }
 .main-navigation a:hover {
 	color: var(--cor-link-meta-est);
@@ -1910,7 +1908,7 @@ table.dataTable-table tr:nth-child(even) {
 	right: 0;
 	width: max-content;
 	max-height: 0;
-	margin-top: 1.25rem;
+	margin-top: 1rem;
 	user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;

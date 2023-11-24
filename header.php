@@ -76,24 +76,16 @@
 						'url'   => 'https://pcdomanual.com',
 					),
 					array(
-						'title' => 'Podcasts',
-						'url'   => '/podcast/',
+						'title' => 'Regras dos comentários',
+						'url'   => '/doc-comentarios/',
 					),
 					array(
-						'title' => 'Vídeos',
-						'url'   => '/category/videos/',
+						'title' => 'Guia de uso do Órbita',
+						'url'   => '/orbita/guia-de-uso/',
 					),
 					array(
-						'title' => 'Bastidores',
-						'url'   => '/category/bastidores/',
-					),
-					array(
-						'title' => 'Diretório de newsletters',
-						'url'   => '/newsletters-brasileiras',
-					),
-					array(
-						'title' => 'Lojinha',
-						'url'   => '/lojinha',
+						'title' => 'Clube de descontos',
+						'url'   => '/clube-de-descontos/',
 					),
 				);
 
