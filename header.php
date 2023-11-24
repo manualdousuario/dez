@@ -67,7 +67,7 @@
 				?>
 				<li class="menu-item d"><a href="/apoie/" class="main-apoie">Apoie</a></li>
 			</ul>
-			<!-- hamburger-menu -->
+			<!-- user-menu -->
 			<?php
 				// Custom menu configuration.
 				$custom_items = array(
@@ -111,7 +111,7 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
- 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg" alt="Menu principal" width="24" height="24" /></label>';
+ 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
  				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
 				// Profile/Sign in items.
