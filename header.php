@@ -38,7 +38,7 @@
 			} elseif ( 'orbita_post' === get_post_type() || is_page( array( 33099, 33111, 33101, 33103 ) ) ) {
 				?>
 				<p class="site-title"><a href="/orbita/" rel="home">
-					<img src="/wp-content/themes/dez/img/logo-orbita-dez.svg" width="204" height="66" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/logo-orbita-dez.svg" width="204" height="53" alt="<?php bloginfo( 'name' ); ?>">
 				</a></p>
 				<?php
 			} else {
