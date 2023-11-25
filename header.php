@@ -67,7 +67,7 @@
 				?>
 				<li class="menu-item d"><a href="/apoie/" class="main-apoie">Apoie</a></li>
 			</ul>
-			<!-- hamburger-menu -->
+			<!-- user-menu -->
 			<?php
 				// Custom menu configuration.
 				$custom_items = array(
@@ -76,24 +76,16 @@
 						'url'   => 'https://pcdomanual.com',
 					),
 					array(
-						'title' => 'Podcasts',
-						'url'   => '/podcast/',
+						'title' => 'Regras dos comentários',
+						'url'   => '/doc-comentarios/',
 					),
 					array(
-						'title' => 'Vídeos',
-						'url'   => '/category/videos/',
+						'title' => 'Guia de uso do Órbita',
+						'url'   => '/orbita/guia-de-uso/',
 					),
 					array(
-						'title' => 'Bastidores',
-						'url'   => '/category/bastidores/',
-					),
-					array(
-						'title' => 'Diretório de newsletters',
-						'url'   => '/newsletters-brasileiras',
-					),
-					array(
-						'title' => 'Lojinha',
-						'url'   => '/lojinha',
+						'title' => 'Clube de descontos',
+						'url'   => '/clube-de-descontos/',
 					),
 				);
 
@@ -111,7 +103,7 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
- 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/menu-icon.svg" alt="Menu principal" width="24" height="24" /></label>';
+ 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
  				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
 				// Profile/Sign in items.

@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.1
+Version: 2.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -44,7 +44,7 @@ TABELA DE CONTEÚDO
 	- Simple Data-Tables
 # Media queries
 # Modo escuro
-# Menu Hambúrguer
+# User Menu
 
 /*--------------------------------------------------------------
 # CSS Reset
@@ -281,7 +281,6 @@ form {
 
 label {
 	display: block;
-	margin-bottom: .5rem;
 }
 
 .form-obrigatorio {
@@ -629,7 +628,6 @@ p.site-title {
 .main-navigation a:focus,
 .main-navigation a:visited {
 	color: var(--cor-link-meta);
-	text-transform: uppercase;
 }
 .main-navigation a:hover {
 	color: var(--cor-link-meta-est);
@@ -1873,7 +1871,7 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 /*--------------------------------------------------------------
-# Menu Hambúrguer
+# User Menu
 --------------------------------------------------------------*/
 
 #primary-menu.menu.nav-menu ul {
@@ -1899,7 +1897,6 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 .menu-toggle-icon img {
-	scale: 1.2;
 	max-width: none;
 }
 
@@ -1911,7 +1908,7 @@ table.dataTable-table tr:nth-child(even) {
 	right: 0;
 	width: max-content;
 	max-height: 0;
-	margin-top: 1.25rem;
+	margin-top: 1rem;
 	user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
@@ -1922,12 +1919,8 @@ table.dataTable-table tr:nth-child(even) {
 	max-height: max-content;
  }
 
-#menu-toggle + label > img {
-	transition: transform 0.1s ease-in-out;	
-}
-
 #menu-toggle:checked + label > img {
-	transform: rotate(90deg);
+	opacity: .3;
 }
 
 .menu-item .children li {
