@@ -279,10 +279,6 @@ form {
 	margin-bottom: 1.35rem;
 }
 
-label {
-	display: block;
-}
-
 .form-obrigatorio {
 	font-weight: bold;
 	color: red
@@ -326,8 +322,7 @@ textarea {
 [type="radio"] {
 	transform: scale(1.5);
 	position: relative;
-	top: -.175rem;
-	margin-right: .25rem;
+	top: -.2rem;
 }
 
 input[type="button"],
@@ -611,7 +606,7 @@ p.site-title {
 	margin: 0;
 	gap: 1.5rem;
 	background-color: var(--cor-caixas);
-	border-radius: var(--borda-curva) 0 0 var(--borda-curva);
+	border-radius: var(--borda-curva);
 }
 
 .main-navigation li {
@@ -902,6 +897,10 @@ div.ctx-editor p:last-child {
 	margin-bottom: 4rem;
 }
 
+.page-id-38122 label {
+	display: block;
+}
+
 /* Post formats
 --------------------------------------------- */
 
@@ -1024,7 +1023,7 @@ span.required-field-message {
 }
 
 .comment-form-author {
-	max-width: 49%;
+	max-width: 48%;
 	float: left;
 	margin-right: 1rem;
 }
@@ -1252,6 +1251,14 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 .page-id-33103 p.site-title,
 .page-id-33111 p.site-title,
 .orbita_post-template-default p.site-title {
+	display: flex;
+	align-items: center;
+}
+.page-id-33099 p.site-title a,
+.page-id-33101 p.site-title a,
+.page-id-33103 p.site-title a,
+.page-id-33111 p.site-title a,
+.orbita_post-template-default p.site-title a {
 	height: 53px;
 }
 

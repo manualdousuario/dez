@@ -286,7 +286,6 @@ add_filter( 'login_display_language_dropdown', '__return_false' );
  */
 function dez_favicons() {
 	?>
-	<link rel="manifest" href="/manifest.webmanifest">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	<link rel="icon" href="/favicon.ico" sizes="any">
 	<link rel="icon" href="/icon.svg" type="image/svg+xml">
