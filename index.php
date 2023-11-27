@@ -50,8 +50,6 @@ get_header();
 						</footer>
 					</div>
 				</div>
-			<?php elseif ( ! is_paged() && 4 == $count ) : ?>
-					<?php echo do_shortcode( '[sc name="podcasts-home"]' ); ?>
 				<?php
 			endif;
 

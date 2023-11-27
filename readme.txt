@@ -6,7 +6,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -41,7 +41,13 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.1.1 - =
+= 2.1.2 - November 27 2023 =
+* Fix footer distance in mobile view (<620px)
+* Add social links and newsletter form to footer
+* Fix differences in distance between blocks (8rem as a standard)
+* Simplify padding around some elements
+
+= 2.1.1 - November 25 2023 =
 * Small fixes in CSS
 * Remove manifest.webmanifest
 * Fix Manual/Órbita header height difference
