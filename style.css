@@ -506,8 +506,7 @@ a.comment-reply-link {
 .comments-area,
 .site-footer,
 .nav-links,
-article.type-page,
-article.type-orbita_post,
+article.hentry,
 .home .orbita-manual {
 	padding: 0 1rem;
 }
