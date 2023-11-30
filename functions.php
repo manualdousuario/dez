@@ -44,10 +44,20 @@ function dez_setup() {
 add_action( 'after_setup_theme', 'dez_setup' );
 
 /**
+ * Carrega script dos comentários
+ */
+function dez_scripts() {
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'dez_scripts' );
+
+/**
  * Carrega folha de estilo principal (style.min.css) com rel="preload"
  */
-wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
-
 function dez_preload_style ($preload_resources) {
     $preload_resources[] = array(
         'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
@@ -58,16 +68,6 @@ function dez_preload_style ($preload_resources) {
     return $preload_resources;
 }
 add_filter('wp_preload_resources', 'dez_preload_style');
-
-/**
- * Carrega script dos comentários
- */
-function dez_scripts() {
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'dez_scripts' );
 
 /**
  * Template tags personalizadas para o tema.
