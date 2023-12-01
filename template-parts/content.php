@@ -35,7 +35,9 @@ endif; ?>
 	?>
 </header><!-- .entry-header -->
 
-<?php dez_post_thumbnail(); ?>
+<?php if ( is_singular() ) :
+	dez_post_thumbnail(); 
+endif; ?>
 
 <div class="entry-content">
 	<?php
