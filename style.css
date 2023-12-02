@@ -1099,15 +1099,6 @@ img.avatar {
 	font-size: var(--fs-0);
 }
 
-.comments-link a {
-	text-decoration: none;
-}
-
-.comments-link a img {
-	margin-right: .5rem;
-    vertical-align: middle;
-}
-
 /* Rodapé
 --------------------------------------------- */
 
@@ -1859,10 +1850,6 @@ table.dataTable-table tr:nth-child(even) {
 
 	.blog article.category-aplicativos {
 		background-color: hsl(224, 100%, 9%);
-	}
-
-	.comments-link a img {
-		filter: invert(100%);
 	}
 
 	@media (max-width: 620px) {
