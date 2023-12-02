@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.2
+Version: 2.1.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -501,15 +501,12 @@ a.comment-reply-link {
 }
 
 .site-header,
-.entry-header,
-.entry-content,
 .entry-sumary,
-.entry-footer,
 .post-navigation,
 .comments-area,
 .site-footer,
 .nav-links,
-.page-header,
+article.hentry,
 .home .orbita-manual {
 	padding: 0 1rem;
 }
@@ -520,7 +517,7 @@ a.comment-reply-link {
 .hfeed article.hentry,
 .not-found,
 .home .orbita-manual {
-	margin: 0 0 10rem;
+	margin: 0 0 8rem;
 	padding: 1rem;
 }
 .hfeed article.hentry:nth-child(6),
@@ -529,8 +526,8 @@ a.comment-reply-link {
 }
 .single article.type-post,
 .page article.page {
-	margin: 2rem 1rem 8rem;
-	padding: 2rem 0 0;
+	margin: 0 1rem;
+	/*padding: 2rem 0 0;*/
 }
 
 .entry-content p,
@@ -578,7 +575,7 @@ a.comment-reply-link {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 2rem 0 6rem;
+	margin: 2rem 0 8rem;
 }
 
 h1.site-title,
@@ -710,12 +707,6 @@ p.site-title {
 	margin-bottom: 8rem;
 }
 
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-	margin: 0 0 8rem;
-}
-
 .comment-navigation .nav-links,
 .posts-navigation .nav-links,
 .post-navigation .nav-links {
@@ -751,10 +742,6 @@ p.site-title {
 /* Posts e páginas
 --------------------------------------------- */
 
-.sticky {
-	display: block;
-}
-
 .post,
 .page {
 	margin: 0 0 1.5rem;
@@ -763,7 +750,7 @@ p.site-title {
 .data-capa {
 	display: inline-block;
 	padding: .5rem 1rem;
-	margin: 0 1rem 2rem;
+	margin: 0 0 2rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 	font-family: var(--ff-monospace);
@@ -890,7 +877,7 @@ div.ctx-editor p:last-child {
 }
 
 .single .post-navigation {
-	margin-bottom: 8rem;
+	margin: 8rem 0;
 	line-height: 1.4;
 }
 .single .comment-navigation {
@@ -995,13 +982,6 @@ article.category-aplicativos ul {
 /* Comentários
 --------------------------------------------- */
 
-.comment-respond {
-	margin-bottom: 8rem;
-}
-.comments-area {
-	margin-bottom: 8rem;
-}
-
 ol.comment-list .comment-respond {
 	margin-bottom: 4rem;
 }
@@ -1052,6 +1032,10 @@ ol.comment-list,
 }
 .comment-content ol {
 	list-style: decimal;
+}
+
+h2.comments-title {
+	margin-top: 8rem;
 }
 
 .comment-list .depth-1 {
@@ -1120,7 +1104,7 @@ img.avatar {
 
 .site-footer {
 	display: inline-block;
-	margin: 16rem 0 2rem;
+	margin: 10rem 0 2rem;
 }
 
 .site-footer-info {
@@ -1710,14 +1694,13 @@ table.dataTable-table tr:nth-child(even) {
 		margin-right: 0;
 	}
 
-	.hfeed article.hentry,
 	.home .orbita-ranking,
 	.not-found {
 		padding: 2rem 0;
 	}
 	.page article.page,
 	.single article.type-post {
-		margin: 2rem 0 8rem;
+		margin: 2rem 0 0;
 	}
 
 	.data-capa {
@@ -1728,8 +1711,8 @@ table.dataTable-table tr:nth-child(even) {
 	.blog article.category-aplicativos,
 	.blog article.series-guia-pratico {
 		border-radius: 0;
-		margin: 0 0 10rem;
-		padding: 2rem 1rem;
+		margin: 0 0 8rem;
+		padding: 1rem;
 	}
 
 	.category-aplicativos p:first-child {
@@ -1774,7 +1757,6 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.site-footer {
-		margin: 0 0 2rem;
 		padding: 0;
 	}
 
