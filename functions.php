@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '2.1.2' );
+	define( '_S_VERSION', '2.1.3' );
 }
 
 /**
@@ -44,17 +44,30 @@ function dez_setup() {
 add_action( 'after_setup_theme', 'dez_setup' );
 
 /**
- * Carrega scripts e folhas de estilo.
+ * Carrega script dos comentários
  */
 function dez_scripts() {
 	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
-	wp_style_add_data( 'dez-style', 'rtl', 'replace' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'dez_scripts' );
+
+/**
+ * Carrega folha de estilo principal (style.min.css) com rel="preload"
+ */
+function dez_preload_style ($preload_resources) {
+    $preload_resources[] = array(
+        'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
+        'as' => 'style',
+        'type' => 'text/css',
+        'media' => 'all',
+    );
+    return $preload_resources;
+}
+add_filter('wp_preload_resources', 'dez_preload_style');
 
 /**
  * Template tags personalizadas para o tema.
@@ -96,30 +109,6 @@ function dez_remove_large_image_sizes() {
 	remove_image_size( '2048x2048' );
 }
 add_action( 'init', 'dez_remove_large_image_sizes' );
-
-/**
- * Desativa Gutemberg.
- */
-wp_dequeue_style( 'wp-block-library' );
-wp_deregister_style( 'wp-block-library' );
-
-wp_dequeue_style( 'wp-block-library-theme' );
-wp_deregister_style( 'wp-block-library-theme' );
-
-wp_dequeue_style( 'global-styles' );
-wp_deregister_style( 'global-styles' );
-
-wp_dequeue_style( 'classic-theme-styles-css' );
-wp_deregister_style( 'classic-theme-styles-css' );
-
-remove_action( 'wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles' );
-remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-
-add_filter( 'use_block_editor_for_post', '__return_false' );
-
-add_filter( 'use_widgets_block_editor', '__return_false' );
-add_filter( 'use_widgets_blog_editor', '__return_false' );
 
 /**
  * Desativa estilos e scripts de plugins.
