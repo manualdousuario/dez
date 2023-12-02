@@ -657,8 +657,19 @@ add_action(
 			function( $subject ) {
 				$subject = preg_replace( '#<h[0-9]>' . __( 'Informação autoral' ) . '</h[0-9]>.+?/table>#s', '', $subject, 1 );
 				return $subject;
-			}
-		);
+			} ); ?>
+			    <style>
+        #your-profile > h2,
+        .user-rich-editing-wrap,
+        .user-syntax-highlighting-wrap,
+        .user-comment-shortcuts-wrap,
+        .user-admin-bar-front-wrap,
+        .user-language-wrap,
+        .user-capabilities-wrap {
+            display: none;
+        }
+    </style>
+    <?php 
 	}
 );
 
@@ -668,6 +679,7 @@ add_action(
 		ob_end_flush();
 	}
 );
+
 
 /**
  * Remove opções de cores do wp-admin.
