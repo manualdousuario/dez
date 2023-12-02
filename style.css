@@ -1103,15 +1103,9 @@ img.avatar {
 	text-decoration: none;
 }
 
-.comments-link a:hover svg {
-    fill: var(--cor-link-meta-est);
-}
-
-.comments-link svg {
-	width: 27px;
-	padding-right: 7px;
+.comments-link a img {
+	margin-right: .5rem;
     vertical-align: middle;
-	fill: var(--cor-link-meta);
 }
 
 /* Rodapé
@@ -1865,6 +1859,10 @@ table.dataTable-table tr:nth-child(even) {
 
 	.blog article.category-aplicativos {
 		background-color: hsl(224, 100%, 9%);
+	}
+
+	.comments-link a img {
+		filter: invert(100%);
 	}
 
 	@media (max-width: 620px) {
