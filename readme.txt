@@ -44,7 +44,14 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 = 2.1.3 - November 30 2023 =
 * Add rel="preload" to style.min.css
 
-= 2.1.1 - =
+= 2.1.2 - November 28 2023 =
+* Hide more fields in user profile
+* Fix footer distance in mobile view (<620px)
+* Add social links and newsletter form to footer
+* Fix differences in distance between blocks (8rem as a standard)
+* Simplify padding around some elements
+
+= 2.1.1 - November 25 2023 =
 * Small fixes in CSS
 * Remove manifest.webmanifest
 * Fix Manual/Órbita header height difference
