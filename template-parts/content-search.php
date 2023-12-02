@@ -27,9 +27,9 @@
 
 <footer class="entry-footer">
 	<?php echo '<div class="comments-link">';
-	comments_popup_link( '<img loading="lazy" src="/wp-content/themes/dez/img/speech_stroke.svg" alt="Comentar" width="16" height="16" />',
-	'<img loading="lazy" src="/wp-content/themes/dez/img/speech.svg" alt="Comentar" width="16" height="16" /><span>1</span>',
-	'<img loading="lazy" src="/wp-content/themes/dez/img/speech.svg" alt="Comentar" width="16" height="16" /><span>%</span>',
+	comments_popup_link( '<img loading="lazy" src="/wp-content/themes/dez/img/icone-speech-stroke.svg" alt="Comentar" width="16" height="16" />',
+	'<img loading="lazy" src="/wp-content/themes/dez/img/icone-speech.svg" alt="Comentar" width="16" height="16" /><span>1</span>',
+	'<img loading="lazy" src="/wp-content/themes/dez/img/icone-speech.svg" alt="Comentar" width="16" height="16" /><span>%</span>',
 	'', '' );
 	echo '</div>';
 	?>
