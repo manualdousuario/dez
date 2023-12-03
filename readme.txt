@@ -6,7 +6,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.1.4
+Stable tag: 2.2.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,9 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.2.1 - December 3 2023 =
+* Replace verified check with a *.svg file
 
 = 2.1.4 - December 1 2023 =
 * Restrict highlight image to single posts
