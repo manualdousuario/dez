@@ -21,6 +21,10 @@ endif; ?>
 			elseif ( is_home() ) :
 				echo get_the_time( 'G\hi' ); 
 			endif ?>
+			<?php if ( comments_open() || get_comments_number() ) :
+				echo '&middot;&nbsp;';
+				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link', '' );
+			endif; ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
 				<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
 			<?php endif; ?>
@@ -57,14 +61,4 @@ endif; ?>
 	);
 	?>
 </div><!-- .entry-content -->
-
-<footer class="entry-footer">
-	<?php
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<div class="comments-link">';
-		comments_popup_link( 'Comente', '1 comentário', '% comentários', '', '' );
-		echo '</div>';
-	}
-	?>
-</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
