@@ -44,6 +44,9 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 = 2.2.1 - December 3 2023 =
 * Replace verified check with a *.svg file
 
+= 2.2 - December 2 2023 = 
+* Add comments icons
+
 = 2.1.4 - December 1 2023 =
 * Restrict highlight image to single posts
 
