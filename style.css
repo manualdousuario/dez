@@ -324,14 +324,12 @@ input[type="submit"] {
 	border: none;
 	padding: .25rem .75rem;
 	position: relative;
-	transition: background .1s, box-shadow .1s;
 	touch-action: manipulation;
 }
 
 button:hover,
 input[type="submit"]:hover {
 	background-color: var(--cor-botao-hov);
-	transition: background .1s, box-shadow .2s ease-in-out;
 }
 
 button:disabled,
@@ -680,15 +678,18 @@ p.site-title {
 }
 
 .post-thumbnail {
-	margin: 3rem 0;
+	margin: 1.75rem 0;
 }
 a.post-thumbnail img,
 .post-thumbnail {
 	display: block;
+	overflow: clip;
+	border: .25rem solid var(--cor-bordas);
+	border-radius: var(--borda-curva);
 }
 
 .post-thumbnail img {
-	box-shadow: 10px 10px 40px #c2c2c2;
+	border-radius: 3px;
 }
 
 .entry-meta span.author-1 {
