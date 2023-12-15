@@ -35,12 +35,6 @@
 					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
-			} elseif ( 'orbita_post' === get_post_type() || is_page( array( 33099, 33111, 33101, 33103 ) ) ) {
-				?>
-				<p class="site-title"><a href="/orbita/" rel="home">
-					<img src="/wp-content/themes/dez/img/logo-orbita-dez.svg" width="204" height="53" alt="<?php bloginfo( 'name' ); ?>">
-				</a></p>
-				<?php
 			} else {
 				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -54,17 +48,7 @@
 		<nav id="site-navigation" class="main-navigation">
 			<ul id="primary-menu" class="menu nav-menu">
 				<li class="menu-item b"><a href="/arquivo/">Busca</a></li>
-				<?php
-				if ( 'orbita_post' === get_post_type() || is_page( array( 33099, 33111, 33101, 33103 ) ) ) {
-					?>
-					<li class="menu-item c"><a href="/">Manual</a></li>
-					<?php
-				} else {
-					?>
-					<li class="menu-item c"><a href="/orbita/">Órbita</a></li>
-					<?php
-				}
-				?>
+				<li class="menu-item c"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item d"><a href="/apoie/" class="main-apoie">Apoie</a></li>
 			</ul>
 			<!-- user-menu -->
@@ -86,6 +70,46 @@
 					array(
 						'title' => 'Clube de descontos',
 						'url'   => '/clube-de-descontos/',
+					),
+				);
+
+				// Admin configuration.
+				$admin_items = array(
+					array(
+						'title' => 'Painel',
+						'url'   => '/wp-admin/index.php',
+					),
+					array(
+						'title' => 'Estatísticas',
+						'url'   => '/wp-admin/index.php?page=koko-analytics',
+					),
+					array(
+						'title' => 'Novo post',
+						'url'   => '/wp-admin/post-new.php',
+					),
+					array(
+						'title' => 'Novo podcast',
+						'url'   => '/wp-admin/post-new.php?post_type=podcast',
+					),
+					array(
+						'title' => 'Órbita',
+						'url'   => '/wp-admin/edit.php?post_type=orbita_post',
+					),
+					array(
+						'title' => 'Adicionar usuário',
+						'url'   => '/wp-admin/user-new.php',
+					),
+					array(
+						'title' => 'Inscritos no Sendy ↗',
+						'url'   => 'https://sendy.manualdousuario.net/subscribers?i=11&l=45',
+					),
+					array(
+						'title' => 'Cloudflare',
+						'url'   => '/wp-admin/options-general.php?page=cloudflare',
+					),
+					array(
+						'title' => 'Cache do WP.com',
+						'url'   => 'https://wordpress.com/hosting-config/manualdousuario.net/',
 					),
 				);
 
@@ -126,6 +150,14 @@
 					$menu_html .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
 				}
 				$menu_html .= '<li class="divider"></li>';
+
+				if ( current_user_can( 'administrator' ) ) {
+					foreach ( $admin_items as $admin_items ) {
+						$menu_html .= '<li class="page_item"><a href="' . esc_url( $admin_items['url'] ) . '">' . esc_html( $admin_items['title'] ) . '</a></li>';
+					}
+				$menu_html .= '<li class="divider"></li>';
+				}
+
 				$menu_html .= '</li>';
 
 				// Custom items.

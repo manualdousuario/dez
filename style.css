@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.2.1
+Version: 2.4
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -62,6 +62,11 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 img, picture, video, canvas, svg {
 	max-width: 100%;
 	height: auto;
+	vertical-align: middle;
+}
+picture,
+figure {
+	margin-bottom: 1.35rem;
 }
 
 input[type="email"],
@@ -164,7 +169,7 @@ i {
 }
 
 blockquote {
-	margin: 0 0 0 1.5rem
+	margin: 0 0 1.35rem 1.5rem;
 }
 blockquote:before {
 	content: "\201C";
@@ -174,7 +179,7 @@ blockquote:before {
 	top: -120px;
 	position: relative;
 	height: 0;
-	opacity: .07;
+	opacity: .05;
 	z-index:-999;
 	font-family: Georgia, serif;
 }
@@ -221,10 +226,6 @@ embed,
 iframe,
 object {
 	max-width: 100%;
-}
-
-figure {
-	margin: 1em 0;
 }
 
 table {
@@ -382,21 +383,21 @@ a:active {
 	outline: 0;
 }
 
-.entry-meta a,
+a.comment-link,
+a.aside-link,
 .entry-footer a,
 .comment-metadata a,
 a.more-link,
 .nav-links a,
-.comment-metadata a,
 a.comment-reply-link {
 	color: var(--cor-link-meta);
 }
-.entry-meta a:hover,
+a:hover.comment-link,
+a:hover.aside-link,
 .entry-footer a:hover,
 .comment-metadata a:hover,
 a:hover.more-link,
 .nav-links a:hover,
-.comment-metadata a:hover,
 a:hover.comment-reply-link {
 	color: var(--cor-link-meta-est);
 }
@@ -678,14 +679,16 @@ p.site-title {
 	margin: 1.35rem 0;
 }
 
+.post-thumbnail {
+	margin: 3rem 0;
+}
 a.post-thumbnail img,
 .post-thumbnail {
 	display: block;
-	margin-bottom: 1.5rem;
 }
 
-.single .entry-content {
-	margin-bottom: 8rem;
+.post-thumbnail img {
+	box-shadow: 10px 10px 40px #c2c2c2;
 }
 
 .entry-meta span.author-1 {
@@ -699,6 +702,7 @@ a.post-thumbnail img,
 	clear: initial;
 }
 
+caption,
 .wp-caption {
 	margin-bottom: 1.5rem;
 	max-width: 100%;
@@ -710,6 +714,7 @@ a.post-thumbnail img,
 	margin-right: auto;
 }
 
+caption,
 .wp-caption .wp-caption-text {
 	background-color: var(--cor-caixas);
 	padding: .25rem .5rem;
@@ -717,6 +722,21 @@ a.post-thumbnail img,
 	font-size: var(--fs-0);
 	text-align: left;
 	border-radius: 0 0 var(--borda-curva) var(--borda-curva);
+}
+
+.site-footer-info,
+.doe {
+	padding: 1rem;
+	background-color: var(--cor-caixas);
+	border-radius: var(--borda-curva);
+}
+.site-footer-info {
+	margin-bottom: 4rem;
+}
+.doe { 
+	text-align: center;
+	max-width: 600px;
+	margin: 3rem auto 0;
 }
 
 .ctx-transparencia,
@@ -733,8 +753,7 @@ div.ctx-transparencia,
 div.ctx-atualizacao,
 div.ctx-atencao,
 div.ctx-dica,
-div.ctx-editor,
-div.podcast_player {
+div.ctx-editor {
 	max-width: var(--line-length);
 	margin-bottom: 1.35rem;
 }
@@ -770,6 +789,8 @@ div.ctx-editor p:last-child {
 }
 .podcast_player {
 	background: #f4ebff;
+	margin: 0 auto 1.35rem;
+	max-width: 640px;
 }
 
 .single .post-navigation {
@@ -787,29 +808,11 @@ div.ctx-editor p:last-child {
 /* Post formats
 --------------------------------------------- */
 
-.format-aside .entry-header h2 {
-	font-size: var(--fs-4);
+article.format-aside .entry-meta {
+	margin-bottom: 1.35rem;
 }
-
-.format-aside .entry-content,
-.format-image .entry-content,
-.format-quote .entry-content,
-.format-image .entry-meta {
-	margin-bottom: 1.5rem;
-}
-
-.format-aside h1.entry-title,
-.format-aside h2.entry-title {
-	font-weight: bolder;
-}
-.format-aside h1.entry-title,
-.format-aside h2.entry-title,
-.format-aside .entry-content p:nth-of-type(1) {
-	font-family: var(--ff-sans-serif);
-	font-size: var(--fs-1);
-}
-.format-aside .entry-content p:nth-of-type(2) {
-	margin-top: 1.35rem;
+article.format-aside .entry-title {
+	display: none;
 }
 
 .format-link .entry-content blockquote p:first-child:before,
@@ -858,6 +861,10 @@ div.ctx-editor p:last-child {
 
 .blog article.category-aplicativos {
 	background-color: hsl(224, 100%, 97%);
+}
+
+.home article.type-podcast h2.entry-title {
+	font-size: var(--fs-2);
 }
 
 /* Comentários
@@ -948,6 +955,9 @@ img.avatar {
 	padding: .6rem 1rem;
 	border-radius: var(--borda-curva);
 	margin-bottom: 1.35rem;
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
 }
 .byuser>.comment-body>footer>.comment-author>.fn:after {
 	background-image: url('/wp-content/themes/dez/img/selo-verificado.svg');
@@ -962,6 +972,11 @@ img.avatar {
 	top: 4px;
 	left: 6px;
 	z-index: 1;
+}
+
+.edit-link {
+	float: right;
+	margin-left: 1rem;
 }
 
 .comment-metadata {
@@ -984,14 +999,12 @@ a.comment-link {
 	margin: 10rem 0 2rem;
 }
 
-.site-footer-info {
-	padding: 1rem;
-	margin-bottom: 4rem;
-	background-color: var(--cor-caixas);
-	border-radius: var(--borda-curva);
-}
 .site-footer-info p:last-child {
 	margin-bottom: 0;
+}
+
+.site-footer-info ul {
+	margin: 0 0 1.35rem 0;
 }
 
 .site-footer-footer {
@@ -1093,28 +1106,16 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 /* Órbita
 --------------------------------------------- */
 
-.page-id-33099 p.site-title,
-.page-id-33101 p.site-title,
-.page-id-33103 p.site-title,
-.page-id-33111 p.site-title,
-.orbita_post-template-default p.site-title {
-	display: flex;
-	align-items: center;
-}
-.page-id-33099 p.site-title a,
-.page-id-33101 p.site-title a,
-.page-id-33103 p.site-title a,
-.page-id-33111 p.site-title a,
-.orbita_post-template-default p.site-title a {
-	height: 53px;
-}
-
 .single-orbita_post .entry-header {
 	margin-bottom: 1.5rem;
 }
 
 .single-orbita_post .entry-footer {
 	margin-bottom: 8rem;
+}
+
+.single-orbita_post .entry-content {
+	margin-bottom: 4rem;
 }
 
 /* Littlefoot
@@ -1523,6 +1524,16 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 1rem;
 	}
 
+	.post-thumbnail img {
+		left: 50%;
+		margin-left: -50dvw;
+		margin-right: -50dvw;
+		max-width: 100dvw;
+		position: relative;
+		right: 50%;
+		width: 100dvw;
+	}
+
 	.category-aplicativos p:first-child {
 		display: inline-block;
 		background-color: hsl(226, 100%, 96%);
@@ -1534,6 +1545,28 @@ table.dataTable-table tr:nth-child(even) {
 	.category-aplicativos p:first-child img {
 		margin: 0 auto;
 		float: initial;
+	}
+
+	.comments-area {
+		padding: 0;
+	}
+	.comment-respond,
+	h2.comments-title,
+	.comment-content,
+	.reply {
+		padding: 0 1rem;
+	}
+
+	ol.children {
+		border-left: 1px solid var(--cor-caixas);
+		margin: 0 0 0 1rem;
+		padding: 0;
+	}
+	.comment-meta {
+		flex-direction: column;
+		align-items: start;
+		row-gap: .25rem;
+		border-radius: 0;
 	}
 
 	.littlefoot__popover {
@@ -1568,7 +1601,8 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0;
 	}
 
-	.site-footer-info {
+	.site-footer-info,
+	.doe {
 		border-radius: 0;
 	}
 }
