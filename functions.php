@@ -827,55 +827,11 @@ function filter_allowed_mimes_for_avif( $mime_types ) {
 }
 add_filter( 'upload_mimes', 'filter_allowed_mimes_for_avif', 1000, 1 );
 
-add_filter( 'wp_generate_attachment_metadata', 'fix_avif_images', 1, 3 );
-function fix_avif_images( $metadata, $attachment_id, $context ) {
-	if ( empty( $metadata ) ) {
-		return $metadata;
-	}
+/**
+ * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
+ */
+add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
+		$array['icon']['url'] = 'https://manualdousuario.net/apple-touch-icon.png';
 
-	$attachemnt_post = get_post( $attachment_id );
-	if ( ! $attachemnt_post || is_wp_error( $attachemnt_post ) ) {
-		return $metadata;
-	}
-
-	if ( 'image/avif' !== $attachemnt_post->post_mime_type ) {
-		return $metadata;
-	}
-
-	if ( ( ! empty( $metadata['width'] ) && ( 0 !== $metadata['width'] ) ) && ( ! empty( $metadata['height'] ) && 0 !== $metadata['height'] ) ) {
-		return $metadata;
-	}
-
-	$file = get_attached_file( $attachment_id );
-	if ( ! $file ) {
-		return $metadata;
-	}
-
-	if ( empty( $metadata['width'] ) ) {
-		$metadata['width'] = 0;
-	}
-
-	if ( empty( $metadata['height'] ) ) {
-		$metadata['height'] = 0;
-	}
-
-	if ( empty( $metadata['file'] ) ) {
-		$metadata['file'] = _wp_relative_upload_path( $file );
-	}
-
-	if ( empty( $metadata['sizes'] ) ) {
-		$metadata['sizes'] = array();
-	}
-
-	try {
-		$imgick  = new \Imagick( $file );
-		$img_dim = $imgick->getImageGeometry();
-		$imgick->clear();
-		$metadata['width']  = $img_dim['width'];
-		$metadata['height'] = $img_dim['height'];
-	} catch ( \Exception $e ) {
-	}
-
-	return $metadata;
-	
-}
+		return $array;
+} );
