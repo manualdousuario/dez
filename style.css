@@ -525,19 +525,23 @@ article.hentry p:last-child {
 }
 
 .dfad_pos_1 span {
-	font-size: 60%;
+	font-size: 75%;
 	font-weight: 600;
-	padding: .25rem;
-	margin-right: .5rem;
+	padding: .15rem .25rem;
 	text-transform: uppercase;
 	color: hsl(120, 100%, 25%);
 	border: 2px solid hsl(120, 100%, 25%);
 	border-radius: var(--borda-curva);
 }
 
+.dfad_pos_1 span {
+	color: hsl(120, 90%, 19%);
+	border-color: hsl(120, 90%, 19%);	
+}
+
 .dfad_pos_1 span.calhau {
-	color: hsl(195, 77%, 24%);
-	border-color: hsl(195, 77%, 24%);
+	color: hsl(0, 96%, 33%);
+	border-color: hsl(0, 96%, 33%);
 }
 
 .site-header {
@@ -1659,6 +1663,20 @@ table.dataTable-table tr:nth-child(even) {
 	a.comment-link {
 		filter: invert();
 		fill: unset;
+	}
+
+	.dfad_pos_1 {
+		box-shadow: none;
+	}
+
+	.dfad_pos_1 span {
+		color: hsl(120, 97%, 76%);
+		border-color: hsl(120, 97%, 76%);
+	}
+
+	.dfad_pos_1 span.calhau {
+		color: hsl(0, 100%, 93%);
+		border-color: hsl(0, 100%, 93%);
 	}
 
 	a.comment-link span {
