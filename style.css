@@ -688,7 +688,7 @@ p.site-title {
 }
 a.post-thumbnail img,
 .post-thumbnail {
-	display: block;
+	display: inline-block;
 	overflow: clip;
 	border: .25rem solid var(--cor-bordas);
 	border-radius: var(--borda-curva);
