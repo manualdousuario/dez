@@ -494,7 +494,7 @@ a.comment-reply-link {
 .nav-links,
 article.hentry,
 .not-found,
-.home .orbita-manual {
+.hfeed .orbita-manual {
 	padding: 0 1rem;
 }
 .single-post .nav-links {
@@ -502,7 +502,7 @@ article.hentry,
 }
 
 .hfeed article.hentry,
-.home .orbita-manual {
+.hfeed .orbita-manual {
 	margin: 0 0 8rem;
 	padding: 1rem;
 }
@@ -830,7 +830,7 @@ article.format-aside .entry-title {
 	display:none
 }
 
-.home .format-quote h2.entry-title,
+.hfeed .format-quote h2.entry-title,
 .archive .format-quote h2.entry-title,
 .single .format-quote h1.entry-title {
 	font-weight: 400;
@@ -870,7 +870,7 @@ article.format-aside .entry-title {
 	background-color: hsl(224, 100%, 97%);
 }
 
-.home article.type-podcast h2.entry-title {
+.hfeed article.type-podcast h2.entry-title {
 	font-size: var(--fs-2);
 }
 
@@ -1515,7 +1515,7 @@ table.dataTable-table tr:nth-child(even) {
 		margin-right: 0;
 	}
 
-	.home .orbita-ranking,
+	.hfeed .orbita-ranking,
 	.not-found {
 		padding: 2rem 0;
 	}
