@@ -684,7 +684,7 @@ p.site-title {
 }
 
 .post-thumbnail {
-	margin: 1.75rem 0;
+	margin: .65rem 0 1.75rem;
 }
 a.post-thumbnail img,
 .post-thumbnail {
@@ -1529,16 +1529,6 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: 0;
 		margin: 0 0 8rem;
 		padding: 1rem;
-	}
-
-	.post-thumbnail img {
-		left: 50%;
-		margin-left: -50dvw;
-		margin-right: -50dvw;
-		max-width: 100dvw;
-		position: relative;
-		right: 50%;
-		width: 100dvw;
 	}
 
 	.category-aplicativos p:first-child {
