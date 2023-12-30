@@ -1,12 +1,12 @@
 === Dez ===
 
-Contributors: automattic, Rodrigo Ghedin, Clarissa R Mendes, Renan Altendorf
+Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.2.2
+Stable tag: 2.2.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 

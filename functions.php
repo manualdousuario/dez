@@ -477,9 +477,6 @@ add_action( 'wp_footer', 'dez_sensibilidade_responder' );
 /**
  * Chama o littlefoot.js.
  */
-/**
- * Chama o littlefoot.js.
- */
 function dez_littlefoot_inline_script() {
 	if ( is_singular() ) {
 		wp_register_script( 'dez-littlefoot', get_template_directory_uri() . '/js/littlefoot.js', array(), '4.0.1', array( 'strategy' => 'async', 'in_footer' => 'true' ) );
