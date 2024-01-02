@@ -1,12 +1,12 @@
 === Dez ===
 
-Contributors: automattic, Rodrigo Ghedin, Clarissa R Mendes, Renan Altendorf
+Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.2.1
+Stable tag: 2.2.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -41,24 +41,37 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.2.1 - December 3 2023 =
+= 2.2.4 - December 9 2023 =
+* Acrescenta suporte a imagens AVIF
+* Acrescenta async ao JavaScript do littlefootjs
+
+= 2.2.2 - December 4 2023 = 
+* Streamline comments meta box
+
+= 2.2.1 - December 3 2023 = 
 * Replace verified check with a *.svg file
 
 = 2.2 - December 2 2023 = 
 * Add comments icons
 
-= 2.1.4 - December 1 2023 =
+= 2.1.6 - December 1 2023 =
 * Restrict highlight image to single posts
+
+= 2.1.5 - November 30 2023 =
+* Remove some old/unused stuff from style.css
+
+= 2.1.4 - November 30 2023 =
+* Change comments layout to remove Gravatar
 
 = 2.1.3 - November 30 2023 =
 * Add rel="preload" to style.min.css
 
 = 2.1.2 - November 28 2023 =
-* Hide more fields in user profile
 * Fix footer distance in mobile view (<620px)
 * Add social links and newsletter form to footer
 * Fix differences in distance between blocks (8rem as a standard)
 * Simplify padding around some elements
+* Hide more fields in user profile
 
 = 2.1.1 - November 25 2023 =
 * Small fixes in CSS

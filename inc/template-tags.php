@@ -49,7 +49,7 @@ if ( ! function_exists( 'dez_post_thumbnail' ) ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail( array(1440, 960) ); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>

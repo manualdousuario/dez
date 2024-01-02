@@ -59,13 +59,13 @@ add_action( 'wp_enqueue_scripts', 'dez_scripts' );
  * Carrega folha de estilo principal (style.min.css) com rel="preload"
  */
 function dez_preload_style ($preload_resources) {
-    $preload_resources[] = array(
-        'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
-        'as' => 'style',
-        'type' => 'text/css',
-        'media' => 'all',
-    );
-    return $preload_resources;
+	$preload_resources[] = array(
+		'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
+		'as' => 'style',
+		'type' => 'text/css',
+		'media' => 'all',
+	);
+	return $preload_resources;
 }
 add_filter('wp_preload_resources', 'dez_preload_style');
 
@@ -90,6 +90,38 @@ add_theme_support(
 		'image',
 	)
 );
+
+/**
+ * Impede carregamento do bilmur.min.js (Jetpack)
+ */
+remove_action( 'wp_footer', 'wpcomsh_footer_rum_js' );
+
+/**
+ * Remove coisas do dashboard.
+ */
+remove_action( 'admin_footer', 'wpcomsh_footer_rum_js' ); // bilmur.min.js
+
+function dez_remover_estilos_dashboard() {
+	wp_dequeue_style( 'noticons' );
+	wp_dequeue_style( 'akismet-font-inter' );
+	wp_dequeue_style( 'akismet-admin' );
+	wp_dequeue_style( 'sc-icon-css' );
+	wp_dequeue_style( 'akismet' );
+
+	wp_dequeue_script( 'jetpack-accessible-focus' );
+	wp_dequeue_script( 'music-player' );
+	wp_dequeue_script( 'jptracks' );
+	wp_dequeue_script( 'views.jetpack-modules' );
+	wp_dequeue_script( 'models.jetpack-modules' );
+	wp_dequeue_script( 'akismet-admin.js' );
+}
+add_action( 'admin_enqueue_scripts', 'dez_remover_estilos_dashboard', 999 );
+
+function remove_wp_block_library_css(){
+	wp_dequeue_style( 'activitypub-followers-style' );
+	wp_dequeue_style( 'activitypub-follow-me-style' );
+} 
+add_action( 'wp_print_styles', 'remove_wp_block_library_css', 100 );
 
 /**
  * Impede o WordPress de gerar novos tamanhos de imagens.
@@ -130,6 +162,17 @@ add_action(
 
 		wp_dequeue_style( 'stcr-style' );
 		wp_deregister_style( 'stcr-style' );
+
+		wp_dequeue_script( 'wp-polyfill-inert' );
+		wp_deregister_script( 'wp-polyfill-inert' );
+		wp_dequeue_script( 'regenerator-runtime' );
+		wp_deregister_script( 'regenerator-runtime' );
+		wp_dequeue_script( 'wp-polyfill' );
+		wp_deregister_script( 'wp-polyfill' );
+		wp_dequeue_script( 'wp-hooks' );
+		wp_deregister_script( 'wp-hooks' );
+		wp_dequeue_script( 'wp-i18n' );
+		wp_deregister_script( 'wp-i18n' );
 	},
 	20
 );
@@ -275,21 +318,23 @@ add_filter( 'login_display_language_dropdown', '__return_false' );
  */
 function dez_favicons() {
 	?>
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	<link rel="icon" href="/favicon.ico" sizes="any">
-	<link rel="icon" href="/icon.svg" type="image/svg+xml">
-	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafafa">
-	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030303">
+	<link rel="icon" href="/favicon.ico?v=4" sizes="any">
+	<link rel="icon" href="/favicon.svg?v=3">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+	<link rel="icon" href="/favicon-192x192.png" sizes="192x192"/>
 	<?php
 }
 add_action( 'wp_head', 'dez_favicons' );
+
+/* Remove favicons gerados pelo WordPress.com */
+add_filter( 'get_site_icon_url', '__return_false' );
 
 /**
  * Altera mensagem antes do formulário de comentar.
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Por favor, <a href="/doc-comentarios/">leia as regras de convivência</a>. É possível formatar o comentário com HTML ou <a href="https://pt.wikipedia.org/wiki/Markdown#Exemplos_de_sintaxe">Markdown</a>.</p><p><a href="/cadastro/">Cadastre-se gratuitamente</a> para ter um perfil verificado e poder votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Faça login</a>.</p></div>';
+	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Por favor, <a href="/doc-comentarios/">leia as orientações para comentar</a>. Se estiver no Órbita, leia seu <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a>.</p><p><a href="/cadastro/">Cadastre-se</a> (é grátis) para ter um perfil verificado e votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Entre</a>.</p></div>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
@@ -432,17 +477,21 @@ add_action( 'wp_footer', 'dez_sensibilidade_responder' );
 /**
  * Chama o littlefoot.js.
  */
-function dez_littlefoot() {
+function dez_littlefoot_inline_script() {
 	if ( is_singular() ) {
-		?>
-		<script src="/wp-content/themes/dez/js/littlefoot.js" type="application/javascript"></script>
-		<script type="application/javascript">
-			littlefoot.littlefoot()
-		</script>
-		<?php
+		wp_register_script( 'dez-littlefoot', get_template_directory_uri() . '/js/littlefoot.js', array(), '4.0.1', array( 'strategy' => 'async', 'in_footer' => 'true' ) );
+		wp_enqueue_script( 'dez-littlefoot', '', array(), '4.0.1', true );
+		$inline_script = "
+		document.addEventListener('DOMContentLoaded', function() {
+			if (typeof littlefoot !== 'undefined') {
+				littlefoot.littlefoot();
+			}
+			});
+			";
+			wp_add_inline_script( 'dez-littlefoot', $inline_script, array( 'strategy' => 'async' ) );
+		}
 	}
-}
-add_action( 'wp_footer', 'dez_littlefoot' );
+	add_action( 'wp_enqueue_scripts', 'dez_littlefoot_inline_script' );
 
 /**
  * Chama script do botão “voltar para cima”.
@@ -451,20 +500,20 @@ function dez_botao_rolar_top() { ?>
 	<script type="text/javascript">
 		window.addEventListener('scroll', function() {
 			var elementosParaRevelar = document.querySelectorAll('.top');
-      var alturaParaRevelar = 100;
+			var alturaParaRevelar = 100;
 
-      elementosParaRevelar.forEach(function(elemento) {
-      	var posicaoVertical = window.scrollY || window.pageYOffset;
+			elementosParaRevelar.forEach(function(elemento) {
+				var posicaoVertical = window.scrollY || window.pageYOffset;
 
-      	if (posicaoVertical >= alturaParaRevelar) {
-      		elemento.classList.add('top-visivel');
-      	} else {
-      		elemento.classList.remove('top-visivel');
-      	}
-      });
-    });
-  </script>
-  <noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
+				if (posicaoVertical >= alturaParaRevelar) {
+					elemento.classList.add('top-visivel');
+				} else {
+					elemento.classList.remove('top-visivel');
+				}
+			});
+		});
+	</script>
+	<noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
 <?php	}
 add_action( 'wp_footer', 'dez_botao_rolar_top' );
 
@@ -647,20 +696,20 @@ add_action(
 				$subject = preg_replace( '#<h[0-9]>' . __( 'Informação autoral' ) . '</h[0-9]>.+?/table>#s', '', $subject, 1 );
 				return $subject;
 			} ); ?>
-			    <style>
-        #your-profile > h2,
-        .user-rich-editing-wrap,
-        .user-syntax-highlighting-wrap,
-        .user-comment-shortcuts-wrap,
-        .user-admin-bar-front-wrap,
-        .user-language-wrap,
-        .user-capabilities-wrap {
-            display: none;
-        }
-    </style>
-    <?php 
-	}
-);
+			<style>
+				#your-profile > h2,
+				.user-rich-editing-wrap,
+				.user-syntax-highlighting-wrap,
+				.user-comment-shortcuts-wrap,
+				.user-admin-bar-front-wrap,
+				.user-language-wrap,
+				.user-capabilities-wrap {
+					display: none;
+				}
+			</style>
+			<?php 
+		}
+	);
 
 add_action(
 	'admin_footer',
@@ -759,3 +808,27 @@ function dez_remove_links_menu() {
 	remove_menu_page('link-manager.php');
 }
 add_action( 'admin_menu', 'dez_remove_links_menu' );
+
+add_action( 'wp_enqueue_scripts', 'crunchify_enqueue_scripts_styles' );
+function crunchify_enqueue_scripts_styles() {
+	wp_dequeue_script( 'bilmur' );
+	wp_deregister_script( 'bilmur' );
+}
+
+/**
+ * Adiciona suporte a imagens no formato AVIF.
+ */
+function filter_allowed_mimes_for_avif( $mime_types ) {
+	$mime_types['avif'] = 'image/avif';
+	return $mime_types;
+}
+add_filter( 'upload_mimes', 'filter_allowed_mimes_for_avif', 1000, 1 );
+
+/**
+ * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
+ */
+add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
+		$array['icon']['url'] = 'https://manualdousuario.net/apple-touch-icon.png';
+
+		return $array;
+} );

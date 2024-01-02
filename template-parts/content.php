@@ -18,6 +18,10 @@ endif; ?>
 		<div class="entry-meta">
 			<?php if ( is_single() || is_archive() ) :
 				echo the_time( 'j/n/y, G\hi' );
+			elseif ( has_post_format( 'aside' ) ) : 
+				echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="aside-link">';
+				echo get_the_time( 'G\hi' );
+				echo '</a>';
 			elseif ( is_home() ) :
 				echo get_the_time( 'G\hi' ); 
 			endif ?>
@@ -26,13 +30,15 @@ endif; ?>
 				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link', '' );
 			endif; ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
-				<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author_link(); ?></span>
+				<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
 			<?php endif; ?>
 		</div><!-- .entry-meta -->
 
 	<?php
 	if ( is_singular() ) :
 		the_title( '<h1 class="entry-title">', '</h1>' );
+	elseif ( 'podcast' === get_post_type() && ! is_singular() ) : 
+		the_title( '<h2 class="entry-title">Podcast: <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 	else :
 		the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 	endif; 
@@ -44,7 +50,9 @@ endif; ?>
 endif; ?>
 
 <div class="entry-content">
-	<?php
+	<?php if ( 'podcast' === get_post_type() && ! is_singular() ) : 
+
+	else :
 	the_content(
 		sprintf(
 			wp_kses(
@@ -59,6 +67,11 @@ endif; ?>
 			wp_kses_post( get_the_title() )
 		)
 	);
-	?>
+	endif; ?>
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
+<?php if ( is_single() ) : ?>
+<div class="doe">
+	Curtiu? <a href="https://manualdousuario.net/apoie">Assine o <strong>Manual</strong></a> e ganhe benefícios, ou faça um Pix de qualquer valor para <span style="font-weight: 500;">pix@manualdousuario.net</span>. Obrigado!
+</div>
+<?php endif; ?>
