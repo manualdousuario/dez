@@ -108,11 +108,9 @@ p, li, blockquote, h1, h2, h3, h4, h5, h6 {
 	--cor-botao: hsl(211, 100%, 35%);
 	--cor-botao-hov: hsl(211, 100%, 25%);
 
-	--ff-serif: ui-serif, serif;
+	--ff-serif: Georgia, ui-serif, serif;
 	--ff-sans-serif: ui-system, sans-serif;
 	--ff-monospace: ui-monospace, monospace;
-
-	--ff-serif:ui-serif,serif;--ff-sans-serif:ui-system,sans-serif;--ff-monospace:ui-monospace,monospace;
 
 	--line-length: 64ch;
 	--borda-curva: 6px;
@@ -828,6 +826,7 @@ div.ctx-editor p:last-child {
 
 .page-id-25668 .entry-content p:first-child {
 	font-size: var(--fs-3);
+	font-family: var(--ff-serif);
 	line-height: 1.4;
 	max-width: 100%;
 }
