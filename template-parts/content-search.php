@@ -18,7 +18,7 @@
 				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link', '' );
 			endif; ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
-				<span class="author-<?php the_author_meta('ID'); ?>">&middot;&nbsp;por <?php echo get_the_author_link(); ?></span>
+				<span class="author-<?php the_author_meta('ID'); ?>">&middot;&nbsp;por <?php echo get_the_author(); ?></span>
 			<?php endif; ?>
 		</div><!-- .entry-meta -->
 

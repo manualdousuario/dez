@@ -15,10 +15,8 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<p style="margin-bottom: 0;">Resultados da pesquisa por</p>
-				<h1 class="page-title" style="margin-top: 0;">
-					<?php echo get_search_query(); ?>
-				</h1>
+				<p>Resultados da pesquisa por</p>
+				<?php get_search_form(); ?>
 			</header><!-- .page-header -->
 
 			<?php

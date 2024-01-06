@@ -601,7 +601,7 @@ function dez_form_pesquisar( $form ) {
 	$form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '" >
 	<label>
 	<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
-	<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" /></label>
+	<input type="search" class="search-field" placeholder="Pesquise no Manual e no Órbita" value="' . get_search_query() . '" name="s" id="s" /></label>
 	<input type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" />
 	</form>';
 
