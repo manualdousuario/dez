@@ -821,6 +821,17 @@ div.ctx-editor p:last-child {
 	border-bottom: 0;
 }
 
+/* Leiaute especial de páginas (Sobre, Patrocine etc.) */
+.page-id-25668 .entry-title {
+	display:none;
+}
+
+.page-id-25668 .entry-content p:first-child {
+	font-size: var(--fs-3);
+	line-height: 1.4;
+	max-width: 100%;
+}
+
 /* Post formats
 --------------------------------------------- */
 
