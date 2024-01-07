@@ -359,12 +359,11 @@ select {
 }
 
 input[type="search"].search-field {
-	width: 100%;
+	width: 90%;
 	padding-right: 3rem;
 }
 
 .search-submit {
-	flex-grow: 0;
 	padding: .25rem;
 	margin-left: -3rem;
 	vertical-align: middle;
@@ -520,7 +519,8 @@ a.comment-reply-link {
 .nav-links,
 article.hentry,
 .not-found,
-.hfeed .orbita-manual {
+.hfeed .orbita-manual,
+.page-header {
 	padding: 0 1rem;
 }
 .single-post .nav-links {
@@ -1065,7 +1065,7 @@ a.rss {
 	margin: 0 0 1.35rem 0;
 }
 
-a.rss {
+a.rss-manual {
 	background-image: url('/wp-content/themes/dez/img/icone-novo-rss.svg');
 	background-size: 22px;
 	padding-left: 26px;
@@ -1728,8 +1728,7 @@ table.dataTable-table tr:nth-child(even) {
 	.site-title img,
 	.gridicon,
 	.menu-toggle-icon,
-	a.comment-link,
-	a.rss {
+	a.comment-link {
 		filter: invert();
 		fill: unset;
 	}
