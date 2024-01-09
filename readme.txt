@@ -41,6 +41,9 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 2.3.1 - January 8 2024 =
+* Ajusta footer em páginas fixas
+
 = 2.3 - January 5 2024 =
 * Simplifica rodapé (`footer.php`)
 * Acrescenta formulário de pesquisa no rodapé
