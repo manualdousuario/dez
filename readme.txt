@@ -6,7 +6,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.2.4
+Stable tag: 2.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,12 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.3 - January 5 2024 =
+* Simplifica rodapé (`footer.php`)
+* Acrescenta formulário de pesquisa no rodapé
+* Remove item “Busca” do menu principal
+* Acrescenta formulário de pesquisa nos resultados da pesquisa
 
 = 2.2.4 - December 9 2023 =
 * Acrescenta suporte a imagens AVIF

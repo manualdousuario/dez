@@ -47,7 +47,6 @@
 
 		<nav id="site-navigation" class="main-navigation">
 			<ul id="primary-menu" class="menu nav-menu">
-				<li class="menu-item b"><a href="/arquivo/">Busca</a></li>
 				<li class="menu-item c"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item d"><a href="/apoie/" class="main-apoie">Apoie</a></li>
 			</ul>

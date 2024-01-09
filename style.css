@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.2.4
+Version: 2.3
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -108,11 +108,9 @@ p, li, blockquote, h1, h2, h3, h4, h5, h6 {
 	--cor-botao: hsl(211, 100%, 35%);
 	--cor-botao-hov: hsl(211, 100%, 25%);
 
-	--ff-serif: ui-serif, serif;
+	--ff-serif: Georgia, ui-serif, serif;
 	--ff-sans-serif: ui-system, sans-serif;
 	--ff-monospace: ui-monospace, monospace;
-
-	--ff-serif:ui-serif,serif;--ff-sans-serif:ui-system,sans-serif;--ff-monospace:ui-monospace,monospace;
 
 	--line-length: 64ch;
 	--borda-curva: 6px;
@@ -320,7 +318,8 @@ textarea {
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-select {
+select,
+button {
 	cursor: pointer;
 }
 
@@ -356,9 +355,30 @@ select {
 }
 
 .search-form {
-	display: flex;
-	flex-wrap: wrap;
-	gap: .5rem;
+	max-width: 60%;
+}
+
+input[type="search"].search-field {
+	width: 90%;
+	padding-right: 3rem;
+}
+
+.search-submit {
+	padding: .25rem;
+	margin-left: -3rem;
+	vertical-align: middle;
+}
+.search-submit,
+.search-submit:hover {
+	background-color: transparent;
+}
+
+.search-form path {
+	stroke: var(--cor-botao);
+	stroke-width: 3px;
+}
+.search-form path:hover {
+	stroke: var(--cor-botao-hov);
 }
 
 /* Links
@@ -499,7 +519,8 @@ a.comment-reply-link {
 .nav-links,
 article.hentry,
 .not-found,
-.hfeed .orbita-manual {
+.hfeed .orbita-manual,
+.page-header {
 	padding: 0 1rem;
 }
 .single-post .nav-links {
@@ -673,7 +694,7 @@ p.site-title {
 .data-capa {
 	display: inline-block;
 	padding: .5rem 1rem;
-	margin: 0 0 2rem;
+	margin: 1rem 0 2rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 	font-family: var(--ff-monospace);
@@ -815,6 +836,22 @@ div.ctx-editor p:last-child {
 
 .page-id-38122 label {
 	display: block;
+}
+
+.search-results .page-header {
+	border-bottom: 0;
+}
+
+/* Leiaute especial de páginas (Sobre, Patrocine etc.) */
+.page-id-25668 .entry-title {
+	display:none;
+}
+
+.page-id-25668 .entry-content p:first-child {
+	font-size: var(--fs-3);
+	font-family: var(--ff-serif);
+	line-height: 1.4;
+	max-width: 100%;
 }
 
 /* Post formats
@@ -1007,8 +1044,16 @@ a.comment-link {
 --------------------------------------------- */
 
 .site-footer {
+	margin: 10rem auto 2rem;
+	max-width: var(--line-length);
+	text-align: center;
+}
+.page-id-20907 .site-footer {
 	display: inline-block;
-	margin: 10rem 0 2rem;
+}
+
+.site-footer .search-form {
+	margin: 0 auto 4rem;
 }
 
 .site-footer-info p:last-child {
@@ -1017,6 +1062,24 @@ a.comment-link {
 
 .site-footer-info ul {
 	margin: 0 0 1.35rem 0;
+}
+
+a.rss-manual {
+	background-image: url('/wp-content/themes/dez/img/icone-novo-rss.svg');
+	background-size: 22px;
+	background-repeat: no-repeat;
+	padding-left: 26px;
+}
+
+.site-footer-info form {
+	display: flex;
+	column-gap: .4rem;
+	justify-content: center;
+	max-width: 70%;
+	margin: 0 auto 1.35rem;
+}
+.site-footer-info #email-newsletter {
+	flex-grow: 1;
 }
 
 .site-footer-footer {
@@ -1507,12 +1570,19 @@ table.dataTable-table tr:nth-child(even) {
 		justify-content: center;
 	}
 
-    .site-branding {
-        margin: 0 1rem 3rem 0
-    }
+	.site-branding {
+		margin: 0 1rem 3rem 0
+	}
 }
 
 @media (max-width: 620px) {
+	.search-form {
+		max-width: 80%;
+	}
+	.site-footer-info form {
+		max-width: 100%;
+	}
+
 	.comment-form-email,
 	.comment-form-author {
 		float: initial;
@@ -1606,6 +1676,7 @@ table.dataTable-table tr:nth-child(even) {
 	.site-footer-info,
 	.doe {
 		border-radius: 0;
+		text-align: left;
 	}
 }
 
