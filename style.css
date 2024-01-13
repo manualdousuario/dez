@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.3
+Version: 2.4
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -169,19 +169,11 @@ i {
 }
 
 blockquote {
-	margin: 0 0 1.35rem 1.5rem;
-}
-blockquote:before {
-	content: "\201C";
-	display: block;
-	font-size: 300px;
-	left: -60px;
-	top: -120px;
-	position: relative;
-	height: 0;
-	opacity: .05;
-	z-index:-999;
-	font-family: Georgia, serif;
+	font-family: var(--ff-serif);
+	margin: 0 0 1.35rem 0;
+	border-left: var(--borda-curva) solid var(--cor-bordas);
+	padding: 0 1rem;
+	max-width: var(--line-length);
 }
 
 hr {
@@ -843,11 +835,11 @@ div.ctx-editor p:last-child {
 }
 
 /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
-.page-id-25668 .entry-title {
+.page-id-39568 .entry-title {
 	display:none;
 }
 
-.page-id-25668 .entry-content p:first-child {
+.page-id-39568 .entry-content p:first-child {
 	font-size: var(--fs-3);
 	font-family: var(--ff-serif);
 	line-height: 1.4;
@@ -881,20 +873,27 @@ article.format-aside .entry-title {
 	line-height:1.35;
 }
 
-.format-quote .entry-title:before {
-	content: "\201C";
-	display: block;
-	font-size: 450px;
-	left: -60px;
-	top: -140px;
+.format-quote .entry-title {
+	background: var(--cor-caixas);
+	margin-bottom: 1.7rem;
+	padding: 1rem;
 	position: relative;
-	height: 0;
-	opacity: .06;
-	z-index:-999;
+	z-index: 0;
+	border-radius: var(--borda-curva);
+}
+
+.format-quote .entry-title:after {
+	border: 1.35rem solid transparent;
+	border-top-color: var(--cor-caixas);
+	content: '';
+	margin-left: -1rem;
+	position: absolute;
+	top: 100%;
+	left: 10%;
 }
 
 .format-quote .entry-content p:first-child {
-	margin-left: 1.5rem;
+	margin-left: 3.5rem;
 }
 
 .blog article.category-aplicativos {
@@ -1008,8 +1007,8 @@ img.avatar {
 	align-items: center;
 	column-gap: 1rem;
 }
-.byuser>.comment-body>footer>.comment-author>.fn:after {
-	background-image: url('/wp-content/themes/dez/img/selo-verificado.svg');
+.byuser>.comment-body>footer>.comment-author>.fn:after,
+.activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
 	background-size: 26px;
 	display: inline-block;
 	width: 26px;
@@ -1021,6 +1020,15 @@ img.avatar {
 	top: 4px;
 	left: 6px;
 	z-index: 1;
+}
+.byuser>.comment-body>footer>.comment-author>.fn:after {
+	background-image: url('/wp-content/themes/dez/img/selo-verificado.svg');
+}
+.activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
+	background-image: url('/wp-content/themes/dez/img/icone-mastodon.svg');
+	background-size: 22px;
+	width: 22px;
+	left: 8px;
 }
 
 .edit-link {
@@ -1619,6 +1627,10 @@ table.dataTable-table tr:nth-child(even) {
 		float: initial;
 	}
 
+	.format-quote .entry-content p:first-child {
+		margin-left: 0;
+	}
+
 	.comments-area {
 		padding: 0;
 	}
@@ -1681,28 +1693,11 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 @media screen and (max-width: 350px) {
-  .site-header {
-    padding: 0;
+  .wp-caption {
+  	width: 100% !important;
   }
-
-  .main-navigation ul {
-    gap: 1rem;
-  }
-
-  .main-navigation li:first-child {
-    padding-left: 1rem;
-  }
-
-  .main-navigation a.main-apoie {
-    padding-inline: 1rem;
-  }
-
-  .menu-item ul {
-    margin-left: 0.5rem;
-  }
-
-  #secondary-menu>ul>li:first-child {
-    padding-left: 0.8rem;
+  .wp-caption img[class*="wp-image-"] {
+  	width: 100%;
   }
 }
 
@@ -1745,6 +1740,13 @@ table.dataTable-table tr:nth-child(even) {
 	.dfad_pos_1 span.calhau {
 		color: hsl(0, 100%, 93%);
 		border-color: hsl(0, 100%, 93%);
+	}
+
+	.activitypub-comment .comment-meta {
+		background-color: hsl(240, 100%, 12%);
+	}
+	.activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
+		filter: invert(1);
 	}
 
 	a.comment-link span {
