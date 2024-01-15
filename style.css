@@ -525,7 +525,9 @@ article.hentry,
 	padding: 1rem;
 }
 
-article.hentry p:last-child {
+article.hentry p:last-child,
+article.hentry ul:last-child,
+article.hentry li:last-child {
 	margin: 0;
 }
 
