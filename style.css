@@ -1707,7 +1707,7 @@ table.dataTable-table tr:nth-child(even) {
 # Modo escuro
 --------------------------------------------------------------*/
 
-	[data-theme="dark"]:root {
+[data-theme="dark"]:root {
 	--cor-pagina: hsl(0, 0%, 1%);
 	--cor-fonte: hsl(0, 0%, 90%);
 
@@ -1875,20 +1875,26 @@ table.dataTable-table tr:nth-child(even) {
 	margin-bottom: 3rem;
   }
   
-  .dark-mode-toggle__label {
+.dark-mode-toggle__label {
 	display: block;
 	margin-bottom: 0.5rem;
 	font-weight: 700;
-  }
-  
-  .dark-mode-toggle a,
-  .dark-mode-toggle a:visited {
+}
+
+.dark-mode-toggle a,
+.dark-mode-toggle a:visited {
 	color: var(--cor-link-ori);
-  }
-  
-  .dark-mode-toggle a:hover,
-  .dark-mode-toggle a:focus,
-  .dark-mode-toggle a:active {
+}
+
+.dark-mode-toggle a:hover,
+.dark-mode-toggle a:focus,
+.dark-mode-toggle a:active {
 	color: var(--cor-link-est);
-  }
-  
+}
+
+
+@media (max-width: 620px) {
+	.dark-mode-toggle a {
+		display: block;
+	}
+}  
