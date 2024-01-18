@@ -1721,7 +1721,7 @@ table.dataTable-table tr:nth-child(even) {
 	--cor-caixas: rgb(29, 29, 29);
 }
 
-[data-theme="dark"] site-title img,
+[data-theme="dark"] .site-title img,
 [data-theme="dark"] .gridicon,
 [data-theme="dark"] .menu-toggle-icon,
 [data-theme="dark"] a.comment-link {
