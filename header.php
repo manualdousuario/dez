@@ -72,46 +72,6 @@
 					),
 				);
 
-				// Admin configuration.
-				$admin_items = array(
-					array(
-						'title' => 'Painel',
-						'url'   => '/wp-admin/index.php',
-					),
-					array(
-						'title' => 'Estatísticas',
-						'url'   => '/wp-admin/index.php?page=koko-analytics',
-					),
-					array(
-						'title' => 'Novo post',
-						'url'   => '/wp-admin/post-new.php',
-					),
-					array(
-						'title' => 'Novo podcast',
-						'url'   => '/wp-admin/post-new.php?post_type=podcast',
-					),
-					array(
-						'title' => 'Órbita',
-						'url'   => '/wp-admin/edit.php?post_type=orbita_post',
-					),
-					array(
-						'title' => 'Adicionar usuário',
-						'url'   => '/wp-admin/user-new.php',
-					),
-					array(
-						'title' => 'Inscritos no Sendy ↗',
-						'url'   => 'https://sendy.manualdousuario.net/subscribers?i=11&l=45',
-					),
-					array(
-						'title' => 'Cloudflare',
-						'url'   => '/wp-admin/options-general.php?page=cloudflare',
-					),
-					array(
-						'title' => 'Cache do WP.com',
-						'url'   => 'https://wordpress.com/hosting-config/manualdousuario.net/',
-					),
-				);
-
 				// Órbita menu configuration.
 				$orbita_items = array(
 					array(
@@ -149,13 +109,6 @@
 					$menu_html .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
 				}
 				$menu_html .= '<li class="divider"></li>';
-
-				if ( current_user_can( 'administrator' ) ) {
-					foreach ( $admin_items as $admin_items ) {
-						$menu_html .= '<li class="page_item"><a href="' . esc_url( $admin_items['url'] ) . '">' . esc_html( $admin_items['title'] ) . '</a></li>';
-					}
-				$menu_html .= '<li class="divider"></li>';
-				}
 
 				$menu_html .= '</li>';
 

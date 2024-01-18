@@ -1,12 +1,12 @@
 === Dez ===
 
 Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: featured-images, threaded-comments
 
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.3
+Stable tag: 2.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,14 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.4 - January 13 2024 =
+* Identifica comentários vindos do fediverso/Mastodon
+* Estende imagens alinhadas à direita ou esquerda em telas pequenas (`<350px`)
+* Remove atributos do cabeçalho em telas pequenas (`<350px`)
+* Remove itens da administração do menu do usuário
+* Acrescenta link permanente no post type `quote`
+* Altera leiaute da tag `blockquote`
 
 = 2.3 - January 5 2024 =
 * Simplifica rodapé (`footer.php`)
