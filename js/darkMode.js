@@ -1,39 +1,35 @@
 // Função principal de atualização do tema
 function updateDezTheme() {
-    // Obtem o valor da preferencia salva pelo usuário
-    const theme = localStorage.getItem("dezTheme");
-  
-    // Verifica se o usuário salvou algum valor válido
-    if (!!theme) {
-      // Se sim, usa a preferência dele
-      document.documentElement.dataset.theme = theme;
-    } else {
-      // Se não, deixa o sistema operacional fazer a escolha por ele
-      document.documentElement.dataset.theme = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches
-        ? "dark"
-        : "light";
-    }
+  // Obtem o valor da preferencia salva pelo usuário
+  const theme = localStorage.getItem("dezTheme");
+  const isSystenDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
+  // Verifica se o usuário prefere o tema alternativo
+  if (theme == "alternate") {
+    // Se sim, avisa pro browser escolher o inverso do sistema
+    document.documentElement.dataset.theme = isSystenDark ? "light" : "dark";
+
+  } else {
+    // Se não, deixa o sistema operacional fazer a escolha por ele
+    document.documentElement.dataset.theme = isSystenDark ? "dark" : "light";
+   
   }
+}
 
 // Define qual é o tema por parte do usuário
-function setDezTheme(event, theme) {
+function setDezTheme(event) {
   event.preventDefault();
 
-  if (theme === "system") {
-    // Limpa qualquer escolha salva pelo usuário
+  const currentTheme = localStorage.getItem("dezTheme");
+
+  if (!!currentTheme) {
+    // Se está com "alternate" salvo, remove
     localStorage.removeItem("dezTheme");
-  }
-
-  if (theme === "light") {
-    // Salva preferência de tema claro (padrão)
-    localStorage.setItem("dezTheme", "light");
-  }
-
-  if (theme === "dark") {
-    // Salva preferência de tema escuro
-    localStorage.setItem("dezTheme", "dark");
+  } else {
+    // SDefine que o tema é alternate
+    localStorage.setItem("dezTheme", "alternate");
   }
 
   updateDezTheme();
