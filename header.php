@@ -75,11 +75,15 @@
 				// Órbita menu configuration.
 				$orbita_items = array(
 					array(
-						'title' => 'Meus Posts',
+						'title' => 'Gerenciar notificações',
+						'url'   => '/notificacoes-email/',
+					),
+					array(
+						'title' => 'Meus posts',
 						'url'   => '/orbita/meus-posts/',
 					),
 					array(
-						'title' => 'Meus Comentários',
+						'title' => 'Meus comentários',
 						'url'   => '/orbita/meus-comentarios/',
 					),
 				);
