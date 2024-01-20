@@ -41,7 +41,8 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.4 - January 13 2024 =
+= 2.4 - January 20 2024 =
+* Adiciona seletor de modo claro/escuro no menu principal
 * Identifica comentários vindos do fediverso/Mastodon
 * Estende imagens alinhadas à direita ou esquerda em telas pequenas (`<350px`)
 * Remove atributos do cabeçalho em telas pequenas (`<350px`)

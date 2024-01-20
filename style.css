@@ -44,6 +44,7 @@ TABELA DE CONTEÚDO
 	- Simple Data-Tables
 # Media queries
 # Modo escuro
+	- Seletor modo escuro
 # User Menu
 
 /*--------------------------------------------------------------
@@ -1793,7 +1794,41 @@ table.dataTable-table tr:nth-child(even) {
 	[data-theme="dark"] .category-aplicativos p:first-child {
 		background-color: hsl(224, 100%, 7.5%);
 	}
-}  
+}
+
+/* Seletor modo escuro
+--------------------------------------------- */
+
+#dark-mode-toggle {
+	background: transparent;
+	margin: 0 0 0 1rem;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+#dark-mode-toggle li:first-child {
+	padding: 0;
+	margin: 0;
+}
+
+#dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
+	background-size: cover;
+	display: block;
+	height: 24px;
+	width: 24px;	
+	overflow: hidden;
+	text-indent: -9999px;
+	white-space: nowrap;
+
+}
+
+[data-theme="dark"] #dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
+}
 
 /*--------------------------------------------------------------
 # User Menu
@@ -1866,38 +1901,4 @@ table.dataTable-table tr:nth-child(even) {
 
 .divider {
 	border-top: 1px var(--cor-bordas) solid;
-}
-
-/*--------------------------------------------------------------
-# Dark Mode
---------------------------------------------------------------*/
-#dark-mode-toggle {
-	background: transparent;
-	margin: 0 0 0 1rem;
-	padding: 0;
-	display: flex;
-	align-items: center;
-}
-
-#dark-mode-toggle li:first-child {
-	padding: 0;
-	margin: 0;
-}
-
-#dark-mode-toggle li a {
-	/* CC-BY https://thenounproject.com/icon/moon-6451317/ */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
-	background-size: cover;
-	display: block;
-	height: 24px;
-	width: 24px;	
-	overflow: hidden;
-    text-indent: -9999px;
-    white-space: nowrap;
-
-}
-
-[data-theme="dark"] #dark-mode-toggle li a {
-	/* CC-BY https://thenounproject.com/icon/sun-6457511/ */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 }
