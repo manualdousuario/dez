@@ -1828,6 +1828,7 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] #dark-mode-toggle li a {
 	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
 	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
+	filter: invert();
 }
 
 /*--------------------------------------------------------------
