@@ -839,7 +839,7 @@ add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
  * Adiciona script de gerência do modo escuro no HEAd
  */
 function dez_dark_mode_script() {
-    wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.js', array() );
+    wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
