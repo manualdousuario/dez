@@ -120,5 +120,11 @@
 				$menu_html .= '</ul></li></ul></div>';
 				echo $menu_html;
 				?>
+
+				<ul id="dark-mode-toggle">
+					<li>
+						<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>
+					</li>
+				</ul>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

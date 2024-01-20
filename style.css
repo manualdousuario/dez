@@ -1871,30 +1871,33 @@ table.dataTable-table tr:nth-child(even) {
 /*--------------------------------------------------------------
 # Dark Mode
 --------------------------------------------------------------*/
-.dark-mode-toggle {
-	margin-bottom: 3rem;
-  }
-  
-.dark-mode-toggle__label {
+#dark-mode-toggle {
+	background: transparent;
+	margin: 0 0 0 1rem;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+#dark-mode-toggle li:first-child {
+	padding: 0;
+	margin: 0;
+}
+
+#dark-mode-toggle li a {
+	/* CC-BY https://thenounproject.com/icon/moon-6451317/ */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
+	background-size: cover;
 	display: block;
-	margin-bottom: 0.5rem;
-	font-weight: 700;
+	height: 24px;
+	width: 24px;	
+	overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+
 }
 
-.dark-mode-toggle a,
-.dark-mode-toggle a:visited {
-	color: var(--cor-link-ori);
+[data-theme="dark"] #dark-mode-toggle li a {
+	/* CC-BY https://thenounproject.com/icon/sun-6457511/ */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 }
-
-.dark-mode-toggle a:hover,
-.dark-mode-toggle a:focus,
-.dark-mode-toggle a:active {
-	color: var(--cor-link-est);
-}
-
-
-@media (max-width: 620px) {
-	.dark-mode-toggle a {
-		display: block;
-	}
-}  
