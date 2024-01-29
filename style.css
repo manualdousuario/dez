@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.5
+Version: 2.6
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -185,7 +185,7 @@ hr {
 
 ul,
 ol {
-	margin: 0 0 1.5em 1.1rem;
+	margin: 0 0 1.35em 0;
 	padding: 0;
 }
 ul {
@@ -527,8 +527,9 @@ article.hentry,
 
 article.hentry p:last-child,
 article.hentry ul:last-child,
+article.hentry ol:last-child,
 article.hentry li:last-child {
-	margin: 0;
+	margin-bottom: 0;
 }
 
 /* Cabeçalho
@@ -759,11 +760,12 @@ caption,
 }
 .site-footer-info {
 	margin-bottom: 4rem;
+	flex-wrap: wrap;
+  row-gap: 0.4rem;
 }
 .doe { 
 	text-align: center;
-	max-width: 600px;
-	margin: 3rem auto 0;
+	margin: 8rem auto 0;
 }
 
 .ctx-transparencia,
@@ -817,11 +819,10 @@ div.ctx-editor p:last-child {
 .podcast_player {
 	background: #f4ebff;
 	margin: 0 auto 1.35rem;
-	max-width: 640px;
 }
 
 .single .post-navigation {
-	margin: 8rem 0;
+	margin: 4rem 0 8rem;
 	line-height: 1.4;
 }
 .single .comment-navigation {

@@ -70,8 +70,6 @@ endif; ?>
 	endif; ?>
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
-<?php if ( is_single() ) : ?>
-<div class="doe">
-	Curtiu? <a href="https://manualdousuario.net/apoie">Assine o <strong>Manual</strong></a> e ganhe benefícios, ou faça um Pix de qualquer valor para <span style="font-weight: 500;">pix@manualdousuario.net</span>. Obrigado!
-</div>
-<?php endif; ?>
+<?php if ( is_single() && shortcode_exists( 'sc' ) ) : 
+	echo do_shortcode('[sc name="pos-posts"][/sc]'); 
+endif; ?>
