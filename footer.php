@@ -22,7 +22,7 @@
 	</div>
 
 	<?php get_search_form(); ?>
-
+	
 	<p class="site-footer-footer">
 		Associado à <a href="https://ajor.org.br/">Ajor</a> &middot; Apoio de <a href="https://www.teramundi.com/">Teramundi</a><br />
 		2013–<?php echo esc_html( gmdate( 'Y' ) ); ?> &middot; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA 4.0</a> &middot; <a href="https://status.manualdousuario.net">Status</a>

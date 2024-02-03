@@ -11,7 +11,7 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> data-theme="">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,5 +124,11 @@
 				$menu_html .= '</ul></li></ul></div>';
 				echo $menu_html;
 				?>
+
+				<ul id="dark-mode-toggle">
+					<li>
+						<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>
+					</li>
+				</ul>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
