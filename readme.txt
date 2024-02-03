@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.5
+Stable tag: 2.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,17 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.6 - February 03 2024 =
+* Adiciona seletor de modo claro/escuro no menu principal
+* Corrige margens dos últimos elementos (ul, ol, li, p)
+* Corrige form da newsletter no rodapé em telas pequenas (@MatFantinel)
+* Estende e altera margens do bloco `.doe`
+* Estende bloco do podcast (`.podcast_player`)
+* Transforma bloco pós-posts (`single`) em um shortcode (do plugin Shortcode); 
+não havia sido implementado na 2.5
+* Acrescenta meta tag no cabeçalho para bloquear robô do Bing Chat/Copilot (via 
+https://searchengineland.com/bing-adds-controls-for-webmasters-to-disallow-their-content-in-bing-chat-432174)
 
 = 2.5 - January 20 2024 =
 * Acrescenta link para gerenciar comentários no menu do usuário
