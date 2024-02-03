@@ -41,7 +41,8 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.6 - January 30 2024 =
+= 2.6 - February 03 2024 =
+* Adiciona seletor de modo claro/escuro no menu principal
 * Corrige margens dos últimos elementos (ul, ol, li, p)
 * Corrige form da newsletter no rodapé em telas pequenas (@MatFantinel)
 * Estende e altera margens do bloco `.doe`
