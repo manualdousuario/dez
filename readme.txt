@@ -1,6 +1,6 @@
 === Dez ===
 
-Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf
+Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Joselito Júnior
 Tags: featured-images, threaded-comments
 
 Requires at least: 4.5
