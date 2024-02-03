@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.4
+Stable tag: 2.5
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -41,8 +41,13 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.4 - January 20 2024 =
-* Adiciona seletor de modo claro/escuro no menu principal
+= 2.5 - January 20 2024 =
+* Acrescenta link para gerenciar comentários no menu do usuário
+* Acrescenta cor distinta no cabeçalho dos comentários vindos do fediverso/Mastodon (tema claro)
+* Corrige cor da seta “voltar ao topo” no modo escuro
+* Transforma bloco pós-posts (`single`) em um shortcode (do plugin Shortcode)
+
+= 2.4 - January 13 2024 =
 * Identifica comentários vindos do fediverso/Mastodon
 * Estende imagens alinhadas à direita ou esquerda em telas pequenas (`<350px`)
 * Remove atributos do cabeçalho em telas pequenas (`<350px`)

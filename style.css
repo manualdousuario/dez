@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.4
+Version: 2.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -1010,6 +1010,10 @@ img.avatar {
 	align-items: center;
 	column-gap: 1rem;
 }
+.activitypub-comment .comment-meta {
+	background-color: hsl(252, 100%, 96%);;
+}
+
 .byuser>.comment-body>footer>.comment-author>.fn:after,
 .activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
 	background-size: 26px;
@@ -1788,6 +1792,11 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .blog article.category-aplicativos {
 	background-color: hsl(224, 100%, 9%);
+}
+
+[data-theme="dark"] .top:before {
+  border-top: 5px solid var(--cor-caixas);
+  border-right: 5px solid var(--cor-caixas);
 }
 
 @media (max-width: 620px) {
