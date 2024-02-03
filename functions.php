@@ -836,7 +836,7 @@ add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
 } );
 
 /**
- * Adiciona script de gerência do modo escuro no HEAd
+ * Adiciona script de gerência do modo escuro no HEAD
  */
 function dez_dark_mode_script() {
     wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
