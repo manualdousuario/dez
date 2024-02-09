@@ -319,7 +319,7 @@ button {
 
 button,
 input[type="submit"] {
-	background-color: var(--cor-botao);
+	background-color: var(--cor-link-ori);
 	color: var(--cor-chapada);
 	border: none;
 	padding: .25rem .75rem;
@@ -329,7 +329,7 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-	background-color: var(--cor-botao-hov);
+	background-color: var(--cor-link-est);
 }
 
 button:disabled,
@@ -360,6 +360,7 @@ input[type="search"].search-field {
 .search-submit {
 	padding: .25rem;
 	margin-left: -3rem;
+	top: -2px;
 	vertical-align: middle;
 }
 .search-submit,
@@ -368,11 +369,11 @@ input[type="search"].search-field {
 }
 
 .search-form path {
-	stroke: var(--cor-botao);
+	stroke: var(--cor-link-ori);
 	stroke-width: 3px;
 }
 .search-form path:hover {
-	stroke: var(--cor-botao-hov);
+	stroke: var(--cor-link-est);
 }
 
 /* Links
