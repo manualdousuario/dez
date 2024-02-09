@@ -629,15 +629,12 @@ p.site-title {
 	color: white;
 	padding: 1.03rem 1.5rem;
 	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
-	transition: background .1s, box-shadow .1s;
 	background: var(--cor-link-ori);
 }
 
 .main-navigation a.main-apoie:hover,
 .main-navigation a.main-apoie:focus {
-	box-shadow: none;
-	transition: background .1s, box-shadow .2s ease-in-out;
-	background: var(--cor-link-vis);
+	background: var(--cor-link-est);
 }
 
 .menu-item ul {
