@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.6
+Version: 2.7
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -100,8 +100,8 @@ p, li, blockquote, h1, h2, h3, h4, h5, h6 {
 	--cor-bordas: hsl(0, 0%, 90%);
 	--cor-chapada: hsl(0, 0%, 100%);
 
-	--cor-link-ori: hsl(225, 72%, 41%);
-	--cor-link-vis: hsl(276, 100%, 25%);
+	--cor-link-ori: hsl(240, 100%, 46.67%);
+	--cor-link-vis: hsl(271.33, 68.48%, 32.35%);
 	--cor-link-est: hsl(240, 63%, 27%);
 	--cor-link-meta: hsl(0, 0%, 30%);
 	--cor-link-meta-est: hsl(0, 0%, 50%);
@@ -109,7 +109,7 @@ p, li, blockquote, h1, h2, h3, h4, h5, h6 {
 	--cor-botao: hsl(211, 100%, 35%);
 	--cor-botao-hov: hsl(211, 100%, 25%);
 
-	--ff-serif: Georgia, ui-serif, serif;
+	--ff-serif: "Noto Serif", Georgia, ui-serif, serif;
 	--ff-sans-serif: ui-system, sans-serif;
 	--ff-monospace: ui-monospace, monospace;
 
@@ -136,9 +136,9 @@ body {
 body {
 	background: var(--cor-pagina);
 	color: var(--cor-fonte);
-	font-family: var(--ff-sans-serif);
+	font-family: var(--ff-serif);
 	font-size: var(--fs-1);
-	line-height: 1.5;
+	line-height: 170%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -231,6 +231,7 @@ kbd {
 	padding: 2px 4px;
 	margin: 0;
 	font-size: var(--fs-0);
+	font-family: var(--ff-monospace);
 	background: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 }
@@ -318,7 +319,7 @@ button {
 
 button,
 input[type="submit"] {
-	background-color: var(--cor-botao);
+	background-color: var(--cor-link-ori);
 	color: var(--cor-chapada);
 	border: none;
 	padding: .25rem .75rem;
@@ -328,7 +329,7 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-	background-color: var(--cor-botao-hov);
+	background-color: var(--cor-link-est);
 }
 
 button:disabled,
@@ -359,6 +360,7 @@ input[type="search"].search-field {
 .search-submit {
 	padding: .25rem;
 	margin-left: -3rem;
+	top: -2px;
 	vertical-align: middle;
 }
 .search-submit,
@@ -367,11 +369,11 @@ input[type="search"].search-field {
 }
 
 .search-form path {
-	stroke: var(--cor-botao);
+	stroke: var(--cor-link-ori);
 	stroke-width: 3px;
 }
 .search-form path:hover {
-	stroke: var(--cor-botao-hov);
+	stroke: var(--cor-link-est);
 }
 
 /* Links
@@ -598,6 +600,7 @@ p.site-title {
 .main-navigation ul {
 	display: flex;
 	list-style: none;
+	align-items: center;
 	margin: 0;
 	gap: 1.5rem;
 	background-color: var(--cor-caixas);
@@ -608,7 +611,6 @@ p.site-title {
 	position: relative;
 	margin: 0;
 	padding: 1rem 0;
-	max-height: 3.25rem;
 }
 .main-navigation li:first-child {
 	padding-left: 1.5rem;
@@ -625,18 +627,14 @@ p.site-title {
 
 .main-navigation a.main-apoie {
 	color: white;
-	padding: 1.05rem 1.5rem;
+	padding: 1.03rem 1.5rem;
 	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
-	transition: background .1s, box-shadow .1s;
-	background: #4169e1;
-	line-height: 1rem;
+	background: var(--cor-link-ori);
 }
 
 .main-navigation a.main-apoie:hover,
 .main-navigation a.main-apoie:focus {
-	box-shadow: none;
-	transition: background .1s, box-shadow .2s ease-in-out;
-	background: #355bd0;
+	background: var(--cor-link-est);
 }
 
 .menu-item ul {

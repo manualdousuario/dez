@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.6
+Stable tag: 2.7
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,11 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.7 - February 07 2024 =
+* Corrige alinhamento do botão “Apoie”
+* Altera fonte padrão para com serifa e adiciona Noto Serif na variável `--ff-serif`
+* Altera cores dos links para padrões do HTML (`--cor-link-ori` e `--cor-link-vis` no tema claro)
 
 = 2.6 - February 03 2024 =
 * Adiciona seletor de modo claro/escuro no menu principal
