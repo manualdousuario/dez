@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 2.7
+Version: 2.8
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -407,7 +407,6 @@ a.comment-link,
 a.aside-link,
 .entry-footer a,
 .comment-metadata a,
-a.more-link,
 .nav-links a,
 a.comment-reply-link {
 	color: var(--cor-link-meta);
@@ -416,7 +415,6 @@ a:hover.comment-link,
 a:hover.aside-link,
 .entry-footer a:hover,
 .comment-metadata a:hover,
-a:hover.more-link,
 .nav-links a:hover,
 a:hover.comment-reply-link {
 	color: var(--cor-link-meta-est);
@@ -524,7 +522,7 @@ article.hentry,
 
 .hfeed article.hentry,
 .hfeed .orbita-manual {
-	margin: 0 0 8rem;
+	margin: 0 0 6rem;
 	padding: 1rem;
 }
 
@@ -572,10 +570,18 @@ article.hentry li:last-child {
 
 .site-header {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: space-between;
-	align-items: center;
-	margin: 2rem 0 8rem;
+	align-items: start;
+	margin: 1rem 0 3rem;
+	border-bottom: 1px dashed var(--cor-bordas);
+	padding-bottom: 3rem;
+}
+
+.site-title {
+	width: 49px;
+	height: 56px;
+	float: left;
 }
 
 h1.site-title,
@@ -583,18 +589,21 @@ p.site-title {
 	margin: 0;
 	font-size: var(--fs-5);
 	font-family: var(--ff-serif);
-	height: 85px;
 }
 
 .site-branding {
+	order: 1;
 	margin-right: 1rem;
+	max-width: 85%
 }
+
 .main-navigation {
 	font-size: var(--fs-0);
 	height: 100%;
 	display: flex;
 	line-height: 1.3em;
 	z-index: 1;
+	order: 3;
 }
 
 .main-navigation ul {
@@ -642,12 +651,23 @@ p.site-title {
 	border-radius: var(--borda-curva);
 }
 
+.site-description {
+	margin-top: -10px;
+	order: 2;
+	flex-grow: 3;
+}
+.site-description p {
+	line-height: 1.45;
+	max-width: 90%;
+	margin-bottom: 0;
+}
+
 /* Capa e arquivos
 --------------------------------------------- */
 
 .page-header { /* Páginas de arquivos */
 	border-bottom: 1px solid var(--cor-bordas);
-	margin-bottom: 8rem;
+	margin-bottom: 6rem;
 }
 
 .comment-navigation .nav-links,
@@ -687,8 +707,8 @@ p.site-title {
 
 .data-capa {
 	display: inline-block;
-	padding: .5rem 1rem;
-	margin: 1rem 0 2rem;
+	padding: 0 1rem;
+	margin: 0 0 1rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 	font-family: var(--ff-monospace);
@@ -764,7 +784,7 @@ caption,
 }
 .doe { 
 	text-align: center;
-	margin: 8rem auto 0;
+	margin: 6rem auto 0;
 }
 
 .ctx-transparencia,
@@ -821,7 +841,7 @@ div.ctx-editor p:last-child {
 }
 
 .single .post-navigation {
-	margin: 4rem 0 8rem;
+	margin: 3rem 0 6rem;
 	line-height: 1.4;
 }
 .single .comment-navigation {
@@ -899,7 +919,7 @@ article.format-aside .entry-title {
 }
 
 .blog article.category-aplicativos {
-	margin: 0 1rem 8rem;
+	margin: 0 1rem 6rem;
 	background-color: #f9f4ff;
 	border-radius: var(--borda-curva);
 }
@@ -921,7 +941,7 @@ article.format-aside .entry-title {
 --------------------------------------------- */
 
 .comment-respond {
-	margin-bottom: 8rem;
+	margin-bottom: 6rem;
 }
 
 .comment-form { 
@@ -1058,16 +1078,17 @@ a.comment-link {
 --------------------------------------------- */
 
 .site-footer {
-	margin: 10rem auto 2rem;
-	max-width: var(--line-length);
+	margin: 3rem auto 0;
 	text-align: center;
+	border-top: 1px dashed var(--cor-bordas);
+	padding: 3rem 1rem 0;
 }
 .page-id-20907 .site-footer {
 	display: inline-block;
 }
 
 .site-footer .search-form {
-	margin: 0 auto 4rem;
+	margin: 0 auto 2rem;
 }
 
 .site-footer-info p:last-child {
@@ -1200,7 +1221,7 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 }
 
 .single-orbita_post .entry-footer {
-	margin-bottom: 8rem;
+	margin-bottom: 6rem;
 }
 
 .single-orbita_post .entry-content {
@@ -1581,11 +1602,26 @@ table.dataTable-table tr:nth-child(even) {
 --------------------------------------------------------------*/
 @media (max-width: 670px) {
 	.site-header {
-		justify-content: center;
+		display: grid;
 	}
 
 	.site-branding {
-		margin: 0 1rem 3rem 0
+		margin: 0;
+	}
+
+	.main-navigation {
+		justify-self: end;
+		align-self: start;
+	}
+
+	.site-description {
+		order: 3;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		margin-top: 1rem;
+	}
+	.site-description p {
+		max-width: 100%;
 	}
 }
 
@@ -1616,7 +1652,7 @@ table.dataTable-table tr:nth-child(even) {
 
 	.blog article.category-aplicativos {
 		border-radius: 0;
-		margin: 0 0 8rem;
+		margin: 0 0 6rem;
 		padding: 1rem;
 	}
 
