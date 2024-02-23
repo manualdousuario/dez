@@ -573,7 +573,7 @@ article.hentry li:last-child {
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: start;
-	margin: 1rem 0 3rem;
+	margin: 1rem 0 4.5rem;
 	border-bottom: 1px dashed var(--cor-bordas);
 	padding-bottom: 3rem;
 }
@@ -708,7 +708,7 @@ p.site-title {
 .data-capa {
 	display: inline-block;
 	padding: 0 1rem;
-	margin: 0 0 1rem;
+	margin: 0 0 .35rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 	font-family: var(--ff-monospace);
@@ -960,13 +960,13 @@ span.required-field-message {
 }
 
 .comment-form-author {
-	max-width: 48%;
+	max-width: 50%;
 	float: left;
 	margin-right: 1rem;
 }
 .comment-form-email {
-	max-width: 49%;
-	float: right;
+	max-width: 50%;
+	float: left;
 }
 .comment-form-cookies-consent {
 	clear: both;
@@ -1078,7 +1078,7 @@ a.comment-link {
 --------------------------------------------- */
 
 .site-footer {
-	margin: 3rem auto 0;
+	margin: 4.5rem auto 0;
 	text-align: center;
 	border-top: 1px dashed var(--cor-bordas);
 	padding: 3rem 1rem 0;
@@ -1646,7 +1646,6 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.data-capa {
-		margin: 0 1rem 2rem 0;
 		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 	}
 
