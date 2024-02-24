@@ -771,18 +771,10 @@ caption,
 	border-radius: 0 0 var(--borda-curva) var(--borda-curva);
 }
 
-.site-footer-info,
 .doe {
 	padding: 1rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
-}
-.site-footer-info {
-	margin-bottom: 4rem;
-	flex-wrap: wrap;
-  row-gap: 0.4rem;
-}
-.doe { 
 	text-align: center;
 	margin: 6rem auto 0;
 }
@@ -944,8 +936,14 @@ article.format-aside .entry-title {
 	margin-bottom: 6rem;
 }
 
-.comment-form { 
-	max-width: var(--line-length);
+.comment-form-alert {
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+	line-height: 170%;
+}
+.comment-form-alert,
+.comment-form-alert p {
+	max-width: 100% !important;
 }
 
 .comment-form-author label,
@@ -1091,30 +1089,11 @@ a.comment-link {
 	margin: 0 auto 2rem;
 }
 
-.site-footer-info p:last-child {
-	margin-bottom: 0;
-}
-
-.site-footer-info ul {
-	margin: 0 0 1.35rem 0;
-}
-
 a.rss-manual {
 	background-image: url('/wp-content/themes/dez/img/icone-novo-rss.svg');
 	background-size: 22px;
 	background-repeat: no-repeat;
 	padding-left: 26px;
-}
-
-.site-footer-info form {
-	display: flex;
-	column-gap: .4rem;
-	justify-content: center;
-	max-width: 70%;
-	margin: 0 auto 1.35rem;
-}
-.site-footer-info #email-newsletter {
-	flex-grow: 1;
 }
 
 .site-footer-footer {
@@ -1629,15 +1608,16 @@ table.dataTable-table tr:nth-child(even) {
 	.search-form {
 		max-width: 80%;
 	}
-	.site-footer-info form {
-		max-width: 100%;
-	}
 
 	.comment-form-email,
 	.comment-form-author {
 		float: initial;
 		max-width: 100%;
 		margin-right: 0;
+	}
+	.comment-form-email input,
+	.comment-form-author input {
+		width: 100%;
 	}
 
 	.hfeed .orbita-ranking,
@@ -1722,14 +1702,15 @@ table.dataTable-table tr:nth-child(even) {
 		display: none;
 	}
 
-	.site-footer {
-		padding: 0;
-	}
-
-	.site-footer-info,
 	.doe {
 		border-radius: 0;
 		text-align: left;
+	}
+
+	.site-footer .search-form,
+	input[type="search"].search-field {
+		max-width: 100%;
+		width: 100%;
 	}
 }
 

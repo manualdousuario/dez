@@ -334,7 +334,7 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Por favor, <a href="/doc-comentarios/">leia as orientações para comentar</a>. Se estiver no Órbita, leia seu <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a>.</p><p><a href="/cadastro/">Cadastre-se</a> (é grátis) para ter um perfil verificado e votar no <a href="/orbita/">Órbita</a>. Já tem cadastro? <a href="' . $logincom . '">Entre</a>.</p></div>';
+	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-editor"><p>Antes de comentar, <a href="/doc-comentarios/">leia as orientações</a>. No Órbita, leia o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a>.</p><p><a href="/cadastro/">Cadastre-se</a> para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
