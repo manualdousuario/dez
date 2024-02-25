@@ -1099,6 +1099,7 @@ a.rss-manual {
 .site-footer-footer {
 	text-align: center;
 	line-height: 2.5;
+	max-width: none;
 }
 
 .top {
