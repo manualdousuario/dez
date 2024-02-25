@@ -1710,7 +1710,6 @@ table.dataTable-table tr:nth-child(even) {
 	.site-footer .search-form,
 	input[type="search"].search-field {
 		max-width: 100%;
-		width: 100%;
 	}
 }
 
