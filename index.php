@@ -40,7 +40,7 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
-				if ( ! is_paged() && 0 == $count ) :
+				if ( ! is_paged() && 1 == $count ) :
 					?>
 					<div class="orbita-manual">
 						<h2>Destaques do Órbita</h2>
