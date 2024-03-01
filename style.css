@@ -100,8 +100,8 @@ p, li, blockquote, h1, h2, h3, h4, h5, h6 {
 	--cor-bordas: hsl(0, 0%, 90%);
 	--cor-chapada: hsl(0, 0%, 100%);
 
-	--cor-link-ori: hsl(240, 100%, 46.67%);
-	--cor-link-vis: hsl(271.33, 68.48%, 32.35%);
+	--cor-link-ori: hsl(225, 72%, 41%);
+	--cor-link-vis: hsl(276, 100%, 25%);
 	--cor-link-est: hsl(240, 63%, 27%);
 	--cor-link-meta: hsl(0, 0%, 30%);
 	--cor-link-meta-est: hsl(0, 0%, 50%);
@@ -570,18 +570,12 @@ article.hentry li:last-child {
 
 .site-header {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: start;
-	margin: 1rem 0 4.5rem;
+	align-items: end;
+	margin: 1rem 0 6rem;
+	padding-bottom: 1rem;
 	border-bottom: 1px dashed var(--cor-bordas);
-	padding-bottom: 3rem;
-}
-
-.site-title {
-	width: 49px;
-	height: 56px;
-	float: left;
 }
 
 h1.site-title,
@@ -589,21 +583,18 @@ p.site-title {
 	margin: 0;
 	font-size: var(--fs-5);
 	font-family: var(--ff-serif);
+	height: 85px;
 }
 
 .site-branding {
-	order: 1;
 	margin-right: 1rem;
-	max-width: 85%
 }
-
 .main-navigation {
 	font-size: var(--fs-0);
-	height: 100%;
 	display: flex;
 	line-height: 1.3em;
 	z-index: 1;
-	order: 3;
+	gap: 1.25rem;
 }
 
 .main-navigation ul {
@@ -611,55 +602,12 @@ p.site-title {
 	list-style: none;
 	align-items: center;
 	margin: 0;
-	gap: 1.5rem;
-	background-color: var(--cor-caixas);
-	border-radius: var(--borda-curva);
+	gap: 1.25rem;
 }
 
 .main-navigation li {
 	position: relative;
 	margin: 0;
-	padding: 1rem 0;
-}
-.main-navigation li:first-child {
-	padding-left: 1.5rem;
-}
-
-.main-navigation a,
-.main-navigation a:focus,
-.main-navigation a:visited {
-	color: var(--cor-link-meta);
-}
-.main-navigation a:hover {
-	color: var(--cor-link-meta-est);
-}
-
-.main-navigation a.main-apoie {
-	color: white;
-	padding: 1.03rem 1.5rem;
-	border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
-	background: var(--cor-link-ori);
-}
-
-.main-navigation a.main-apoie:hover,
-.main-navigation a.main-apoie:focus {
-	background: var(--cor-link-est);
-}
-
-.menu-item ul {
-	margin-left: 1rem;
-	border-radius: var(--borda-curva);
-}
-
-.site-description {
-	margin-top: -10px;
-	order: 2;
-	flex-grow: 3;
-}
-.site-description p {
-	line-height: 1.45;
-	max-width: 90%;
-	margin-bottom: 0;
 }
 
 /* Capa e arquivos
@@ -833,7 +781,7 @@ div.ctx-editor p:last-child {
 }
 
 .single .post-navigation {
-	margin: 3rem 0 6rem;
+	margin: 4rem 0 6rem;
 	line-height: 1.4;
 }
 .single .comment-navigation {
@@ -1076,10 +1024,10 @@ a.comment-link {
 --------------------------------------------- */
 
 .site-footer {
-	margin: 4.5rem auto 0;
-	text-align: center;
-	border-top: 1px dashed var(--cor-bordas);
-	padding: 3rem 1rem 0;
+	margin: 6rem auto 0;
+ 	text-align: center;
+ 	border-top: 1px dashed var(--cor-bordas);
+	padding: 2rem 0 0;
 }
 .page-id-20907 .site-footer {
 	display: inline-block;
@@ -1087,13 +1035,6 @@ a.comment-link {
 
 .site-footer .search-form {
 	margin: 0 auto 2rem;
-}
-
-a.rss-manual {
-	background-image: url('/wp-content/themes/dez/img/icone-novo-rss.svg');
-	background-size: 22px;
-	background-repeat: no-repeat;
-	padding-left: 26px;
 }
 
 .site-footer-footer {
@@ -1582,26 +1523,22 @@ table.dataTable-table tr:nth-child(even) {
 --------------------------------------------------------------*/
 @media (max-width: 670px) {
 	.site-header {
-		display: grid;
+		justify-content: center;
+		padding: 0 0 1rem 0;
 	}
 
 	.site-branding {
-		margin: 0;
+		margin: 0 0 1rem;
 	}
 
 	.main-navigation {
-		justify-self: end;
-		align-self: start;
+		width: 100%;
+		justify-content: center;
 	}
 
-	.site-description {
-		order: 3;
-		grid-column-start: 1;
-		grid-column-end: 3;
-		margin-top: 1rem;
-	}
-	.site-description p {
-		max-width: 100%;
+	.data-capa {
+		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
+		padding: 0 .5rem 0 1rem;
 	}
 }
 
@@ -1624,10 +1561,6 @@ table.dataTable-table tr:nth-child(even) {
 	.hfeed .orbita-ranking,
 	.not-found {
 		padding: 2rem 0;
-	}
-
-	.data-capa {
-		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 	}
 
 	.blog article.category-aplicativos {
@@ -1707,7 +1640,6 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: 0;
 		text-align: left;
 	}
-
 	.site-footer .search-form,
 	input[type="search"].search-field {
 		max-width: 100%;
@@ -1825,7 +1757,6 @@ table.dataTable-table tr:nth-child(even) {
 
 #dark-mode-toggle {
 	background: transparent;
-	margin: 0 0 0 1rem;
 	padding: 0;
 	display: flex;
 	align-items: center;
@@ -1874,11 +1805,7 @@ table.dataTable-table tr:nth-child(even) {
 
 .menu-toggle-icon {
 	cursor: pointer;
-	border-radius: var(--borda-curva);
 	display: block;
-	padding: 0.9rem 0.9rem 1rem 1rem;
-	width: 100%;
-	height: 100%;
 }
 
 .menu-toggle-icon img {

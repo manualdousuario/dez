@@ -33,13 +33,13 @@
 			if ( is_front_page() && is_home() ) {
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo.svg" width="49" height="56" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
 			} else {
 				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo.svg" width="49" height="56" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></p>
 				<?php
 			}
@@ -47,6 +47,12 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
+			<ul id="primary-menu" class="menu nav-menu">
+				<li class="menu-item"><a href="/apoie/">Apoie</a></li>
+				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
+				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
+				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
+			</ul>
 			<!-- user-menu -->
 			<?php
 				// Custom menu configuration.
@@ -128,8 +134,4 @@
 					</li>
 				</ul>
 		</nav><!-- #site-navigation -->
-
-		<div class="site-description">
-			<p>Olá! Este é o <strong>Manual do Usuário</strong>, um blog de tecnologia <a href="/sobre/">diferente</a> escrito por mim, <a href="https://rodrigo.ghed.in/">Rodrigo Ghedin</a>. Também temos <a href="/orbita/">um fórum</a>. Siga a <a href="/acompanhe/">newsletter</a>. Se puder, <a href="/apoie/">apoie</a>. Fale comigo <a href="mailto:ghedin@manualdousuario.net">por e-mail</a>.</p>
-		</div><!-- #site-description -->
 	</header><!-- #masthead -->
