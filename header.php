@@ -48,7 +48,7 @@
 
 		<nav id="site-navigation" class="main-navigation">
 			<ul id="primary-menu" class="menu nav-menu">
-				<li class="menu-item"><a href="/apoie/">Apoie</a></li>
+				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
