@@ -600,7 +600,7 @@ p.site-title {
 .main-navigation ul {
 	display: flex;
 	list-style: none;
-	align-items: center;
+	align-items: end;
 	margin: 0;
 	gap: 1.25rem;
 }
