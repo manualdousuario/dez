@@ -522,7 +522,7 @@ article.hentry,
 
 .hfeed article.hentry,
 .hfeed .orbita-manual {
-	margin: 0 0 6rem;
+	margin: 0 0 5rem;
 	padding: 1rem;
 }
 
@@ -572,10 +572,8 @@ article.hentry li:last-child {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: end;
+	align-items: center;
 	margin: 1rem 0 6rem;
-	padding-bottom: 2rem;
-	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 h1.site-title,
@@ -600,7 +598,6 @@ p.site-title {
 .main-navigation ul {
 	display: flex;
 	list-style: none;
-	align-items: end;
 	margin: 0;
 	gap: 1.25rem;
 }
@@ -608,6 +605,53 @@ p.site-title {
 .main-navigation li {
 	position: relative;
 	margin: 0;
+}
+
+ul.nav-menu {
+	padding: .75rem 1.25rem;
+	background-color: var(--cor-caixas);
+	border-radius: var(--borda-curva);
+}
+
+#secondary-menu,
+#dark-mode-toggle {
+	background: transparent;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+#dark-mode-toggle li:first-child {
+	padding: 0;
+	margin: 0;
+}
+
+#dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
+	background-size: cover;
+	display: block;
+	height: 24px;
+	width: 24px;	
+	overflow: hidden;
+	text-indent: -9999px;
+	white-space: nowrap;
+
+}
+
+[data-theme="dark"] #dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
+	filter: invert();
+}
+
+.main-navigation a,
+.main-navigation a:focus,
+.main-navigation a:visited {
+	color: var(--cor-link-meta);
+}
+.main-navigation a:hover {
+	color: var(--cor-link-meta-est);
 }
 
 /* Capa e arquivos
@@ -1026,8 +1070,7 @@ a.comment-link {
 .site-footer {
 	margin: 6rem auto 0;
  	text-align: center;
- 	border-top: 1px dashed var(--cor-bordas);
-	padding: 2rem 0 0;
+	padding: 0;
 }
 .page-id-20907 .site-footer {
 	display: inline-block;
@@ -1536,6 +1579,16 @@ table.dataTable-table tr:nth-child(even) {
 		justify-content: center;
 	}
 
+	ul.nav-menu {
+		padding: 0;
+		align-items: center;
+		background-color: transparent;
+	}
+	.main-navigation,
+	.main-navigation ul {
+		gap: 1rem;
+	}
+
 	.data-capa {
 		border-radius: 0 var(--borda-curva) var(--borda-curva) 0;
 		padding: 0 .5rem 0 1rem;
@@ -1750,40 +1803,6 @@ table.dataTable-table tr:nth-child(even) {
 	[data-theme="dark"] .category-aplicativos p:first-child {
 		background-color: hsl(224, 100%, 7.5%);
 	}
-}
-
-/* Seletor modo escuro
---------------------------------------------- */
-
-#dark-mode-toggle {
-	background: transparent;
-	padding: 0;
-	display: flex;
-	align-items: center;
-}
-
-#dark-mode-toggle li:first-child {
-	padding: 0;
-	margin: 0;
-}
-
-#dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
-	background-size: cover;
-	display: block;
-	height: 24px;
-	width: 24px;	
-	overflow: hidden;
-	text-indent: -9999px;
-	white-space: nowrap;
-
-}
-
-[data-theme="dark"] #dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
-	filter: invert();
 }
 
 /*--------------------------------------------------------------
