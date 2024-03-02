@@ -574,7 +574,7 @@ article.hentry li:last-child {
 	justify-content: space-between;
 	align-items: end;
 	margin: 1rem 0 6rem;
-	padding-bottom: 1rem;
+	padding-bottom: 2rem;
 	border-bottom: 1px dashed var(--cor-bordas);
 }
 
