@@ -600,6 +600,7 @@ p.site-title {
 	list-style: none;
 	margin: 0;
 	gap: 1.25rem;
+	align-items: center;
 }
 
 .main-navigation li {
@@ -619,6 +620,10 @@ ul.nav-menu {
 	padding: 0;
 	display: flex;
 	align-items: center;
+}
+#dark-mode-toggle,
+li.menu-rss {
+	margin-left: -.75rem;
 }
 
 #dark-mode-toggle li:first-child {
@@ -1581,7 +1586,6 @@ table.dataTable-table tr:nth-child(even) {
 
 	ul.nav-menu {
 		padding: 0;
-		align-items: center;
 		background-color: transparent;
 	}
 	.main-navigation,
