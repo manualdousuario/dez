@@ -93,6 +93,7 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
+				// /* CC-BY https://www.svgrepo.com/svg/532362/user */
  				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
  				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
