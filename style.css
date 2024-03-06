@@ -522,7 +522,7 @@ article.hentry,
 
 .hfeed article.hentry,
 .hfeed .orbita-manual {
-	margin: 0 0 5rem;
+	margin: 0 0 7rem;
 	padding: 1rem;
 }
 
@@ -573,7 +573,7 @@ article.hentry li:last-child {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 1rem 0 6rem;
+	margin: 1rem 0 8rem;
 }
 
 h1.site-title,
@@ -1073,7 +1073,7 @@ a.comment-link {
 --------------------------------------------- */
 
 .site-footer {
-	margin: 6rem auto 0;
+	margin: 8rem auto 0;
  	text-align: center;
 	padding: 0;
 }
