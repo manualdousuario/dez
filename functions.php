@@ -88,6 +88,7 @@ add_theme_support(
 		'aside',
 		'quote',
 		'image',
+		'link',
 	)
 );
 

@@ -860,19 +860,15 @@ div.ctx-editor p:last-child {
 /* Post formats
 --------------------------------------------- */
 
-article.format-aside .entry-meta {
+article.format-aside .entry-meta,
+article.format-link .entry-meta {
 	margin-bottom: 1.35rem;
 }
-article.format-aside .entry-title {
-	display: none;
-}
 
-.format-link .entry-content blockquote p:first-child:before,
-.format-link .entry-header,
-.format-link .byline,
-.format-image h2.entry-title,
-.format-image h1.entry-title {
-	display:none
+article.format-aside .entry-title,
+article.format-link .entry-title,
+article.format-image .entry-title {
+	display: none;
 }
 
 .hfeed .format-quote h2.entry-title,
@@ -905,6 +901,27 @@ article.format-aside .entry-title {
 
 .format-quote .entry-content p:first-child {
 	margin-left: 3.5rem;
+}
+
+.format-link p:last-child {
+	display: grid; 
+  grid-template-columns: 2rem 1fr; 
+  grid-template-rows: 1fr; 
+	background-color: var(--cor-caixas);
+	padding: .75rem 1rem;
+	border-radius: var(--borda-curva);
+	line-height: 150%;
+}
+.format-link p:last-child:before {
+	content: '🔗';
+	display: block;
+	position: relative;
+	margin-top: 2px;
+}
+.format-link p:last-child span {
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+	grid-column: 2 / 3;
 }
 
 .blog article.category-aplicativos {
