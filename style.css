@@ -846,11 +846,21 @@ div.ctx-editor p:last-child {
 }
 
 /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
-.page-id-39568 .entry-title {
+.page-id-39568 .entry-title,
+.page-id-20602 .entry-title,
+.page-id-19958 .entry-title,
+.page-id-6971 .entry-title,
+.page-id-33255 .entry-title,
+.page-id-25504 .entry-title {
 	display:none;
 }
 
-.page-id-39568 .entry-content p:first-child {
+.page-id-39568 .entry-content p:first-child,
+.page-id-20602 .entry-content p:first-child,
+.page-id-19958 .entry-content p:first-child,
+.page-id-6971 .entry-content p:first-child,
+.page-id-33255 .entry-content p:first-child,
+.page-id-25504 .entry-content p:first-child {
 	font-size: var(--fs-3);
 	font-family: var(--ff-serif);
 	line-height: 1.4;
