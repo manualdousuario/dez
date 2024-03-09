@@ -1653,7 +1653,8 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 1rem;
 	}
 
-	.category-aplicativos p:first-child {
+	.category-aplicativos p:first-child,
+	.category-aplicativos figure:first-child {
 		display: inline-block;
 		background-color: hsl(226, 100%, 96%);
 		width: 100%;
@@ -1661,7 +1662,8 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 1rem 0;
 		border-radius: var(--borda-curva);
 	}
-	.category-aplicativos p:first-child img {
+	.category-aplicativos p:first-child img,
+	.category-aplicativos figure:first-child picture {
 		margin: 0 auto;
 		float: initial;
 	}
@@ -1831,7 +1833,8 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 @media (max-width: 620px) {
-	[data-theme="dark"] .category-aplicativos p:first-child {
+	[data-theme="dark"] .category-aplicativos p:first-child,
+	[data-theme="dark"] .category-aplicativos figure:first-child {
 		background-color: hsl(224, 100%, 7.5%);
 	}
 }
