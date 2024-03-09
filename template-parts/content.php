@@ -18,7 +18,7 @@ endif; ?>
 		<div class="entry-meta">
 			<?php if ( is_single() || is_archive() ) :
 				echo the_time( 'j/n/y, G\hi' );
-			elseif ( has_post_format( array('aside', 'quote') ) ) : 
+			elseif ( has_post_format( array('aside', 'quote', 'link') ) ) : 
 				echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="aside-link">';
 				echo get_the_time( 'G\hi' );
 				echo '</a>';

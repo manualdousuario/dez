@@ -33,13 +33,13 @@
 			if ( is_front_page() && is_home() ) {
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo.svg" width="49" height="56" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
 			} else {
 				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo.svg" width="49" height="56" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
 				</a></p>
 				<?php
 			}
@@ -47,6 +47,14 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
+			<ul id="primary-menu" class="menu nav-menu">
+				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
+				<!-- CC-BY https://www.svgrepo.com/svg/532720/square-rss -->
+				<li class="menu-item menu-rss"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
+				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
+				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
+				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
+			</ul>
 			<!-- user-menu -->
 			<?php
 				// Custom menu configuration.
@@ -87,6 +95,7 @@
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
 				$menu_html .= '<ul><li class="page_item page_item_has_children">';
+				// CC-BY https://www.svgrepo.com/svg/532362/user
  				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
  				$menu_html .= '<ul id="menu-toggle-list" class="children">';
 
@@ -127,9 +136,8 @@
 						<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>
 					</li>
 				</ul>
+				<!--<div class="rss-menu">
+					
+				</div>-->
 		</nav><!-- #site-navigation -->
-
-		<div class="site-description">
-			<p>Olá! Este é o <strong>Manual do Usuário</strong>, um blog de tecnologia <a href="/sobre/">diferente</a> escrito por mim, <a href="https://rodrigo.ghed.in/">Rodrigo Ghedin</a>. Também temos <a href="/orbita/">um fórum</a>. Siga a <a href="/acompanhe/">newsletter</a>. Se puder, <a href="/apoie/">apoie</a>. Fale comigo <a href="mailto:ghedin@manualdousuario.net">por e-mail</a>.</p>
-		</div><!-- #site-description -->
 	</header><!-- #masthead -->

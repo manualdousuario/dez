@@ -41,11 +41,13 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.8 - February 23 2024 =
-* Altera logo e cabeçalho
-* Diminui margens entre elementos (leiaute mais denso)
-* Remove itens agora redundantes do rodapé
-* Altera cor do link “Continue lendo” (`<!--more-->`)
+= 2.8 - March 08 2024 =
+* Acrescenta suporte a post format `link`
+* Aumenta densidade do leiaute
+* Reverte cores dos links no modo claro
+* Simplifica menu principal
+* Joga para baixo destaques do Órbita na capa
+* Estende cabeçalho especial para mais páginas
 
 = 2.7 - February 07 2024 =
 * Corrige alinhamento do botão “Apoie”
