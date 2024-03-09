@@ -579,7 +579,7 @@ p.site-title {
 }
 
 ul.nav-menu {
-	padding: .75rem 1.25rem;
+	padding: .5rem 1.25rem;
 	background-color: var(--cor-caixas);
 	border-radius: var(--borda-curva);
 }
