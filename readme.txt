@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.8
+Stable tag: 2.8.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -41,7 +41,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 2.8 - March 08 2024 =
+= 2.8.1 - March 09 2024 =
 * Acrescenta suporte a post format `link`
 * Aumenta densidade do leiaute
 * Reverte cores dos links no modo claro
