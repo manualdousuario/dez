@@ -536,38 +536,6 @@ article.hentry li:last-child {
 /* Cabeçalho
 --------------------------------------------- */
 
-.dfad_pos_1 {
-	background-color: var(--cor-caixas);
-	max-width: 100%;
-	text-align: center;
-	padding: 1rem;
-	box-shadow: inset 0 -10px 20px var(--cor-bordas);
-}
-
-.dfad_pos_1 p {
-	margin: 0;
-}
-
-.dfad_pos_1 span {
-	font-size: 75%;
-	font-weight: 600;
-	padding: .15rem .25rem;
-	text-transform: uppercase;
-	color: hsl(120, 100%, 25%);
-	border: 2px solid hsl(120, 100%, 25%);
-	border-radius: var(--borda-curva);
-}
-
-.dfad_pos_1 span {
-	color: hsl(120, 90%, 19%);
-	border-color: hsl(120, 90%, 19%);	
-}
-
-.dfad_pos_1 span.calhau {
-	color: hsl(0, 96%, 33%);
-	border-color: hsl(0, 96%, 33%);
-}
-
 .site-header {
 	display: flex;
 	flex-wrap: wrap;
@@ -595,7 +563,9 @@ p.site-title {
 	gap: 1.25rem;
 }
 
-.main-navigation ul {
+.main-navigation ul,
+#secondary-menu,
+#dark-mode-toggle {
 	display: flex;
 	list-style: none;
 	margin: 0;
@@ -614,14 +584,6 @@ ul.nav-menu {
 	border-radius: var(--borda-curva);
 }
 
-#secondary-menu,
-#dark-mode-toggle {
-	background: transparent;
-	padding: 0;
-	display: flex;
-	align-items: center;
-}
-#dark-mode-toggle,
 li.menu-rss {
 	margin-left: -.75rem;
 }
@@ -1596,7 +1558,7 @@ table.dataTable-table tr:nth-child(even) {
 /*--------------------------------------------------------------
 # Media queries
 --------------------------------------------------------------*/
-@media (max-width: 670px) {
+@media (max-width: 766px) {
 	.site-header {
 		justify-content: center;
 		padding: 0 0 1rem 0;
@@ -1609,15 +1571,13 @@ table.dataTable-table tr:nth-child(even) {
 	.main-navigation {
 		width: 100%;
 		justify-content: center;
+		background-color: var(--cor-caixas);
+		padding: .5rem 0;
 	}
 
 	ul.nav-menu {
 		padding: 0;
 		background-color: transparent;
-	}
-	.main-navigation,
-	.main-navigation ul {
-		gap: 1rem;
 	}
 
 	.data-capa {
@@ -1627,6 +1587,14 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 @media (max-width: 620px) {
+	.main-navigation,
+	.main-navigation ul {
+		gap: .75rem;
+	}
+	li.menu-rss {
+		margin-left: -.25rem;
+	}
+
 	.search-form {
 		max-width: 80%;
 	}
@@ -1876,14 +1844,14 @@ table.dataTable-table tr:nth-child(even) {
 	display: block;
 	position: absolute;
 	left: auto;
-	right: 0;
+	right: -100%;
 	width: max-content;
 	max-height: 0;
-	margin-top: 1rem;
+	margin-top: 1.5rem;
 	user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
-	border-radius: 6px;
+	border-radius: var(--borda-curva);
 }
 
 #menu-toggle:checked ~ #menu-toggle-list {
