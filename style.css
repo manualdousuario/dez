@@ -1668,6 +1668,12 @@ table.dataTable-table tr:nth-child(even) {
 		float: initial;
 	}
 
+	.archive .format-quote h2.entry-title,
+	.hfeed .format-quote h2.entry-title,
+	.single .format-quote h1.entry-title {
+		font-size: var(--fs-2);
+	}
+
 	.format-quote .entry-content p:first-child {
 		margin-left: 0;
 	}
