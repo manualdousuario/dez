@@ -896,21 +896,6 @@ article.format-image .entry-title {
 	grid-column: 2 / 3;
 }
 
-.blog article.category-aplicativos {
-	margin: 0 1rem 6rem;
-	background-color: #f9f4ff;
-	border-radius: var(--borda-curva);
-}
-.blog article.category-aplicativos .entry-header,
-.blog article.category-aplicativos .entry-content,
-.blog article.category-aplicativos .entry-footer {
-	padding: 0;
-}
-
-.blog article.category-aplicativos {
-	background-color: hsl(224, 100%, 97%);
-}
-
 .hfeed article.type-podcast h2.entry-title {
 	font-size: var(--fs-2);
 }
@@ -1615,12 +1600,6 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 2rem 0;
 	}
 
-	.blog article.category-aplicativos {
-		border-radius: 0;
-		margin: 0 0 6rem;
-		padding: 1rem;
-	}
-
 	.category-aplicativos p:first-child,
 	.category-aplicativos figure:first-child {
 		display: inline-block;
@@ -1795,10 +1774,6 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .podcast_player {
 	background-color: #100024;
-}
-
-[data-theme="dark"] .blog article.category-aplicativos {
-	background-color: hsl(224, 100%, 9%);
 }
 
 [data-theme="dark"] .top:before {
