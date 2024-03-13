@@ -1610,7 +1610,8 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: var(--borda-curva);
 	}
 	.category-aplicativos p:first-child img,
-	.category-aplicativos figure:first-child picture {
+	.category-aplicativos figure:first-child picture,
+	.category-aplicativos .alignright {
 		margin: 0 auto;
 		float: initial;
 	}
