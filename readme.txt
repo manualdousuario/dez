@@ -44,6 +44,8 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 = 2.9 - March 09 2024 =
 * Adiciona classe `.link` ao link especial do post format Link
 * Melhorias no menu principal em telas pequenas
+* Altera função para remover todos os estilos 
+adicionados pelo plugin ActivityPub
 
 = 2.8.1 - March 09 2024 =
 * Acrescenta suporte a post format `link`
