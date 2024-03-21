@@ -118,11 +118,7 @@ function dez_remover_estilos_dashboard() {
 }
 add_action( 'admin_enqueue_scripts', 'dez_remover_estilos_dashboard', 999 );
 
-function remove_wp_block_library_css(){
-	wp_dequeue_style( 'activitypub-followers-style' );
-	wp_dequeue_style( 'activitypub-follow-me-style' );
-} 
-add_action( 'wp_print_styles', 'remove_wp_block_library_css', 100 );
+add_filter( 'activitypub_site_supports_blocks', '__return_false' );
 
 /**
  * Impede o WordPress de gerar novos tamanhos de imagens.

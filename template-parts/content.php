@@ -37,6 +37,8 @@ endif; ?>
 	<?php
 	if ( is_singular() ) :
 		the_title( '<h1 class="entry-title">', '</h1>' );
+	elseif ( has_post_format( 'quote' ) && ! is_singular() ) : 
+		the_title( '<h2 class="entry-title">', '</h2>' );
 	elseif ( 'podcast' === get_post_type() && ! is_singular() ) : 
 		the_title( '<h2 class="entry-title">Podcast: <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 	else :

@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.8.1
+Stable tag: 2.9
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,13 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.9 - March 09 2024 =
+* Adiciona classe `.link` ao link especial do post format Link
+* Melhorias no menu principal em telas pequenas
+* Altera função para remover todos os estilos 
+adicionados pelo plugin ActivityPub
+* Remove cor de fundo diferente para `.category-aplicativos`
 
 = 2.8.1 - March 09 2024 =
 * Acrescenta suporte a post format `link`
