@@ -11,11 +11,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<div class="entry-meta">
+		<div class="entry-meta link-alt">
 			<?php the_time( 'j/n/y, G\hi' ); ?>
 			<?php if ( comments_open() || get_comments_number() ) :
 				echo '&middot;&nbsp;';
-				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link', '' );
+				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link link-alt', '' );
 			endif; ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
 				<span class="author-<?php the_author_meta('ID'); ?>">&middot;&nbsp;por <?php echo get_the_author(); ?></span>

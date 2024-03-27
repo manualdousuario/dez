@@ -25,21 +25,19 @@
 <?php wp_body_open(); ?>
 	<?php echo do_shortcode( '[sc name="anuncio-global"]' ); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
-
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
 			if ( is_front_page() && is_home() ) {
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
 				</a></h1>
 				<?php
 			} else {
 				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="256" height="82" alt="<?php bloginfo( 'name' ); ?>">
+					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
 				</a></p>
 				<?php
 			}
@@ -47,7 +45,7 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<ul id="primary-menu" class="menu nav-menu">
+			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
 				<!-- CC-BY https://www.svgrepo.com/svg/532720/square-rss -->
 				<li class="menu-item menu-rss"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
@@ -55,6 +53,8 @@
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 			</ul>
+		</nav>
+		<nav class="icons-navigation main-navigation">
 			<!-- user-menu -->
 			<?php
 				// Custom menu configuration.
@@ -94,10 +94,10 @@
 				);
 
 				$menu_html  = '<div id="secondary-menu" class="menu-item">';
-				$menu_html .= '<ul><li class="page_item page_item_has_children">';
+				$menu_html .= '<ul style="list-style: none; margin: 0; padding: 0"><li class="page_item page_item_has_children">';
 				// CC-BY https://www.svgrepo.com/svg/532362/user
  				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
- 				$menu_html .= '<ul id="menu-toggle-list" class="children">';
+ 				$menu_html .= '<ul id="menu-toggle-list" class="children link-alt">';
 
 				// Profile/Sign in items.
 				$menu_html .= '<li class="page_item">';
