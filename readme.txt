@@ -41,7 +41,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.0 - March 27 2024 =
+= 3.0 - April 2 2024 =
 * Correção da chamada do littlefoot.js no `functions.php`
 * Inclusão de Markdown nos comentários via `functions.php`
 * Refatoração e simplificação do `style.css`
@@ -50,6 +50,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Inclusão de novos links no rodapé
 * Leiaute simplificado das caixas de destaque (`ctx-*`)
 * Remoção da família de fontes sem serifa
+* Remove gambiarra do formato AVIF do `functions.php`
 
 = 2.9 - March 09 2024 =
 * Adiciona classe `.link` ao link especial do post format Link

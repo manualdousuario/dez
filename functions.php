@@ -815,15 +815,6 @@ function crunchify_enqueue_scripts_styles() {
 }
 
 /**
- * Adiciona suporte a imagens no formato AVIF.
- */
-function filter_allowed_mimes_for_avif( $mime_types ) {
-	$mime_types['avif'] = 'image/avif';
-	return $mime_types;
-}
-add_filter( 'upload_mimes', 'filter_allowed_mimes_for_avif', 1000, 1 );
-
-/**
  * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
  */
 add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
