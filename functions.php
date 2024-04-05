@@ -331,7 +331,7 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-editor"><p>Antes de comentar, <a href="/doc-comentarios/">leia as orientações</a>. No Órbita, leia o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a>.</p><p><a href="/cadastro/">Cadastre-se</a> para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
+	$defaults['comment_notes_before'] = '<div class="comment-form-alert"><p>Antes de comentar, <a href="/doc-comentarios/">leia as orientações</a>. No Órbita, leia o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a>. <a href="/cadastro/">Cadastre-se</a> para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
@@ -485,7 +485,7 @@ function dez_littlefoot_inline_script() {
 			}
 			});
 			";
-			wp_add_inline_script( 'dez-littlefoot', $inline_script, array( 'strategy' => 'async' ) );
+			wp_add_inline_script( 'dez-littlefoot', $inline_script, 'after' );
 		}
 	}
 	add_action( 'wp_enqueue_scripts', 'dez_littlefoot_inline_script' );
@@ -815,15 +815,6 @@ function crunchify_enqueue_scripts_styles() {
 }
 
 /**
- * Adiciona suporte a imagens no formato AVIF.
- */
-function filter_allowed_mimes_for_avif( $mime_types ) {
-	$mime_types['avif'] = 'image/avif';
-	return $mime_types;
-}
-add_filter( 'upload_mimes', 'filter_allowed_mimes_for_avif', 1000, 1 );
-
-/**
  * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
  */
 add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
@@ -840,3 +831,18 @@ function dez_dark_mode_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
+
+/**
+ * Adiciona suporte a Markdown nos comentários
+ * Via https://akzhy.com/blog/markdown-comments-in-wordpress
+ */
+function comment_to_markdown( $comment_text, $comment = null ) {
+    include_once "parsedown.php";
+    
+    $Parsedown = new Parsedown();
+    $Parsedown->setSafeMode(true);
+    
+    $comment_text = $Parsedown->text($comment_text);
+    return $comment_text;
+}
+add_filter( 'comment_text', 'comment_to_markdown', 5, 2 );

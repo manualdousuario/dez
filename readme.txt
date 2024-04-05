@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 2.9
+Stable tag: 3.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,17 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.0 - April 2 2024 =
+* Correção da chamada do littlefoot.js no `functions.php`
+* Inclusão de Markdown nos comentários via `functions.php`
+* Refatoração e simplificação do `style.css`
+* Novo leiaute para o cabeçalho em telas pequenas
+* Leves mudanças na página de erro (`404.php`)
+* Inclusão de novos links no rodapé
+* Leiaute simplificado das caixas de destaque (`ctx-*`)
+* Remoção da família de fontes sem serifa
+* Remove gambiarra do formato AVIF do `functions.php`
 
 = 2.9 - March 09 2024 =
 * Adiciona classe `.link` ao link especial do post format Link

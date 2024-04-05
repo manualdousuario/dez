@@ -24,7 +24,7 @@ get_header();
 		if ( is_home() && ! is_front_page() ) :
 			?>
 		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			<h1 class="page-title"><?php single_post_title(); ?></h1>
 		</header>
 		<?php
 	endif;
@@ -33,38 +33,33 @@ get_header();
 	while ( have_posts() ) :
 		the_post();
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+		get_template_part( 'template-parts/content', get_post_type() );
 
-				if ( ! is_paged() && 1 == $count ) :
-					?>
-					<div class="orbita-manual">
-						<h2>Destaques do Órbita</h2>
-						<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
-						<footer class="entry-footer">
-							<a href="/orbita/">Todas as conversas &raquo;</a>
-						</footer>
-					</div>
-				</div>
-				<?php
-			endif;
-
-			$count++;
-
-		endwhile;
-
-		the_posts_navigation();
-
-	else :
-
-		get_template_part( 'template-parts/content', 'none' );
-
+		if ( ! is_paged() && 1 == $count ) :
+			?>
+			<div class="orbita-manual">
+				<h2>Destaques do Órbita</h2>
+				<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
+				<footer class="entry-footer">
+					<a href="/orbita/">Todas as conversas &raquo;</a>
+				</footer>
+			</div>
+		</div>
+		<?php
 	endif;
-	?>
+
+	$count++;
+
+endwhile;
+
+the_posts_navigation( array( 'class' => 'link-alt', ) );
+
+else :
+
+	get_template_part( 'template-parts/content', 'none' );
+
+endif;
+?>
 
 </main><!-- #main -->
 
