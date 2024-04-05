@@ -1173,6 +1173,7 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.icons-navigation {
 		order: 2;
+		margin-left: 1rem;
 	}
 	#site-navigation {
 		order: 3;
