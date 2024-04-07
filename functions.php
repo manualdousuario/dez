@@ -780,14 +780,6 @@ if ( defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
 }
 
 /**
- * Adiciona suporte a Markdown (via Jetpack) ao Órbita.
- */
-function dez_markdown_custom_post() {
-	add_post_type_support( 'orbita_post', 'wpcom-markdown' ); 
-}
-add_action('init', 'dez_markdown_custom_post');
-
-/**
  * Aumenta o prazo de validade do login para 1 mês (sem marcar o “lembrar-me”) e 1 ano (marcando).
  */
 function dez_auth_cookie_expiration( $expiration, $user_id, $remember ) {
@@ -831,18 +823,3 @@ function dez_dark_mode_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
-
-/**
- * Adiciona suporte a Markdown nos comentários
- * Via https://akzhy.com/blog/markdown-comments-in-wordpress
- */
-function comment_to_markdown( $comment_text, $comment = null ) {
-    include_once "parsedown.php";
-    
-    $Parsedown = new Parsedown();
-    $Parsedown->setSafeMode(true);
-    
-    $comment_text = $Parsedown->text($comment_text);
-    return $comment_text;
-}
-add_filter( 'comment_text', 'comment_to_markdown', 5, 2 );

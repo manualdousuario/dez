@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.0
+Stable tag: 3.0.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -40,6 +40,10 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.0.1 - April 7 2024 =
+* Remove snippets de Markdown em comentáriso do `functions.php` 
+devido a falha na renderização de HTML nos comentários.
 
 = 3.0 - April 2 2024 =
 * Correção da chamada do littlefoot.js no `functions.php`
