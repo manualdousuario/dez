@@ -270,7 +270,6 @@ a.more-link,
 a.comment-reply-link {
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	text-transform: capitalize;
 	line-height: 1.4;
 }
 a.comment-metadata {
