@@ -12,10 +12,6 @@
 ?>
 
 <footer id="colophon" class="site-footer">
-	<?php if ( ! is_404() ) :
-		get_search_form(); 
-	endif; ?>
-	
 	<p>
 		<a href="mailto:ghedin@manualdousuario.net">Contato</a> &middot; <a href="/patrocine/">Patrocine</a></p>
 		<p>Associado à <a href="https://ajor.org.br/">Ajor</a> &middot; Apoio de <a href="https://www.teramundi.com/">Teramundi</a><br />

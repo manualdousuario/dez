@@ -26,39 +26,34 @@
 	<?php echo do_shortcode( '[sc name="anuncio-global"]' ); ?>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
+		<!-- Logo -->
 		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) {
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+		<?php
+			$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
+		?>
+			<<?php echo esc_html( $title_tag ); ?> class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
-				</a></h1>
-				<?php
-			} else {
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
-				</a></p>
-				<?php
-			}
-			?>
-		</div><!-- .site-branding -->
+				</a>
+			</<?php echo esc_html( $title_tag ); ?>>
+		</div>
 
+		<!-- Text Navigation -->
 		<nav id="site-navigation" class="main-navigation">
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
-				<!-- CC-BY https://www.svgrepo.com/svg/532720/square-rss -->
-				<li class="menu-item menu-rss"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
+				<li class="menu-item"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 			</ul>
 		</nav>
+
+		<!-- Icon Navigation -->
 		<nav class="icons-navigation main-navigation">
-			<!-- user-menu -->
 			<?php
-				// Custom menu configuration.
-				$custom_items = array(
+				// Manual menu configuration.
+				$manual_items = array(
 					array(
 						'title' => 'PC do Manual ↗',
 						'url'   => 'https://pcdomanual.com',
@@ -74,6 +69,10 @@
 					array(
 						'title' => 'Clube de descontos',
 						'url'   => '/clube-de-descontos/',
+					),
+					array(
+						'title' => 'Mapa do Manual',
+						'url'   => '/arquivo/',
 					),
 				);
 
@@ -93,51 +92,50 @@
 					),
 				);
 
-				$menu_html  = '<div id="secondary-menu" class="menu-item">';
-				$menu_html .= '<ul style="list-style: none; margin: 0; padding: 0"><li class="page_item page_item_has_children">';
-				// CC-BY https://www.svgrepo.com/svg/532362/user
- 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
- 				$menu_html .= '<ul id="menu-toggle-list" class="children link-alt">';
+				$icon_nav  = '<div id="secondary-menu" class="menu-item">';
+				// User Navigation.
+				$icon_nav .= '<ul>';
+				$icon_nav .= '<li class="page_item page_item_has_children">';
+ 				$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
+ 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="Menu principal" alt="Menu principal"></a></label>';
+ 				$icon_nav .= '<ul id="menu-toggle-list" class="children link-alt">';
 
 				// Profile/Sign in items.
-				$menu_html .= '<li class="page_item">';
+				$icon_nav .= '<li class="page_item">';
 				if ( is_user_logged_in() ) {
-					$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
+					$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
 				} else {
-					$menu_html .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+					$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				}
-				$menu_html .= '</li>';
+				$icon_nav .= '</li>';
 
 				// Sign up/Sign out items.
 				if ( is_user_logged_in() ) {
 					// Órbita items.
 					foreach ( $orbita_items as $orbita_item ) {
-						$menu_html .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
+						$icon_nav .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
 					}
-					$menu_html .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+					$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
 				} else {
-					$menu_html .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
+					$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
 				}
-				$menu_html .= '<li class="divider"></li>';
+				$icon_nav .= '<li class="divider"></li>';
 
-				$menu_html .= '</li>';
+				$icon_nav .= '</li>';
 
-				// Custom items.
-				foreach ( $custom_items as $custom_item ) {
-					$menu_html .= '<li class="page_item"><a href="' . esc_url( $custom_item['url'] ) . '">' . esc_html( $custom_item['title'] ) . '</a></li>';
+				// Manual items.
+				foreach ( $manual_items as $manual_item ) {
+					$icon_nav .= '<li class="page_item"><a href="' . esc_url( $manual_item['url'] ) . '">' . esc_html( $manual_item['title'] ) . '</a></li>';
 				}
 
-				$menu_html .= '</ul></li></ul></div>';
-				echo $menu_html;
+				$icon_nav .= '</ul>';
+				$icon_nav .= '</li>';
+				$icon_nav .= '</ul>';
+
+				// Mode.
+				$icon_nav .= '<ul id="dark-mode-toggle"><li><a name="Alternar Tema" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a></li></ul></div>';
+
+				echo $icon_nav;
 				?>
-
-				<ul id="dark-mode-toggle">
-					<li>
-						<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>
-					</li>
-				</ul>
-				<!--<div class="rss-menu">
-					
-				</div>-->
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</nav>
+	</header>
