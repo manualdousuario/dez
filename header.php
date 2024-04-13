@@ -38,8 +38,22 @@
 			</<?php echo esc_html( $title_tag ); ?>>
 		</div>
 
-		<!-- Text Navigation -->
 		<nav id="site-navigation" class="main-navigation">
+			<!-- Search -->
+			<div id="search-container">
+				<?php 
+				$form = '<form role="search" method="get" class="search-form-header" action="' . home_url( '/' ) . '" >
+							<label>
+								<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
+								<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" />
+							</label>
+						</form>';
+
+				echo $form;
+				?>
+			</div>
+
+			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
 				<li class="menu-item"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
@@ -91,13 +105,16 @@
 						'url'   => '/orbita/meus-comentarios/',
 					),
 				);
+				// Search.
+				$icon_nav  = '<a class="search-icon" name="search-icon" title="Busca" onClick="searchHeader(event)"></a>';
 
-				$icon_nav  = '<div id="secondary-menu" class="menu-item">';
+				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
+
 				// User Navigation.
 				$icon_nav .= '<ul>';
 				$icon_nav .= '<li class="page_item page_item_has_children">';
  				$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
- 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="Menu principal" alt="Menu principal"></a></label>';
+ 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-principal" alt="Menu principal"></a></label>';
  				$icon_nav .= '<ul id="menu-toggle-list" class="children link-alt">';
 
 				// Profile/Sign in items.
@@ -131,9 +148,10 @@
 				$icon_nav .= '</ul>';
 				$icon_nav .= '</li>';
 				$icon_nav .= '</ul>';
+				$icon_nav .= '</div>';
 
 				// Mode.
-				$icon_nav .= '<ul id="dark-mode-toggle"><li><a name="Alternar Tema" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a></li></ul></div>';
+				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
 
 				echo $icon_nav;
 				?>

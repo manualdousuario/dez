@@ -361,14 +361,11 @@ ul.nav-menu {
 	padding: .5rem 1.25rem;
 	background-color: var(--cor-destaques);
 	border-radius: var(--med-borda);
+	width: 340px;
+	height: 42px;
 }
 
-#dark-mode-toggle li:first-child {
-	padding: 0;
-	margin: 0;
-}
-
-#dark-mode-toggle li a {
+#dark-mode-toggle {
 	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
 	background-size: cover;
 	display: block;
@@ -377,9 +374,11 @@ ul.nav-menu {
 	overflow: hidden;
 	text-indent: -9999px;
 	white-space: nowrap;
+	padding: 0;
+	margin: 0;
 }
 
-[data-theme="dark"] #dark-mode-toggle li a {
+[data-theme="dark"] #dark-mode-toggle {
 	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 	filter: invert();
 }
@@ -669,10 +668,6 @@ ol.children {
 	max-width: 100%;
 }
 
-.site-footer .search-form {
-	margin: 0 auto var(--med-salto-medio);
-}
-
 .top {
 	position: sticky;
 	display: block;
@@ -732,6 +727,30 @@ input[type="search"].search-field {
 }
 .search-form path:hover {
 	stroke: var(--cor-link-est);
+}
+
+.search-icon {
+	background-image: url('/wp-content/themes/dez/img/icon-search.svg');
+	background-size: cover;
+	display: block;
+	height: 24px;
+	width: 24px;
+	max-width: none;
+	cursor: pointer;
+}
+
+#search-container {
+	display: none;
+}
+
+#search-container form {
+	margin-bottom: 0;
+}
+
+#search-container input[type="search"].search-field {
+	width: 340px;
+	height: 42px;
+	padding-right: 0;
 }
 
 /* Páginas especiais
@@ -1162,7 +1181,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 670px) {
+@media (max-width: 696px) {
 	.site-header {
 		row-gap: var(--med-salto-pequeno);
 	}
@@ -1244,8 +1263,12 @@ table.dataTable-table tr:nth-child(even) {
 	.search-form {
 		max-width: 100%;
 	}
+}
 
-
+@media (max-width: 400px) {
+	.site-header {
+		justify-content: center;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -1269,6 +1292,7 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .site-title img,
 [data-theme="dark"] .gridicon,
 [data-theme="dark"] .menu-toggle-icon,
+[data-theme="dark"] .search-icon,
 [data-theme="dark"] a.comment-link {
 	filter: invert();
 	fill: unset;
