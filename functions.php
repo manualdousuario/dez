@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '2.1.3' );
+	define( '_S_VERSION', '3.0.2' );
 }
 
 /**
@@ -159,6 +159,11 @@ add_action(
 
 		wp_dequeue_style( 'stcr-style' );
 		wp_deregister_style( 'stcr-style' );
+
+		wp_dequeue_style( 'activitypub-followers-style' );
+		wp_deregister_style( 'activitypub-followers-style' );
+		wp_dequeue_style( 'activitypub-follow-me-style' );
+		wp_deregister_style( 'activitypub-follow-me-style' );
 
 		wp_dequeue_script( 'wp-polyfill-inert' );
 		wp_deregister_script( 'wp-polyfill-inert' );
@@ -823,3 +828,10 @@ function dez_dark_mode_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
+
+/**
+ * Aumenta quantidade de itens nos feeds dos podcasts.
+ */
+add_filter('ssp_feed_number_of_posts', function(){
+	return 999;
+});
