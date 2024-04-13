@@ -41,6 +41,12 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 3.0.2 - April 13 2024 =
+* Altera retorno de itens nos feeds dos podcasts (`functions.php`);
+* Corrige estilo do link “Todas as conversas” (Órbita) na capa (`index.php`);
+* Remove CSS inline do plugin ActivityPub (`functions.php`);
+* Remove `parsedown.php` (sem uso).
+
 = 3.0.1 - April 7 2024 =
 * Remove snippets de Markdown em comentáriso do `functions.php` 
 devido a falha na renderização de HTML nos comentários.

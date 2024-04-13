@@ -40,7 +40,7 @@ get_header();
 			<div class="orbita-manual">
 				<h2>Destaques do Órbita</h2>
 				<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
-				<footer class="entry-footer">
+				<footer class="entry-footer link-alt">
 					<a href="/orbita/">Todas as conversas &raquo;</a>
 				</footer>
 			</div>
