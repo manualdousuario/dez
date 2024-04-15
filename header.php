@@ -26,39 +26,55 @@
 	<?php echo do_shortcode( '[sc name="anuncio-global"]' ); ?>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
+		<!-- Logo -->
 		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) {
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+		<?php
+			$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
+		?>
+			<<?php echo esc_html( $title_tag ); ?> class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
-				</a></h1>
-				<?php
-			} else {
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
-				</a></p>
-				<?php
-			}
-			?>
-		</div><!-- .site-branding -->
+				</a>
+			</<?php echo esc_html( $title_tag ); ?>>
+		</div>
+
+		<?php // Search Checkbox Input. Required here due to the use of CSS selectors to alter the Text Menu and Search. ?>
+		<input type="checkbox" id="search-icon"/>
 
 		<nav id="site-navigation" class="main-navigation">
+			<!-- Search -->
+			<div id="search-container">
+				<?php 
+				$form = '<form role="search" method="get" class="search-form-header" action="' . home_url( '/' ) . '" >
+							<label>
+								<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
+								<input type="search" id="search-field" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" autofocus />
+							</label>
+						</form>';
+
+				echo $form;
+				?>
+			</div>
+
+			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
-				<!-- CC-BY https://www.svgrepo.com/svg/532720/square-rss -->
-				<li class="menu-item menu-rss"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
+				<li class="menu-item"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 			</ul>
 		</nav>
+
+		<!-- Icon Navigation -->
 		<nav class="icons-navigation main-navigation">
-			<!-- user-menu -->
 			<?php
-				// Custom menu configuration.
-				$custom_items = array(
+				// Manual menu configuration.
+				$manual_items = array(
+					array(
+						'title' => 'Mapa do Manual',
+						'url'   => '/arquivo/',
+					),
 					array(
 						'title' => 'PC do Manual ↗',
 						'url'   => 'https://pcdomanual.com',
@@ -93,51 +109,55 @@
 					),
 				);
 
-				$menu_html  = '<div id="secondary-menu" class="menu-item">';
-				$menu_html .= '<ul style="list-style: none; margin: 0; padding: 0"><li class="page_item page_item_has_children">';
-				// CC-BY https://www.svgrepo.com/svg/532362/user
- 				$menu_html .=  '<input type="checkbox" id="menu-toggle"/><label class="menu-toggle-icon" for="menu-toggle"><img src="/wp-content/themes/dez/img/icone-user.svg" alt="Menu principal" width="24" height="24" /></label>';
- 				$menu_html .= '<ul id="menu-toggle-list" class="children link-alt">';
+				// Search Label.
+ 				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
+
+				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
+
+				// User Navigation.
+				$icon_nav .= '<ul>';
+				$icon_nav .= '<li class="page_item page_item_has_children">';
+ 				$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
+ 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-usuario" alt="Menu do Usuário" title="Menu do Usuário"></a></label>';
+ 				$icon_nav .= '<ul id="menu-toggle-list" class="children link-alt">';
 
 				// Profile/Sign in items.
-				$menu_html .= '<li class="page_item">';
+				$icon_nav .= '<li class="page_item">';
 				if ( is_user_logged_in() ) {
-					$menu_html .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
+					$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
 				} else {
-					$menu_html .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+					$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				}
-				$menu_html .= '</li>';
+				$icon_nav .= '</li>';
 
 				// Sign up/Sign out items.
 				if ( is_user_logged_in() ) {
 					// Órbita items.
 					foreach ( $orbita_items as $orbita_item ) {
-						$menu_html .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
+						$icon_nav .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
 					}
-					$menu_html .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+					$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
 				} else {
-					$menu_html .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
+					$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
 				}
-				$menu_html .= '<li class="divider"></li>';
+				$icon_nav .= '<li class="divider"></li>';
 
-				$menu_html .= '</li>';
+				$icon_nav .= '</li>';
 
-				// Custom items.
-				foreach ( $custom_items as $custom_item ) {
-					$menu_html .= '<li class="page_item"><a href="' . esc_url( $custom_item['url'] ) . '">' . esc_html( $custom_item['title'] ) . '</a></li>';
+				// Manual items.
+				foreach ( $manual_items as $manual_item ) {
+					$icon_nav .= '<li class="page_item"><a href="' . esc_url( $manual_item['url'] ) . '">' . esc_html( $manual_item['title'] ) . '</a></li>';
 				}
 
-				$menu_html .= '</ul></li></ul></div>';
-				echo $menu_html;
+				$icon_nav .= '</ul>';
+				$icon_nav .= '</li>';
+				$icon_nav .= '</ul>';
+				$icon_nav .= '</div>';
+
+				// Mode.
+				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
+
+				echo $icon_nav;
 				?>
-
-				<ul id="dark-mode-toggle">
-					<li>
-						<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>
-					</li>
-				</ul>
-				<!--<div class="rss-menu">
-					
-				</div>-->
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</nav>
+	</header>

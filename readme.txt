@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.0.1
+Stable tag: 3.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -29,6 +29,8 @@ $ npm install - Install dependencies.
 
 $ npm run minify:css - Minify CSS files.
 
+$ npm run minify:js - Minify JS files.
+
 $ npm run bundle - Generate a ZIP archive for distribution, excluding development and system files.
 
 More information: https://github.com/Automattic/_s
@@ -40,6 +42,11 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.1 - April 15 2024 =
+* Adiciona opção de busca no header e padroniza o form de todo site
+* Adiciona Mapa no menu de usuário
+* Deixa código do header legível
 
 = 3.0.2 - April 13 2024 =
 * Altera retorno de itens nos feeds dos podcasts (`functions.php`);
