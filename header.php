@@ -38,6 +38,9 @@
 			</<?php echo esc_html( $title_tag ); ?>>
 		</div>
 
+		<?php // Search Checkbox Input. Required here due to the use of CSS selectors to alter the Text Menu and Search. ?>
+		<input type="checkbox" id="search-icon"/>
+
 		<nav id="site-navigation" class="main-navigation">
 			<!-- Search -->
 			<div id="search-container">
@@ -105,8 +108,9 @@
 						'url'   => '/orbita/meus-comentarios/',
 					),
 				);
-				// Search.
-				$icon_nav  = '<a id="search-icon" class="search-icon" name="search-icon" alt="Busca" title="Busca" onClick="searchHeader(event)"></a>';
+
+				// Search Label.
+ 				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
 
 				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 

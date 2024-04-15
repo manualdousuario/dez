@@ -729,6 +729,22 @@ input[type="search"].search-field {
 	cursor: pointer;
 }
 
+#search-icon {
+	display: none;
+}
+
+#search-icon:checked ~ #site-navigation #search-container {
+    display: block;
+}
+
+#search-icon:checked ~ #site-navigation #primary-menu {
+    display: none;
+}
+
+#search-icon:checked ~ nav .search-icon {
+	opacity: .3;
+}
+
 #search-container {
 	display: none;
 }

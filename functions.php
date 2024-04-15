@@ -520,6 +520,23 @@ function dez_botao_rolar_top() { ?>
 add_action( 'wp_footer', 'dez_botao_rolar_top' );
 
 /**
+ * Adiciona script de autofocus da busca.
+ */
+function dez_search_header() { ?>
+	<script>
+		var searchIcon = document.getElementById('search-icon');
+		var searchField = document.getElementById('search-field');
+
+		searchIcon.addEventListener('change', function() {
+			if (this.checked) {
+				searchField.focus();
+			}
+		});
+	</script>
+<?php	}
+add_action( 'wp_footer', 'dez_search_header' );
+
+/**
  * Chama Simple Data-Tables.
  */
 function dez_datatables_init() {
@@ -829,15 +846,6 @@ function dez_dark_mode_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
-
-/**
- * Adiciona script de busca no HEAD
- */
-function search_header_script() {
-    wp_enqueue_script( 'search-header', get_template_directory_uri() . '/js/searchHeader.min.js', array() );
-}
-
-add_action( 'wp_enqueue_scripts', 'search_header_script' );
 
 /**
  * Aumenta quantidade de itens nos feeds dos podcasts.
