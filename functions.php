@@ -606,7 +606,7 @@ function dez_form_pesquisar( $form ) {
 					<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" />
 				</label>
 				<button type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" title="Botão de pesquisar" />
-					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.8 15.81 21 21m-3-10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"><g stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.8 15.81 21 21m-3-10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></g></svg>
 				</button>
 			</form>';
 

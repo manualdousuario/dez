@@ -43,8 +43,8 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.1 - April 13 2024 =
-* Adiciona opção de busca no header
+= 3.1 - April 15 2024 =
+* Adiciona opção de busca no header e padroniza o form de todo site
 * Adiciona Mapa no menu de usuário
 * Deixa código do header legível
 

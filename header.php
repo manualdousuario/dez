@@ -45,7 +45,7 @@
 				$form = '<form role="search" method="get" class="search-form-header" action="' . home_url( '/' ) . '" >
 							<label>
 								<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
-								<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" />
+								<input type="search" id="search-field" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" autofocus />
 							</label>
 						</form>';
 
@@ -69,6 +69,10 @@
 				// Manual menu configuration.
 				$manual_items = array(
 					array(
+						'title' => 'Mapa do Manual',
+						'url'   => '/arquivo/',
+					),
+					array(
 						'title' => 'PC do Manual ↗',
 						'url'   => 'https://pcdomanual.com',
 					),
@@ -83,10 +87,6 @@
 					array(
 						'title' => 'Clube de descontos',
 						'url'   => '/clube-de-descontos/',
-					),
-					array(
-						'title' => 'Mapa do Manual',
-						'url'   => '/arquivo/',
 					),
 				);
 
@@ -106,7 +106,7 @@
 					),
 				);
 				// Search.
-				$icon_nav  = '<a class="search-icon" name="search-icon" title="Busca" onClick="searchHeader(event)"></a>';
+				$icon_nav  = '<a id="search-icon" class="search-icon" name="search-icon" alt="Busca" title="Busca" onClick="searchHeader(event)"></a>';
 
 				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 
@@ -114,7 +114,7 @@
 				$icon_nav .= '<ul>';
 				$icon_nav .= '<li class="page_item page_item_has_children">';
  				$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
- 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-principal" alt="Menu principal"></a></label>';
+ 				$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-usuario" alt="Menu do Usuário" title="Menu do Usuário"></a></label>';
  				$icon_nav .= '<ul id="menu-toggle-list" class="children link-alt">';
 
 				// Profile/Sign in items.
@@ -151,7 +151,7 @@
 				$icon_nav .= '</div>';
 
 				// Mode.
-				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
+				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
 
 				echo $icon_nav;
 				?>

@@ -705,28 +705,18 @@ ol.children {
 --------------------------------------------- */
 
 .search-form {
-	max-width: 60%;
+	max-width: 70%;
 }
 
 input[type="search"].search-field {
-	width: 90%;
-	padding-right: 3rem;
+	width: 70%;
 }
 
 .search-submit {
 	padding: .25rem;
-	margin-left: -3rem;
 	vertical-align: top;
 	border: none;
 	background-color: transparent;
-}
-
-.search-form path {
-	stroke: var(--cor-link-ori);
-	stroke-width: 3px;
-}
-.search-form path:hover {
-	stroke: var(--cor-link-est);
 }
 
 .search-icon {
@@ -1269,6 +1259,10 @@ table.dataTable-table tr:nth-child(even) {
 	.site-header {
 		justify-content: center;
 	}
+
+	input[type="search"].search-field {
+		width: 70%;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -1306,7 +1300,8 @@ table.dataTable-table tr:nth-child(even) {
 	filter: invert(1);
 }
 
-[data-theme="dark"] a.comment-link span {
+[data-theme="dark"] a.comment-link span,
+[data-theme="dark"] .search-submit svg {
 	filter: invert();
 }
 
