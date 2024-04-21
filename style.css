@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.1
+Version: 3.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -202,7 +202,7 @@ pre {
 /* Formulários
 --------------------------------------------- */
 
-input:not([type="checkbox"]),
+input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
 	font: inherit;
@@ -214,6 +214,10 @@ textarea {
 	height: auto;
 	resize: vertical;
 	width: 100%;
+}
+
+label {
+	display: inline-block;
 }
 
 input:not([type="submit"]):not([type="file"]),
@@ -228,6 +232,7 @@ textarea {
 	transform: scale(1.5);
 	position: relative;
 	top: -.2rem;
+    margin-right: .6rem;
 }
 
 input[type="reset"],
@@ -621,6 +626,7 @@ ol.children {
 .post-navigation .nav-links {
 	display: flex;
 	flex-direction: row-reverse;
+	column-gap: 1rem;
 }
 
 .orbita-navigation .nav-links {
@@ -631,14 +637,14 @@ ol.children {
 .navigation .nav-previous,
 .post-navigation .nav-previous {
 	text-align: end;
-	flex: 1 0 50%;
+	flex: 1 50%;
 }
 
 .comment-navigation .nav-next,
 .navigation .nav-next,
 .post-navigation .nav-next {
 	text-align: start;
-	flex: 1 0 50%;
+	flex: 1 50%;
 }
 
 .orbita-navigation .nav-previous {
@@ -703,14 +709,6 @@ ol.children {
 
 /* Formulário de busca
 --------------------------------------------- */
-
-.search-form {
-	max-width: 70%;
-}
-
-input[type="search"].search-field {
-	width: 70%;
-}
 
 .search-submit {
 	padding: .25rem;
@@ -1274,10 +1272,6 @@ table.dataTable-table tr:nth-child(even) {
 @media (max-width: 400px) {
 	.site-header {
 		justify-content: center;
-	}
-
-	input[type="search"].search-field {
-		width: 70%;
 	}
 }
 

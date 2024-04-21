@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.1
+Stable tag: 3.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,13 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.2 - April 21 2024 =
+* Acrescenta links para regras de convivência e do Órbita no formulário 
+de comentários para usuários logados
+* Acrescenta `column-gap` nos links de navegação (post anterior e próximo) 
+das conversas do Órbita
+* Pequenos ajustes no CSS de formulários
 
 = 3.1 - April 15 2024 =
 * Adiciona opção de busca no header e padroniza o form de todo site
