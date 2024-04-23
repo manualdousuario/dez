@@ -859,3 +859,8 @@ add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
 add_filter('ssp_feed_number_of_posts', function(){
 	return 999;
 });
+
+/**
+ * Honrar DNT do Jetpack Stats
+ */
+add_filter( 'jetpack_honor_dnt_header_for_stats', '__return_true' );
