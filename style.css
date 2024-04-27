@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.2
+Version: 3.2.1
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -60,6 +60,8 @@ TABELA DE CONTEÚDO
 	--cor-destaques: hsl(0, 0%, 97%);
 	--cor-bordas: hsl(0, 0%, 92%);
 	--cor-chapada: hsl(0, 0%, 100%);
+	--cor-parceiros: hsl(60, 100%, 97%);
+	--cor-parceiros-borda: hsl(60, 49%, 93%);
 
 	--cor-link-ori: hsl(225, 72%, 41%);
 	--cor-link-vis: hsl(276, 100%, 25%);
@@ -158,8 +160,9 @@ blockquote {
 }
 
 hr {
-	margin: var(--med-salto-pequeno);
-	height: 1px;
+	margin: calc( var(--med-salto-pequeno) * 2) 0;
+	width: 40%;
+	height: 2px;
 	border: none;
 	background-color: var(--cor-bordas);
 }
@@ -461,15 +464,25 @@ caption,
 .ctx-dica,
 .ctx-editor,
 .podcast_player,
-.format-link .link {
+.format-link .link,
+.ctx-parceiros {
 	padding: 1rem 1.2rem 1rem 3rem;
 	border-radius: var(--med-borda);
-	max-width: var(--med-comp-linha);
+	max-width: 100%;
 	margin-bottom: var(--med-salto-pequeno);
 	background: var(--cor-destaques);
 }
-.ctx-editor {
+.ctx-editor,
+.ctx-parceiros {
 	padding: .75rem 1rem;
+}
+.ctx-parceiros {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.4;
+	background: var(--cor-parceiros);
+	border: 1px solid var(--cor-parceiros-borda);
 }
 
 div.podcast_player p:last-child,
@@ -477,8 +490,10 @@ div.ctx-transparencia p:last-child,
 div.ctx-atualizacao p:last-child,
 div.ctx-atencao p:last-child,
 div.ctx-dica p:last-child,
-div.ctx-editor p:last-child {
+div.ctx-editor p:last-child,
+div.ctx-parceiros p:last-child {
 	margin-bottom: 0;
+	background: var(--cor-destaques);
 }
 
 .ctx-atualizacao:before,
@@ -500,10 +515,15 @@ div.ctx-editor p:last-child {
 	content: '👁️';
 }
 .ctx-dica:before {
-	content: '💡';
+	content: '🔥';
 }
 .format-link .link:before {
 	content: '🔗';
+}
+.ctx-parceiros img {
+	width: 24px;
+	height: 24px;
+	margin-right: .75rem;
 }
 
 .podcast_player {
@@ -1209,6 +1229,26 @@ table.dataTable-table tr:nth-child(even) {
 		margin-left: 0;
 	}
 
+	.ctx-transparencia,
+	.ctx-atualizacao,
+	.ctx-atencao,
+	.ctx-dica,
+	.ctx-editor,
+	.podcast_player,
+	.format-link .link,
+	.ctx-parceiros {
+		padding: 1rem;
+	}
+	.ctx-atualizacao:before,
+	.ctx-atencao:before,
+	.ctx-transparencia:before,
+	.ctx-dica:before,
+	.format-link .link:before {
+		position: relative;
+		margin-left: 0;
+		display: block;
+	}
+
 	.lyte-wrapper,
 	.post-thumbnail {
 		left: 50%;
@@ -1328,6 +1368,11 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] textarea {
 	background-color: var(--cor-destaques);
 	color: var(--cor-fonte);
+}
+
+[data-theme="dark"] .ctx-parceiros {
+	background: hsl(60, 100%, 8%);
+	border: 1px solid hsl(60, 100%, 12%);
 }
 
 [data-theme="dark"] .ctx-atencao {
