@@ -477,12 +477,26 @@ caption,
 	padding: .75rem 1rem;
 }
 .ctx-parceiros {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	line-height: 1.4;
 	background: var(--cor-parceiros);
 	border: 1px solid var(--cor-parceiros-borda);
+}
+
+.ctx-parceiros label {
+	position: absolute;
+	top: -.65rem;
+	font-family: var(--ff-monospace);
+	font-size: calc( var(--fs-0) *.8 );
+	left: .5rem;
+	text-transform: uppercase;
+	color: var(--cor-link-meta);
+	padding: .05rem .25rem;
+	background-color: var(--cor-parceiros-borda);
+	border-radius: var(--med-borda);
 }
 
 div.podcast_player p:last-child,
@@ -1247,6 +1261,16 @@ table.dataTable-table tr:nth-child(even) {
 		position: relative;
 		margin-left: 0;
 		display: block;
+	}
+
+	.ctx-parceiros {
+		padding: 1rem .5rem .5rem;
+	}
+	.ctx-parceiros label {
+		left: initial;
+	}
+	.ctx-parceiros img {
+		margin-right: .5rem;
 	}
 
 	.lyte-wrapper,
