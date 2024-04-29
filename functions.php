@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.2' );
+	define( '_S_VERSION', '3.2.1' );
 }
 
 /**
@@ -179,6 +179,9 @@ add_action(
 	20
 );
 
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+add_filter( 'activitypub_site_supports_blocks', '__return_false' );
+
 /**
  * Limpeza do cabeçalho e rodapé.
  */
@@ -342,8 +345,8 @@ function dez_mensagem_form_comentarios( $defaults ) {
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
 
 function dez_mensagem_form_comentarios_logado($args_logged_in, $commenter, $user_identity) {
-    $args_logged_in = '<div class="comment-form-alert ctx-atencao"><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</div>';
-    return $args_logged_in;
+	$args_logged_in = '<div class="comment-form-alert ctx-atencao"><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</div>';
+	return $args_logged_in;
 }
 add_filter('comment_form_logged_in', 'dez_mensagem_form_comentarios_logado', 10, 3);
 
@@ -624,14 +627,14 @@ function myprefix_private_title_format( $format ) {
  */
 function dez_form_pesquisar( $form ) {
 	$form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '" >
-				<label>
-					<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
-					<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" />
-				</label>
-				<button type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" title="Botão de pesquisar" />
-					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"><g stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.8 15.81 21 21m-3-10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></g></svg>
-				</button>
-			</form>';
+	<label>
+	<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
+	<input type="search" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" />
+	</label>
+	<button type="submit" class="search-submit" value="' . esc_attr__( 'Pesquisar' ) . '" title="Botão de pesquisar" />
+	<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"><g stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.8 15.81 21 21m-3-10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></g></svg>
+	</button>
+	</form>';
 
 	return $form;
 }
@@ -703,6 +706,17 @@ function dez_limpeza_dashboard() {
 	}
 }
 add_action( 'wp_dashboard_setup', 'dez_limpeza_dashboard' );
+
+/**
+ * Remove abas Painel e Jetpack para usuários que não são admin.
+ */
+function dez_remove_jetpack() {
+	if( class_exists( 'Jetpack' ) && !current_user_can( 'manage_options' ) ) {
+		remove_menu_page( 'jetpack' );
+		remove_menu_page( 'index.php' );
+	}
+}
+add_action( 'admin_init', 'dez_remove_jetpack' );
 
 /**
  * Remove campos do perfil do usuário.
@@ -839,16 +853,16 @@ function crunchify_enqueue_scripts_styles() {
  * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
  */
 add_filter( 'activitypub_activity_blog_user_object_array', function ( $array ) {
-		$array['icon']['url'] = 'https://manualdousuario.net/apple-touch-icon.png';
+	$array['icon']['url'] = 'https://manualdousuario.net/apple-touch-icon.png';
 
-		return $array;
+	return $array;
 } );
 
 /**
  * Adiciona script de gerência do modo escuro no HEAD
  */
 function dez_dark_mode_script() {
-    wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
+	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
 }
 
 add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
