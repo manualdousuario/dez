@@ -98,6 +98,7 @@ TABELA DE CONTEÚDO
 	margin: 0;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -109,7 +110,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	scroll-behavior: smooth;
 }
 
 p,
