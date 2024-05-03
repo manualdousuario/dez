@@ -44,6 +44,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 == Changelog ==
 
 = 3.2.2.1 - May 3 2024 =
+* Corrige tamanho do título dos podcasts na capa
 * Corrige `scroll-behavior: smooth` para uso universal
 
 = 3.2.2 - May 2 2024 =
