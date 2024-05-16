@@ -598,7 +598,7 @@ ol.comment-list,
 }
 
 .comment-content ul,
-.comment-content ol, {
+.comment-content ol {
 	margin-left: var(--med-salto-pequeno);
 }
 .comment-content ul {
