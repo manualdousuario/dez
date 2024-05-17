@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.2.2.1
+Stable tag: 3.2.2.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,16 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.2.2.2 - May 11 2024 =
+* Restaura link da política de privacidade no `footer.php`
+* Corrige espaçamento de lista dentro de lista (`li ul`)
+* Acrescenta `margin-bottom` em `.wp-audio-shortcode` (player de podcast)
+* Aumenta um pouco a distância (`margin-top`) do cabeçalho em relação à 
+borda superior da janela
+* Corrige exibição de listas (`ul`, `ol`) em comentários (`.comment-content`)
+* Acrescenta atributo `has:` para encurtar `line-height` da tag `small` 
+dentro de parágrafos
 
 = 3.2.2.1 - May 3 2024 =
 * Corrige tamanho do título dos podcasts na capa

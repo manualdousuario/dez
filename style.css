@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.2.2.1
+Version: 3.2.2.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -130,6 +130,9 @@ li {
 	max-width: var(--med-comp-linha);
 	overflow-wrap: break-word;
 }
+p:has(small) {
+	line-height: 1.4;
+}
 
 ul,
 ol {
@@ -139,6 +142,10 @@ ol {
 
 li {
 	margin: 0 0 .5rem var(--med-salto-pequeno);
+}
+
+li ul {
+	margin-top: .5rem;
 }
 
 img,
@@ -329,7 +336,7 @@ a.comment-metadata {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 1rem 0 var(--med-salto-grande);
+	margin: calc( var(--med-salto-pequeno) * 1.25) 0 var(--med-salto-grande);
 }
 
 h1.site-title,
@@ -456,6 +463,10 @@ caption,
 	border-radius: var(--med-borda);
 	text-align: center;
 	margin: var(--med-salto-grande) auto;
+}
+
+.wp-audio-shortcode {
+	margin-bottom: var(--med-salto-pequeno);
 }
 
 .ctx-transparencia,
@@ -585,12 +596,21 @@ ol.comment-list,
 	margin: 0;
 	max-width: 100%;
 }
-.comment-content li ul,
-.comment-content li ol {
-	margin: 0 0 var(--med-salto-pequeno) var(--med-salto-pequeno);
+
+.comment-content ul,
+.comment-content ol {
+	margin-left: var(--med-salto-pequeno);
+}
+.comment-content ul {
+	list-style: disc;
 }
 .comment-content ol {
 	list-style: decimal;
+}
+
+.comment-content li ul,
+.comment-content li ol {
+	margin: 0 0 var(--med-salto-pequeno) var(--med-salto-pequeno);
 }
 
 .comment-list .depth-1 {
