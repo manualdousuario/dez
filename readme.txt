@@ -43,8 +43,9 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.2.2.3 - May 17 2024 =
+= 3.2.2.3 - May 26 2024 =
 * Reorganiza links do rodapé
+* Destaca ícone do menu do usuário
 
 = 3.2.2.2 - May 11 2024 =
 * Restaura link da política de privacidade no `footer.php`

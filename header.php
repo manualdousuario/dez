@@ -112,6 +112,9 @@
 				// Search Label.
  				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
 
+				// Mode.
+				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
+
 				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 
 				// User Navigation.
@@ -153,9 +156,6 @@
 				$icon_nav .= '</li>';
 				$icon_nav .= '</ul>';
 				$icon_nav .= '</div>';
-
-				// Mode.
-				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
 
 				echo $icon_nav;
 				?>
