@@ -1233,7 +1233,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 696px) {
+@media (max-width: 710px) {
 	.site-header {
 		row-gap: var(--med-salto-pequeno);
 	}
@@ -1475,7 +1475,7 @@ table.dataTable-table tr:nth-child(even) {
 	display: block;
 	position: absolute;
 	left: auto;
-	right: -100%;
+	right: 0%;
 	width: max-content;
 	max-height: 0;
 	margin-top: var(--med-salto-pequeno);
