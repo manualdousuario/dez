@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.2.2.3
+Version: 3.2.3
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -41,6 +41,7 @@ TABELA DE CONTEÚDO
 	- Post formats
 	- display: none
 # Plugins
+	- Just Like Dislikes
 	- StCR
 	- WP YouTube Lyte
 	- Órbita
@@ -216,9 +217,8 @@ input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
 	font: inherit;
-	display: inline-block;
 	padding: .25rem .5rem;
-	height: 40px;
+	min-height: 40px;
 }
 textarea {
 	height: auto;
@@ -237,19 +237,12 @@ textarea {
 	background-color: var(--cor-chapada);
 }
 
-[type="checkbox"],
-[type="radio"] {
-	transform: scale(1.5);
-	position: relative;
-	top: -.2rem;
-    margin-right: .6rem;
-}
-
 input[type="reset"],
 input[type="submit"],
 select,
 button {
 	cursor: pointer;
+	padding: 0 .5rem;
 }
 
 /* Links
@@ -571,7 +564,7 @@ div.ctx-parceiros p:last-child {
 }
 
 .comment-form-cookies-consent label {
-	margin-left: 1rem;
+	margin-left: .5rem;
 }
 
 .comment-form-author {
@@ -610,6 +603,10 @@ ol.comment-list,
 .comment-content li ul,
 .comment-content li ol {
 	margin: 0 0 var(--med-salto-pequeno) var(--med-salto-pequeno);
+}
+
+.reply {
+	line-height: 1;
 }
 
 .comment-list .depth-1 {
@@ -784,11 +781,11 @@ ol.children {
 }
 
 #search-icon:checked ~ #site-navigation #search-container {
-    display: block;
+	display: block;
 }
 
 #search-icon:checked ~ #site-navigation #primary-menu {
-    display: none;
+	display: none;
 }
 
 #search-icon:checked ~ nav .search-icon {
@@ -953,6 +950,31 @@ span.required-field-message,
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
+
+/* Just Like Dislikes
+--------------------------------------------- */
+.jlad-like-dislike-wrap {
+	display: block;
+	margin-bottom: 0;
+	float: right;
+	line-height: 1;
+}
+
+.jlad-like-dislike-wrap .jlad-common-wrap,
+.jlad-count-wrap {
+	margin: 0;
+}
+
+.jlad-common-wrap {
+	min-width: 80px;
+	text-align: right;
+}
+
+.jlad-like-dislike-wrap.jlad-custom img {
+	max-width: 20px;
+	display: initial;
+	vertical-align: middle;
+}
 
 /* StCR
 --------------------------------------------- */
@@ -1336,10 +1358,6 @@ table.dataTable-table tr:nth-child(even) {
 		align-items: start;
 		border-radius: 0;
 		padding: .25rem .5rem;
-	}
-	.comment-content,
-	.reply {
-		padding: 0 .5rem;
 	}
 
 	.search-form {

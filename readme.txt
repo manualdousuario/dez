@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.2.2.3
+Stable tag: 3.2.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,12 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.2.3 - Jun 7 2024 =
+* Restabelece o carregamento do jQuery no front-end, bloqueando o jQuery Migrate
+* Acrescenta classes no CSS para o plugin Just Like Dislike
+* Pequenos ajustes/simplificação da parte de formulários no CSS
+* Remove imagens sem uso do diretório `/img`
 
 = 3.2.2.3 - May 26 2024 =
 * Reorganiza links do rodapé
