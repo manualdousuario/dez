@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.2.2.3' );
+	define( '_S_VERSION', '3.2.3' );
 }
 
 /**
@@ -207,13 +207,15 @@ function dez_dequeue_scripts() {
 add_action( 'wp_enqueue_scripts', 'dez_dequeue_scripts' );
 
 /**
- * Remove jQuery.
+ * Remove jQuery Migrate.
  */
-function dez_remove_jquery() {
-	wp_dequeue_script( 'jquery' );
-	wp_deregister_script( 'jquery' );
-}
-add_filter( 'wp_enqueue_scripts', 'dez_remove_jquery', PHP_INT_MAX );
+add_filter( 'wp_default_scripts', $af = static function( &$scripts) {
+	if(!is_admin()) {
+		$scripts->remove( 'jquery');
+		$scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );
+	}    
+}, PHP_INT_MAX );
+unset( $af );
 
 /**
  * Remove referências à API JSON do cabeçalho.
