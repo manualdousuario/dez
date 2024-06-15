@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.2.3' );
+	define( '_S_VERSION', '3.2.3.1' );
 }
 
 /**
@@ -156,6 +156,8 @@ add_action(
 		wp_deregister_style( 'ssp-block-gizmo-fonts-style' );
 		wp_dequeue_style( 'ssp-recent-episodes' );
 		wp_deregister_style( 'ssp-recent-episodes' );
+
+		wp_deregister_style( 'jlad-frontend' );
 
 		wp_dequeue_style( 'stcr-style' );
 		wp_deregister_style( 'stcr-style' );
@@ -341,13 +343,13 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx-atencao"><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> (é grátis!) para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
+	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx"><label>Atenção!</label><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> (é grátis!) para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
 
 function dez_mensagem_form_comentarios_logado($args_logged_in, $commenter, $user_identity) {
-	$args_logged_in = '<div class="comment-form-alert ctx-atencao"><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</div>';
+	$args_logged_in = '<div class="comment-form-alert ctx"><label>Atenção!</label><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</div>';
 	return $args_logged_in;
 }
 add_filter('comment_form_logged_in', 'dez_mensagem_form_comentarios_logado', 10, 3);
