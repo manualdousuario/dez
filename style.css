@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.2.4
+Version: 3.3
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -371,7 +371,7 @@ ul.nav-menu {
 	background-color: var(--cor-destaques);
 	border: 1px solid var(--cor-bordas);
 	border-radius: var(--med-borda);
-	width: 340px;
+	width: 300px;
 	height: 42px;
 }
 
@@ -391,12 +391,25 @@ ul.nav-menu {
 	filter: invert();
 }
 
+.sextas-feiras {
+	margin-bottom: var(--med-salto-grande);
+	width: fit-content;
+	margin-inline: auto;
+	text-align: center;
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+	color: var(--cor-link-meta);
+}
+.home .sextas-feiras {
+	margin-top: -4rem;
+}
+
 /* Corpo
 --------------------------------------------- */
 
 .hfeed article.hentry,
 .hfeed .orbita-manual {
-	margin: 1rem 0 var(--med-salto-grande);
+	margin: 0 0 var(--med-salto-grande);
 }
 
 article.hentry p:last-child,
@@ -404,6 +417,15 @@ article.hentry ul:last-child,
 article.hentry ol:last-child,
 article.hentry li:last-child {
 	margin-bottom: 0;
+}
+
+.data {
+	margin: 0 0 var(--med-salto-medio);
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+}
+.data:first-letter {
+	text-transform: capitalize;
 }
 
 /* Post
@@ -790,7 +812,7 @@ ol.children {
 }
 
 #search-container input[type="search"].search-field {
-	width: 340px;
+	width: 300px;
 	height: 42px;
 	padding-right: 0;
 }
@@ -942,28 +964,12 @@ span.required-field-message,
 
 /* Just Like Dislikes
 --------------------------------------------- */
-.jlad-like-dislike-wrap {
-	display: block;
-	margin-bottom: 0;
-	float: left;
+.jlad-like-dislike-wrap.jlad-custom {
 	line-height: 1;
 }
 
-.jlad-like-dislike-wrap .jlad-common-wrap,
-.jlad-count-wrap {
-	margin: 0;
-}
-
-.jlad-common-wrap {
-	min-width: 80px;
-}
-
-.jlad-common-wrap > a.jlad-like-dislike-trigger {
-	text-decoration: none;
-}
-
 .jlad-like-dislike-wrap.jlad-custom img {
-	max-width: 20px;
+	max-width: 18px;
 	display: initial;
 	vertical-align: middle;
 }
@@ -1250,6 +1256,7 @@ table.dataTable-table tr:nth-child(even) {
 @media (max-width: 710px) {
 	.site-header {
 		row-gap: var(--med-salto-pequeno);
+		margin-bottom: var(--med-salto-medio);
 	}
 	.icons-navigation {
 		order: 2;
@@ -1264,21 +1271,22 @@ table.dataTable-table tr:nth-child(even) {
 		padding: .5rem 1rem;
 	}
 
+	.sextas-feiras {
+		margin: var(--med-salto-medio) auto;
+	}
+	.home .sextas-feiras {
+		margin-top: initial;
+	}
+
+	.data {
+		margin-bottom: var(--med-salto-pequeno);
+	}
+
 	.format-quote .entry-title {
 		font-size: var(--fs-2) !important;
 	}
 	.format-quote .entry-content p:first-child {
 		margin-left: 0;
-	}
-
-	.ctx-parceiros {
-		padding: 1rem .5rem .5rem;
-	}
-	.ctx-parceiros label {
-		left: initial;
-	}
-	.ctx-parceiros img {
-		margin-right: .5rem;
 	}
 
 	.lyte-wrapper,
@@ -1331,8 +1339,7 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: 0;
 		padding: .25rem .5rem;
 	}
-	.comment-content,
-	.jlad-like-dislike-wrap {
+	.comment-content {
 		margin-left: .5rem;
 	}
 

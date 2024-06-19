@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.2.4
+Stable tag: 3.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -43,16 +43,17 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.2.4 - Jun 7 2024 =
-* Altera leiaute dos blocos `ctx-`, prevê uso de `label` para sinalizar o 
-tipo de bloco (ajuda na acessibilidade) e nova classe genérica `ctx`, mas 
-manté as classes antigas para retrocompatibilidade.
-* Acrescenta bordas ao menu principal (`ul.nav-menu`) e botão do menu do 
-leitor (`.menu-toggle-icon`)
+= 3.3 - Jun 19 2024 =
+* Acrescenta blocos do plugin Shortcoder à capa (`index.php`): 1) aviso de conteúdos novos às sextas-feiras no topo; e 2) newsletters do diretório no meio dos posts
+* Exibe datas apenas uma vez por dia na capa (`the_date();` em `template-parts/content.php`) e remove datas dos posts individuais, mantendo-as dentro dos posts
+* Adiciona função/condicional `shortcode_exists()` onde precisava
+* Corrige datas e permalinks dos resultados da pesquisa (`template-parts/content-search.php`)
+* Altera leiaute dos blocos `ctx-`, prevê uso de `label` para sinalizar o tipo de bloco (ajuda na acessibilidade) e nova classe genérica `ctx`, mas mantém as classes antigas para retrocompatibilidade.
+* Acrescenta bordas ao menu principal (`ul.nav-menu`) e botão do menu do leitor (`.menu-toggle-icon`)
+* Move ícone do feed RSS/Atom do menu em texto para o dos ícones (`header.php`)
 * Inverte posições dos links de responder e curtir comentários
-* Bloqueia o carregamento do arquivo `jlad-frontend.css`, do plugin Just Likes 
-and Dislikes, no front-end (via `functions.php`)
 * Ajustes no `style.css` para o plugin Just Likes and Dislikes
+* Bloqueia o carregamento do arquivo `jlad-frontend.css`, do plugin Just Likes and Dislikes, no front-end (via `functions.php`)
 
 = 3.2.3 - Jun 7 2024 =
 * Restabelece o carregamento do jQuery no front-end, bloqueando o jQuery Migrate

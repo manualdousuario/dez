@@ -15,21 +15,14 @@
 get_header();
 ?>
 
+<?php echo do_shortcode( '[sc name="sextas-feiras"][/sc]' ); ?>
+
 <main id="primary" class="site-main">
 
 	<?php
 	$count = 0;
 	if ( have_posts() ) :
 
-		if ( is_home() && ! is_front_page() ) :
-			?>
-		<header>
-			<h1 class="page-title"><?php single_post_title(); ?></h1>
-		</header>
-		<?php
-	endif;
-
-	/* Start the Loop */
 	while ( have_posts() ) :
 		the_post();
 
@@ -39,14 +32,19 @@ get_header();
 			?>
 			<div class="orbita-manual">
 				<h2>Destaques do Órbita</h2>
-				<?php echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); ?>
+				<?php if ( shortcode_exists( 'orbita-ranking' ) ) {
+					echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); 
+				} ?>
 				<footer class="entry-footer link-alt">
 					<a href="/orbita/">Todas as conversas &raquo;</a>
 				</footer>
 			</div>
 		</div>
 		<?php
-	endif;
+		
+		elseif ( 5 == $count && shortcode_exists( 'sc' ) ) :
+				echo do_shortcode( '[sc name="buttondown-newsletters"][/sc]' );
+		endif;
 
 	$count++;
 
