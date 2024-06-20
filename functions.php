@@ -343,13 +343,13 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<div class="comment-form-alert ctx"><label>Atenção!</label><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> (é grátis!) para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p></div>';
+	$defaults['comment_notes_before'] = '<p class="comment-form-alert ctx"><label>Atenção!</label>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> (é grátis!) para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
 
 function dez_mensagem_form_comentarios_logado($args_logged_in, $commenter, $user_identity) {
-	$args_logged_in = '<div class="comment-form-alert ctx"><label>Atenção!</label><p>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</div>';
+	$args_logged_in = '<p class="comment-form-alert ctx"><label>Atenção!</label> Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</p>';
 	return $args_logged_in;
 }
 add_filter('comment_form_logged_in', 'dez_mensagem_form_comentarios_logado', 10, 3);
