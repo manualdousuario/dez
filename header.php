@@ -59,7 +59,6 @@
 			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
-				<li class="menu-item"><a href="/feed/"><img src="/wp-content/themes/dez/img/icone-rss-outline.svg" alt="Feed RSS" width="26" height="26" /></a></li>
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
@@ -114,6 +113,9 @@
 
 				// Mode.
 				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
+
+				// Feed RSS/Atom
+				$icon_nav .= '<a id="feed-rss-atom" href="/feed/"></a>';
 
 				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 

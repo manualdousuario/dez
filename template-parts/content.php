@@ -9,21 +9,22 @@
 
 ?>
 
+<?php if ( is_home() ) :
+	the_date('l, j\/n\/Y', '<p class="data">', '</p>'); 
+endif; ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<div class="entry-meta link-alt">
 			<?php 
-				if ( has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
-					echo get_the_time( 'j/n/y, ');
-					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">';
-					echo get_the_time( 'G\hi' );
-					echo '</a>';
-				elseif ( ! is_page() ) :
+				if ( has_post_format( array('aside', 'image', 'link', 'quote') ) && is_home() ) :
+					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">&#35;</a>&nbsp;&middot;';
+				elseif ( is_single() && ! is_page() ) :
 					echo get_the_time( 'j/n/y, G\hi' );
+					echo '&nbsp;&middot;';
 				endif ?>
 
 			<?php if ( comments_open() || get_comments_number() ) :
-				echo '&middot;&nbsp;';
 				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link link-alt', '' );
 			endif; ?>
 			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>

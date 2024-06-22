@@ -12,7 +12,15 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<div class="entry-meta link-alt">
-			<?php the_time( 'j/n/y, G\hi' ); ?>
+			<?php 
+				if ( has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
+					echo get_the_time( 'j/n/y, ');
+					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">';
+					echo get_the_time( 'G\hi' );
+					echo '</a>';
+				else :
+					echo get_the_time( 'j/n/y, G\hi' );
+				endif ?>
 			<?php if ( comments_open() || get_comments_number() ) :
 				echo '&middot;&nbsp;';
 				comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link link-alt', '' );
