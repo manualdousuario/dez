@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.3
+Stable tag: 3.3.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -43,7 +43,11 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.3 - Jun 19 2024 =
+= 3.3.1 - Jun 22 2024 =
+* Corrige conflito da nova classe `.data` com o Órbita. (Altera a classe para 
+`.data-home`).
+
+= 3.3 - Jun 21 2024 =
 * Acrescenta blocos do plugin Shortcoder à capa (`index.php`): 1) aviso de conteúdos novos às sextas-feiras no topo; e 2) newsletters do diretório no meio dos posts
 * Exibe datas apenas uma vez por dia na capa (`the_date();` em `template-parts/content.php`) e remove datas dos posts individuais, mantendo-as dentro dos posts
 * Adiciona função/condicional `shortcode_exists()` onde precisava
