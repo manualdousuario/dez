@@ -46,6 +46,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 = 3.3.1 - Jun 22 2024 =
 * Corrige conflito da nova classe `.data` com o Órbita. (Altera a classe para 
 `.data-home`).
+* Formata classe para faixa no topo do site (`.dfad_pos_1`)
 
 = 3.3 - Jun 21 2024 =
 * Acrescenta blocos do plugin Shortcoder à capa (`index.php`): 1) aviso de conteúdos novos às sextas-feiras no topo; e 2) newsletters do diretório no meio dos posts
