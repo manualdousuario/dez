@@ -10,7 +10,7 @@
 ?>
 
 <?php if ( is_home() ) :
-	the_date('l, j\/n\/Y', '<p class="data">', '</p>'); 
+	the_date('l, j\/n\/Y', '<p class="data-home">', '</p>'); 
 endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
