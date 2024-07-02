@@ -15,8 +15,6 @@
 get_header();
 ?>
 
-<?php echo do_shortcode( '[sc name="sextas-feiras"][/sc]' ); ?>
-
 <main id="primary" class="site-main">
 
 	<?php

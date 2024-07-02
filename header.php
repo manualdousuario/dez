@@ -58,7 +58,6 @@
 
 			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
-				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
@@ -68,30 +67,6 @@
 		<!-- Icon Navigation -->
 		<nav class="icons-navigation main-navigation">
 			<?php
-				// Manual menu configuration.
-				$manual_items = array(
-					array(
-						'title' => 'Mapa do Manual',
-						'url'   => '/arquivo/',
-					),
-					array(
-						'title' => 'PC do Manual ↗',
-						'url'   => 'https://pcdomanual.com',
-					),
-					array(
-						'title' => 'Regras dos comentários',
-						'url'   => '/doc-comentarios/',
-					),
-					array(
-						'title' => 'Guia de uso do Órbita',
-						'url'   => '/orbita/guia-de-uso/',
-					),
-					array(
-						'title' => 'Clube de descontos',
-						'url'   => '/clube-de-descontos/',
-					),
-				);
-
 				// Órbita menu configuration.
 				$orbita_items = array(
 					array(
@@ -110,12 +85,6 @@
 
 				// Search Label.
  				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
-
-				// Mode.
-				$icon_nav .= '<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>';
-
-				// Feed RSS/Atom
-				$icon_nav .= '<a id="feed-rss-atom" href="/feed/"></a>';
 
 				$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 
@@ -145,15 +114,8 @@
 				} else {
 					$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
 				}
-				$icon_nav .= '<li class="divider"></li>';
 
 				$icon_nav .= '</li>';
-
-				// Manual items.
-				foreach ( $manual_items as $manual_item ) {
-					$icon_nav .= '<li class="page_item"><a href="' . esc_url( $manual_item['url'] ) . '">' . esc_html( $manual_item['title'] ) . '</a></li>';
-				}
-
 				$icon_nav .= '</ul>';
 				$icon_nav .= '</li>';
 				$icon_nav .= '</ul>';
