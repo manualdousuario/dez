@@ -735,8 +735,8 @@ ol.children {
 
 .site-footer {
 	margin: var(--med-salto-grande) auto 0;
-	text-align: center;
-	padding: 0;
+	padding: var(--med-salto-pequeno) 0 0;
+	border-top: 1px solid var(--cor-bordas);
 }
 
 .site-footer p {

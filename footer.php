@@ -21,6 +21,9 @@
 	<p>
 		2013–<?php echo esc_html( gmdate( 'Y' ) ); ?> &middot; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA 4.0</a>
 	</p>
+	<p>
+		<a id="dark-mode-toggle" name="dark-mode-toggle" alt="Alternar Tema (Claro ou Escuro)" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)"></a>
+	</p>
 </footer>
 </div><!-- #page -->
 
