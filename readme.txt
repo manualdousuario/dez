@@ -47,6 +47,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.
 * Remove adornos do menu principal e do ícone do menu do usuário.
 * Move ícone da aparência (claro/escuro) para o rodapé.
+* Cria classe `.numeros-enormes`.
 * Remove sublinhado do ícone de curtir comentários (plugin Just Likes and Dislikes).
 * Limpa classes no CSS sem uso.
 

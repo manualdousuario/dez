@@ -568,6 +568,12 @@ div.ctx-parceiros p:last-child {
 	padding: 1rem;
 }
 
+.numeros-enormes {
+    font-size: clamp(4rem, 12vw, 8rem);
+    white-space: nowrap;
+    line-height:1;
+}
+
 .single .comment-navigation {
 	margin-bottom: 4rem;
 }
