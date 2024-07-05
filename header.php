@@ -44,7 +44,7 @@
 		<nav id="site-navigation" class="main-navigation">
 			<!-- Search -->
 			<div id="search-container">
-				<?php 
+				<?php
 				$form = '<form role="search" method="get" class="search-form-header" action="' . home_url( '/' ) . '" >
 							<label>
 								<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
@@ -83,6 +83,8 @@
 					),
 				);
 
+				$mode_toggle_item = '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
+
 				// Search Label.
  				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
 
@@ -99,7 +101,7 @@
 				$icon_nav .= '<li class="page_item">';
 				if ( is_user_logged_in() ) {
 					$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
-					$icon_nav .= '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
+					$icon_nav .= $mode_toggle_item;
 				} else {
 					$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				}
@@ -114,7 +116,7 @@
 					$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
 				} else {
 					$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
-					$icon_nav .= '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
+					$icon_nav .= $mode_toggle_item;
 				}
 
 				$icon_nav .= '</li>';
