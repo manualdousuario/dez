@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.3.2
+Version: 3.4
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -545,7 +545,7 @@ div.ctx-parceiros p:last-child {
 }
 
 .numeros-enormes {
-    font-size: clamp(4rem, 12vw, 8rem);
+    font-size: clamp(3rem, 12vw, 8rem);
     white-space: nowrap;
     line-height:1;
 }
@@ -772,8 +772,8 @@ ol.children {
 	background-image: url('/wp-content/themes/dez/img/icon-search.svg');
 	background-size: cover;
 	display: block;
-	height: 24px;
-	width: 24px;
+	height: 20px;
+	width: 20px;
 	max-width: none;
 	cursor: pointer;
 }
@@ -1264,12 +1264,6 @@ table.dataTable-table tr:nth-child(even) {
 		margin: auto;
 	}
 
-	.search-icon,
-	.menu-toggle-icon a {
-		width: 20px !important;
-		height: 20px !important;
-	}
-
 	ul.nav-menu {
 		justify-content: flex-start;
 	}
@@ -1454,8 +1448,8 @@ table.dataTable-table tr:nth-child(even) {
 	background-image: url('/wp-content/themes/dez/img/icone-user.svg');
 	background-size: cover;
 	display: block;
-	height: 24px;
-	width: 24px;
+	height: 20px;
+	width: 20px;
 	max-width: none;
 }
 

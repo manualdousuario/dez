@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.3.2
+Stable tag: 3.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -43,7 +43,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.3.2 - Jul 2 2024 =
+= 3.4 - Jul 5 2024 =
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.
 * Remove adornos do menu principal e do ícone do menu do usuário.
 * Move ícone da aparência (claro/escuro) para o menu do usuário.

@@ -99,11 +99,11 @@
 				$icon_nav .= '<li class="page_item">';
 				if ( is_user_logged_in() ) {
 					$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
+					$icon_nav .= '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
 				} else {
 					$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				}
 				$icon_nav .= '</li>';
-				$icon_nav .= '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
 
 				// Sign up/Sign out items.
 				if ( is_user_logged_in() ) {
@@ -114,6 +114,7 @@
 					$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
 				} else {
 					$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
+					$icon_nav .= '<li class="page_item"><a href="#" name="dark-mode-toggle" title="Alternar Tema (Claro ou Escuro)" onClick="setDezTheme(event)">Mudar aparência</a></li>';
 				}
 
 				$icon_nav .= '</li>';
