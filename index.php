@@ -26,7 +26,7 @@ get_header();
 
 		get_template_part( 'template-parts/content', get_post_type() );
 
-		if ( ! is_paged() && 1 == $count ) :
+		if ( ! is_paged() && 0 == $count ) :
 			?>
 			<div class="orbita-manual">
 				<h2>Destaques do Órbita</h2>
@@ -40,7 +40,7 @@ get_header();
 		</div>
 		<?php
 		
-		elseif ( 5 == $count && shortcode_exists( 'sc' ) ) :
+		elseif ( 4 == $count && shortcode_exists( 'sc' ) ) :
 				echo do_shortcode( '[sc name="buttondown-newsletters"][/sc]' );
 		endif;
 
