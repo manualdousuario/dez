@@ -49,6 +49,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Altera cabeçalho da página de resultados da pesquisa (`.search-results .page-header`).
 * Encolhe um pouco o formulário de pesquisa no cabeçalho em telas grandes.
 * Altera ordem das inserções de shortcodes (`sc`) no `index.php`.
+* Altera exibição do bloco de destaques do Órbita no `index.php`.
 
 = 3.4 - Jul 5 2024 =
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.

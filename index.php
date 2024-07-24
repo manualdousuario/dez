@@ -28,8 +28,8 @@ get_header();
 
 		if ( ! is_paged() && 0 == $count ) :
 			?>
-			<div class="orbita-manual">
-				<h2>Destaques do Órbita</h2>
+			<div class="orbita-manual ctx">
+				<label>Destaques do Órbita</label>
 				<?php if ( shortcode_exists( 'orbita-ranking' ) ) {
 					echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); 
 				} ?>
