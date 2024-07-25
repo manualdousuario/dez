@@ -949,6 +949,7 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 
 .format-quote .entry-content p:first-child {
 	margin-left: var(--med-salto-pequeno);
+	font-style: italic;
 }
 
 .format-link p.link span {
