@@ -52,6 +52,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Altera exibição do bloco de destaques do Órbita no `index.php`.
 * Deixa fonte do primeiro parágrafo em itálico nas citações do formato de post de citações (`.format-quote`).
 * Acrescenta link para mesas no menu principal e nova classe `.menu-item-novo`.
+* Reduz fonte do seletor em formulários para não gerar barra de rolagem horizontal em posts com comentários devido ao seletor de notificações por e-mail de novos comentários.
 
 = 3.4 - Jul 5 2024 =
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.

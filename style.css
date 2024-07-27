@@ -1321,6 +1321,10 @@ table.dataTable-table tr:nth-child(even) {
 		max-width: 1200px !important;
 	}
 
+	select#subscribe-reloaded {
+		font-size: var(--fs-0);
+	}
+
 	.category-aplicativos p:first-child,
 	.category-aplicativos figure:first-child {
 		display: inline-block;
