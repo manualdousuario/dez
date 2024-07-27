@@ -43,7 +43,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.4.1 - Jul 22 2024 =
+= 3.4.1 - Jul 27 2024 =
 * Corrige cor de fundo do `label` da classe `.ctx-parceiros`.
 * Padroniza formatação dos de links de navegação (`.posts-navigation a`).
 * Altera cabeçalho da página de resultados da pesquisa (`.search-results .page-header`).
@@ -51,6 +51,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Altera ordem das inserções de shortcodes (`sc`) no `index.php`.
 * Altera exibição do bloco de destaques do Órbita no `index.php`.
 * Deixa fonte do primeiro parágrafo em itálico nas citações do formato de post de citações (`.format-quote`).
+* Acrescenta link para mesas no menu principal e nova classe `.menu-item-novo`.
 
 = 3.4 - Jul 5 2024 =
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.
