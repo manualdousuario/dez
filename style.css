@@ -1520,6 +1520,13 @@ table.dataTable-table tr:nth-child(even) {
 	border-radius: 0 0 var(--med-borda) var(--med-borda);
 }
 
+a.menu-item-novo {
+	color: var(--cor-link-ori);
+}
+a:hover.menu-item-novo {
+	color: var(--cor-link-est);
+}
+
 .divider {
 	border-top: 1px var(--cor-bordas) solid;
 }
