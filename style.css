@@ -833,7 +833,7 @@ ol.children {
 	justify-content: center;
 	align-items: center;
 	gap: .5rem;
-	font-size: var(--fs-2);
+	font-size: var(--fs-1);
 	border: 1px solid var(--cor-bordas);
 	border-radius: var(--med-borda);
 	background-color: var(--cor-destaques);
@@ -1273,7 +1273,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 529px) {
+@media (max-width: 565px) {
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
 	}
