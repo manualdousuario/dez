@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.4
+Version: 3.4.1
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -264,11 +264,13 @@ a:active {
 
 .link-alt a,
 .comment-metadata a,
-a.comment-reply-link {
+a.comment-reply-link,
+.posts-navigation a {
 	color: var(--cor-link-meta);
 }
 .link-alt a:hover,
 .comment-metadata a:hover,
+.posts-navigation a:hover,
 a:hover.comment-reply-link {
 	color: var(--cor-link-meta-est);
 }
@@ -276,7 +278,8 @@ a:hover.comment-reply-link {
 .link-alt,
 a.more-link,
 .comment-metadata a,
-a.comment-reply-link {
+a.comment-reply-link,
+.posts-navigation a {
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
 	line-height: 1.4;
@@ -407,7 +410,7 @@ article.hentry li:last-child {
 }
 
 .data-home {
-	margin: 0 0 var(--med-salto-medio);
+	margin: 0 0 var(--med-salto-pequeno);
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
 }
@@ -562,7 +565,6 @@ div.ctx-parceiros p:last-child {
 }
 
 .comment-form-alert {
-	max-width: var(--med-comp-linha);
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
 }
@@ -571,17 +573,17 @@ div.ctx-parceiros p:last-child {
 	margin-left: .5rem;
 }
 
-.comment-form-author {
-	max-width: 50%;
-	float: left;
-	margin-right: 1rem;
+.comment-form-comment {
+	max-width: 100%;
 }
+
+.comment-form-author,
 .comment-form-email {
-	max-width: 50%;
-	float: left;
+	max-width: 100%;
 }
-.comment-form-cookies-consent {
-	clear: both;
+.comment-form-author input[type=text],
+.comment-form-email input[type=email] {
+	width: 50%;
 }
 
 .comments-area ol {
@@ -785,7 +787,8 @@ ol.children {
 #search-icon:checked ~ #site-navigation #search-container,
 #search-icon:checked ~ #site-navigation #search-container label {
 	display: block;
-	width: 100%;
+	width: 90%;
+	margin: 0 0 0 auto;
 }
 
 #search-icon:checked ~ #site-navigation #primary-menu {
@@ -824,6 +827,25 @@ ol.children {
 
 .search-results .page-header {
 	border-bottom: 0;
+	padding: var(--med-salto-pequeno);
+	margin-bottom: var(--med-salto-medio);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: .5rem;
+	font-size: var(--fs-1);
+	border: 1px solid var(--cor-bordas);
+	border-radius: var(--med-borda);
+	background-color: var(--cor-destaques);
+}
+.search-results .page-header form,
+.search-results .page-header p {
+	margin-bottom: 0;
+}
+.search-results .page-header form {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
 }
 
 .page-id-39568 .entry-title,
@@ -927,6 +949,7 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 
 .format-quote .entry-content p:first-child {
 	margin-left: var(--med-salto-pequeno);
+	font-style: italic;
 }
 
 .format-link p.link span {
@@ -1250,7 +1273,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 529px) {
+@media (max-width: 565px) {
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
 	}
@@ -1268,8 +1291,10 @@ table.dataTable-table tr:nth-child(even) {
 		justify-content: flex-start;
 	}
 
-	.data-home {
-		margin-bottom: var(--med-salto-pequeno);
+	#search-icon:checked ~ #site-navigation #search-container,
+	#search-icon:checked ~ #site-navigation #search-container label {
+		width: 100%;
+		margin: 0;
 	}
 
 	.format-quote .entry-title {
@@ -1277,6 +1302,12 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.format-quote .entry-content p:first-child {
 		margin-left: 0;
+	}
+
+	.search-results .page-header {
+		flex-direction: column;
+		align-items: start;
+		padding: var(--med-salto-pequeno) calc( var(--med-salto-pequeno) * .5);
 	}
 
 	.lyte-wrapper,
@@ -1288,6 +1319,10 @@ table.dataTable-table tr:nth-child(even) {
 		right: 50%;
 		width: 100vw !important;
 		max-width: 1200px !important;
+	}
+
+	select#subscribe-reloaded {
+		font-size: var(--fs-0);
 	}
 
 	.category-aplicativos p:first-child,
@@ -1303,19 +1338,9 @@ table.dataTable-table tr:nth-child(even) {
 		float: initial;
 	}
 
-	.comment-form-email,
-	.comment-form-author {
-		float: initial;
-		max-width: 100%;
-		margin-right: 0;
-	}
-	.comment-form-email input,
-	.comment-form-author input {
+	.comment-form-author input[type=text],
+	.comment-form-email input[type=email] {
 		width: 100%;
-	}
-
-	.subscribe-formulario select {
-		font-size: var(--fs-0);
 	}
 
 	ol.children {
@@ -1397,6 +1422,11 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .ctx-parceiros {
 	background: hsl(60, 100%, 8%);
 	border: 1px solid hsl(60, 100%, 12%);
+}
+
+[data-theme="dark"] .ctx-parceiros label {
+	background-color: #3d3d00;
+	color: var(--cor-fonte);
 }
 
 [data-theme="dark"] .ctx-atencao {
@@ -1492,6 +1522,13 @@ table.dataTable-table tr:nth-child(even) {
 .menu-item .children li:last-child {
 	padding-bottom: 1em;
 	border-radius: 0 0 var(--med-borda) var(--med-borda);
+}
+
+a.menu-item-novo {
+	color: var(--cor-link-ori);
+}
+a:hover.menu-item-novo {
+	color: var(--cor-link-est);
 }
 
 .divider {

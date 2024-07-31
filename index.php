@@ -26,10 +26,10 @@ get_header();
 
 		get_template_part( 'template-parts/content', get_post_type() );
 
-		if ( ! is_paged() && 1 == $count ) :
+		if ( ! is_paged() && 0 == $count ) :
 			?>
-			<div class="orbita-manual">
-				<h2>Destaques do Órbita</h2>
+			<div class="orbita-manual ctx">
+				<label>Destaques do Órbita</label>
 				<?php if ( shortcode_exists( 'orbita-ranking' ) ) {
 					echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); 
 				} ?>
@@ -40,7 +40,7 @@ get_header();
 		</div>
 		<?php
 		
-		elseif ( 5 == $count && shortcode_exists( 'sc' ) ) :
+		elseif ( 4 == $count && shortcode_exists( 'sc' ) ) :
 				echo do_shortcode( '[sc name="buttondown-newsletters"][/sc]' );
 		endif;
 
