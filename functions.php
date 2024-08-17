@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.4.1' );
+	define( '_S_VERSION', '3.4.2' );
 }
 
 /**
@@ -831,9 +831,9 @@ if ( defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
  */
 function dez_auth_cookie_expiration( $expiration, $user_id, $remember ) {
 	if ( $remember ) {
-		$expiration = YEAR_IN_SECONDS;
+		$expiration = 28 * DAY_IN_SECONDS;
 	} else {
-		$expiration = MONTH_IN_SECONDS;
+		$expiration = 7 * DAY_IN_SECONDS;
 	}
 	return $expiration;
 }
@@ -877,8 +877,3 @@ add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
 add_filter('ssp_feed_number_of_posts', function(){
 	return 999;
 });
-
-/**
- * Honrar DNT do Jetpack Stats
- */
-add_filter( 'jetpack_honor_dnt_header_for_stats', '__return_true' );
