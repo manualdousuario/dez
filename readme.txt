@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,14 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.4.2 - Ago 17 2024 =
+* Altera prazos de validade do login (7 dias sem “lembrar-me”; 28 dias com).
+* Remove código para honrar Do Not track do Jetpack Stats (por desuso).
+* Reduz de 8rem para 5rem o tamanho máximo da fonte na classe `.numeros-enormes`.
+* Remoção da classe `.ctx-parcerias`.
+* Mudança estética no cabeçalho.
+* Alterações de textos no rodapé.
 
 = 3.4.1 - Jul 27 2024 =
 * Corrige cor de fundo do `label` da classe `.ctx-parceiros`.

@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.4.1
+Version: 3.4.2
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -61,8 +61,7 @@ TABELA DE CONTEÚDO
 	--cor-destaques: hsl(0, 0%, 97%);
 	--cor-bordas: hsl(0, 0%, 92%);
 	--cor-chapada: hsl(0, 0%, 100%);
-	--cor-parceiros: hsl(60, 100%, 97%);
-	--cor-parceiros-borda: hsl(60, 49%, 93%);
+	--cor-parceiros: hsl(120, 100%, 25%);
 
 	--cor-link-ori: hsl(225, 72%, 41%);
 	--cor-link-vis: hsl(276, 100%, 25%);
@@ -327,7 +326,6 @@ a.comment-metadata {
 .dfad_pos_1 {
 	text-align: center;
 	background-color: var(--cor-destaques);
-	border-bottom: 1px solid var(--cor-bordas);
 	font-family: var(--ff-monospace);
 	font-size: calc( var(--fs-0) * .85);
 	padding: .25rem 1rem;
@@ -345,7 +343,6 @@ a.comment-metadata {
 	margin: var(--med-salto-pequeno) 0 var(--med-salto-grande);
 	gap: 1rem;
 	padding-bottom: var(--med-salto-pequeno);
-	border-bottom: 1px solid var(--cor-bordas);
 }
 
 h1.site-title,
@@ -481,8 +478,7 @@ caption,
 .ctx-dica,
 .ctx-editor,
 .podcast_player,
-.format-link .link,
-.ctx-parceiros {
+.format-link .link {
 	position: relative;
 	padding: 1rem;
 	max-width: 100%;
@@ -491,26 +487,15 @@ caption,
 	border: 1px solid var(--cor-bordas);
 	border-radius: var(--med-borda);
 }
-.ctx-parceiros {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	line-height: 1.4;
-	background: var(--cor-parceiros);
-	border: 1px solid var(--cor-parceiros-borda);
-}
 
 .ctx label,
-.ctx-parceiros label,
 .ctx-editor label,
 .ctx-transparencia label,
 .ctx-atualizacao label,
 .ctx-atencao label,
 .ctx-dica label,
 .podcast_player label,
-.format-link .link label,
-.ctx-parceiros label {
+.format-link .link label {
 	position: absolute;
 	top: -.65rem;
 	left: -.5rem;
@@ -521,9 +506,6 @@ caption,
 	color: var(--cor-link-meta);
 	padding: 0 .25rem;
 }
-.ctx-parceiros label {
-	background-color: var(--cor-parceiros-borda);
-}
 
 div.podcast_player p:last-child,
 div.ctx p:last-child,
@@ -531,15 +513,8 @@ div.ctx-transparencia p:last-child,
 div.ctx-atualizacao p:last-child,
 div.ctx-atencao p:last-child,
 div.ctx-dica p:last-child,
-div.ctx-editor p:last-child,
-div.ctx-parceiros p:last-child {
+div.ctx-editor p:last-child {
 	margin-bottom: 0;
-}
-
-.ctx-parceiros img {
-	width: 24px;
-	height: 24px;
-	margin-right: .75rem;
 }
 
 .podcast_player {
@@ -548,13 +523,24 @@ div.ctx-parceiros p:last-child {
 }
 
 .numeros-enormes {
-    font-size: clamp(3rem, 12vw, 8rem);
+    font-size: clamp(3rem, 12vw, 5rem);
     white-space: nowrap;
     line-height:1;
 }
 
 .single .comment-navigation {
 	margin-bottom: 4rem;
+}
+
+.ctx-parceiros span {
+	border: 2px solid var(--cor-parceiros);
+	border-radius: 6px;
+	font-family: var(--ff-monospace);
+	font-size: calc( var(--fs-0) *.8);
+	text-transform: uppercase;
+	padding: .15rem .25rem .1rem;
+	color: var(--cor-parceiros);
+	font-weight: 600;
 }
 
 /* Comentários
@@ -1419,16 +1405,6 @@ table.dataTable-table tr:nth-child(even) {
 	color: var(--cor-fonte);
 }
 
-[data-theme="dark"] .ctx-parceiros {
-	background: hsl(60, 100%, 8%);
-	border: 1px solid hsl(60, 100%, 12%);
-}
-
-[data-theme="dark"] .ctx-parceiros label {
-	background-color: #3d3d00;
-	color: var(--cor-fonte);
-}
-
 [data-theme="dark"] .ctx-atencao {
 	background-color: #1f1c00;
 }
@@ -1443,6 +1419,11 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .podcast_player {
 	background-color: #100024;
+}
+
+[data-theme="dark"] .ctx-parceiros span {
+	border-color: hsl(120, 32%, 59%);
+	color: hsl(120, 32%, 59%);
 }
 
 [data-theme="dark"] .top:before {
