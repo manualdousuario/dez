@@ -528,11 +528,11 @@ div.ctx-editor p:last-child {
 
 .ctx-parceiros span {
 	border: 2px solid var(--cor-parceiros);
-	border-radius: 6px;
+	border-radius: 4px;
 	font-family: var(--ff-monospace);
 	font-size: calc( var(--fs-0) *.8);
 	text-transform: uppercase;
-	padding: 1px 4px;
+	padding: 1px 2px;
 	color: var(--cor-parceiros);
 	font-weight: 600;
 	position: relative;

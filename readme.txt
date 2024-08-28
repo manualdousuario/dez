@@ -43,9 +43,10 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.4.3 - Ago 22 2024 =
+= 3.4.3 - Ago 28 2024 =
 * Remove cores específicas do box da classe `.podcast_player`.
 * Corrige alinhamento do selo de patrocinadores (`.ctx-parceiros span`).
+* Pequeno ajuste na borda da `.ctx-parceiros span`.
 
 = 3.4.2 - Ago 17 2024 =
 * Altera prazos de validade do login (7 dias sem “lembrar-me”; 28 dias com).
