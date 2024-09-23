@@ -9,17 +9,18 @@
 
 ?>
 
-<?php if ( is_home() ) :
-	the_date('l, j\/n\/Y', '<p class="data-home">', '</p>'); 
-endif; ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<div class="entry-meta link-alt">
 			<?php 
-				if ( has_post_format( array('aside', 'image', 'link', 'quote') ) && is_home() ) :
-					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">&#35;</a>&nbsp;&middot;';
-				elseif ( is_single() && ! is_page() ) :
+				if ( is_home() && is_sticky() ) :
+					echo 'Destaque&nbsp;&middot;';
+				elseif ( is_home() && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
+					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'j/n/y' ) .'</a>&nbsp;&middot;';
+				elseif ( is_home() ) :
+					echo get_the_time( 'j/n/y' );
+					echo '&nbsp;&middot;';
+				elseif ( ! is_page() ) :
 					echo get_the_time( 'j/n/y, G\hi' );
 					echo '&nbsp;&middot;';
 				endif ?>
