@@ -23,7 +23,6 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-	<?php echo do_shortcode( '[sc name="anuncio-global"]' ); ?>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
 		<!-- Logo -->
@@ -59,7 +58,7 @@
 			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
-				<li class="menu-item"><a href="/assunto/mesas-de-trabalho/" class="menu-item-novo">Mesas</a></li>
+				<li class="menu-item"><a href="/acompanhe/" class="menu-item-novo">Newsletter</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 			</ul>
