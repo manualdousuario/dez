@@ -108,6 +108,7 @@ function dez_remover_estilos_dashboard() {
 	wp_dequeue_style( 'akismet-admin' );
 	wp_dequeue_style( 'sc-icon-css' );
 	wp_dequeue_style( 'akismet' );
+	wp_deregister_style( 'grunion.css' );
 
 	wp_dequeue_script( 'jetpack-accessible-focus' );
 	wp_dequeue_script( 'music-player' );
@@ -218,6 +219,17 @@ add_filter( 'wp_default_scripts', $af = static function( &$scripts) {
 	}    
 }, PHP_INT_MAX );
 unset( $af );
+
+/**
+ * Carrega jQuery apenas em páginas com comentários.
+ */
+function my_enqueue_jquery_for_comments() { 
+	if ( ! is_single() ) {
+		wp_dequeue_script( 'jquery');
+		wp_deregister_script( 'jquery');
+	}
+}
+add_action( 'wp_enqueue_scripts', 'my_enqueue_jquery_for_comments' );
 
 /**
  * Remove referências à API JSON do cabeçalho.
@@ -868,13 +880,3 @@ add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
 add_filter('ssp_feed_number_of_posts', function(){
 	return 999;
 });
-
-function admin_styles() {
-	echo '
-	<style>
-		#the-comment-list td.comment img {
-			max-width: 18px;
-		}
-	</style>';
-}
-add_action('admin_head', 'admin_styles');
