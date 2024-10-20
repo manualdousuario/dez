@@ -16,7 +16,7 @@
 		Apoio: <a href="https://buttondown.email/?utm_campaign=manual&amp;utm_source=footer">Buttondown</a> &middot; <a href="https://www.teramundi.com/">Teramundi</a>
 	</p>
 	<p>
-		Etc: <a href="mailto:ghedin@manualdousuario.net">Contato</a> &middot; <a href="/patrocine/">Apoio institucional</a> &middot; <a href="https://manualdousuario.net/politica-de-privacidade/">Privacidade</a>
+		<a href="mailto:ghedin@manualdousuario.net">Contato</a> &middot; <a href="/patrocine/">Patrocine</a> &middot; <a href="https://manualdousuario.net/politica-de-privacidade/">Privacidade</a>
 	</p>
 	<p>
 		2013–<?php echo esc_html( gmdate( 'Y' ) ); ?> &middot; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA 4.0</a>

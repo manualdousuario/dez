@@ -23,7 +23,6 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-	<?php echo do_shortcode( '[sc name="anuncio-global"]' ); ?>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
 		<!-- Logo -->
@@ -32,8 +31,7 @@
 			$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
 		?>
 			<<?php echo esc_html( $title_tag ); ?> class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="/wp-content/themes/dez/img/manual-do-usuario-logo-rodrigo-ghedin.svg" width="220" height="70" alt="<?php bloginfo( 'name' ); ?>">
+				<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-2025.svg" width="20" height="24" alt="<?php bloginfo( 'name' ); ?>"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Manual do Usuário</a> por Rodrigo Ghedin
 				</a>
 			</<?php echo esc_html( $title_tag ); ?>>
 		</div>
@@ -59,7 +57,7 @@
 			<!-- Text Navigation -->
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
-				<li class="menu-item"><a href="/assunto/mesas-de-trabalho/" class="menu-item-novo">Mesas</a></li>
+				<li class="menu-item"><a href="/acompanhe/">Newsletter</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Apoie</strong></a></li>
 			</ul>

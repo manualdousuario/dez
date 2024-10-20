@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.4.2' );
+	define( '_S_VERSION', '3.4.3' );
 }
 
 /**
@@ -108,6 +108,7 @@ function dez_remover_estilos_dashboard() {
 	wp_dequeue_style( 'akismet-admin' );
 	wp_dequeue_style( 'sc-icon-css' );
 	wp_dequeue_style( 'akismet' );
+	wp_deregister_style( 'grunion.css' );
 
 	wp_dequeue_script( 'jetpack-accessible-focus' );
 	wp_dequeue_script( 'music-player' );
@@ -220,6 +221,17 @@ add_filter( 'wp_default_scripts', $af = static function( &$scripts) {
 unset( $af );
 
 /**
+ * Carrega jQuery apenas em páginas com comentários.
+ */
+function my_enqueue_jquery_for_comments() { 
+	if ( ! is_single() ) {
+		wp_dequeue_script( 'jquery');
+		wp_deregister_script( 'jquery');
+	}
+}
+add_action( 'wp_enqueue_scripts', 'my_enqueue_jquery_for_comments' );
+
+/**
  * Remove referências à API JSON do cabeçalho.
  */
 function dez_remove_json_api() {
@@ -273,6 +285,7 @@ function dez_desativa_wp_emojicons() {
 	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 
 	add_filter( 'tiny_mce_plugins', 'dez_desativa_wp_emojicons_tinymce' );
+	add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
 }
 add_action( 'init', 'dez_desativa_wp_emojicons' );
 
@@ -282,6 +295,15 @@ function dez_desativa_wp_emojicons_tinymce( $plugins ) {
 	} else {
 		return array();
 	}
+}
+
+function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+	if ( 'dns-prefetch' == $relation_type ) {
+		/** This filter is documented in wp-includes/formatting.php */
+		$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+		$urls = array_diff( $urls, array( $emoji_svg_url ) );
+	}
+	return $urls;
 }
 
 /**
@@ -343,13 +365,13 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<p class="comment-form-alert ctx"><label>Atenção!</label>Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> (é grátis!) para verificar seu perfil e interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p>';
+	$defaults['comment_notes_before'] = '<p class="comment-form-alert ctx"><label>Antes de comentar…</label> Leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> para interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
 
 function dez_mensagem_form_comentarios_logado($args_logged_in, $commenter, $user_identity) {
-	$args_logged_in = '<p class="comment-form-alert ctx"><label>Atenção!</label> Antes de comentar, leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</p>';
+	$args_logged_in = '<p class="comment-form-alert ctx"><label>Antes de comentar…</label> Leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</p>';
 	return $args_logged_in;
 }
 add_filter('comment_form_logged_in', 'dez_mensagem_form_comentarios_logado', 10, 3);
@@ -488,25 +510,6 @@ function dez_sensibilidade_responder() {
 	}
 }
 add_action( 'wp_footer', 'dez_sensibilidade_responder' );
-
-/**
- * Chama o littlefoot.js.
- */
-function dez_littlefoot_inline_script() {
-	if ( is_singular() ) {
-		wp_register_script( 'dez-littlefoot', get_template_directory_uri() . '/js/littlefoot.js', array(), '4.0.1', array( 'strategy' => 'async', 'in_footer' => 'true' ) );
-		wp_enqueue_script( 'dez-littlefoot', '', array(), '4.0.1', true );
-		$inline_script = "
-		document.addEventListener('DOMContentLoaded', function() {
-			if (typeof littlefoot !== 'undefined') {
-				littlefoot.littlefoot();
-			}
-			});
-			";
-			wp_add_inline_script( 'dez-littlefoot', $inline_script, 'after' );
-		}
-	}
-	add_action( 'wp_enqueue_scripts', 'dez_littlefoot_inline_script' );
 
 /**
  * Chama script do botão “voltar para cima”.
