@@ -543,6 +543,24 @@ div.ctx-editor p:last-child {
 	background-color: var(--cor-oferecimento-label);
 }
 
+.category-promocoes .entry-header {
+	margin-bottom: var(--med-salto-pequeno);
+}
+.category-promocoes .entry-meta {
+	display: none;
+}
+.category-promocoes .entry-title {
+	font-size: var(--fs-2);
+	display: initial !important;
+}
+.category-promocoes .entry-title a {
+	color: var(--cor-fonte);
+	text-decoration: none;
+}
+.category-promocoes p {
+	max-width: 100%;
+}
+
 .destaque {
 	border-radius: var(--med-borda);
 	padding: 6px;
@@ -1197,9 +1215,13 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 679px) {
+@media (max-width: 751px) {
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
+	}
+
+	.site-branding {
+		width: 100%;
 	}
 
 	.site-title {
