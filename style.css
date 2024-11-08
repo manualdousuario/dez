@@ -613,7 +613,7 @@ div.ctx-editor p:last-child {
 	order: 2;
 	margin-left: .5rem;
 }
-.comment-stcr input:[type=checkbox] {
+.comment-stcr input[type=checkbox] {
 	order: 1;
 }
 
