@@ -28,19 +28,19 @@ get_header();
 
 		if ( ! is_paged() && 0 == $count ) :
 			?>
-			<div class="orbita-manual ctx">
-				<label>Destaques do Órbita</label>
+			<div class="orbita-manual">
+				<h2>Destaques do Órbita</h2>
 				<?php if ( shortcode_exists( 'orbita-ranking' ) ) {
 					echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); 
 				} ?>
 				<footer class="entry-footer link-alt">
-					<a href="/orbita/">Todas as conversas &raquo;</a>
+					<a href="/orbita/">Mais conversas &raquo;</a>
 				</footer>
 			</div>
 		</div>
 		<?php
 		
-		elseif ( 4 == $count && shortcode_exists( 'sc' ) ) :
+		elseif ( 3 == $count && shortcode_exists( 'sc' ) ) :
 				echo do_shortcode( '[sc name="buttondown-newsletters"][/sc]' );
 		endif;
 

@@ -12,8 +12,6 @@
     "@wordpress/scripts": "^19.2.2",
     "clean-css-cli": "^5.6.2",
     "dir-archiver": "^1.1.1",
-    "node-sass": "^7.0.1",
-    "rtlcss": "^3.5.0",
     "uglify-js": "^3.17.4"
   },
   "rtlcssConfig": {
@@ -30,13 +28,9 @@
     "map": false
   },
   "scripts": {
-    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
-    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
-    "compile:rtl": "rtlcss style.css style-rtl.css",
-    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",
-    "compile:js": "uglifyjs --compress --mangle --output ./js/darkMode.min.js -- ./js/darkMode.js",
+    "minify:js": "uglifyjs --compress --mangle --output ./js/darkMode.min.js -- ./js/darkMode.js",
     "minify:css": "cleancss -o style.min.css style.css",
-    "bundle": "dir-archiver --src . --dest ../dez.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock js/darkMode.js"
+    "bundle": "dir-archiver --src . --dest ../dez.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist style.css.map yarn.lock js/darkMode.js"
   }
 }
