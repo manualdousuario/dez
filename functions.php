@@ -176,6 +176,9 @@ add_action(
 		wp_deregister_script( 'wp-hooks' );
 		wp_dequeue_script( 'wp-i18n' );
 		wp_deregister_script( 'wp-i18n' );
+
+		wp_dequeue_script('jetpack-mu-wpcom-settings');
+		wp_deregister_script('jetpack-mu-wpcom-settings');
 	},
 	20
 );
@@ -191,6 +194,7 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'mediaelement-css' );
 remove_action( 'wp_head', 'wp_print_font_faces', 50 );
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
 
 add_filter( 'jetpack_implode_frontend_css', '__return_false', 99 );
 

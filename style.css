@@ -1386,6 +1386,14 @@ table.dataTable-table tr:nth-child(even) {
 	border-right: 5px solid var(--cor-destaques);
 }
 
+[data-theme="dark"] .site-footer-redes ul {
+	filter: invert();
+}
+
+[data-theme="dark"] .site-footer-redes ul li:first-child {
+	filter: invert();
+}
+
 /*--------------------------------------------------------------
 # User Menu
 --------------------------------------------------------------*/
