@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.4.3
+Stable tag: 3.4.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,14 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.4.4 - Nov 20 2024 =
+* Acrescenta aviso do experimento de comentários/e-mails no `single.php`.
+* Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
+* Códigos para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
+* Reorganização dos permalinks e datas dos posts no `template-parts/content.php`.
+* Várias alterações pequenas de estilo no `style.css`/`style.min.css`.
+* Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
 
 = 3.4.3 - Oct 20 2024 =
 * Adiciona `text-wrap: balance` a cabeçalhos `h1` e `h2`.
