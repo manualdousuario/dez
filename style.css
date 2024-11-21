@@ -1296,7 +1296,7 @@ table.dataTable-table tr:nth-child(even) {
 	.site-footer-redes {
 		text-align: left;
 		border-bottom: 1px dashed var(--cor-bordas);
-		margin-bottom: var(--med-salto-pequeno);
+		margin-bottom: var(--med-salto-medio);
 		padding-bottom: var(--med-salto-pequeno);
 	}
 	.site-footer-redes ul {

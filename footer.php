@@ -26,12 +26,12 @@
 	<div class="site-footer-redes">
 		<p>Acompanhe o <strong>Manual</strong> nas redes:</p>
 		<ul>
-			<li><a href="https://manualdousuario.net/feed/"><img src="/wp-content/themes/dez/img/icone-rss.svg" alt="Feed RSS/Atom" width="36" height="36" /></a></li>
-			<li><a href="https://bsky.app/profile/manualdousuario.net"><img src="/wp-content/themes/dez/img/icone-bluesky.svg" alt="Bluesky" width="36" height="36" /></a></li>
-			<li><a href="https://www.linkedin.com/in/rodrigoghedin/"><img src="/wp-content/themes/dez/img/icone-linkedin.svg" alt="LinkedIn" width="36" height="36" /></a></li>
-			<li><a href="https://mastodon.social/@manualdousuario"><img src="/wp-content/themes/dez/img/icone-mastodon.svg" alt="Mastodon" width="36" height="36" /></a></li>
-			<li><a href="https://t.me/manualdousuario"><img src="/wp-content/themes/dez/img/icone-telegram.svg" alt="Telegram" width="36" height="36" /></a></li>
-			<li><a href="https://whatsapp.com/channel/0029Va9TDp2JZg4CZdt7Im1i"><img src="/wp-content/themes/dez/img/icone-whatsapp.svg" alt="WhatsApp" width="36" height="36" /></a></li>
+			<li><a href="https://manualdousuario.net/feed/"><img src="/wp-content/themes/dez/img/icone-rss.svg" alt="Feed RSS/Atom" width="36" height="36" loading="lazy" /></a></li>
+			<li><a href="https://bsky.app/profile/manualdousuario.net"><img src="/wp-content/themes/dez/img/icone-bluesky.svg" alt="Bluesky" width="36" height="36" loading="lazy" /></a></li>
+			<li><a href="https://www.linkedin.com/in/rodrigoghedin/"><img src="/wp-content/themes/dez/img/icone-linkedin.svg" alt="LinkedIn" width="36" height="36" loading="lazy" /></a></li>
+			<li><a href="https://mastodon.social/@manualdousuario"><img src="/wp-content/themes/dez/img/icone-mastodon.svg" alt="Mastodon" width="36" height="36" loading="lazy" /></a></li>
+			<li><a href="https://t.me/manualdousuario"><img src="/wp-content/themes/dez/img/icone-telegram.svg" alt="Telegram" width="36" height="36" loading="lazy" /></a></li>
+			<li><a href="https://whatsapp.com/channel/0029Va9TDp2JZg4CZdt7Im1i"><img src="/wp-content/themes/dez/img/icone-whatsapp.svg" alt="WhatsApp" width="36" height="36" loading="lazy" /></a></li>
 		</ul>
 	</div>
 </footer>
