@@ -1212,10 +1212,6 @@ table.dataTable-table tr:nth-child(even) {
 		width: 100%;
 	}
 
-	.site-title {
-		font-size: var(--fs-0);
-	}
-
 	#site-navigation {
 		margin: auto;
 		flex-grow: 1;

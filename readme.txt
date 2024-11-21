@@ -50,6 +50,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Reorganização dos permalinks e datas dos posts no `template-parts/content.php`.
 * Várias alterações pequenas de estilo no `style.css`/`style.min.css`.
 * Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
+* Reorganiza o logo/título do site.
 
 = 3.4.3 - Oct 20 2024 =
 * Adiciona `text-wrap: balance` a cabeçalhos `h1` e `h2`.
