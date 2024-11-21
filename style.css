@@ -353,19 +353,24 @@ a.comment-metadata {
 	padding-bottom: var(--med-salto-pequeno);
 }
 
+.site-branding {
+	display: flex; 
+	column-gap: .75rem;
+	align-items: center;
+	width: fit-content;
+}
+.branding-text {
+	display: flex;
+	flex-direction: column;
+}
 .site-title {
 	margin: 0;
 	height: auto;
 	font-family: var(--ff-serif);
-	color: var(--cor-link-meta);
 	font-size:var(--fs-1);
 }
-.site-title a {
-	color: var(--cor-fonte);
-}
-.site-title img {
-	position: relative;
-	top: -2px;
+.site-rg {
+	font-size: var(--fs-0);
 }
 
 #site-navigation {

@@ -33,13 +33,17 @@
 		<header id="masthead" class="site-header">
 			<!-- Logo -->
 			<div class="site-branding">
-				<?php
-				$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
-				?>
-				<<?php echo esc_html( $title_tag ); ?> class="site-title">
-				<img src="/wp-content/themes/dez/img/logo-manual-do-usuario-2025.svg" width="20" height="24" alt="<?php bloginfo( 'name' ); ?>"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Manual do Usuário</a> por Rodrigo Ghedin
-			</a>
-			</<?php echo esc_html( $title_tag ); ?>>
+				<img src="/wp-content/themes/dez/img/logo-manual-do-usuario.png" width="33" height="38" class="site-logo" alt="<?php bloginfo( 'name' ); ?>">
+				<div class="branding-text">
+					<?php
+					$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
+					?>
+					<<?php echo esc_html( $title_tag ); ?> class="site-title link-alt">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Manual do Usuário</a></<?php echo esc_html( $title_tag ); ?>>
+					<div class="site-rg">
+						por Rodrigo Ghedin
+					</div>
+				</div>
 		</div>
 
 		<?php // Search Checkbox Input. Required here due to the use of CSS selectors to alter the Text Menu and Search. ?>
