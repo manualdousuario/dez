@@ -15,11 +15,10 @@
 			<?php 
 				if ( is_home() && is_sticky() ) :
 					echo get_the_time( 'j/n/y' );
-					echo '<span class="destaque">Destaque</span>';
-				elseif ( is_home() && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
-					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'j/n/y' ) .'</a>';
-				elseif ( is_home() ) :
-					echo get_the_time( 'j/n/y' );
+					echo 'Destaque&nbsp;&middot;&nbsp;';
+				elseif ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
+					echo get_the_time( 'j/n/y, ' );
+					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'G\hi' ) .'</a>';
 				elseif ( ! is_page() ) :
 					echo get_the_time( 'j/n/y, G\hi' );
 				endif ?>

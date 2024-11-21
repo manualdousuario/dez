@@ -11,7 +11,7 @@
  *
  * @package Dez
  */
-
+if ( !defined( 'ABSPATH' ) ) exit; /* Previne acessos diretos ao tema que disparam um erro fatal: https://stackoverflow.com/questions/47877136/call-to-undefined-wordpress-function-get-header-errors-but-header-is-still-di */
 get_header();
 ?>
 
