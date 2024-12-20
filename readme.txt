@@ -44,7 +44,6 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 == Changelog ==
 
 = 3.4.4 - Nov 20 2024 =
-* Acrescenta aviso do experimento de comentários/e-mails no `single.php`.
 * Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
 * Códigos para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
 * Reorganização dos permalinks e datas dos posts no `template-parts/content.php`.
