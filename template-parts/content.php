@@ -14,8 +14,8 @@
 		<div class="entry-meta link-alt">
 			<?php 
 				if ( is_home() && is_sticky() ) :
-					echo get_the_time( 'j/n/y' );
-					echo 'Destaque&nbsp;&middot;&nbsp;';
+					echo '📌&nbsp;&middot;&nbsp;';
+					echo get_the_time( 'j/n/y, G\hi' );
 				elseif ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
 					echo get_the_time( 'j/n/y, ' );
 					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'G\hi' ) .'</a>';
@@ -27,9 +27,7 @@
 				echo '&middot;&nbsp;';
 				echo comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link link-alt', '' );
 			endif; ?>
-			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
 				<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
-			<?php endif; ?>
 		</div><!-- .entry-meta -->
 
 	<?php

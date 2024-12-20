@@ -40,6 +40,7 @@ TABELA DE CONTEÚDO
 	- Apoie
 	- Post formats
 	- display: none
+	- Formulário de entrevista do diretório de newsletters
 # Plugins
 	- Just Like Dislikes
 	- StCR
@@ -362,15 +363,18 @@ a.comment-metadata {
 .branding-text {
 	display: flex;
 	flex-direction: column;
+	row-gap: .25rem;
 }
 .site-title {
 	margin: 0;
 	height: auto;
 	font-family: var(--ff-serif);
 	font-size:var(--fs-1);
+	line-height: 1;
 }
 .site-rg {
 	font-size: var(--fs-0);
+	line-height: 1;
 }
 
 #site-navigation {
@@ -494,6 +498,11 @@ caption,
 	text-align: left;
 }
 
+.wp-video {
+	width: 100% !important;
+	margin-bottom: var(--med-salto-pequeno);
+}
+
 .aviso-pos-post {
 	padding: 1rem;
 	background-color: var(--cor-destaques);
@@ -515,7 +524,7 @@ caption,
 .podcast_player,
 .format-link .link {
 	margin-bottom: var(--med-salto-pequeno);
-	padding: 0 0 var(--med-salto-pequeno);
+	padding: 0 0 .75rem;
 	border-bottom: 1px dashed var(--cor-bordas);
 	font-style: italic;
 }
@@ -525,6 +534,9 @@ p.ctx:last-child {
 
 .ctx label {
 	font-weight: 600;
+}
+.ctx label:after {
+	content: ": ";
 }
 
 div.podcast_player p:last-child,
@@ -559,20 +571,22 @@ div.ctx-editor p:last-child {
 /* Comentários
 --------------------------------------------- */
 
-.comentario-por-email {
-	margin-top: var(--med-salto-grande);
-	padding-top: var(--med-salto-pequeno);
-	border-top: 1px dashed var(--cor-bordas);
-}
-
 .comments-area {
-	margin-top: var(--med-salto-grande);
+	margin-top: var(--med-salto-medio);
 	padding-top: var(--med-salto-grande);
 	border-top: 1px dashed var(--cor-bordas);
 }
 
+.comment-respond {
+	margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
+	padding-bottom: var(--med-salto-medio);
+	border-bottom: 1px dashed var(--cor-bordas);
+}
+
 .comment-list #respond {
 	margin: var(--med-salto-medio) auto;
+	padding-bottom: 0;
+	border-bottom: 0;
 }
 
 .comment-form-alert {
@@ -580,10 +594,6 @@ div.ctx-editor p:last-child {
 	font-size: var(--fs-0);
 	border-bottom: none;
 	padding: 0;
-}
-
-.comment-respond {
-	margin-bottom: var(--med-salto-grande);
 }
 
 .comment-form-cookies-consent,
@@ -1009,6 +1019,7 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 --------------------------------------------- */
 
 .entry-meta span.author-1,
+.entry-meta span.author-4,
 .screen-reader-text,
 article.format-aside .entry-title,
 article.format-link .entry-title,
@@ -1020,6 +1031,21 @@ span.required-field-message,
 .says,
 #menu-toggle {
 	display: none;
+}
+
+/* Formulário de entrevista do diretório de newsletters
+--------------------------------------------- */
+
+.page-id-47229 .hf-fields-wrap textarea {
+	height: 200px;
+}
+
+.page-id-47229 .hf-fields-wrap label {
+	display: block;
+}
+
+.page-id-47229 .hf-fields-wrap input:not([type=radio]):not([type=submit]) {
+	width: 100%;
 }
 
 /*--------------------------------------------------------------
