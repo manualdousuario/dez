@@ -158,8 +158,6 @@ add_action(
 		wp_dequeue_style( 'ssp-recent-episodes' );
 		wp_deregister_style( 'ssp-recent-episodes' );
 
-		wp_deregister_style( 'jlad-frontend' );
-
 		wp_dequeue_style( 'stcr-style' );
 		wp_deregister_style( 'stcr-style' );
 
@@ -178,6 +176,9 @@ add_action(
 		wp_deregister_script( 'wp-hooks' );
 		wp_dequeue_script( 'wp-i18n' );
 		wp_deregister_script( 'wp-i18n' );
+
+		wp_dequeue_script('jetpack-mu-wpcom-settings');
+		wp_deregister_script('jetpack-mu-wpcom-settings');
 	},
 	20
 );
@@ -193,8 +194,21 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'mediaelement-css' );
 remove_action( 'wp_head', 'wp_print_font_faces', 50 );
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
 
 add_filter( 'jetpack_implode_frontend_css', '__return_false', 99 );
+
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+add_action( 'wp_enqueue_scripts', function() {
+	wp_dequeue_style( 'wp-components' );
+	wp_dequeue_style( 'global-styles' );
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'classic-theme-styles' );
+});
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
 /**
  * Remove alguns scripts padrões.
@@ -716,7 +730,7 @@ add_action( 'wp_dashboard_setup', 'dez_limpeza_dashboard' );
 
 /**
  * Remove abas Painel e Jetpack para usuários que não são admin.
- */
+ 
 function dez_remove_jetpack() {
 	if( class_exists( 'Jetpack' ) && !current_user_can( 'manage_options' ) ) {
 		remove_menu_page( 'jetpack' );
@@ -844,17 +858,17 @@ add_filter('auth_cookie_expiration', 'dez_auth_cookie_expiration', 10, 3);
 
 /**
  * Remove a área “Links” da barra lateral do painel administrativo.
- */
+ 
 function dez_remove_links_menu() {
 	remove_menu_page('link-manager.php');
 }
-add_action( 'admin_menu', 'dez_remove_links_menu' );
+add_action( 'admin_menu', 'dez_remove_links_menu' ); */
 
-add_action( 'wp_enqueue_scripts', 'crunchify_enqueue_scripts_styles' );
 function crunchify_enqueue_scripts_styles() {
 	wp_dequeue_script( 'bilmur' );
 	wp_deregister_script( 'bilmur' );
 }
+add_action( 'wp_enqueue_scripts', 'crunchify_enqueue_scripts_styles' );
 
 /**
  * Usar apple-touch-icon como avatar no fediverso (plugin ActivityPub).
@@ -879,4 +893,27 @@ add_action( 'wp_enqueue_scripts', 'dez_dark_mode_script' );
  */
 add_filter('ssp_feed_number_of_posts', function(){
 	return 999;
+});
+
+/**
+ * Remove barra lateral das configurações do Seriously Simple Podcasting.
+ */
+function admin_styles() {
+	echo '<style>
+	#ssp-main-settings.castos-disconnected {
+	width: 100%;
+}
+	#ssp-sidebar {
+display: none;
+}
+</style>';
+}
+add_action('admin_head', 'admin_styles');
+
+/**
+ * Estende o fechamento automático de comentários para o Órbita.
+ */
+add_filter( 'close_comments_for_post_types', function( $list ) {
+	$list[] = 'orbita_post';
+	return $list;
 });
