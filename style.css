@@ -524,12 +524,9 @@ caption,
 .podcast_player,
 .format-link .link {
 	margin-bottom: var(--med-salto-pequeno);
-	padding: 0 0 .75rem;
-	border-bottom: 1px dashed var(--cor-bordas);
-	font-style: italic;
-}
-p.ctx:last-child {
-	border-bottom: none;
+	padding: .5rem .75rem;
+	background-color: hsl(0, 0%, 97%);
+	border-radius: var(--med-borda);
 }
 
 .ctx label {
@@ -1392,16 +1389,8 @@ table.dataTable-table tr:nth-child(even) {
 	color: var(--cor-fonte);
 }
 
-[data-theme="dark"] .ctx-atencao {
-	background-color: #1f1c00;
-}
-
-[data-theme="dark"] .ctx-transparencia {
-	background-color: #001425;
-}
-
-[data-theme="dark"] .ctx-dica {
-	background-color: #2e0f00;
+[data-theme="dark"] .ctx {
+	background-color: var(--cor-destaques);
 }
 
 [data-theme="dark"] .destaque {

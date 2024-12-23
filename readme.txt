@@ -47,6 +47,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
 * Códigos para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
 * Reorganização dos permalinks e datas dos posts no `template-parts/content.php`.
+* Altera estilo da classe `.ctx`.
 * Várias alterações pequenas de estilo no `style.css`/`style.min.css`.
 * Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
 * Reorganiza o logo/título do site.
