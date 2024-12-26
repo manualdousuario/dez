@@ -63,5 +63,5 @@ endif; ?>
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php if ( is_single() && shortcode_exists( 'sc' ) ) : 
-	echo do_shortcode('[sc name="pos-posts"][/sc]'); 
+	echo do_shortcode('[sc name="newsletter-post"][/sc]'); 
 endif; ?>

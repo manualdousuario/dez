@@ -430,6 +430,55 @@ article.hentry li:last-child {
 	margin-bottom: 0;
 }
 
+.ctx-newsletter {
+	margin: var(--med-salto-grande) 0;
+	background-color: var(--cor-destaques);
+	border-radius: var(--med-borda);
+	padding: .5rem .75rem .75rem;
+}
+
+.ctx-newsletter > p:first-child,
+.ctx-newsletter > p:last-child,
+p.hf-message {
+	max-width: 100%;
+	text-align: center;
+	margin-bottom: var(--med-salto-pequeno);
+}
+.ctx-newsletter > p:last-child {
+	margin-bottom: 0;
+	font-size: var(--fs-0);
+}
+
+.ctx-newsletter form {
+	margin-bottom: .75rem;
+	padding-bottom: var(--med-salto-pequeno);
+	border-bottom: 1px dashed var(--cor-bordas);
+}
+
+.ctx-newsletter .hf-fields-wrap p {
+	margin-bottom: 0;
+}
+
+.ctx-newsletter .hf-fields-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	column-gap: var(--med-salto-pequeno);
+}
+.ctx-newsletter .hf-fields-wrap label {
+	display: none;
+}
+
+.ctx-newsletter .hf-fields-wrap p {
+	flex-grow: 2;
+}
+.ctx-newsletter .hf-fields-wrap p input {
+	width: 100%;
+}
+.ctx-newsletter .hf-fields-wrap p:first-child {
+	flex-grow: 30;
+}
+
 /* Post
 --------------------------------------------- */
 
@@ -569,9 +618,7 @@ div.ctx-editor p:last-child {
 --------------------------------------------- */
 
 .comments-area {
-	margin-top: var(--med-salto-medio);
-	padding-top: var(--med-salto-grande);
-	border-top: 1px dashed var(--cor-bordas);
+	margin-top: var(--med-salto-grande);
 }
 
 .comment-respond {
@@ -589,8 +636,6 @@ div.ctx-editor p:last-child {
 .comment-form-alert {
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	border-bottom: none;
-	padding: 0;
 }
 
 .comment-form-cookies-consent,
@@ -752,27 +797,9 @@ ol.children {
 --------------------------------------------- */
 
 .site-footer {
-	display: flex;
-	justify-content: space-between;
 	margin: var(--med-salto-grande) auto 0;
 	padding: var(--med-salto-pequeno) 0 0;
 	border-top: 1px dashed var(--cor-bordas);
-}
-
-.site-footer-redes ul {
-	list-style: none;
-	display: flex;
-	justify-content: end;
-	column-gap: var(--med-salto-pequeno);
-}
-.site-footer-redes ul li {
-	margin: 0;
-}
-.site-footer-redes a {
-	filter: opacity(70%);
-}
-.site-footer-redes a:hover {
-	filter:	opacity(100%);
 }
 
 .site-footer p {
@@ -1059,6 +1086,10 @@ span.required-field-message,
 /* Órbita
 --------------------------------------------- */
 
+.home .post-33099 .entry-header {
+	display: none;
+}
+
 .single-orbita_post .entry-content,
 .orbita-follow {
 	margin-bottom: var(--med-salto-medio);
@@ -1076,6 +1107,10 @@ ol.orbita-list .title {
 }
 .orbita-list li:last-child {
 	border-bottom: none;
+}
+
+.orbita-list .meta .title .domain {
+	word-break: break-all;
 }
 
 a.traduzir,
@@ -1248,6 +1283,22 @@ table.dataTable-table tr:nth-child(even) {
 	#search-icon:checked ~ #site-navigation #search-container label {
 		width: 100%;
 		margin: 0;
+	}
+
+	.ctx-newsletter .hf-fields-wrap {
+		align-items: start;
+		flex-direction: column;
+		row-gap: var(--med-salto-pequeno);
+	}
+	.ctx-newsletter p:first-child {
+		text-align: left;
+	}
+
+	.ctx-newsletter .hf-fields-wrap p {
+		width: 100%;
+	}
+	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
+		width: fit-content;
 	}
 
 	.format-quote .entry-title {

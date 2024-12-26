@@ -43,14 +43,16 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.4.4 - Nov 20 2024 =
+= 3.4.4 - Dez 26 2024 =
 * Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
-* Códigos para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
-* Reorganização dos permalinks e datas dos posts no `template-parts/content.php`.
-* Altera estilo da classe `.ctx`.
-* Várias alterações pequenas de estilo no `style.css`/`style.min.css`.
+* Acrescenta código para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
 * Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
+* Acrescenta formulário de inscrição da newsletter na capa e após posts (`single.php`).
+* Remove link da newsletter do cabeçalho.
+* Reorganiza permalinks e datas dos posts no `template-parts/content.php`.
 * Reorganiza o logo/título do site.
+* Altera estilo da classe `.ctx`.
+* Altera vários detalhes de estilo no `style.css`/`style.min.css`.
 
 = 3.4.3 - Oct 20 2024 =
 * Adiciona `text-wrap: balance` a cabeçalhos `h1` e `h2`.
