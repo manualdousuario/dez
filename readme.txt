@@ -48,6 +48,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Acrescenta código para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
 * Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
 * Acrescenta formulário de inscrição da newsletter na capa e após posts (`single.php`).
+* Acrescenta ícone de aparência (clara/escura) no menu principal e remove link correspondente do menu do usuário.
 * Remove link da newsletter do cabeçalho.
 * Reorganiza permalinks e datas dos posts no `template-parts/content.php`.
 * Reorganiza o logo/título do site.
