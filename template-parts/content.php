@@ -60,6 +60,12 @@ endif; ?>
 			wp_kses_post( get_the_title() )
 		)
 	); ?>
+	<p class="share-link link-alt">
+  	<a onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);" title="Compartilhe este post">
+    	<span>Compartilhe</span>
+  	</a>
+	</p>
+
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php if ( is_single() && shortcode_exists( 'sc' ) ) : 

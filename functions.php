@@ -444,6 +444,38 @@ function dez_mensagem_cookies_comentarios( $fields ) {
 add_filter( 'comment_form_default_fields', 'dez_mensagem_cookies_comentarios' );
 
 /**
+ * Chama script de compartilhamento no rodapé dos posts (single).
+ */
+function dez_compartilhar_posts() {	?>
+	<script type="text/javascript">
+		const compartilharPost = (title, url, element) => {
+			if (navigator.canShare) {
+				const shareData = {
+					title: title,
+					url: url
+				}
+				navigator.share(shareData)
+			} else {
+				navigator.clipboard.writeText(`${url}`)
+				.then(() => {
+					const span = element.querySelector('span');
+					if (span) {
+						span.textContent = "Link copiado";
+					}
+					setTimeout(() => {
+						span.textContent = "Compartilhe";
+					}, 3000);
+				})
+				.catch(err => {
+					console.error('Erro ao copiar o link: ', err);
+				});
+			}
+		}
+	</script>
+<?php }
+add_action( 'wp_footer', 'dez_compartilhar_posts' );
+
+/**
  * Ocultar e exibir comentários.
  */
 function dez_oculta_exibe_comentarios() {
@@ -729,17 +761,6 @@ function dez_limpeza_dashboard() {
 add_action( 'wp_dashboard_setup', 'dez_limpeza_dashboard' );
 
 /**
- * Remove abas Painel e Jetpack para usuários que não são admin.
- 
-function dez_remove_jetpack() {
-	if( class_exists( 'Jetpack' ) && !current_user_can( 'manage_options' ) ) {
-		remove_menu_page( 'jetpack' );
-		remove_menu_page( 'index.php' );
-	}
-}
-add_action( 'admin_init', 'dez_remove_jetpack' );
-
-/**
  * Remove campos do perfil do usuário.
  */
 function dez_remove_campos_perfil( $contactmethods ) {
@@ -780,7 +801,6 @@ add_action(
 		ob_end_flush();
 	}
 );
-
 
 /**
  * Remove opções de cores do wp-admin.

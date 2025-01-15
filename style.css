@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.4.4
+Version: 3.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -42,7 +42,6 @@ TABELA DE CONTEÚDO
 	- display: none
 	- Formulário de entrevista do diretório de newsletters
 # Plugins
-	- Just Like Dislikes
 	- StCR
 	- Órbita
 	- Simple Data-Tables
@@ -415,6 +414,36 @@ ul.nav-menu {
 	width: 100%;
 }
 
+#dark-mode-toggle {
+	background: transparent;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+#dark-mode-toggle li:first-child {
+	padding: 0;
+	margin: 0;
+}
+
+#dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
+	background-size: cover;
+	display: block;
+	height: 20px;
+	width: 20px;	
+	overflow: hidden;
+	text-indent: -9999px;
+	white-space: nowrap;
+}
+
+[data-theme="dark"] #dark-mode-toggle li a {
+	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
+	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
+	filter: invert();
+}
+
 /* Corpo
 --------------------------------------------- */
 
@@ -525,12 +554,18 @@ sup a {
 	padding: .1rem;
 }
 
-a.comment-link {
+a.comment-link,
+.share-link a {
 	background-image: url('/wp-content/themes/dez/img/icone-speech-stroke.svg');
 	background-repeat: no-repeat;
 	background-size: 18px;
 	background-position-y: 1px;
 	padding-left: 24px;
+}
+.share-link a {
+	background-image: url('/wp-content/themes/dez/img/compartilhe.svg');
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .wp-caption img[class*="wp-image-"] {
@@ -1083,6 +1118,51 @@ span.required-field-message,
 	display: block;
 }
 
+.page-id--999 form fieldset {
+	padding: 0;
+}
+.page-id--999 form label,
+.page-id--999 #subscribe-reloaded-update-p {
+	display: none;
+}
+
+.stcr-subscription-list {
+	table-layout: fixed;
+	border-collapse: collapse;
+	font-size: var(--fs-0);
+	border: 1px solid var(--cor-destaques);
+}
+
+.stcr-subscription-list td {
+	text-align: left !important;
+	padding: .5rem;
+}
+.stcr-subscription-list td:first-child {
+	width: 20px;
+}
+.stcr-subscription-list td:last-child {
+	width: 130px;
+}
+
+.stcr-subscription-list thead {
+	display: none;
+}
+
+.stcr-subscription-list tbody tr:nth-child(even) {
+	background-color: var(--cor-destaques);
+}
+
+#subscribe-reloaded-select-all-p {
+	display: none;
+}
+
+#subscribe-reloaded-action-p {
+	text-align: center;
+}
+#subscribe-reloaded-action-p select {
+	margin-left: .5rem;
+}
+
 /* Órbita
 --------------------------------------------- */
 
@@ -1117,6 +1197,15 @@ a.traduzir,
 a.sem-paywall {
 	padding: .1rem .2rem;
 	margin: 0;
+}
+
+.single-orbita_post .comments-area {
+	margin: var(--med-salto-medio) 0 var(--med-salto-pequeno);
+	padding-top: var(--med-salto-medio);
+	border-top: 1px dashed var(--cor-bordas);
+}
+.single-orbita_post .comment-respond {
+	margin: 0 0 var(--med-salto-medio);
 }
 
 /* Simple Data-Tables
@@ -1408,7 +1497,9 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .menu-toggle-icon a,
 [data-theme="dark"] .search-icon,
 [data-theme="dark"] a.comment-link,
-[data-theme="dark"] .jlad-custom img {
+[data-theme="dark"] .share-link a,
+[data-theme="dark"] .share-link span,
+[data-theme="dark"] .site-logo {
 	filter: invert();
 	fill: unset;
 }

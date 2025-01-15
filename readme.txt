@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.4.4
+Stable tag: 3.5
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,9 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.5 - Jan 1 2025 =
+* Menu de compartilhamento nos posts usando a API Web Share.
 
 = 3.4.4 - Dez 26 2024 =
 * Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
