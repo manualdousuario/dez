@@ -14,12 +14,11 @@
 		<div class="entry-meta link-alt">
 			<?php 
 				if ( is_home() && is_sticky() ) :
-					echo get_the_time( 'j/n/y' );
-					echo '<span class="destaque">Destaque</span>';
-				elseif ( is_home() && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
-					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'j/n/y' ) .'</a>';
-				elseif ( is_home() ) :
-					echo get_the_time( 'j/n/y' );
+					echo '📌&nbsp;&middot;&nbsp;';
+					echo get_the_time( 'j/n/y, G\hi' );
+				elseif ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
+					echo get_the_time( 'j/n/y, ' );
+					echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'G\hi' ) .'</a>';
 				elseif ( ! is_page() ) :
 					echo get_the_time( 'j/n/y, G\hi' );
 				endif ?>
@@ -28,9 +27,7 @@
 				echo '&middot;&nbsp;';
 				echo comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link link-alt', '' );
 			endif; ?>
-			<?php if ( ( 'post' || 'podcast' === get_post_type() ) && ( ! in_category( array( 'post-livre', 'patrocinios' ) ) && ! has_tag( array( 'como-eu-trabalho', 'na-mochila', 'escritorio-em-casa' ) ) ) ) : ?>
 				<span class="author-<?php the_author_meta('ID'); ?>">&middot; por <?php echo get_the_author(); ?></span>
-			<?php endif; ?>
 		</div><!-- .entry-meta -->
 
 	<?php
@@ -66,5 +63,5 @@ endif; ?>
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php if ( is_single() && shortcode_exists( 'sc' ) ) : 
-	echo do_shortcode('[sc name="pos-posts"][/sc]'); 
+	echo do_shortcode('[sc name="newsletter-post"][/sc]'); 
 endif; ?>

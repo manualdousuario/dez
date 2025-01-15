@@ -11,7 +11,7 @@
  *
  * @package Dez
  */
-
+if ( !defined( 'ABSPATH' ) ) exit; /* Previne acessos diretos ao tema que disparam um erro fatal: https://stackoverflow.com/questions/47877136/call-to-undefined-wordpress-function-get-header-errors-but-header-is-still-di */
 get_header();
 ?>
 
@@ -28,16 +28,9 @@ get_header();
 
 		if ( ! is_paged() && 0 == $count ) :
 			?>
-			<div class="orbita-manual">
-				<h2>Destaques do Órbita</h2>
-				<?php if ( shortcode_exists( 'orbita-ranking' ) ) {
-					echo do_shortcode( '[orbita-ranking comment-points="1" vote-points="3" days="10" limit="5"]' ); 
+				<?php if ( shortcode_exists( 'hf_form' ) ) {
+					echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
 				} ?>
-				<footer class="entry-footer link-alt">
-					<a href="/orbita/">Mais conversas &raquo;</a>
-				</footer>
-			</div>
-		</div>
 		<?php
 		
 		elseif ( 3 == $count && shortcode_exists( 'sc' ) ) :
