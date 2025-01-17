@@ -17,13 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noarchive">
 	<?php wp_head(); ?>
-
-	<?php if ( is_single() ) :
-		$author_id = get_post_field( 'post_author', get_queried_object_id() );
-		if ( get_the_author_meta( 'display_name', $author_id ) === 'Rodrigo Ghedin' ) {
-			echo '<meta name="fediverse:creator" content="@manualdousuario@mastodon.social" />';
-		}
-	endif; ?>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 </head>
 
