@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.1.12
 Requires PHP: 5.6
-Stable tag: 3.5.2
+Stable tag: 3.5.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,9 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.5.3 - Jan 18 2025 =
+* Acrescenta banner ao `header.php` com botão para removê-lo de modo persistente usando localStorage.
 
 = 3.5.2 - Jan 17 2025 =
 * Remove script “hard coded” no `header.php` para atribuir posts ao autor #1 no Mastodon em prol de plugin que estende funcionalidade a todas as pessoas cadastradas.

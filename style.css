@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.5.2
+Version: 3.5.3
 Tested up to: 8.1.12
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -348,7 +348,7 @@ a.comment-metadata {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: var(--med-salto-pequeno) 0 var(--med-salto-grande);
+	margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
 	gap: 1rem;
 	padding-bottom: var(--med-salto-pequeno);
 }
@@ -442,6 +442,27 @@ ul.nav-menu {
 	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
 	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 	filter: invert();
+}
+
+#ajude-manual {
+	display: flex;
+	max-width: 75%;
+	margin: 0 auto var(--med-salto-grande);
+}
+
+#ajude-manual img {
+	box-shadow: 5px 5px 12px var(--cor-bordas);
+}
+
+#fechar-ajude-manual {
+	background: red; 
+	color: white; 
+	border: none; 
+	cursor: pointer; 
+	height: 20px;
+	margin: -4px 0 0 -20px;
+	width: fit-content;
+	font-weight: bold;
 }
 
 /* Corpo
@@ -1374,6 +1395,10 @@ table.dataTable-table tr:nth-child(even) {
 		margin: 0;
 	}
 
+	#ajude-manual {
+		max-width: 100%;
+	}
+
 	.ctx-newsletter .hf-fields-wrap {
 		align-items: start;
 		flex-direction: column;
@@ -1517,7 +1542,8 @@ table.dataTable-table tr:nth-child(even) {
 	filter: invert();
 }
 
-[data-theme="dark"] .post-thumbnail img {
+[data-theme="dark"] .post-thumbnail img,
+[data-theme="dark"] #ajude-manual img {
 	box-shadow: none;
 }
 
@@ -1533,10 +1559,6 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .ctx {
 	background-color: var(--cor-destaques);
-}
-
-[data-theme="dark"] .destaque {
-	box-shadow: none;
 }
 
 [data-theme="dark"] .top:before {

@@ -937,3 +937,20 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 	$list[] = 'orbita_post';
 	return $list;
 });
+
+/**
+ * Armazena no localStorage fechamento do banner de assinaturas no topo de todas as páginas (jan/2025).
+ */
+function dez_banner_topo() { ?>
+<script>
+    if (localStorage.getItem('imagemOculta') === 'true') {
+        document.getElementById('ajude-manual').style.display = 'none';
+    }
+
+    document.getElementById('fechar-ajude-manual').onclick = function() {
+        document.getElementById('ajude-manual').style.display = 'none';
+        localStorage.setItem('imagemOculta', 'true');
+    };
+</script>
+<?php	}
+add_action( 'wp_footer', 'dez_banner_topo' );
