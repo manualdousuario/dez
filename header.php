@@ -61,7 +61,7 @@
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
-				<li class="menu-item"><a href="/apoie/"><strong>Assinatura</strong></a></li>
+				<li class="menu-item"><a href="/apoie/"><strong>Assine</strong></a></li>
 			</ul>
 		</nav>
 
@@ -132,3 +132,18 @@
 			?>
 		</nav>
 	</header>
+
+	<div id="ajude-manual">
+    <a href="https://manualdousuario.net/apoie/">
+      <picture>
+        <img
+        type="image/avif"
+        srcset="/wp-content/themes/dez/img/ajude-manual.avif"
+        src="/wp-content/themes/dez/img/ajude-manual.jpg"
+        alt="Ajude a financiar um lugar legal na internet!"
+        width="1736"
+        height="289"
+        />
+      </picture>
+    </a> <button id="fechar-ajude-manual">X</button>
+  </div>
