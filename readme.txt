@@ -43,7 +43,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.6 - Jan 18 2025 =
+= 3.6 - Jan 29 2025 =
 * Acrescenta destaque para novos comentários desde a última visita (classe `os_sincelastvisit_comment_class` no `functions.php`), apenas para leitores cadastrados.
 * Acrescenta atributo `display: none` à classe `.comment-awaiting-moderation`.
 * Acrescenta suporte ao plugin Favorites.
