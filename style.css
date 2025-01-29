@@ -4,8 +4,8 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.5.3
-Tested up to: 8.1.12
+Version: 3.6
+Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: GNU General Public License v2 or later
@@ -44,6 +44,7 @@ TABELA DE CONTEÚDO
 # Plugins
 	- StCR
 	- Órbita
+	- Seriously Simple Podcasting
 	- Simple Data-Tables
 # Media queries
 # Modo escuro
@@ -61,8 +62,7 @@ TABELA DE CONTEÚDO
 	--cor-chapada: hsl(0, 0%, 100%);
 	--cor-oferecimento: hsl(360, 100%, 99%);
 	--cor-oferecimento-label: hsl(360, 62%, 96%);
-	--cor-brilho: hsl(360, 100%, 94%);
-	--cor-brilho-fonte: hsl(360, 87%, 26%);
+	--cor-atencao: hsl(360, 100%, 97%);
 
 	--cor-link-ori: hsl(225, 72%, 41%);
 	--cor-link-vis: hsl(276, 100%, 25%);
@@ -252,6 +252,18 @@ button {
 	padding: 0 .5rem;
 }
 
+.compartilhe {
+	background-size: 20px;
+	background: transparent url('/wp-content/themes/dez/img/compartilhe.svg') no-repeat;
+	border: none;
+	font-family: var(--ff-monospace);
+	padding-left: var(--med-salto-pequeno);
+	font-size: var(--fs-0);
+	text-decoration: underline;
+	padding: 0 0 0 1.2rem;
+	line-height: 1;
+}
+
 /* Links
 --------------------------------------------- */
 
@@ -272,13 +284,15 @@ a:active {
 .link-alt a,
 .comment-metadata a,
 a.comment-reply-link,
-.posts-navigation a {
+.posts-navigation a,
+button.compartilhe {
 	color: var(--cor-link-meta);
 }
 .link-alt a:hover,
 .comment-metadata a:hover,
 .posts-navigation a:hover,
-a:hover.comment-reply-link {
+a:hover.comment-reply-link,
+button:hover.compartilhe {
 	color: var(--cor-link-meta-est);
 }
 
@@ -348,7 +362,7 @@ a.comment-metadata {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
+	margin: var(--med-salto-pequeno) 0 var(--med-salto-grande);
 	gap: 1rem;
 	padding-bottom: var(--med-salto-pequeno);
 }
@@ -442,27 +456,6 @@ ul.nav-menu {
 	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
 	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 	filter: invert();
-}
-
-#ajude-manual {
-	display: flex;
-	max-width: 75%;
-	margin: 0 auto var(--med-salto-grande);
-}
-
-#ajude-manual img {
-	box-shadow: 5px 5px 12px var(--cor-bordas);
-}
-
-#fechar-ajude-manual {
-	background: red; 
-	color: white; 
-	border: none; 
-	cursor: pointer; 
-	height: 20px;
-	margin: -4px 0 0 -20px;
-	width: fit-content;
-	font-weight: bold;
 }
 
 /* Corpo
@@ -575,18 +568,12 @@ sup a {
 	padding: .1rem;
 }
 
-a.comment-link,
-.share-link a {
+a.comment-link {
 	background-image: url('/wp-content/themes/dez/img/icone-speech-stroke.svg');
 	background-repeat: no-repeat;
 	background-size: 18px;
 	background-position-y: 1px;
 	padding-left: 24px;
-}
-.share-link a {
-	background-image: url('/wp-content/themes/dez/img/compartilhe.svg');
-	cursor: pointer;
-	text-decoration: underline;
 }
 
 .wp-caption img[class*="wp-image-"] {
@@ -692,6 +679,8 @@ div.ctx-editor p:last-child {
 .comment-form-alert {
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
+	max-width: 100%;
+	background-color: var(--cor-atencao);
 }
 
 .comment-form-cookies-consent,
@@ -773,16 +762,22 @@ ol.children {
 }
 
 .comment-meta {
-	background-color: var(--cor-destaques);
-	padding: .6rem 1rem;
-	border-radius: var(--med-borda);
-	margin-bottom: var(--med-salto-pequeno);
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	column-gap: 1rem;
+	padding: 1rem 3rem 1rem 1rem;
+	margin-bottom: var(--med-salto-pequeno);
+	line-height: 1;
+	border-radius: var(--med-borda);
+	background-color: var(--cor-destaques);
 }
 .activitypub-comment .comment-meta {
 	background-color: hsl(252, 100%, 96%);;
+}
+
+.comment-new > article > footer {
+	background-color: var(--cor-atencao);
 }
 
 .byuser>.comment-body>footer>.comment-author>.fn:after,
@@ -807,6 +802,10 @@ ol.children {
 	background-size: 22px;
 	width: 22px;
 	left: 8px;
+}
+
+.comment-awaiting-moderation {
+	display: none;
 }
 
 /* Navegação
@@ -1229,6 +1228,18 @@ a.sem-paywall {
 	margin: 0 0 var(--med-salto-medio);
 }
 
+/* Seriously Simple Podcasting
+--------------------------------------------- */
+
+.podcast_meta aside {
+	display: flex;
+	justify-content: space-between;
+}
+
+.podcast_meta aside p {
+	margin: 0;
+}
+
 /* Simple Data-Tables
 --------------------------------------------- */
 
@@ -1395,10 +1406,6 @@ table.dataTable-table tr:nth-child(even) {
 		margin: 0;
 	}
 
-	#ajude-manual {
-		max-width: 100%;
-	}
-
 	.ctx-newsletter .hf-fields-wrap {
 		align-items: start;
 		flex-direction: column;
@@ -1461,22 +1468,27 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	ol.children {
-		border-left: 1px solid var(--cor-destaques);
 		margin: 0 0 0 1rem;
 		padding: 0;
 	}
 	.comment-meta {
 		flex-direction: column;
 		align-items: start;
+		row-gap: .25rem;
 		border-radius: 0;
-		padding: .25rem .5rem;
+		padding: .5rem .5rem;
 	}
-	.comment-content {
+	.comment-content,
+	.reply {
 		margin-left: .5rem;
 	}
 
 	.search-form {
 		max-width: 100%;
+	}
+
+	.podcast_meta aside {
+		flex-direction: column;
 	}
 
 	.site-footer {
@@ -1510,8 +1522,7 @@ table.dataTable-table tr:nth-child(even) {
 
 	--cor-oferecimento: hsl(360, 100%, 8%);
 	--cor-oferecimento-label: hsl(360, 100%, 16%);
-	--cor-brilho: hsl(360, 87%, 26%);
-	--cor-brilho-fonte: hsl(360, 100%, 94%);
+	--cor-atencao: hsl(360, 87%, 26%);
 
 	--cor-bordas: rgb(68, 68, 68);
 	--cor-destaques: rgb(29, 29, 29);
@@ -1522,8 +1533,6 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .menu-toggle-icon a,
 [data-theme="dark"] .search-icon,
 [data-theme="dark"] a.comment-link,
-[data-theme="dark"] .share-link a,
-[data-theme="dark"] .share-link span,
 [data-theme="dark"] .site-logo {
 	filter: invert();
 	fill: unset;
@@ -1542,8 +1551,7 @@ table.dataTable-table tr:nth-child(even) {
 	filter: invert();
 }
 
-[data-theme="dark"] .post-thumbnail img,
-[data-theme="dark"] #ajude-manual img {
+[data-theme="dark"] .post-thumbnail img {
 	box-shadow: none;
 }
 
@@ -1557,7 +1565,8 @@ table.dataTable-table tr:nth-child(even) {
 	color: var(--cor-fonte);
 }
 
-[data-theme="dark"] .ctx {
+[data-theme="dark"] .ctx,
+[data-theme="dark"] .podcast_player {
 	background-color: var(--cor-destaques);
 }
 
@@ -1633,19 +1642,19 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 .menu-item .children li {
-	padding: 0 1rem 1rem 1rem;
+	padding: .5rem 1rem;
 	text-align: end;
 	background-color: var(--cor-destaques);
+	border-bottom: 1px solid var(--cor-bordas);
 }
 
 .menu-item .children li:first-child {
-	padding-top: 0.8em;
 	border-radius: var(--med-borda) var(--med-borda) 0 0;
 }
 
 .menu-item .children li:last-child {
-	padding-bottom: 1em;
 	border-radius: 0 0 var(--med-borda) var(--med-borda);
+	border-bottom: none;
 }
 
 a.menu-item-novo {
