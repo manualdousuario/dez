@@ -60,11 +60,11 @@ endif; ?>
 			wp_kses_post( get_the_title() )
 		)
 	); ?>
-	<?php if ( !is_page() ) { ?>
+	<?php if ( !is_page() ) : ?>
 		<button class="compartilhe" onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);" title="Compartilhe este post">
 			<span>Compartilhe</span>
 		</button>
-	<?php } ?>
+	<?php endif; ?>
 
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
