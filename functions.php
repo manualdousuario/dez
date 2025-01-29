@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.6' );
+	define( '_S_VERSION', '3.6.1' );
 }
 
 /**
@@ -47,7 +47,7 @@ add_action( 'after_setup_theme', 'dez_setup' );
  * Carrega script dos comentários
  */
 function dez_scripts() {
-	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.css', [], filemtime( get_stylesheet_directory() . '/style.css' ) );
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -60,7 +60,7 @@ add_action( 'wp_enqueue_scripts', 'dez_scripts' );
  */
 function dez_preload_style ($preload_resources) {
 	$preload_resources[] = array(
-		'href' => get_stylesheet_directory_uri() . '/style.css?ver=' . filemtime( get_stylesheet_directory() . '/style.css' ),
+		'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
 		'as' => 'style',
 		'type' => 'text/css',
 		'media' => 'all',
