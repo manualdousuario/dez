@@ -4,9 +4,9 @@ Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Jose
 Tags: featured-images, threaded-comments
 
 Requires at least: 4.5
-Tested up to: 8.1.12
+Tested up to: 8.2
 Requires PHP: 5.6
-Stable tag: 3.5.3
+Stable tag: 3.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,15 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.6 - Jan 18 2025 =
+* Acrescenta destaque para novos comentários desde a última visita (classe `os_sincelastvisit_comment_class` no `functions.php`), apenas para leitores cadastrados.
+* Acrescenta atributo `display: none` à classe `.comment-awaiting-moderation`.
+* Acrescenta suporte ao plugin Favorites.
+* Altera menu do usuário para deixar itens mais estreitos.
+* Altera exibição do box `.podcast_meta` do plugin Seriously Simple Podcasting.
+* Corrige cor da class `.podcast_player` no modo escuro.
+* Remove banner no `header.php` introduzido na v3.5.3.
 
 = 3.5.3 - Jan 18 2025 =
 * Acrescenta banner ao `header.php` com botão para removê-lo de modo persistente usando localStorage.

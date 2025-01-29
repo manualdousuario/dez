@@ -47,7 +47,7 @@ add_action( 'after_setup_theme', 'dez_setup' );
  * Carrega script dos comentários
  */
 function dez_scripts() {
-	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.css', [], filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -56,11 +56,11 @@ function dez_scripts() {
 add_action( 'wp_enqueue_scripts', 'dez_scripts' );
 
 /**
- * Carrega folha de estilo principal (style.min.css) com rel="preload"
+ * Carrega folha de estilo principal (style.css) com rel="preload"
  */
 function dez_preload_style ($preload_resources) {
 	$preload_resources[] = array(
-		'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
+		'href' => get_stylesheet_directory_uri() . '/style.css?ver=' . filemtime( get_stylesheet_directory() . '/style.css' ),
 		'as' => 'style',
 		'type' => 'text/css',
 		'media' => 'all',
@@ -238,10 +238,8 @@ unset( $af );
  * Carrega jQuery apenas em páginas com comentários.
  */
 function my_enqueue_jquery_for_comments() { 
-	if ( ! is_single() ) {
 		wp_dequeue_script( 'jquery');
 		wp_deregister_script( 'jquery');
-	}
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_jquery_for_comments' );
 
@@ -379,13 +377,13 @@ add_filter( 'get_site_icon_url', '__return_false' );
  */
 function dez_mensagem_form_comentarios( $defaults ) {
 	$logincom = esc_url( wp_login_url( get_permalink() ) );
-	$defaults['comment_notes_before'] = '<p class="comment-form-alert ctx"><label>Antes de comentar…</label> Leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita. <a href="/cadastro/">Cadastre-se</a> para interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p>';
+	$defaults['comment_notes_before'] = '<p class="comment-form-alert ctx">Por favor, <a href="/doc-comentarios/">leia as regras</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso do Órbita</a>.</p><p class="comment-form-alert ctx"><a href="/cadastro/">Cadastre-se</a> para interagir no Órbita. Já tem conta? <a href="' . $logincom . '">Entre</a>.</p>';
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
 
 function dez_mensagem_form_comentarios_logado($args_logged_in, $commenter, $user_identity) {
-	$args_logged_in = '<p class="comment-form-alert ctx"><label>Antes de comentar…</label> Leia as <a href="/doc-comentarios/">regras de convivência</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso</a> do Órbita.</p>';
+	$args_logged_in = '<p class="comment-form-alert ctx">Por favor, <a href="/doc-comentarios/">leia as regras</a> e o <a href="https://manualdousuario.net/orbita/guia-de-uso/">guia de uso do Órbita</a>.</p>';
 	return $args_logged_in;
 }
 add_filter('comment_form_logged_in', 'dez_mensagem_form_comentarios_logado', 10, 3);
@@ -939,18 +937,38 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 });
 
 /**
- * Armazena no localStorage fechamento do banner de assinaturas no topo de todas as páginas (jan/2025).
+ * Destaca novos comentários.
  */
-function dez_banner_topo() { ?>
-<script>
-    if (localStorage.getItem('imagemOculta') === 'true') {
-        document.getElementById('ajude-manual').style.display = 'none';
-    }
+function os_sincelastvisit_comment_class($classes){
 
-    document.getElementById('fechar-ajude-manual').onclick = function() {
-        document.getElementById('ajude-manual').style.display = 'none';
-        localStorage.setItem('imagemOculta', 'true');
-    };
-</script>
-<?php	}
-add_action( 'wp_footer', 'dez_banner_topo' );
+	if ( is_user_logged_in() && ( !isset($_COOKIE['lastvisit']) || (isset($_COOKIE['lastvisit']) && $_COOKIE['lastvisit'] != '') ) ) {
+
+		$lastvisit = $_COOKIE['lastvisit'];
+
+		// get the publish date of the post in UNIX GMT
+		$publish_date = get_comment_time( 'U', true );
+		
+		// if published since last visit then add the "new" tag
+		if ($publish_date > $lastvisit) $classes[]='comment-new';
+	}
+
+	return $classes;
+}
+add_filter( 'comment_class', 'os_sincelastvisit_comment_class' );
+
+function os_sincelastvisit_set_cookie() {
+	if ( is_admin() ) return;
+
+	$current = current_time( 'timestamp', 1);
+	setcookie( 'lastvisit', $current, strtotime( '+60 days' ), $_SERVER['REQUEST_URI'] );
+}
+add_action( 'init', 'os_sincelastvisit_set_cookie' );
+
+/**
+ * Altera o formato das datas dos comentários.
+ */
+add_filter( 'get_comment_date', 'wpse_comment_date_18350375' );    
+function wpse_comment_date_18350375( $date ) {
+	$date = date("j/n/y");   
+	return $date;
+}
