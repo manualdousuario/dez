@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.2
+Version: 3.6.3
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -215,6 +215,11 @@ pre {
 	padding: 1rem;
 	overflow: auto;
 	margin-bottom: var(--med-salto-pequeno);
+}
+
+sup,
+sub {
+	line-height: 0;
 }
 
 /* Formulários
@@ -774,10 +779,6 @@ ol.children {
 }
 .activitypub-comment .comment-meta {
 	background-color: hsl(252, 100%, 96%);;
-}
-
-.comment-new > article > footer {
-	background-color: var(--cor-atencao);
 }
 
 .byuser>.comment-body>footer>.comment-author>.fn:after,
@@ -1449,19 +1450,6 @@ table.dataTable-table tr:nth-child(even) {
 		font-size: var(--fs-0);
 	}
 
-	.category-aplicativos p:first-child,
-	.category-aplicativos figure:first-child {
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-	}
-	.category-aplicativos p:first-child img,
-	.category-aplicativos figure:first-child picture,
-	.category-aplicativos .alignright {
-		margin: 0 auto;
-		float: initial;
-	}
-
 	.comment-form-author input[type=text],
 	.comment-form-email input[type=email] {
 		width: 100%;
@@ -1493,16 +1481,6 @@ table.dataTable-table tr:nth-child(even) {
 
 	.site-footer {
 		flex-direction: column-reverse;
-	}
-	.site-footer-redes {
-		text-align: left;
-		border-bottom: 1px dashed var(--cor-bordas);
-		margin-bottom: var(--med-salto-medio);
-		padding-bottom: var(--med-salto-pequeno);
-	}
-	.site-footer-redes ul {
-		justify-content: left;
-		margin-bottom: 0;
 	}
 }
 
@@ -1575,14 +1553,6 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .top:before {
 	border-top: 5px solid var(--cor-destaques);
 	border-right: 5px solid var(--cor-destaques);
-}
-
-[data-theme="dark"] .site-footer-redes ul {
-	filter: invert();
-}
-
-[data-theme="dark"] .site-footer-redes ul li:first-child {
-	filter: invert();
 }
 
 /*--------------------------------------------------------------

@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.6.2' );
+	define( '_S_VERSION', '3.6.3' );
 }
 
 /**
@@ -935,40 +935,3 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 	$list[] = 'orbita_post';
 	return $list;
 });
-
-/**
- * Destaca novos comentários.
- */
-function os_sincelastvisit_comment_class($classes){
-
-	if ( is_user_logged_in() && ( !isset($_COOKIE['lastvisit']) || (isset($_COOKIE['lastvisit']) && $_COOKIE['lastvisit'] != '') ) ) {
-
-		$lastvisit = $_COOKIE['lastvisit'];
-
-		// get the publish date of the post in UNIX GMT
-		$publish_date = get_comment_time( 'U', true );
-		
-		// if published since last visit then add the "new" tag
-		if ($publish_date > $lastvisit) $classes[]='comment-new';
-	}
-
-	return $classes;
-}
-add_filter( 'comment_class', 'os_sincelastvisit_comment_class' );
-
-function os_sincelastvisit_set_cookie() {
-	if ( is_admin() ) return;
-
-	$current = current_time( 'timestamp', 1);
-	setcookie( 'lastvisit', $current, strtotime( '+60 days' ), $_SERVER['REQUEST_URI'] );
-}
-add_action( 'init', 'os_sincelastvisit_set_cookie' );
-
-/**
- * Altera o formato das datas dos comentários.
- */
-add_filter( 'get_comment_date', 'wpse_comment_date_18350375' );    
-function wpse_comment_date_18350375( $date ) {
-	$date = date("j/n/y");   
-	return $date;
-}
