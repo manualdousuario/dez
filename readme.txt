@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.2
 Requires PHP: 5.6
-Stable tag: 3.6.3
+Stable tag: 3.6.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,11 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.6.4 - Fev 3 2025 =
+* Altera tipografia para melhorar legibilidade.
+* Altera cores de fundo para melhorar proporção de contraste (“contrast ratio”).
+* Altera texto dos links de navegação da capa (`the_posts_navigation` em `index.php`).
 
 = 3.6.3 - Jan 30 2025 =
 * Acrescenta link para loja no menu principal (`header.php`).

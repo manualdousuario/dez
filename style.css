@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.3
+Version: 3.6.4
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -55,10 +55,10 @@ TABELA DE CONTEÚDO
 --------------------------------------------------------------*/
 
 :root {
-	--cor-pagina: hsl(0, 0%, 99%);
-	--cor-fonte: hsl(0, 0%, 10%);
+	--cor-pagina: hsl(0, 0%, 94%);
+	--cor-fonte: hsl(0, 0%, 19%);
 	--cor-destaques: hsl(0, 0%, 97%);
-	--cor-bordas: hsl(0, 0%, 92%);
+	--cor-bordas: hsl(0, 0%, 80%);
 	--cor-chapada: hsl(0, 0%, 100%);
 	--cor-oferecimento: hsl(360, 100%, 99%);
 	--cor-oferecimento-label: hsl(360, 62%, 96%);
@@ -73,17 +73,17 @@ TABELA DE CONTEÚDO
 	--ff-serif: Georgia, "Noto Serif", ui-serif, serif;
 	--ff-monospace: ui-monospace, monospace;
 
-	--fs-0: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
-	--fs-1: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--fs-0: clamp(1rem, 0.9158rem + 0.1087vw, 1rem);
+	--fs-1: clamp(1.25rem, 1.0815rem + 0.2174vw, 1.3rem);
 	--fs-2: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
 	--fs-3: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
 	--fs-4: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
 	--fs-5: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
 	--fs-6: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
 
-	--med-comp-linha: 65ch;
-	--med-borda: 6px;
-	--med-salto-pequeno: 1.35rem;
+	--med-comp-linha: 58ch;
+	--med-borda: 3px;
+	--med-salto-pequeno: 1.25rem;
 	--med-salto-medio: 4rem;
 	--med-salto-grande: 8rem;
 }
@@ -108,7 +108,7 @@ body {
 	color: var(--cor-fonte);
 	font-family: var(--ff-serif);
 	font-size: var(--fs-1);
-	line-height: 1.6;
+	line-height: 1.45;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -265,7 +265,7 @@ button {
 	padding-left: var(--med-salto-pequeno);
 	font-size: var(--fs-0);
 	text-decoration: underline;
-	padding: 0 0 0 1.2rem;
+	padding: 0 0 0 1.4rem;
 	line-height: 1;
 }
 
@@ -537,7 +537,7 @@ p.hf-message {
 .entry-header h1,
 .entry-header h2 {
 	font-size: var(--fs-4);
-	line-height: 1.3;
+	line-height: 1.2;
 	margin: .5rem 0 2rem;
 }
 .entry-header h1 {
@@ -621,7 +621,7 @@ caption,
 .podcast_player,
 .format-link .link {
 	margin-bottom: var(--med-salto-pequeno);
-	padding: .5rem .75rem;
+	padding: .35rem .75rem;
 	background-color: hsl(0, 0%, 97%);
 	border-radius: var(--med-borda);
 }
@@ -1384,6 +1384,9 @@ table.dataTable-table tr:nth-child(even) {
 --------------------------------------------------------------*/
 
 @media (max-width: 751px) {
+	:root {
+		--fs-1: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	}
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
 	}
@@ -1399,6 +1402,7 @@ table.dataTable-table tr:nth-child(even) {
 
 	ul.nav-menu {
 		justify-content: flex-start;
+		gap: .75rem;
 	}
 
 	#search-icon:checked ~ #site-navigation #search-container,
@@ -1489,7 +1493,7 @@ table.dataTable-table tr:nth-child(even) {
 --------------------------------------------------------------*/
 
 [data-theme="dark"]:root {
-	--cor-pagina: hsl(0, 0%, 1%);
+	--cor-pagina: hsl(0, 0%, 20%);
 	--cor-fonte: hsl(0, 0%, 90%);
 
 	--cor-link-meta: rgb(194, 210, 255);

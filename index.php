@@ -41,7 +41,11 @@ get_header();
 
 endwhile;
 
-the_posts_navigation( array( 'class' => 'link-alt', ) );
+the_posts_navigation( array( 
+	'class' => 'link-alt',
+	'prev_text' => 'Mais posts &raquo;',
+	'next_text' => '&laquo; Posts mais recentes',
+) );
 
 else :
 
