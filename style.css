@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.4
+Version: 3.6.4.1
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -56,7 +56,7 @@ TABELA DE CONTEÚDO
 
 :root {
 	--cor-pagina: hsl(0, 0%, 94%);
-	--cor-fonte: hsl(0, 0%, 19%);
+	--cor-fonte: hsl(0, 0%, 17%);
 	--cor-destaques: hsl(0, 0%, 97%);
 	--cor-bordas: hsl(0, 0%, 80%);
 	--cor-chapada: hsl(0, 0%, 100%);
@@ -64,8 +64,8 @@ TABELA DE CONTEÚDO
 	--cor-oferecimento-label: hsl(360, 62%, 96%);
 	--cor-atencao: hsl(360, 100%, 97%);
 
-	--cor-link-ori: hsl(225, 72%, 41%);
-	--cor-link-vis: hsl(276, 100%, 25%);
+	--cor-link-ori: hsl(229, 100%, 39%);
+	--cor-link-vis: hsl(259, 42%, 35%);
 	--cor-link-est: hsl(240, 63%, 27%);
 	--cor-link-meta: hsl(0, 0%, 30%);
 	--cor-link-meta-est: hsl(0, 0%, 50%);
@@ -1493,8 +1493,8 @@ table.dataTable-table tr:nth-child(even) {
 --------------------------------------------------------------*/
 
 [data-theme="dark"]:root {
-	--cor-pagina: hsl(0, 0%, 20%);
-	--cor-fonte: hsl(0, 0%, 90%);
+	--cor-pagina: hsl(0, 0%, 11%);
+	--cor-fonte: hsl(0, 0%, 75%);
 
 	--cor-link-meta: rgb(194, 210, 255);
 	--cor-link-meta-est: rgb(235, 240, 255);
