@@ -43,6 +43,13 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 3.6.5 - Fev 6 2025 =
+* Corrige menu do usuário em telas pequenas (<370px).
+* Corrige caixas legadas (`.ctx-`) no modo escuro.
+* Move função que adiciona classes à tag `body` para o `functions.php`.
+* Exclui ícone do fogo (`icone-fogo.svg`).
+* Exclui arquivos sem uso (`inc/template-functions.php` e `languages/*`).
+
 = 3.6.4.1 - Fev 3 2025 =
 * Ajustes nas cores (`:root`).
 
