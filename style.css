@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.4.1
+Version: 3.6.5
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -1057,7 +1057,7 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 .format-quote h2.entry-title,
 .format-quote h1.entry-title {
 	font-size: var(--fs-3);
-	margin-bottom: .75rem;
+	margin-bottom: var(--med-salto-pequeno);
 }
 
 .format-quote .entry-meta {
@@ -1389,6 +1389,7 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
+		justify-content: end;
 	}
 
 	.site-branding {
@@ -1550,7 +1551,13 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 [data-theme="dark"] .ctx,
-[data-theme="dark"] .podcast_player {
+[data-theme="dark"] .ctx-transparencia,
+[data-theme="dark"] .ctx-atualizacao,
+[data-theme="dark"] .ctx-atencao,
+[data-theme="dark"] .ctx-dica,
+[data-theme="dark"] .ctx-editor,
+[data-theme="dark"] .podcast_player,
+[data-theme="dark"] .format-link .link {
 	background-color: var(--cor-destaques);
 }
 

@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.6.4.1' );
+	define( '_S_VERSION', '3.6.5' );
 }
 
 /**
@@ -16,9 +16,6 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook.
  */
 function dez_setup() {
-	// Make theme available for translation. Translations can be filed in the /languages/ directory.
-	load_theme_textdomain( 'dez', get_template_directory() . '/languages' );
-
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
@@ -73,11 +70,6 @@ add_filter('wp_preload_resources', 'dez_preload_style');
  * Template tags personalizadas para o tema.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Enable support for Post Formats.
@@ -935,3 +927,19 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 	$list[] = 'orbita_post';
 	return $list;
 });
+
+/**
+ * Adds custom classes to the array of body classes.
+ *
+ * @param array $classes Classes for the body element.
+ * @return array
+ */
+function dez_body_classes( $classes ) {
+	// Adds a class of hfeed to non-singular pages.
+	if ( ! is_singular() ) {
+		$classes[] = 'hfeed';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'dez_body_classes' );
