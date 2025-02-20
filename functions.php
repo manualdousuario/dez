@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.6.5' );
+	define( '_S_VERSION', '3.6.7' );
 }
 
 /**
@@ -171,6 +171,10 @@ add_action(
 
 		wp_dequeue_script('jetpack-mu-wpcom-settings');
 		wp_deregister_script('jetpack-mu-wpcom-settings');
+		wp_dequeue_script('jp-tracks');
+		wp_deregister_script('jp-tracks');
+		wp_dequeue_style( 'akismet-widget-style' );
+		wp_deregister_style( 'akismet-widget-style' );
 	},
 	20
 );
@@ -943,3 +947,9 @@ function dez_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'dez_body_classes' );
+
+/**
+ * Desabilita curtidas e reposts do plugin ActivityPub
+ */
+remove_action( 'activitypub_inbox_like', array( '\Activitypub\Handler\Like', 'handle_like' ) );
+remove_action( 'activitypub_inbox_announce', array( '\Activitypub\Handler\Announce', 'handle_announce' ) );
