@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.5
+Version: 3.6.7
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -70,18 +70,18 @@ TABELA DE CONTEÚDO
 	--cor-link-meta: hsl(0, 0%, 30%);
 	--cor-link-meta-est: hsl(0, 0%, 50%);
 
-	--ff-serif: Georgia, "Noto Serif", ui-serif, serif;
+	--ff-serif: "Times New Roman", serif;
 	--ff-monospace: ui-monospace, monospace;
 
-	--fs-0: clamp(1rem, 0.9158rem + 0.1087vw, 1rem);
-	--fs-1: clamp(1.25rem, 1.0815rem + 0.2174vw, 1.3rem);
-	--fs-2: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
-	--fs-3: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
-	--fs-4: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
-	--fs-5: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
-	--fs-6: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
+	--fs-0: .9rem;
+	--fs-1: 1.2rem;
+	--fs-2: 1.5rem;
+	--fs-3: 1.75rem;
+	--fs-4: 2rem;
+	--fs-5: 2.25rem;
+	--fs-6: 3rem;
 
-	--med-comp-linha: 58ch;
+	--med-comp-linha: 68ch;
 	--med-borda: 3px;
 	--med-salto-pequeno: 1.25rem;
 	--med-salto-medio: 4rem;
@@ -108,7 +108,7 @@ body {
 	color: var(--cor-fonte);
 	font-family: var(--ff-serif);
 	font-size: var(--fs-1);
-	line-height: 1.45;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -431,6 +431,7 @@ a.comment-metadata {
 ul.nav-menu {
 	justify-content: flex-end;
 	width: 100%;
+	font-size: 1rem;
 }
 
 #dark-mode-toggle {
@@ -538,7 +539,7 @@ p.hf-message {
 .entry-header h2 {
 	font-size: var(--fs-4);
 	line-height: 1.2;
-	margin: .5rem 0 2rem;
+	margin: .5rem 0 var(--med-salto-pequeno);
 }
 .entry-header h1 {
 	font-size: var(--fs-5);
@@ -1196,18 +1197,12 @@ span.required-field-message,
 	margin-bottom: var(--med-salto-medio);
 }
 
-ol.orbita-list .title {
-	text-wrap: balance;
+.orbita-list .vote {
+	line-height: 1;
 }
 
-.orbita-list li {
-	gap: 0 .5rem;
-	margin: 0 0 1rem;
-	padding-bottom: 1rem;
-	border-bottom: 1px dashed var(--cor-bordas);
-}
-.orbita-list li:last-child {
-	border-bottom: none;
+ol.orbita-list .title {
+	text-wrap: balance;
 }
 
 .orbita-list .meta .title .domain {
@@ -1227,6 +1222,21 @@ a.sem-paywall {
 }
 .single-orbita_post .comment-respond {
 	margin: 0 0 var(--med-salto-medio);
+}
+
+@media (max-width: 751px) {
+	.orbita_post .orbita-meta {
+		align-items: start;
+	}
+	.orbita_post .orbita-meta button {
+		min-width: fit-content;
+		line-height: 1.15;
+	}
+}
+
+[data-theme="dark"] .orbita-list .vote button,
+[data-theme="dark"] .orbita_post .orbita-meta button {
+	filter: invert(1);
 }
 
 /* Seriously Simple Podcasting
@@ -1385,7 +1395,11 @@ table.dataTable-table tr:nth-child(even) {
 
 @media (max-width: 751px) {
 	:root {
-		--fs-1: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+		--fs-1: 1.1rem;
+		--fs-5: 2rem;
+	}
+	.site {
+		padding: 0 .5rem;
 	}
 	.site-header {
 		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
@@ -1449,6 +1463,15 @@ table.dataTable-table tr:nth-child(even) {
 		right: 50%;
 		width: 100vw !important;
 		max-width: 1200px !important;
+	}
+
+	.alignleft,
+	.alignright {
+		float: initial;
+		margin-left: auto;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
 	}
 
 	select#subscribe-reloaded {
