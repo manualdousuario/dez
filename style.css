@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.7
+Version: 3.6.7.1
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -73,13 +73,13 @@ TABELA DE CONTEÚDO
 	--ff-serif: "Times New Roman", serif;
 	--ff-monospace: ui-monospace, monospace;
 
-	--fs-0: .9rem;
-	--fs-1: 1.2rem;
-	--fs-2: 1.5rem;
-	--fs-3: 1.75rem;
-	--fs-4: 2rem;
-	--fs-5: 2.25rem;
-	--fs-6: 3rem;
+	--fs-0: 1rem;
+	--fs-1: 1.35rem;
+	--fs-2: 1.55rem;
+	--fs-3: 1.85rem;
+	--fs-4: 2.25rem;
+	--fs-5: 2.45rem;
+	--fs-6: 3.15rem;
 
 	--med-comp-linha: 68ch;
 	--med-borda: 3px;
@@ -108,7 +108,7 @@ body {
 	color: var(--cor-fonte);
 	font-family: var(--ff-serif);
 	font-size: var(--fs-1);
-	line-height: 1.5;
+	line-height: 1.55;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -1395,7 +1395,11 @@ table.dataTable-table tr:nth-child(even) {
 
 @media (max-width: 751px) {
 	:root {
-		--fs-1: 1.1rem;
+		--fs-0: .9rem;
+		--fs-1: 1.2rem;
+		--fs-2: 1.5rem;
+		--fs-3: 1.75rem;
+		--fs-4: 2rem;
 		--fs-5: 2rem;
 	}
 	.site {
