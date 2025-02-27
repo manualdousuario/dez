@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.6.7.1
+Version: 3.6.8
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -70,18 +70,18 @@ TABELA DE CONTEÚDO
 	--cor-link-meta: hsl(0, 0%, 30%);
 	--cor-link-meta-est: hsl(0, 0%, 50%);
 
-	--ff-serif: "Times New Roman", serif;
+	--ff-serif: Georgia, serif;
 	--ff-monospace: ui-monospace, monospace;
 
 	--fs-0: 1rem;
-	--fs-1: 1.35rem;
+	--fs-1: 1.3rem;
 	--fs-2: 1.55rem;
 	--fs-3: 1.85rem;
 	--fs-4: 2.25rem;
 	--fs-5: 2.45rem;
 	--fs-6: 3.15rem;
 
-	--med-comp-linha: 68ch;
+	--med-comp-linha: 60ch;
 	--med-borda: 3px;
 	--med-salto-pequeno: 1.25rem;
 	--med-salto-medio: 4rem;
@@ -431,7 +431,7 @@ a.comment-metadata {
 ul.nav-menu {
 	justify-content: flex-end;
 	width: 100%;
-	font-size: 1rem;
+	font-size: 1.1rem;
 }
 
 #dark-mode-toggle {
@@ -493,6 +493,9 @@ p.hf-message {
 	text-align: center;
 	margin-bottom: var(--med-salto-pequeno);
 }
+p.hf-message {
+	margin: 1rem 0 0 0;
+}
 .ctx-newsletter > p:last-child {
 	margin-bottom: 0;
 	font-size: var(--fs-0);
@@ -512,7 +515,8 @@ p.hf-message {
 	display: flex;
 	justify-content: space-between;
 	align-items: end;
-	column-gap: var(--med-salto-pequeno);
+	gap: var(--med-salto-pequeno);
+	flex-wrap: wrap;
 }
 .ctx-newsletter .hf-fields-wrap label {
 	display: none;
@@ -525,6 +529,12 @@ p.hf-message {
 	width: 100%;
 }
 .ctx-newsletter .hf-fields-wrap p:first-child {
+	width: 50%;
+}
+.ctx-newsletter .hf-fields-wrap p:nth-child(1) {
+	width: 40%;
+}
+.ctx-newsletter .hf-fields-wrap p:nth-child(2) {
 	flex-grow: 30;
 }
 
@@ -1224,6 +1234,10 @@ a.sem-paywall {
 	margin: 0 0 var(--med-salto-medio);
 }
 
+#orbita_post_url {
+	width: 100%;
+}
+
 @media (max-width: 751px) {
 	.orbita_post .orbita-meta {
 		align-items: start;
@@ -1231,6 +1245,9 @@ a.sem-paywall {
 	.orbita_post .orbita-meta button {
 		min-width: fit-content;
 		line-height: 1.15;
+	}
+	#orbita_post_attach {
+		max-width: 100%;
 	}
 }
 
@@ -1393,7 +1410,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 751px) {
+@media (max-width: 480px) {
 	:root {
 		--fs-0: .9rem;
 		--fs-1: 1.2rem;
@@ -1440,7 +1457,7 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.ctx-newsletter .hf-fields-wrap p {
-		width: 100%;
+		width: 100% !important;
 	}
 	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
 		width: fit-content;
