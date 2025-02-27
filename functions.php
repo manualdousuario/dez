@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.6.7.1' );
+	define( '_S_VERSION', '3.6.8' );
 }
 
 /**
@@ -108,6 +108,7 @@ function dez_remover_estilos_dashboard() {
 	wp_dequeue_script( 'views.jetpack-modules' );
 	wp_dequeue_script( 'models.jetpack-modules' );
 	wp_dequeue_script( 'akismet-admin.js' );
+	wp_dequeue_script( 'help-center-js' );
 }
 add_action( 'admin_enqueue_scripts', 'dez_remover_estilos_dashboard', 999 );
 
@@ -234,8 +235,8 @@ unset( $af );
  * Carrega jQuery apenas em páginas com comentários.
  */
 function my_enqueue_jquery_for_comments() { 
-		wp_dequeue_script( 'jquery');
-		wp_deregister_script( 'jquery');
+	wp_dequeue_script( 'jquery');
+	wp_deregister_script( 'jquery');
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_jquery_for_comments' );
 
@@ -953,3 +954,32 @@ add_filter( 'body_class', 'dez_body_classes' );
  */
 remove_action( 'activitypub_inbox_like', array( '\Activitypub\Handler\Like', 'handle_like' ) );
 remove_action( 'activitypub_inbox_announce', array( '\Activitypub\Handler\Announce', 'handle_announce' ) );
+
+/**
+ * Corrige sensibilidade do link “Responder”, nos comentários, em telas sensíveis a toques.
+ */
+function dez_pushbase() {	?>
+	<script type="module">
+		import PushBaseClient from 'https://pushbase.pcdomanual.com/clientSDK';
+		const pushBaseConfig = {
+			registrationMode: 'auto',
+			registrationDelay: 5000,
+		};
+		const pushBaseClient = new PushBaseClient(pushBaseConfig);
+	</script>
+<?php }
+add_action( 'wp_footer', 'dez_pushbase' );
+
+/**
+ * Pergunta secreta/anti-spam do plugin HTML Forms
+ */
+add_filter( 'hf_validate_form', function( $error_code, $form, $data ) {
+// Array com as respostas válidas (em minúsculas)
+	$accepted_answers = array('azul');
+
+// Verifica se o campo foi enviado e se, ao converter para minúsculas, está presente no array de respostas válidas
+	if ( ! isset($data['COR_DO_CEU']) || ! in_array( strtolower( $data['COR_DO_CEU'] ), $accepted_answers, true ) ) {
+		$error_code = 'wrong_answer'; 
+	}
+	return $error_code;
+}, 10, 3 );
