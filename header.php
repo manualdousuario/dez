@@ -17,7 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noarchive">
 	<?php wp_head(); ?>
-	<link rel="profile" href="https://gmpg.org/xfn/11">
 </head>
 
 <body <?php body_class(); ?>>
@@ -61,7 +60,7 @@
 			<ul id="primary-menu" class="menu nav-menu link-alt">
 				<li class="menu-item"><a href="/sobre/">Sobre</a></li>
 				<li class="menu-item"><a href="/orbita/">Órbita</a></li>
-				<li class= "menu-item"><a href="/loja/">Loja</a><sup>✨</sup></li>
+				<li class= "menu-item"><a href="/loja/">Loja</a></li>
 				<li class="menu-item"><a href="/apoie/"><strong>Assine</strong></a></li>
 			</ul>
 		</nav>
@@ -72,7 +71,7 @@
 				// Órbita menu configuration.
 			$orbita_items = array(
 				array(
-					'title' => 'Gerenciar notificações',
+					'title' => 'Comentários por e-mail',
 					'url'   => '/notificacoes-email/',
 				),
 				array(
