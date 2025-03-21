@@ -31,11 +31,7 @@ get_header();
 				<?php if ( shortcode_exists( 'hf_form' ) ) {
 					echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
 				} ?>
-		<?php
-		
-		elseif ( 3 == $count && shortcode_exists( 'sc' ) ) :
-				echo do_shortcode( '[sc name="buttondown-newsletters"][/sc]' );
-		endif;
+		<?php endif;
 
 	$count++;
 

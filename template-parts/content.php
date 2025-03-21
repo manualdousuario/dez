@@ -41,9 +41,7 @@ endif;
 ?>
 </header><!-- .entry-header -->
 
-<?php if ( is_singular() ) :
-	dez_post_thumbnail(); 
-endif; ?>
+<?php dez_post_thumbnail(); ?>
 
 <div class="entry-content">
 	<?php the_content(
@@ -68,6 +66,7 @@ endif; ?>
 
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
-<?php if ( is_single() && shortcode_exists( 'sc' ) ) : 
-echo do_shortcode('[sc name="newsletter-post"][/sc]'); 
-endif; ?>
+
+	<?php if ( is_single() && shortcode_exists( 'sc' ) ) : ?>
+		<?php echo do_shortcode('[sc name="newsletter-post"][/sc]'); ?>
+	<?php endif; ?>

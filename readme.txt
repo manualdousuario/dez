@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.2
 Requires PHP: 5.6
-Stable tag: 3.6.8
+Stable tag: 3.7
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,17 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.7 - Mar 21 2025 =
+* Reorganiza `functions.php`.
+* Reorganiza formatação de formulários.
+* Reorganiza cabeçalho em telas pequenas.
+* Adiciona suporte ao Pushbase.
+* Adiciona formatação à tag HTML `<samp>`.
+* Altera formatação de parágrafo grande em páginas especiais para afetar somente o p:first-child do primeiro elemento.
+* Altera diversos detalhes do `style.css`.
+* Simplifica função `dez_post_thumbnail()`.
+* Remove pergunta de verificação para formulários do plugin HTML Forms (v3.6.8).
 
 = 3.6.8 - Fev 27 2025 =
 * Adiciona pergunta de verificação para formulários do plugin HTML Forms.
