@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.7
+Version: 3.7.1
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -239,53 +239,53 @@ sub {
 input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 textarea,
 select {
-  font: inherit;
-  color: inherit;
-  padding: 0.25rem 0.5rem;
-  width: 100%;
-  min-height: 40px;
-  border: 1px solid var(--cor-bordas);
-  border-radius: var(--med-borda);
-  background-color: var(--cor-chapada);
-  outline: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-  cursor: text;
+	font: inherit;
+	color: inherit;
+	padding: 0.25rem 0.5rem;
+	width: 100%;
+	min-height: 40px;
+	border: 1px solid var(--cor-bordas);
+	border-radius: var(--med-borda);
+	background-color: var(--cor-chapada);
+	outline: none;
+	transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+	cursor: text;
 }
 
 /* Estilos específicos para botões - inputs reset/submit e button */
 input[type="reset"],
 input[type="submit"],
 button {
-  font: inherit;
-  padding: 0.25rem 0.5rem;
-  min-height: 40px;
-  border: 1px solid #0400FF;
-  border-radius: var(--med-borda);
-  background-color: #0400FF;
-  color: var(--cor-chapada);
-  outline: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-  cursor: pointer;
+	font: inherit;
+	padding: 0.25rem 0.5rem;
+	min-height: 40px;
+	border: 1px solid hsl(210, 15%, 45%);
+	border-radius: var(--med-borda);
+	background-color: hsl(210, 15%, 45%);
+	color: var(--cor-chapada);
+	outline: none;
+	transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+	cursor: pointer;
 }
 
 /* Ajuste específico para textarea */
 textarea {
-  height: auto;
-  resize: vertical;
-  width: 100%;
+	height: auto;
+	resize: vertical;
+	width: 100%;
 }
 
 /* Rótulos */
 label {
-  display: inline-block;
+	display: inline-block;
 }
 
 /* Estados para elementos não-botão (inputs, textarea e select) */
 input:not([type="checkbox"]):not([type="radio"]):focus,
 textarea:focus,
 select:focus {
-  border-color: var(--cor-bordas);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+	border-color: var(--cor-bordas);
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Estados para botões (modo claro) */
@@ -296,41 +296,24 @@ select:focus {
 input[type="reset"]:hover,
 input[type="submit"]:hover,
 button:hover {
-  background-color: #004D9F;
-  border-color: #004D9F;
-  color: #ffffff;
+	background-color: hsl(210, 25%, 40%);
+	border-color: hsl(210, 25%, 40%);
+	color: #ffffff;
 }
 
 /* Focus para botões no modo claro */
 input[type="reset"]:focus,
 input[type="submit"]:focus,
 button:focus {
-  border-color: #0056b3;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+	border-color: #0056b3;
+	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
 /* Active para botões */
 input[type="reset"]:active,
 input[type="submit"]:active,
 button:active {
-  transform: translateY(2px);
-}
-
-.compartilhe {
-	background-size: 20px;
-	background: transparent url('/wp-content/themes/dez/img/compartilhe.svg') no-repeat;
-	border: none;
-	font-family: var(--ff-monospace);
-	padding-left: var(--med-salto-pequeno);
-	font-size: var(--fs-0);
-	text-decoration: underline;
-	padding: 0 0 0 1.6rem;
-	line-height: 1;
-	min-height: 20px;
-}
-.compartilhe:hover {
-	background-color: unset;
-	border-color: unset;
+	transform: translateY(2px);
 }
 
 /* Links
@@ -352,20 +335,17 @@ a:active {
 
 .link-alt a,
 .comment-metadata a,
+.comment-link,
 a.comment-reply-link,
-.posts-navigation a,
-button.compartilhe {
+.posts-navigation a {
 	color: var(--cor-link-meta);
 }
 .link-alt a:hover,
 .comment-metadata a:hover,
+.comment-link:hover,
 .posts-navigation a:hover,
-a:hover.comment-reply-link,
-button:hover.compartilhe {
+a:hover.comment-reply-link {
 	color: var(--cor-link-meta-est);
-}
-button.compartilhe {
-	border-radius: 0;
 }
 
 .link-alt,
@@ -428,10 +408,12 @@ figure img.alignright {
 .site-header {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
 	margin: var(--med-salto-pequeno) 0 var(--med-salto-grande);
-	gap: 1rem;
+	padding-bottom: var(--med-salto-pequeno);
+	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 .site-branding {
@@ -568,17 +550,26 @@ p.hf-message {
 p.hf-message {
 	margin: 1rem 0 0 0;
 }
-.ctx-newsletter > p:last-child {
+.ctx-newsletter ul {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	text-wrap: balance;
 	margin-bottom: 0;
-	font-size: var(--fs-0);
+	padding-top: .75rem;
+	list-style: none;
+}
+.ctx-newsletter ul li {
+	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+.ctx-newsletter ul li:first-child {
+	border-right: 1px dashed var(--cor-bordas);
 }
 
 .ctx-newsletter form {
-	margin-bottom: .75rem;
 	padding-bottom: var(--med-salto-pequeno);
+	margin: 0;
 	border-bottom: 1px dashed var(--cor-bordas);
 }
 
@@ -616,19 +607,49 @@ p.hf-message {
 /* Post
 --------------------------------------------- */
 
-.entry-header {
+article:not(.type-page) .entry-header,
+.format-quote .entry-meta {
 	margin-bottom: var(--med-salto-pequeno);
+	padding-bottom: var(--med-salto-pequeno);
+	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 .entry-header h1,
 .entry-header h2 {
 	font-size: var(--fs-4);
-	line-height: 1.2;
+	line-height: 1.4;
 	margin: .5rem 0 var(--med-salto-pequeno);
 }
-.entry-header h1 {
-	font-size: var(--fs-5);
-	line-height: 1.2;
+
+.entry-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.comment-link {
+	background: url(/wp-content/themes/dez/img/icone-speech-stroke.svg) no-repeat center left;
+	padding-left: 1.6rem;
+	order: 3;
+}
+
+.compartilhe {
+	background: transparent url(/wp-content/themes/dez/img/compartilhe.svg) no-repeat center left;
+	border: none;
+	border-radius: 0;
+	text-decoration: underline;
+	color: var(--cor-link-meta);
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+	background-size: 22px;
+	padding-left: 1.7rem;
+}
+.compartilhe:hover {
+	border: none;
+	background-color: transparent;
+	color: var(--cor-link-meta-est);
 }
 
 .entry-content h2 {
@@ -659,26 +680,19 @@ sup a {
 	padding: .1rem;
 }
 
-a.comment-link {
-	background-image: url('/wp-content/themes/dez/img/icone-speech-stroke.svg');
-	background-repeat: no-repeat;
-	background-size: 18px;
-	background-position-y: 1px;
-	padding-left: 24px;
-}
-
 .wp-caption img[class*="wp-image-"] {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
+	border-radius: var(--med-borda);
+	box-shadow: 2px 2px 8px #c3c3c3;
 }
 
 caption,
 .wp-caption .wp-caption-text {
-	background-color: var(--cor-destaques);
 	padding: .25rem .5rem;
+	font-family: "SF Pro", "Noto Sans", Arial, sans-serif;
 	font-size: var(--fs-0);
-	text-align: left;
+	text-align: right;
 }
 
 .wp-video {
@@ -1134,15 +1148,15 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 
 .format-quote h2.entry-title,
 .format-quote h1.entry-title {
-	font-size: var(--fs-3);
-	margin-bottom: var(--med-salto-pequeno);
+	margin: 0;
+	order: 2;
 }
 
-.format-quote .entry-meta {
-	margin-bottom: 2rem;
-}
 .format-quote .entry-header {
-	margin-bottom: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0 !important;
+	border: none !important;
 }
 
 .format-quote .entry-title {
@@ -1157,20 +1171,32 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 	border: var(--med-salto-pequeno) solid transparent;
 	border-top-color: var(--cor-destaques);
 	content: '';
-	margin-left: -1rem;
 	position: absolute;
-	top: 98%;
-	left: 10%;
+	top: 96%;
+	left: 3.5rem;
+	rotate: 10deg;
 }
 
 .format-quote .entry-content p:first-child {
-	margin-left: var(--med-salto-pequeno);
+	display: flex;
+	justify-content: start;
+	gap: .75rem;
+	align-items: center;
+	margin-bottom: var(--med-salto-pequeno);
+	padding: 0 0 var(--med-salto-pequeno) var(--med-salto-pequeno);
+	border-bottom: 1px dashed var(--cor-bordas);
 	font-style: italic;
+	text-align: left;
+	max-width: 100%;
+}
+.format-quote .entry-content p:first-child img {
+	border-radius: 50%;
 }
 
 article.format-link .entry-content > figure img {
 	border-radius: var(--med-borda);
 	box-shadow: 2px 2px 8px #c3c3c3;
+	margin-top: -2rem;
 }
 
 .format-link p.link span {
@@ -1277,6 +1303,10 @@ span.required-field-message,
 .single-orbita_post .entry-content,
 .orbita-follow {
 	margin-bottom: var(--med-salto-medio);
+}
+.orbita-follow {
+	max-width: 100%;
+	text-align: center;
 }
 
 .orbita-ranking ol {
@@ -1519,7 +1549,8 @@ table.dataTable-table tr:nth-child(even) {
 
 @media (max-width: 480px) {
 	.post-thumbnail,
-	article.format-link .entry-content > figure {
+	article.format-link .entry-content > figure,
+	.format-image .entry-content > figure {
 		left: 50%;
 		margin: 0 -50vw 2rem -50vw !important;
 		position: relative;
@@ -1527,13 +1558,16 @@ table.dataTable-table tr:nth-child(even) {
 		width: 100vw !important;
 		max-width: 1200px !important;
 	}
-	article.format-link .entry-content > figure {
+	article.format-link .entry-content > figure,
+	.format-image .entry-content > figure {
 		margin: 0 -50vw var(--med-salto-pequeno) !important;
 	}
 
-	article.format-link .entry-content > figure img {
+	article.format-link .entry-content > figure img,
+	.format-image .entry-content > figure img {
 		border-radius: 0;
 		box-shadow: none;
+		margin-top: 0;
 	}
 
 	.alignleft,
@@ -1710,7 +1744,8 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .gridicon,
 [data-theme="dark"] .menu-toggle-icon a,
 [data-theme="dark"] .search-icon,
-[data-theme="dark"] a.comment-link,
+[data-theme="dark"] .comment-link,
+[data-theme="dark"] .comment-link span,
 [data-theme="dark"] .site-logo,
 [data-theme="dark"] .compartilhe,
 [data-theme="dark"] .compartilhe span {
@@ -1718,7 +1753,6 @@ table.dataTable-table tr:nth-child(even) {
 	fill: unset;
 }
 [data-theme="dark"] .compartilhe {
-	color: unset;
 	border: 1px solid transparent;
 	background-color: transparent;
 }
@@ -1731,7 +1765,6 @@ table.dataTable-table tr:nth-child(even) {
 	filter: invert(1);
 }
 
-[data-theme="dark"] a.comment-link span,
 [data-theme="dark"] .search-submit svg {
 	filter: invert();
 }
@@ -1744,26 +1777,26 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
-  background-color: var(--cor-chapada);
-  color: var(--cor-fonte);
+	background-color: var(--cor-chapada);
+	color: var(--cor-fonte);
 }
 
 /* Botões no modo dark: estado normal com fundo branco */
 [data-theme="dark"] input[type="reset"],
 [data-theme="dark"] input[type="submit"],
-[data-theme="dark"] button {
-  background-color: #071EB2;
-  color: var(--cor-link-meta-est);
-  border: 1px solid #071EB2;
+[data-theme="dark"] button:not(.compartilhe) {
+	background-color: hsl(210, 26%, 30%);
+	color: var(--cor-link-meta-est);
+	border: 1px solid hsl(210, 26%, 30%);
 }
 
 /* Hover para botões no modo dark */
 [data-theme="dark"] input[type="reset"]:hover,
 [data-theme="dark"] input[type="submit"]:hover,
 [data-theme="dark"] button:hover {
-  background-color: #000D60;
-  border-color: #0F3A68;
-  color: #ffffff;
+	background-color: hsl(210, 30%, 45%);
+	border-color: hsl(210, 30%, 45%);
+	color: #ffffff;
 }
 [data-theme="dark"] button.compartilhe:hover {
 	background-color: transparent;
@@ -1774,8 +1807,8 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] input[type="reset"]:focus,
 [data-theme="dark"] input[type="submit"]:focus,
 [data-theme="dark"] button:focus {
-  border-color: #2c3e50;
-  box-shadow: 0 0 0 3px rgba(55, 90, 127, 0.5);
+	border-color: #2c3e50;
+	box-shadow: 0 0 0 3px rgba(55, 90, 127, 0.5);
 }
 
 /* Estados de foco para campos específicos no tema dark */
@@ -1785,8 +1818,8 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] input[type="number"],
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] textarea {
-  background-color: var(--cor-destaques);
-  color: var(--cor-fonte);
+	background-color: var(--cor-destaques);
+	color: var(--cor-fonte);
 }
 
 [data-theme="dark"] .ctx,
@@ -1804,7 +1837,8 @@ table.dataTable-table tr:nth-child(even) {
 	box-shadow: none;
 }
 
-[data-theme="dark"] article.format-link .entry-content > figure img {
+[data-theme="dark"] article.format-link .entry-content > figure img,
+[data-theme="dark"] article.format-image .entry-content > figure img {
 	box-shadow: none;
 }
 
