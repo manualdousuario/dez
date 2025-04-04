@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.7.1
+Version: 3.7.2
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -635,6 +635,14 @@ article:not(.type-page) .entry-header,
 	order: 3;
 }
 
+.entry-footer {
+	text-align: center;
+	max-width: 100%;
+	border-top: 1px dashed var(--cor-bordas);
+	padding-top: var(--med-salto-pequeno);
+	line-height: 1;
+}
+
 .compartilhe {
 	background: transparent url(/wp-content/themes/dez/img/compartilhe.svg) no-repeat center left;
 	border: none;
@@ -644,6 +652,7 @@ article:not(.type-page) .entry-header,
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
 	background-size: 22px;
+	min-height: 24px;
 	padding-left: 1.7rem;
 }
 .compartilhe:hover {
@@ -784,7 +793,7 @@ div.ctx-editor p:last-child {
 .comment-stcr {
 	display: flex;
 	align-items: center;
-	line-height: 1;
+	line-height: 1.25;
 }
 .comment-form-cookies-consent label {
 	margin-left: .5rem;
@@ -795,6 +804,11 @@ div.ctx-editor p:last-child {
 }
 .comment-stcr input[type=checkbox] {
 	order: 1;
+}
+#wp-comment-cookies-consent,
+.comment-stcr input[type=checkbox] {
+	transform: scale(1.5);
+	margin-left: 3px;
 }
 
 .comment-form-comment {
@@ -1082,7 +1096,8 @@ ol.children {
 .page-id-19958 .entry-title,
 .page-id-6971 .entry-title,
 .page-id-33255 .entry-title,
-.page-id-25504 .entry-title { /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
+.page-id-25504 .entry-title,
+.page-id-56363 .entry-title { /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
 	display:none;
 }
 
@@ -1091,7 +1106,8 @@ ol.children {
 .page-id-19958 .entry-content > p:first-child,
 .page-id-6971 .entry-content > p:first-child,
 .page-id-33255 .entry-content > p:first-child,
-.page-id-25504 .entry-content > p:first-child {
+.page-id-25504 .entry-content > p:first-child,
+.page-id-56363 .entry-content > p:first-child {
 	font-size: var(--fs-3);
 	font-family: var(--ff-serif);
 	line-height: 1.4;
@@ -1183,11 +1199,8 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 	gap: .75rem;
 	align-items: center;
 	margin-bottom: var(--med-salto-pequeno);
-	padding: 0 0 var(--med-salto-pequeno) var(--med-salto-pequeno);
-	border-bottom: 1px dashed var(--cor-bordas);
+	padding: 0 0 0 var(--med-salto-pequeno);
 	font-style: italic;
-	text-align: left;
-	max-width: 100%;
 }
 .format-quote .entry-content p:first-child img {
 	border-radius: 50%;
@@ -1314,7 +1327,7 @@ span.required-field-message,
 }
 
 .orbita_post .orbita-meta {
-	align-items: end;
+	align-items: start;
 }
 
 .orbita-list .vote {
@@ -1329,7 +1342,9 @@ span.required-field-message,
 	font-size: 1.5rem;
 	min-height: 0;
 	color: var(--cor-fonte) !important;
-	line-height: 1.1;
+	line-height: 1;
+	position: relative;
+	top: -3px;
 }
 
 ol.orbita-list .title {
