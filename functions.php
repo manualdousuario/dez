@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.7.1' );
+	define( '_S_VERSION', '3.7.2' );
 }
 
 function dez_setup() {
@@ -77,7 +77,6 @@ function dez_dequeue_assets() {
 	wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library-theme' );
 	wp_dequeue_style( 'classic-theme-styles' );
-	wp_dequeue_style( 'user-toolkit' ); // Plugin, User Toolkit
 	wp_dequeue_style( 'stcr-style' ); // Plugin, Subscribe to Comments Reloaded
 	wp_dequeue_style( 'activitypub-followers-style' );
 	wp_dequeue_style( 'activitypub-follow-me-style' ); // ActivityPub
@@ -88,17 +87,83 @@ function dez_dequeue_assets() {
 	wp_dequeue_script( 'wp-embed' );
 	wp_dequeue_script( 'wp-mediaelement' );
 
-	wp_dequeue_script('jp-tracks');
-	wp_dequeue_script('jetpack-mu-wpcom-settings');
+	wp_dequeue_script( 'jp-tracks' );
+	wp_dequeue_script( 'jetpack-mu-wpcom-settings' );
 	wp_dequeue_script( 'bilmur' ); // Jetpack
 }
 add_action( 'wp_enqueue_scripts', 'dez_dequeue_assets' );
 
 /**
+ * Remove estilos e scripts do painel administrativo
+ */
+function dez_dequeue_assets_dashboard() {
+	wp_dequeue_style( 'noticons' );
+	wp_dequeue_style( 'akismet-font-inter' );
+	wp_dequeue_style( 'akismet-admin' );
+	wp_dequeue_style( 'akismet' );
+	wp_dequeue_style( 'help-center-style' );
+	wp_dequeue_style( 'jetpack-mu-wpcom-wpcom-dashboard-widgets' );
+	wp_dequeue_style( 'jp-newsletter-widget' );
+	wp_dequeue_style( 'wpcom-font-smoothing-antialiased' );
+	wp_dequeue_style( 'jetpack-core-color-schemes-overrides-sidebar-notice' );
+	wp_dequeue_style( 'command-palette-styles' );
+	wp_dequeue_style( 'wpcomsh-admin-style' );
+
+	wp_dequeue_script( 'jetpack-accessible-focus' );
+	wp_dequeue_script( 'help-center-translations' );
+	wp_dequeue_script( 'command-palette-script' );
+	wp_dequeue_script( 'jetpack-mu-wpcom-wpcom-media-url-upload' );
+	wp_dequeue_script( 'jp-newsletter-widget' );
+	wp_dequeue_script( 'jetpack-mu-wpcom-wpcom-dashboard-widgets' );
+	wp_dequeue_script( 'akismet.js' );
+	wp_dequeue_script( 'akismet-admin.js' );
+	wp_dequeue_script( 'views.jetpack-modules' );
+	wp_dequeue_script( 'models.jetpack-modules' );
+	wp_dequeue_script( 'jp-tracks' );
+	wp_dequeue_script( 'jptracks' );
+	wp_dequeue_script( 'jp-tracks-functions' );
+
+	wp_dequeue_script( 'music-player' );
+	wp_dequeue_script( 'help-center' );
+	wp_dequeue_script( 'jquery-color' );
+	wp_dequeue_script( 'wp-color-picker' );
+
+	// wp_deregister_script( 'heartbeat' );
+	wp_deregister_script( 'regenerator-runtime' );
+}
+add_action( 'admin_enqueue_scripts', 'dez_dequeue_assets_dashboard', 999 );
+
+remove_action( 'admin_footer', 'wpcomsh_footer_rum_js' );
+
+
+/**
+ * Remove elementos visuais do painel administrativo
+ */
+function dez_css_styling_dashboard() {
+	echo '
+	<style>
+#ssp-main-settings.castos-disconnected {
+	width: 100%;
+}
+.wp-first-item > .wp-submenu li:last-child,
+li#wp-admin-bar-koko-analytics,
+li#wp-admin-bar-customize,
+.wp-admin-bar-reader,
+#wpadminbar li#wp-admin-bar-wpcom-logo,
+#contextual-help-link-wrap,
+#wp-admin-bar-help-center,
+#ssp-sidebar,
+#dashboard-widgets-wrap {
+display: none !important;
+}
+</style>';
+}
+add_action( 'admin_head', 'dez_css_styling_dashboard' );
+
+
+/**
  * Filtros
  */
-add_filter( 'screen_options_show_screen', '__return_false' ); // Remove aba “Opções de tela”
-
 add_filter( 'gutenberg_can_edit_post', '__return_false', 5 );
 add_filter( 'use_block_editor_for_post', '__return_false', 5 ); 
 add_filter( 'should_load_separate_core_block_assets', '__return_true', 5 );
@@ -113,6 +178,8 @@ add_filter( 'user_can_richedit', '__return_false' ); // Desativa editor visual d
 add_filter( 'pre_load_textdomain', '__return_false', -5 );
 add_filter( 'pre_load_script_translations', '__return_false', -5 ); // Desabilita traduções
 
+remove_action( 'wp_head', 'wp_resource_hints', 2 ); // Desabilita dns-prefetch no cabeçalho
+
 add_filter( 'login_display_language_dropdown', '__return_false' );
 add_filter( 'auth_cookie_expiration', function () {
 	return 28 * DAY_IN_SECONDS; // 30 days in seconds.
@@ -123,9 +190,10 @@ add_filter( 'xmlrpc_enabled', '__return_false' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wp_pingback_url' );
 remove_action( 'wp_head', 'wlwmanifest_link');
-remove_action( 'wp_head', 'rest_output_link_wp_head' );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 add_filter( 'get_site_icon_url', '__return_false' );
 add_filter('wp_img_tag_add_auto_sizes', '__return_false');
 add_action( 'wp_dashboard_setup', function () {
@@ -139,8 +207,11 @@ add_action( 'wp_print_styles', function() {
 
 add_filter( 'json_enabled', '__return_false' );
 add_filter( 'json_jsonp_enabled', '__return_false' );
-add_filter( 'rest_enabled', '__return_false' );
 add_filter( 'rest_jsonp_enabled', '__return_false' );
+
+remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'template_redirect', 'rest_output_link_header', 11 ); // Desativa links da API REST
 
 add_filter( 'jetpack_implode_frontend_css', '__return_false', 99 ); // Jetpack
 
@@ -384,6 +455,55 @@ add_filter( 'comment_form_default_fields', 'dez_remove_campo_website_comentarios
 /**
  * Scripts de rodapé em páginas específicas.
  */
+function dez_script_alo() {
+	if ( is_page( 'notificacoes' ) ) { ?>
+		<script type="module">
+			import aloSDK from 'https://alo.pcdomanual.com/clientSDK';
+
+			const aloConfig = {
+				registrationMode: 'manual',
+			};
+			const aloClient = new aloSDK(aloConfig);
+
+			const aloBtn = document.getElementById('subscribeBtn');
+			aloBtn.addEventListener('click', async() => {
+				try {
+					await aloClient.subscribe();
+					alert('Inscrição feita com sucesso!');
+				} catch (error) {
+					alert('Falha na inscrição: ' + error.message);
+				}
+			});
+
+			const unsubscribeBtn = document.getElementById('unsubscribeBtn');
+			unsubscribeBtn.addEventListener('click', async() => {
+				try {
+					await aloClient.unsubscribe();
+					alert('Cancelamento feito com sucesso.');
+					unsubscribeBtn.disabled = true;
+				} catch (error) {
+					alert('Falha no cancelamento: ' + error.message);
+				}
+			});			
+		</script> 
+	<?php } else { ?>
+		<script type="module">
+			import aloSDK from 'https://alo.pcdomanual.com/clientSDK';
+
+			const aloConfig = {
+				registrationMode: 'auto',
+				registrationDelay: 15000,
+			};
+			const aloClient = new aloSDK(aloConfig);
+		</script>
+	<?php }
+}
+add_action( 'wp_footer', 'dez_script_alo' );
+
+
+/**
+ * Scripts de rodapé em páginas específicas.
+ */
 function dez_scripts_rodape_especiais() {
 	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link “Responder” */ ?>
 		<script type="text/javascript">
@@ -448,35 +568,6 @@ function dez_scripts_rodape_especiais() {
 			});
 		</script>
 
-	<?php } elseif ( is_page( 'notificacoes' ) ) { /* Script do Pushbase */ ?>
-		<script type="module">
-			import PushBaseClient from 'https://pushbase.pcdomanual.com/clientSDK';
-			const pushBaseConfig = {
-				registrationMode: 'manual',
-			};
-			const pushBaseClient = new PushBaseClient(pushBaseConfig);
-
-			const pushbaseBtn = document.getElementById('subscribeBtn');
-			pushbaseBtn.addEventListener('click', async() => {
-				try {
-					await pushBaseClient.subscribe();
-					alert('Inscrição feita com sucesso!');
-				} catch (error) {
-					alert('Falha na inscrição: ' + error.message);
-				}
-			});
-
-			const unsubscribeBtn = document.getElementById('unsubscribeBtn');
-			unsubscribeBtn.addEventListener('click', async() => {
-				try {
-					await pushBaseClient.unsubscribe();
-					alert('Cancelamento feito com sucesso.');
-					unsubscribeBtn.disabled = true;
-				} catch (error) {
-					alert('Falha no cancelamento: ' + error.message);
-				}
-			});			
-		</script> 
 	<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
 		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" />
 
@@ -578,3 +669,73 @@ function dez_scripts_rodape_gerais() { ?>
 	</script>
 <?php }
 add_action( 'wp_footer', 'dez_scripts_rodape_gerais' );
+
+/**
+ * Reduz a carga no banco de dados ao acessar wp-admin/edit-comment.php
+ */
+function dez_comments_any_status($comment_query) {
+	if (empty($comment_query->query_vars['status'])) {
+		$comment_query->query_vars['status'] = 'any';
+	}
+}
+add_action('pre_get_comments', 'dez_comments_any_status');
+
+
+/**
+ * Bloqueia chamadas da HTTP API
+ */
+add_filter( 'pre_http_request', 'ltv_pre_http_request_block', 10, 3 );
+function ltv_pre_http_request_block( $preempt, $args, $url ) {
+
+	$block_list = [];
+		$block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/comments';
+		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/home';
+		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/subscribers';
+		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/themes';
+		$block_list[] = 'https://stats.wp.com/';
+		$block_list[] = 'https://manualdousuario.net/wp-json/jetpack/v4/sync';
+		$block_list[] = 'https://api.wordpress.org/core/serve-happy';
+		$block_list[] = 'https://api.wordpress.org/core/browse-happy';
+
+		// Manter liberados para não zoar VaultPress
+		// $block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/features';
+		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/scan';
+		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/jetpack-sync-actions';
+		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/jitm';
+		// $block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/purchases';
+
+	foreach($block_list as $b) {
+		if ( strpos( $url, $b ) !== false ) {
+			return new WP_Error( 'http_request_block', 'This request is blocked by site administrator' );
+		}
+	}
+
+	return $preempt;
+}
+
+
+/**
+ * Desativa e-mail de novo usuário para admin
+ */
+function wpcode_send_new_user_notifications( $user_id, $notify = 'user' ) {
+	if ( empty( $notify ) || 'admin' === $notify ) {
+		return;
+	} elseif ( 'both' === $notify ) {
+		// Send new users the email but not the admin.
+		$notify = 'user';
+	}
+	wp_send_new_user_notifications( $user_id, $notify );
+}
+
+add_action(
+	'init',
+	function () {
+		// Disable default email notifications.
+		remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
+		remove_action( 'edit_user_created_user', 'wp_send_new_user_notifications' );
+
+		// Replace with custom function that only sends to user.
+		add_action( 'register_new_user', 'wpcode_send_new_user_notifications' );
+		add_action( 'edit_user_created_user', 'wpcode_send_new_user_notifications', 10, 2 );
+	}
+);
