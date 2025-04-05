@@ -21,17 +21,18 @@ get_header();
 	$count = 0;
 	if ( have_posts() ) :
 
-	while ( have_posts() ) :
-		the_post();
+		while ( have_posts() ) :
+			the_post();
 
-		get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', get_post_type() );
 
-		if ( ! is_paged() && 0 == $count ) :
-			?>
-				<?php if ( shortcode_exists( 'hf_form' ) ) {
-					echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
-				} ?>
-		<?php endif;
+			$currentlang = get_bloginfo( 'language' );
+
+			if ( ( ! is_paged() && $count == 0 ) && $currentlang == 'pt-BR' ) :
+				echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
+			elseif ( ( ! is_paged() && $count == 0 ) && $currentlang == 'en-US' ) :
+				echo do_shortcode( '[sc name="newsletter-post-en"][/sc]' ); 
+			endif;
 
 	$count++;
 
@@ -39,8 +40,6 @@ endwhile;
 
 the_posts_navigation( array( 
 	'class' => 'link-alt',
-	'prev_text' => 'Mais posts &raquo;',
-	'next_text' => '&laquo; Posts mais recentes',
 ) );
 
 else :

@@ -21,13 +21,11 @@
 
 	<div class="entry-meta link-alt">
 		<?php 
-		if ( is_home() && is_sticky() ) :
-			echo '<span>📌 '. get_the_time( 'j/n/y, G\hi' ) .'</span>';
-		elseif ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
-			echo '<span>'. get_the_time( 'j/n/y, ' ) .'';
-			echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time( 'G\hi' ) .'</a></span>';
+		if ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
+			echo '<div class="data-hora"><span>'. get_the_date() .', ';
+			echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time() .'</a></span></div>';
 		elseif ( ! is_page() ) :
-			echo '<span>'. get_the_time( 'j/n/y, G\hi' ) .'</span>';
+			echo '<div class="data-hora"><span>'. get_the_date() .', '. get_the_time() .'</span></div>';
 		endif ?>
 
 	<?php if ( comments_open() || get_comments_number() ) :
@@ -43,30 +41,20 @@
 <?php dez_post_thumbnail(); ?>
 
 <div class="entry-content">
-	<?php the_content(
-		sprintf(
-			wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
-				__( 'Continue lendo<span class="screen-reader-text"> "%s"</span>', 'dez' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
-			),
-			wp_kses_post( get_the_title() )
-		)
-	); ?>
+	<?php the_content(); ?>
 
 	<?php if ( !is_page() ) : ?>
-		<p class="entry-footer"><button class="compartilhe" onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);" title="Compartilhe este post">
-			<span>Compartilhe</span>
+		<p class="entry-footer"><button class="compartilhe" onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);">
+			<span><?php pll_e('Compartilhe'); ?></span>
 		</button></p>
 	<?php endif; ?>
 
 </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<?php if ( is_single() && shortcode_exists( 'sc' ) ) : ?>
-<?php echo do_shortcode('[sc name="newsletter-post"][/sc]'); ?>
-<?php endif; ?>
+<?php $currentlang = get_bloginfo( 'language' );
+if ( is_single() && shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+	echo do_shortcode('[sc name="newsletter-post"][/sc]');
+elseif ( is_single() && shortcode_exists( 'sc' ) && $currentlang == 'en-US' ) :
+	echo do_shortcode('[sc name="newsletter-post-en"][/sc]');
+endif; ?>

@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.7.2' );
+	define( '_S_VERSION', '3.8' );
 }
 
 function dez_setup() {
@@ -33,6 +33,12 @@ function dez_setup() {
 			'quote',
 			'image',
 			'link',
+		)
+	);
+	register_nav_menus(
+		array(
+			'menu-principal' => esc_html__( 'Principal', 'dez' ),
+			'menu-rodape' => esc_html__( 'Rodape', 'dez' ),
 		)
 	);
 }
@@ -688,14 +694,14 @@ add_filter( 'pre_http_request', 'ltv_pre_http_request_block', 10, 3 );
 function ltv_pre_http_request_block( $preempt, $args, $url ) {
 
 	$block_list = [];
-		$block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/comments';
-		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/home';
-		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/subscribers';
-		$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/themes';
-		$block_list[] = 'https://stats.wp.com/';
-		$block_list[] = 'https://manualdousuario.net/wp-json/jetpack/v4/sync';
-		$block_list[] = 'https://api.wordpress.org/core/serve-happy';
-		$block_list[] = 'https://api.wordpress.org/core/browse-happy';
+	$block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/comments';
+	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/home';
+	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/subscribers';
+	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/themes';
+	$block_list[] = 'https://stats.wp.com/';
+	$block_list[] = 'https://manualdousuario.net/wp-json/jetpack/v4/sync';
+	$block_list[] = 'https://api.wordpress.org/core/serve-happy';
+	$block_list[] = 'https://api.wordpress.org/core/browse-happy';
 
 		// Manter liberados para não zoar VaultPress
 		// $block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/features';
@@ -739,3 +745,11 @@ add_action(
 		add_action( 'edit_user_created_user', 'wpcode_send_new_user_notifications', 10, 2 );
 	}
 );
+
+add_action('init', function() {
+	pll_register_string( 'por', 'por' );
+	pll_register_string( 'Sobre', 'Sobre' );
+	pll_register_string( 'Compartilhe', 'Compartilhe' );
+	pll_register_string( 'Associado à', 'Associado à' );
+	pll_register_string( 'Apoio', 'Apoio' );
+});

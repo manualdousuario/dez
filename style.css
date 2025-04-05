@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.7.2
+Version: 3.8
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -17,6 +17,8 @@ Use it to make something cool, have fun, and share what you've learned.
 
 Dez is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Icons by Bootstrap v1.11.0 https://icons.getbootstrap.com/
 */
 
 /*--------------------------------------------------------------
@@ -49,6 +51,7 @@ TABELA DE CONTEÚDO
 # Media queries
 # Modo escuro
 # User Menu
+# Acessibilidade
 
 /*--------------------------------------------------------------
 # Variáveis
@@ -495,20 +498,15 @@ ul.nav-menu {
 }
 
 #dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
-	background-size: cover;
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-aparencia.svg) no-repeat 0;
 	display: block;
 	height: 20px;
-	width: 20px;	
+	width: 20px;
 	overflow: hidden;
 	text-indent: -9999px;
-	white-space: nowrap;
 }
 
 [data-theme="dark"] #dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
 	filter: invert();
 }
 
@@ -629,10 +627,17 @@ article:not(.type-page) .entry-header,
 	align-items: center;
 }
 
+.data-hora {
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-data.svg) no-repeat 0;
+	padding-left: 24px;
+	background-size: 20px;
+}
+
 .comment-link {
-	background: url(/wp-content/themes/dez/img/icone-speech-stroke.svg) no-repeat center left;
-	padding-left: 1.6rem;
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-comentarios.svg) no-repeat 0;
+	padding-left: 24px;
 	order: 3;
+	background-size: 20px;
 }
 
 .entry-footer {
@@ -644,16 +649,16 @@ article:not(.type-page) .entry-header,
 }
 
 .compartilhe {
-	background: transparent url(/wp-content/themes/dez/img/compartilhe.svg) no-repeat center left;
+	background: transparent url(https://manualdousuario.net/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat center left;
+	background-size: 20px;
 	border: none;
 	border-radius: 0;
 	text-decoration: underline;
 	color: var(--cor-link-meta);
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	background-size: 22px;
 	min-height: 24px;
-	padding-left: 1.7rem;
+	padding-left: 24px;
 }
 .compartilhe:hover {
 	border: none;
@@ -959,6 +964,9 @@ ol.children {
 --------------------------------------------- */
 
 .site-footer {
+	display: flex;
+	justify-content: space-between;
+	row-gap: var(--med-salto-pequeno);
 	margin: var(--med-salto-grande) auto 0;
 	padding: var(--med-salto-pequeno) 0 0;
 	border-top: 1px dashed var(--cor-bordas);
@@ -966,6 +974,29 @@ ol.children {
 
 .site-footer p {
 	max-width: 100%;
+}
+
+.site-footer ul {
+	list-style: none;
+}
+.site-footer li {
+	margin: 0;
+}
+
+#footer-links {
+	display: flex;
+	column-gap: var(--med-salto-pequeno);
+	flex-wrap: wrap;
+	margin-bottom: var(--med-salto-pequeno);
+}
+
+.seletor-idiomas {
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0;
+	background-size: 20px;
+	padding-left: 24px;
+	max-height: min-content;
+	margin: 0;
+	text-transform: uppercase;
 }
 
 .top {
@@ -1012,12 +1043,9 @@ ol.children {
 }
 
 .search-icon {
-	background-image: url('/wp-content/themes/dez/img/icone-search.svg');
-	background-size: cover;
-	display: block;
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 0;
 	height: 20px;
 	width: 20px;
-	max-width: none;
 	cursor: pointer;
 }
 
@@ -1759,13 +1787,15 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .gridicon,
 [data-theme="dark"] .menu-toggle-icon a,
 [data-theme="dark"] .search-icon,
-[data-theme="dark"] .comment-link,
-[data-theme="dark"] .comment-link span,
 [data-theme="dark"] .site-logo,
+[data-theme="dark"] .entry-meta,
+[data-theme="dark"] .comment-link > *,
+[data-theme="dark"] .data-hora > *,
 [data-theme="dark"] .compartilhe,
-[data-theme="dark"] .compartilhe span {
+[data-theme="dark"] .compartilhe span,
+[data-theme="dark"] .seletor-idiomas,
+[data-theme="dark"] .seletor-idiomas a {
 	filter: invert();
-	fill: unset;
 }
 [data-theme="dark"] .compartilhe {
 	border: 1px solid transparent;
@@ -1891,12 +1921,10 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 .menu-toggle-icon a {
-	background-image: url('/wp-content/themes/dez/img/icone-user.svg');
-	background-size: cover;
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-usuario.svg) no-repeat 0;
 	display: block;
 	height: 20px;
 	width: 20px;
-	max-width: none;
 }
 
 #menu-toggle-list {
@@ -1942,4 +1970,47 @@ table.dataTable-table tr:nth-child(even) {
 
 .divider {
 	border-top: 1px var(--cor-bordas) solid;
+}
+
+/*--------------------------------------------------------------
+# Acessibilidade
+--------------------------------------------------------------*/
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* Do not show the outline on the skip link target. */
+#primary[tabindex="-1"]:focus {
+	outline: 0;
 }
