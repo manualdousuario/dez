@@ -48,6 +48,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Altera menus (principal e rodapé) para sistema nativo do WordPress.
 * Altera ícones para padronizados do Bootstrap.
 * Corrige erros de acessibilidade (texto alternativo no logo, link para pular para o conteúdo).
+* Altera implementação do formulário de pesquisa (acessibilidade).
 
 = 3.7.2 - Abr 4 2025 =
 * Correções e alterações no `style.css`.

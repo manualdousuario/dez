@@ -39,24 +39,9 @@
 				</div>
 			</div>
 
-			<?php // Search Checkbox Input. Required here due to the use of CSS selectors to alter the Text Menu and Search. ?>
-			<input type="checkbox" id="search-icon"/>
+			<?php get_search_form(); ?>
 
 			<nav id="site-navigation" class="main-navigation">
-				<!-- Search -->
-				<div id="search-container">
-					<?php
-					$form = '<form role="search" method="get" class="search-form-header" action="' . home_url( '/' ) . '" >
-					<label>
-					<span class="screen-reader-text" for="s">' . __( 'Pesquisar por:' ) . '</span>
-					<input aria-label="Campo de busca" type="search" id="search-field" class="search-field" placeholder="O que você procura?" value="' . get_search_query() . '" name="s" id="s" autofocus />
-					</label>
-					</form>';
-
-					echo $form;
-					?>
-				</div>
-
 				<!-- Text Navigation -->
 				<?php	wp_nav_menu(
 					array(
@@ -86,9 +71,6 @@
 						'url'   => '/orbita/meus-comentarios/',
 					),
 				);
-
-				// Search Label.
-				$icon_nav = '<label class="search-icon" for="search-icon"><a name="search-icon" alt="Busca" title="Busca"></a></label>';
 
 				$icon_nav .= '<ul id="dark-mode-toggle">';
 				$icon_nav .= '<li>';
