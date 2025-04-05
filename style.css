@@ -1030,21 +1030,25 @@ ol.children {
 .search-form {
 	margin: 0;
 }
+.search-form label {
+	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 6px center;
+	background-size: 20px;
+	cursor: pointer;
+}
 
 input[type="search"].search-field {
 	padding: 0 .5rem !important;
 	min-height: fit-content !important;
+	width: calc( 100% - 32px ) !important;
+	margin: 0 0 0 32px;
+}
+.search-field::placeholder,
+.search-field::-webkit-input-placeholder {
+  color: transparent;
 }
 
 input[type="submit"].search-submit {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat center;
-	background-color: transparent;
-	background-size: 20px;
-	color: transparent;
-	width: 36px;
-	margin-left: -72px;
-	border: none;
-	cursor: pointer;
+	display: none;
 }
 
 /* Páginas especiais
@@ -1574,10 +1578,6 @@ table.dataTable-table tr:nth-child(even) {
 	.search-form {
 		order: 4;
 		width: 100%;
-	
-		label {
-			display: initial;
-		}
 	}
 
 	.ctx,
@@ -1742,7 +1742,6 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .site-title img,
 [data-theme="dark"] .gridicon,
 [data-theme="dark"] .menu-toggle-icon a,
-[data-theme="dark"] .search-icon,
 [data-theme="dark"] .site-logo,
 [data-theme="dark"] .entry-meta,
 [data-theme="dark"] .comment-link > *,
@@ -1750,8 +1749,7 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .compartilhe,
 [data-theme="dark"] .compartilhe span,
 [data-theme="dark"] .seletor-idiomas,
-[data-theme="dark"] .seletor-idiomas a,
-[data-theme="dark"] input[type="submit"].search-submit {
+[data-theme="dark"] .seletor-idiomas a {
 	filter: invert();
 }
 [data-theme="dark"] .compartilhe {
