@@ -458,9 +458,13 @@ figure img.alignright {
 #secondary-menu a {
 	cursor: pointer;
 }
+.main-navigation a:visited {
+	color: var(--cor-link-ori);
+}
 
 .main-navigation li {
-	font-family: var(--ff-serif);
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
 	position: relative;
 	margin: 0;
 }
@@ -474,7 +478,6 @@ figure img.alignright {
 ul.nav-menu {
 	justify-content: flex-end;
 	width: 100%;
-	font-size: 1.1rem;
 }
 
 #dark-mode-toggle {
@@ -490,7 +493,7 @@ ul.nav-menu {
 }
 
 #dark-mode-toggle li a {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-aparencia.svg) no-repeat 0;
+	background: url(/wp-content/themes/dez/img/icone-aparencia.svg) no-repeat 0;
 	display: block;
 	height: 20px;
 	width: 20px;
@@ -620,13 +623,13 @@ article:not(.type-page) .entry-header,
 }
 
 .data-hora {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-data.svg) no-repeat 0;
+	background: url(/wp-content/themes/dez/img/icone-data.svg) no-repeat 0;
 	padding-left: 24px;
 	background-size: 20px;
 }
 
 .comment-link {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-comentarios.svg) no-repeat 0;
+	background: url(/wp-content/themes/dez/img/icone-comentarios.svg) no-repeat 0;
 	padding-left: 24px;
 	order: 3;
 	background-size: 20px;
@@ -641,7 +644,7 @@ article:not(.type-page) .entry-header,
 }
 
 .compartilhe {
-	background: transparent url(https://manualdousuario.net/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat center left;
+	background: transparent url(/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat center left;
 	background-size: 20px;
 	border: none;
 	border-radius: 0;
@@ -956,39 +959,36 @@ ol.children {
 --------------------------------------------- */
 
 .site-footer {
-	display: flex;
-	justify-content: space-between;
-	row-gap: var(--med-salto-pequeno);
 	margin: var(--med-salto-grande) auto 0;
 	padding: var(--med-salto-pequeno) 0 0;
 	border-top: 1px dashed var(--cor-bordas);
+	text-align: center;
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
 }
 
 .site-footer p {
 	max-width: 100%;
 }
+.site-footer p:last-child {
+	text-align: left;
+}
 
 .site-footer ul {
 	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: .5rem var(--med-salto-pequeno);
+	flex-wrap: wrap;
 }
 .site-footer li {
 	margin: 0;
 }
 
-#footer-links {
-	display: flex;
-	column-gap: var(--med-salto-pequeno);
-	flex-wrap: wrap;
-	margin-bottom: var(--med-salto-pequeno);
-}
-
-.seletor-idiomas {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0;
+.lang-item {
+	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0;
 	background-size: 20px;
 	padding-left: 24px;
-	max-height: min-content;
-	margin: 0;
-	text-transform: uppercase;
 }
 
 .top {
@@ -1031,7 +1031,7 @@ ol.children {
 	margin: 0;
 }
 .search-form label {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 6px center;
+	background: url(/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 0 center;
 	background-size: 20px;
 	cursor: pointer;
 }
@@ -1040,7 +1040,7 @@ input[type="search"].search-field {
 	padding: 0 .5rem !important;
 	min-height: fit-content !important;
 	width: calc( 100% - 32px ) !important;
-	margin: 0 0 0 32px;
+	margin: 0 0 0 28px;
 }
 .search-field::placeholder,
 .search-field::-webkit-input-placeholder {
@@ -1579,6 +1579,9 @@ table.dataTable-table tr:nth-child(even) {
 		order: 4;
 		width: 100%;
 	}
+	.search-form label {
+		display: initial;
+	}
 
 	.ctx,
 	.ctx-transparencia,
@@ -1660,10 +1663,6 @@ table.dataTable-table tr:nth-child(even) {
 		flex-direction: column;
 		line-height: inherit;
 		text-align: center;
-	}
-
-	.site-footer {
-		flex-direction: column-reverse;
 	}
 }
 
@@ -1868,7 +1867,7 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 .menu-toggle-icon a {
-	background: url(https://manualdousuario.net/wp-content/themes/dez/img/icone-usuario.svg) no-repeat 0;
+	background: url(/wp-content/themes/dez/img/icone-usuario.svg) no-repeat 0;
 	display: block;
 	height: 20px;
 	width: 20px;
@@ -1903,7 +1902,6 @@ table.dataTable-table tr:nth-child(even) {
 	padding: .5rem 1rem;
 	text-align: end;
 	background-color: var(--cor-destaques);
-	border-bottom: 1px solid var(--cor-bordas);
 }
 
 .menu-item .children li:first-child {

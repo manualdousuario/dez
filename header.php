@@ -48,7 +48,7 @@
 						'theme_location'	=> 'menu-principal',
 						'menu_id'					=> 'primary-menu',
 						'container'				=> 'false',
-						'menu_class'			=> 'menu nav-menu link-alt',
+						'menu_class'			=> 'nav-menu',
 					)
 				); ?>
 			</nav>
@@ -88,7 +88,7 @@
 					$icon_nav .= '<li class="page_item page_item_has_children">';
 					$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
 					$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-usuario" alt="Menu do Usuário" title="Menu do Usuário"></a></label>';
-					$icon_nav .= '<ul id="menu-toggle-list" class="children link-alt">';
+					$icon_nav .= '<ul id="menu-toggle-list" class="children">';
 
 					// Profile/Sign in items.
 					$icon_nav .= '<li class="page_item">';
