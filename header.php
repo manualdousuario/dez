@@ -47,7 +47,7 @@
 					array(
 						'theme_location'	=> 'menu-principal',
 						'menu_id'					=> 'primary-menu',
-						'container'				=> 'false',
+						'container'				=> false,
 						'menu_class'			=> 'nav-menu',
 					)
 				); ?>
@@ -72,7 +72,7 @@
 					),
 				);
 
-				$icon_nav .= '<ul id="dark-mode-toggle">';
+				$icon_nav = '<ul id="dark-mode-toggle">';
 				$icon_nav .= '<li>';
 				$icon_nav .= '<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>';
 				$icon_nav .= '</li>';
