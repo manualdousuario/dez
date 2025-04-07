@@ -22,14 +22,14 @@
 	<div class="entry-meta link-alt">
 		<?php 
 		if ( ( is_home() || is_archive() ) && has_post_format( array('aside', 'image', 'link', 'quote') ) ) :
-			echo '<div class="data-hora"><span>'. get_the_date() .', ';
-			echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time() .'</a></span></div>';
+			echo '<span class="data-hora">'. get_the_date() .', ';
+			echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark" class="link-alt">'. get_the_time() .'</a></span>';
 		elseif ( ! is_page() ) :
-			echo '<div class="data-hora"><span>'. get_the_date() .', '. get_the_time() .'</span></div>';
+			echo '<span class="data-hora">'. get_the_date() .', '. get_the_time() .'</span>';
 		endif ?>
 
 	<?php if ( comments_open() || get_comments_number() ) :
-		echo comments_popup_link( '<span>0</span>', '<span>1</span>', '<span>%</span>', 'comment-link', '' );
+		echo comments_popup_link( '0', '1', '%', 'comment-link', '' );
 	endif; ?>
 
 	<span class="author-<?php the_author_meta('ID'); ?>">
@@ -45,7 +45,7 @@
 
 	<?php if ( !is_page() ) : ?>
 		<p class="entry-footer"><button class="compartilhe" onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);">
-			<span><?php pll_e('Compartilhe'); ?></span>
+			<?php pll_e('Compartilhe'); ?>
 		</button></p>
 	<?php endif; ?>
 

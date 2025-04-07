@@ -43,12 +43,14 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 3.8 - Abr 5 2025 =
+= 3.8 - Abr 7 2025 =
 * Prepara o tema para a versão em inglês do Manual do Usuário (depende do plugin Polylang).
 * Altera menus (principal e rodapé) para sistema nativo do WordPress.
 * Altera ícones para padronizados do Bootstrap.
-* Corrige erros de acessibilidade (texto alternativo no logo, link para pular para o conteúdo).
+* Altera lógica para aplicar filtro invert() nos ícones em background-image.
 * Altera implementação do formulário de pesquisa (acessibilidade).
+* Corrige erros de acessibilidade (texto alternativo no logo, link para pular para o conteúdo).
+* Remove propriedade `transition` dos formulários para mitigar defeito ao alternar aparência (clara/escura).
 
 = 3.7.2 - Abr 4 2025 =
 * Correções e alterações no `style.css`.
