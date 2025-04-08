@@ -699,7 +699,6 @@ article:not(.type-page) .entry-header,
 }
 
 .compartilhe {
-	border: none;
 	border-radius: 0;
 	text-decoration: underline;
 	color: var(--cor-link-meta);
@@ -708,9 +707,12 @@ article:not(.type-page) .entry-header,
 	min-height: 24px;
 }
 .compartilhe:hover {
+	color: var(--cor-link-meta-est);
+}
+.compartilhe,
+.compartilhe:hover {
 	border: none;
 	background-color: transparent;
-	color: var(--cor-link-meta-est);
 }
 
 .entry-content h2 {
@@ -1788,9 +1790,7 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .site-title img,
 [data-theme="dark"] .gridicon,
-[data-theme="dark"] .menu-toggle-icon a,
-[data-theme="dark"] .site-logo,
-[data-theme="dark"] .entry-meta {
+[data-theme="dark"] .site-logo {
 	filter: invert();
 }
 
