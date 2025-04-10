@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.7.2
+Version: 3.8
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -17,6 +17,8 @@ Use it to make something cool, have fun, and share what you've learned.
 
 Dez is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Icons by Bootstrap v1.11.0 https://icons.getbootstrap.com/
 */
 
 /*--------------------------------------------------------------
@@ -49,6 +51,7 @@ TABELA DE CONTEÚDO
 # Media queries
 # Modo escuro
 # User Menu
+# Acessibilidade
 
 /*--------------------------------------------------------------
 # Variáveis
@@ -248,7 +251,6 @@ select {
 	border-radius: var(--med-borda);
 	background-color: var(--cor-chapada);
 	outline: none;
-	transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 	cursor: text;
 }
 
@@ -264,7 +266,6 @@ button {
 	background-color: hsl(210, 15%, 45%);
 	color: var(--cor-chapada);
 	outline: none;
-	transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 	cursor: pointer;
 }
 
@@ -439,14 +440,6 @@ figure img.alignright {
 	line-height: 1;
 }
 
-#site-navigation {
-	flex-basis: auto;
-	flex-grow: 2;
-	min-height: 40px;
-	align-items: center;
-	margin-right: var(--med-salto-pequeno);
-}
-
 .main-navigation {
 	display: flex;
 	gap: 1rem;
@@ -457,29 +450,32 @@ figure img.alignright {
 	display: flex;
 	list-style: none;
 	margin: 0;
-	gap: 1rem;
+	gap: 1.25rem;
 }
 .main-navigation a,
 #secondary-menu a {
 	cursor: pointer;
 }
+.main-navigation a:visited {
+	color: var(--cor-link-ori);
+}
 
 .main-navigation li {
-	font-family: var(--ff-serif);
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
 	position: relative;
 	margin: 0;
 }
 
 .icons-navigation {
 	flex-grow: 0;
-	gap: .75rem;
+	gap: 1.25rem;
 	align-items: center;
 }
 
 ul.nav-menu {
 	justify-content: flex-end;
 	width: 100%;
-	font-size: 1.1rem;
 }
 
 #dark-mode-toggle {
@@ -492,24 +488,6 @@ ul.nav-menu {
 #dark-mode-toggle li:first-child {
 	padding: 0;
 	margin: 0;
-}
-
-#dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532875/moon */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-lua.svg');
-	background-size: cover;
-	display: block;
-	height: 20px;
-	width: 20px;	
-	overflow: hidden;
-	text-indent: -9999px;
-	white-space: nowrap;
-}
-
-[data-theme="dark"] #dark-mode-toggle li a {
-	/* CC-BY https://www.svgrepo.com/svg/532889/sun */
-	background-image: url('/wp-content/themes/dez/img/icone-dark-mode-sol.svg');
-	filter: invert();
 }
 
 /* Corpo
@@ -604,6 +582,85 @@ p.hf-message {
 	color: #A30611;
 }
 
+/* 
+ * Ícones
+ */
+
+#dark-mode-toggle li a,
+.menu-toggle-icon a,
+.search-form label,
+.data-hora,
+.comment-link,
+.compartilhe,
+.lang-item {
+	position: relative;
+	z-index: 1;
+	padding-left: 24px;
+}
+#dark-mode-toggle li a::before,
+.menu-toggle-icon a::before,
+.search-form label::before,
+.data-hora::before,
+.comment-link::before,
+.compartilhe::before,
+.lang-item::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+}
+
+#dark-mode-toggle li a {
+	display: block;
+	height: 20px;
+	width: 20px;
+	overflow: hidden;
+	text-indent: -9999px;
+}
+#dark-mode-toggle li a::before {
+	background: url(/wp-content/themes/dez/img/icone-aparencia.svg) no-repeat 0/20px transparent;
+}
+
+.menu-toggle-icon a::before {
+	background: url(/wp-content/themes/dez/img/icone-usuario.svg) no-repeat 0/20px transparent;
+}
+
+.search-form label::before {
+	background: url(/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 0/20px transparent;
+}
+.search-form label {
+	padding-left: 28px;
+}
+
+.data-hora::before {
+	background: url(/wp-content/themes/dez/img/icone-data.svg) no-repeat 0/20px transparent;
+}
+
+.comment-link::before {
+	background: url("/wp-content/themes/dez/img/icone-comentarios.svg") no-repeat 0/20px transparent;
+}
+
+.compartilhe::before {
+	background: url(/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat 0/20px transparent;
+}
+
+.lang-item::before {
+	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/20px transparent;
+}
+
+[data-theme="dark"] #dark-mode-toggle li a::before,
+[data-theme="dark"] .menu-toggle-icon a::before,
+[data-theme="dark"] .search-form label::before,
+[data-theme="dark"] .data-hora::before,
+[data-theme="dark"] .comment-link::before,
+[data-theme="dark"] .compartilhe::before,
+[data-theme="dark"] .lang-item::before {
+	filter: invert();
+}
+
 /* Post
 --------------------------------------------- */
 
@@ -630,8 +687,6 @@ article:not(.type-page) .entry-header,
 }
 
 .comment-link {
-	background: url(/wp-content/themes/dez/img/icone-speech-stroke.svg) no-repeat center left;
-	padding-left: 1.6rem;
 	order: 3;
 }
 
@@ -644,21 +699,20 @@ article:not(.type-page) .entry-header,
 }
 
 .compartilhe {
-	background: transparent url(/wp-content/themes/dez/img/compartilhe.svg) no-repeat center left;
-	border: none;
 	border-radius: 0;
 	text-decoration: underline;
 	color: var(--cor-link-meta);
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	background-size: 22px;
 	min-height: 24px;
-	padding-left: 1.7rem;
 }
+.compartilhe:hover {
+	color: var(--cor-link-meta-est);
+}
+.compartilhe,
 .compartilhe:hover {
 	border: none;
 	background-color: transparent;
-	color: var(--cor-link-meta-est);
 }
 
 .entry-content h2 {
@@ -962,10 +1016,24 @@ ol.children {
 	margin: var(--med-salto-grande) auto 0;
 	padding: var(--med-salto-pequeno) 0 0;
 	border-top: 1px dashed var(--cor-bordas);
+	text-align: center;
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
 }
 
 .site-footer p {
 	max-width: 100%;
+}
+
+.site-footer ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: .5rem var(--med-salto-pequeno);
+	flex-wrap: wrap;
+}
+.site-footer li {
+	margin: 0;
 }
 
 .top {
@@ -1004,56 +1072,26 @@ ol.children {
 /* Formulário de busca
 --------------------------------------------- */
 
-.search-submit {
-	padding: .25rem;
-	vertical-align: top;
-	border: none;
-	background-color: transparent;
+.search-form {
+	margin: 0;
 }
-
-.search-icon {
-	background-image: url('/wp-content/themes/dez/img/icone-search.svg');
-	background-size: cover;
-	display: block;
-	height: 20px;
-	width: 20px;
-	max-width: none;
+.search-form label {
+	background: url(/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 0 center;
+	background-size: 20px;
 	cursor: pointer;
 }
 
-#search-icon {
+input[type="search"].search-field {
+	padding: 0 .5rem !important;
+	min-height: fit-content !important;
+}
+.search-field::placeholder,
+.search-field::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input[type="submit"].search-submit {
 	display: none;
-}
-
-#search-icon:checked ~ #site-navigation #search-container,
-#search-icon:checked ~ #site-navigation #search-container label {
-	display: block;
-	width: 90%;
-	margin: 0 0 0 auto;
-}
-
-#search-icon:checked ~ #site-navigation #primary-menu {
-	display: none;
-}
-
-#search-icon:checked ~ nav .search-icon {
-	opacity: .3;
-}
-
-#search-container {
-	display: none;
-}
-
-#search-container form {
-	margin-bottom: 0;
-}
-
-#search-container input[type="search"].search-field {
-	width: 100%;
-	min-height: 10px;
-	padding: .25rem .5rem;
-	line-height: 1;
-	font-size: var(--fs-0);
 }
 
 /* Páginas especiais
@@ -1546,60 +1584,7 @@ table.dataTable-table tr:nth-child(even) {
 # Media queries
 --------------------------------------------------------------*/
 
-@media (max-width: 330px) {
-	.icons-navigation {
-		flex-grow: 1;
-		justify-content: center;
-		gap: 1.25rem;
-	}
-	#menu-toggle-list {
-		right: -2rem;
-	}
-
-	ul.nav-menu {
-		justify-content: center;
-	}
-
-}
-
-@media (max-width: 480px) {
-	.post-thumbnail,
-	article.format-link .entry-content > figure,
-	.format-image .entry-content > figure {
-		left: 50%;
-		margin: 0 -50vw 2rem -50vw !important;
-		position: relative;
-		right: 50%;
-		width: 100vw !important;
-		max-width: 1200px !important;
-	}
-	article.format-link .entry-content > figure,
-	.format-image .entry-content > figure {
-		margin: 0 -50vw var(--med-salto-pequeno) !important;
-	}
-
-	article.format-link .entry-content > figure img,
-	.format-image .entry-content > figure img {
-		border-radius: 0;
-		box-shadow: none;
-		margin-top: 0;
-	}
-
-	.alignleft,
-	.alignright {
-		float: initial;
-		margin-left: auto;
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-	}
-
-	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
-		margin-inline: auto;
-	}
-}
-
-@media (max-width: 670px) {
+@media (max-width: 728px) {
 	:root {
 		--fs-0: 1rem;
 		--fs-1: 1.2rem;
@@ -1625,22 +1610,20 @@ table.dataTable-table tr:nth-child(even) {
 
 	.site-branding {
 		width: fit-content;
-		order: 1;
-	}
-	.icons-navigation {
-		order: 2;
 	}
 	#site-navigation {
-		margin-inline: auto;
-		width: 100%;
-		min-height: auto;
+		order: 2;
+		min-height: fit-content;
+	}
+	.icons-navigation {
 		order: 3;
 	}
-
-	#search-icon:checked ~ #site-navigation #search-container,
-	#search-icon:checked ~ #site-navigation #search-container label {
+	.search-form {
+		order: 4;
 		width: 100%;
-		margin: 0;
+	}
+	.search-form label {
+		display: flex;
 	}
 
 	.ctx,
@@ -1719,18 +1702,65 @@ table.dataTable-table tr:nth-child(even) {
 		margin-left: .5rem;
 	}
 
-	.search-form {
-		max-width: 100%;
-	}
-
 	.podcast_meta aside {
 		flex-direction: column;
 		line-height: inherit;
 		text-align: center;
 	}
+}
 
-	.site-footer {
-		flex-direction: column-reverse;
+@media (max-width: 479px) {
+	.site-branding {
+		width: 100%;
+	}
+
+	.post-thumbnail,
+	article.format-link .entry-content > figure,
+	.format-image .entry-content > figure {
+		left: 50%;
+		margin: 0 -50vw 2rem -50vw !important;
+		position: relative;
+		right: 50%;
+		width: 100vw !important;
+		max-width: 1200px !important;
+	}
+	article.format-link .entry-content > figure,
+	.format-image .entry-content > figure {
+		margin: 0 -50vw var(--med-salto-pequeno) !important;
+	}
+
+	article.format-link .entry-content > figure img,
+	.format-image .entry-content > figure img {
+		border-radius: 0;
+		box-shadow: none;
+		margin-top: 0;
+	}
+
+	.alignleft,
+	.alignright {
+		float: initial;
+		margin-left: auto;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
+
+	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
+		margin-inline: auto;
+	}
+
+	.site-footer p:last-child {
+		text-align: left;
+	}
+}
+
+@media (max-width: 330px) {
+	#menu-toggle-list {
+		right: -2rem;
+	}
+
+	ul.nav-menu {
+		justify-content: center;
 	}
 }
 
@@ -1757,19 +1787,8 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .site-title img,
 [data-theme="dark"] .gridicon,
-[data-theme="dark"] .menu-toggle-icon a,
-[data-theme="dark"] .search-icon,
-[data-theme="dark"] .comment-link,
-[data-theme="dark"] .comment-link span,
-[data-theme="dark"] .site-logo,
-[data-theme="dark"] .compartilhe,
-[data-theme="dark"] .compartilhe span {
+[data-theme="dark"] .site-logo {
 	filter: invert();
-	fill: unset;
-}
-[data-theme="dark"] .compartilhe {
-	border: 1px solid transparent;
-	background-color: transparent;
 }
 
 [data-theme="dark"] .activitypub-comment .comment-meta {
@@ -1778,10 +1797,6 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .activitypub-comment > .comment-body > footer > .comment-author > .fn:after {
 	filter: invert(1);
-}
-
-[data-theme="dark"] .search-submit svg {
-	filter: invert();
 }
 
 [data-theme="dark"] .post-thumbnail img {
@@ -1798,7 +1813,7 @@ table.dataTable-table tr:nth-child(even) {
 
 /* Botões no modo dark: estado normal com fundo branco */
 [data-theme="dark"] input[type="reset"],
-[data-theme="dark"] input[type="submit"],
+[data-theme="dark"] input[type="submit"]:not(.search-submit),
 [data-theme="dark"] button:not(.compartilhe) {
 	background-color: hsl(210, 26%, 30%);
 	color: var(--cor-link-meta-est);
@@ -1807,15 +1822,11 @@ table.dataTable-table tr:nth-child(even) {
 
 /* Hover para botões no modo dark */
 [data-theme="dark"] input[type="reset"]:hover,
-[data-theme="dark"] input[type="submit"]:hover,
-[data-theme="dark"] button:hover {
+[data-theme="dark"] input[type="submit"]:hover:not(.search-submit),
+[data-theme="dark"] button:hover:not(.compartilhe) {
 	background-color: hsl(210, 30%, 45%);
 	border-color: hsl(210, 30%, 45%);
 	color: #ffffff;
-}
-[data-theme="dark"] button.compartilhe:hover {
-	background-color: transparent;
-	border-color: transparent;
 }
 
 /* Focus para botões no modo dark */
@@ -1891,12 +1902,10 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 .menu-toggle-icon a {
-	background-image: url('/wp-content/themes/dez/img/icone-user.svg');
-	background-size: cover;
+	background: url(/wp-content/themes/dez/img/icone-usuario.svg) no-repeat 0;
 	display: block;
 	height: 20px;
 	width: 20px;
-	max-width: none;
 }
 
 #menu-toggle-list {
@@ -1928,7 +1937,6 @@ table.dataTable-table tr:nth-child(even) {
 	padding: .5rem 1rem;
 	text-align: end;
 	background-color: var(--cor-destaques);
-	border-bottom: 1px solid var(--cor-bordas);
 }
 
 .menu-item .children li:first-child {
@@ -1942,4 +1950,47 @@ table.dataTable-table tr:nth-child(even) {
 
 .divider {
 	border-top: 1px var(--cor-bordas) solid;
+}
+
+/*--------------------------------------------------------------
+# Acessibilidade
+--------------------------------------------------------------*/
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* Do not show the outline on the skip link target. */
+#primary[tabindex="-1"]:focus {
+	outline: 0;
 }
