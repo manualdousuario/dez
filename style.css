@@ -1623,10 +1623,7 @@ table.dataTable-table tr:nth-child(even) {
 		width: 100%;
 	}
 	.search-form label {
-		display: initial;
-	}
-	input[type="search"].search-field {
-		width: calc( 100% - 28px ) !important;
+		display: flex;
 	}
 
 	.ctx,
