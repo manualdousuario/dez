@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 4.5
 Tested up to: 8.2
 Requires PHP: 5.6
-Stable tag: 3.8
+Stable tag: 3.8.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -42,6 +42,11 @@ More information: https://github.com/Automattic/_s
 Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 3.8.1 - Abr 14 2025 =
+* Altera chamada do script do Alô para segmentar leitores da versão em inglês.
+* Altera (simplifica) e rebatiza para `dez_pre_http_request_block` a função `ltv_pre_http_request_block`.
+* Remove resquício do `searchIcon` no `functions.php`.
 
 = 3.8 - Abr 7 2025 =
 * Prepara o tema para a versão em inglês do Manual do Usuário (depende do plugin Polylang).
