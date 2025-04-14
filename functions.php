@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.8' );
+	define( '_S_VERSION', '3.8.1' );
 }
 
 function dez_setup() {
@@ -459,9 +459,14 @@ add_filter( 'comment_form_default_fields', 'dez_remove_campo_website_comentarios
 
 
 /**
- * Scripts de rodapé em páginas específicas.
+ * Scripts do Alô — https://alo.pcdomanual.com/
  */
 function dez_script_alo() {
+	$section = '';
+	if ( pll_current_language() == 'en') {
+		$section = 'English';
+	}
+
 	if ( is_page( 'notificacoes' ) ) { ?>
 		<script type="module">
 			import aloSDK from 'https://alo.pcdomanual.com/clientSDK';
@@ -499,11 +504,13 @@ function dez_script_alo() {
 			const aloConfig = {
 				registrationMode: 'auto',
 				registrationDelay: 15000,
+				customSegments: {
+					tag: '<?= $section; ?>'
+				},
 			};
 			const aloClient = new aloSDK(aloConfig);
 		</script>
-	<?php }
-}
+	<?php } }
 add_action( 'wp_footer', 'dez_script_alo' );
 
 
@@ -662,17 +669,6 @@ function dez_scripts_rodape_gerais() { ?>
 		});			
 	</script>
 	<noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
-
-	<script>
-		var searchIcon = document.getElementById('search-icon');
-		var searchField = document.getElementById('search-field');
-
-		searchIcon.addEventListener('change', function() {
-			if (this.checked) {
-				searchField.focus();
-			}
-		});			
-	</script>
 <?php }
 add_action( 'wp_footer', 'dez_scripts_rodape_gerais' );
 
@@ -688,27 +684,17 @@ add_action('pre_get_comments', 'dez_comments_any_status');
 
 
 /**
- * Bloqueia chamadas da HTTP API
+ * Bloqueia chamadas da HTTP API. Complementa o plugin HTTP Requests Manager
  */
-add_filter( 'pre_http_request', 'ltv_pre_http_request_block', 10, 3 );
-function ltv_pre_http_request_block( $preempt, $args, $url ) {
+add_filter( 'pre_http_request', 'dez_pre_http_request_block', 10, 3 );
+function dez_pre_http_request_block( $preempt, $args, $url ) {
 
 	$block_list = [];
 	$block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/comments';
-	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/home';
-	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/subscribers';
 	$block_list[] = 'https://public-api.wordpress.com/wpcom/v2/themes';
 	$block_list[] = 'https://stats.wp.com/';
-	$block_list[] = 'https://manualdousuario.net/wp-json/jetpack/v4/sync';
 	$block_list[] = 'https://api.wordpress.org/core/serve-happy';
 	$block_list[] = 'https://api.wordpress.org/core/browse-happy';
-
-		// Manter liberados para não zoar VaultPress
-		// $block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/features';
-		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/scan';
-		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/jetpack-sync-actions';
-		// $block_list[] = 'https://public-api.wordpress.com/wpcom/v2/sites/221233611/jitm';
-		// $block_list[] = 'https://public-api.wordpress.com/rest/v1.1/sites/221233611/purchases';
 
 	foreach($block_list as $b) {
 		if ( strpos( $url, $b ) !== false ) {
