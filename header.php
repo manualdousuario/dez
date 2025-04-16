@@ -31,7 +31,7 @@
 					<?php
 					$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
 					?>
-					<<?php echo esc_html( $title_tag ); ?> class="site-title link-alt">
+					<<?php echo esc_html( $title_tag ); ?> class="site-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Manual do Usuário</a></<?php echo esc_html( $title_tag ); ?>>
 					<div class="site-rg">
 						<?php pll_e('por'); ?> Rodrigo Ghedin
