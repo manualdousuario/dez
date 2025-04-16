@@ -445,6 +445,7 @@ figure img.alignright {
 .site-title a:hover {
 	text-decoration: none;
 	color: var(--cor-fonte);
+	font-weight: 600;
 	letter-spacing: -1px;
 }
 .site-title a:hover {
