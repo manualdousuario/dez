@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.8.2
+Version: 3.8.3
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -234,7 +234,6 @@ sub {
 
 details {
 	cursor: pointer;
-	margin-bottom: var(--med-salto-pequeno);
 }
 
 /* Formulários
@@ -408,6 +407,46 @@ figure img.alignright {
 	padding: 0 1rem;
 }
 
+.top-bar {
+	list-style: none;
+	background: var(--cor-destaques);
+	box-shadow: 0 4px 10px hsl(0, 0%, 92%);
+	font-size: 14px;
+	font-family: var(--ff-monospace);
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 1.5rem;
+	margin-bottom: 2lh;
+	padding-inline: 1rem;
+	height: 50px;
+	scrollbar-width: none; /* Firefox */
+}
+.top-bar li {
+	margin: 0;
+}
+
+a {
+	flex-shrink: 0;
+}
+.top-bar a:active {
+	font-weight: bold;
+}
+a:visited {
+	color: var(--cor-link-ori);
+}
+
+[data-theme="dark"] .top-bar {
+	box-shadow: none;
+}
+
+.top-bar::-webkit-scrollbar {
+	display: none; /* Chrome/Safari */
+}
+
 /* Cabeçalho
 --------------------------------------------- */
 
@@ -417,7 +456,7 @@ figure img.alignright {
 	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
-	margin: var(--med-salto-pequeno) 0 var(--med-salto-grande);
+	margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-grande);
 	padding-bottom: var(--med-salto-pequeno);
 	border-bottom: 1px dashed var(--cor-bordas);
 }
@@ -779,6 +818,9 @@ caption,
 	width: 100% !important;
 	margin-bottom: var(--med-salto-pequeno);
 }
+.alignright .wp-video {
+	margin: 0;
+}
 
 .wp-audio-shortcode {
 	margin-bottom: var(--med-salto-pequeno);
@@ -791,7 +833,8 @@ caption,
 .ctx-dica,
 .ctx-editor,
 .podcast_player,
-.format-link .link {
+.format-link .link,
+details {
 	margin: 0 -1rem var(--med-salto-pequeno);
 	padding: .35rem 1rem;
 	background-color: hsl(0, 0%, 96%);
@@ -1104,7 +1147,7 @@ input[type="search"].search-field {
 }
 .search-field::placeholder,
 .search-field::-webkit-input-placeholder {
-  color: transparent;
+	color: transparent;
 }
 
 input[type="submit"].search-submit {
@@ -1121,29 +1164,6 @@ input[type="submit"].search-submit {
 
 .page-id-38122 label {
 	display: block;
-}
-
-.search-results .page-header {
-	border-bottom: 0;
-	padding: var(--med-salto-pequeno);
-	margin-bottom: var(--med-salto-medio);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: .5rem;
-	font-size: var(--fs-1);
-	border: 1px dashed var(--cor-bordas);
-	border-radius: var(--med-borda);
-	background-color: var(--cor-destaques);
-}
-.search-results .page-header form,
-.search-results .page-header p {
-	margin-bottom: 0;
-}
-.search-results .page-header form {
-	display: flex;
-	align-items: center;
-	gap: .5rem;
 }
 
 .page-id-39568 .entry-title,
@@ -1261,9 +1281,12 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 	border-radius: 50%;
 }
 
+.alignright .wp-video,
 article.format-link .entry-content > figure img {
 	border-radius: var(--med-borda);
 	box-shadow: 2px 2px 8px #c3c3c3;
+}
+article.format-link .entry-content > figure {
 	margin-top: -2rem;
 }
 
@@ -1619,8 +1642,13 @@ table.dataTable-table tr:nth-child(even) {
 	.site {
 		padding: 0 .5rem;
 	}
+
+	.top-bar {
+		justify-content: start;
+	}
+
 	.site-header {
-		margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
+		margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-medio);
 		justify-content: space-between;
 		gap: 1rem .5rem;
 	}
@@ -1651,7 +1679,8 @@ table.dataTable-table tr:nth-child(even) {
 	.ctx-editor,
 	.podcast_player,
 	.format-link .link,
-	.comment-form-alert {
+	.comment-form-alert,
+	details {
 		margin: 0 -.5rem var(--med-salto-pequeno);
 		padding: 1rem .5rem;
 		border-radius: 0;
@@ -1746,8 +1775,9 @@ table.dataTable-table tr:nth-child(even) {
 		margin: 0 -50vw var(--med-salto-pequeno) !important;
 	}
 
-	article.format-link .entry-content > figure img,
-	.format-image .entry-content > figure img {
+	article.format-link .entry-content > figure,
+	.format-image .entry-content > figure,
+	.alignright .wp-video {
 		border-radius: 0;
 		box-shadow: none;
 		margin-top: 0;
@@ -1872,7 +1902,8 @@ table.dataTable-table tr:nth-child(even) {
 [data-theme="dark"] .ctx-dica,
 [data-theme="dark"] .ctx-editor,
 [data-theme="dark"] .podcast_player,
-[data-theme="dark"] .format-link .link {
+[data-theme="dark"] .format-link .link,
+[data-theme="dark"] details {
 	background-color: var(--cor-destaques);
 }
 

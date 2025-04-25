@@ -21,8 +21,22 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
+
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
+
+	<?php $currentlang = get_bloginfo( 'language' );
+	if ( $currentlang == 'pt-BR' ) : ?>
+		<ul class="top-bar">
+			<li><a href="https://manualdousuario.net/">Blog</a></li>
+			<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
+			<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
+			<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
+			<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Diretório de newsletters</a></li>
+			<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
+		</ul>
+	<?php endif; ?>
+
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
 		<header id="masthead" class="site-header">
 			<!-- Logo -->
 			<div class="site-branding">

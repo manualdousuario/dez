@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.8.2' );
+	define( '_S_VERSION', '3.8.3' );
 }
 
 function dez_setup() {
@@ -626,6 +626,8 @@ function dez_scripts_rodape_especiais() {
 add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
 
 function dez_scripts_rodape_gerais() { ?>
+	<script defer src="https://umami.manualdousuario.net/script.js" data-website-id="bd0b3698-4f84-4b35-ad28-73090b456682"></script>
+
 	<script type="text/javascript">
 		const compartilharPost = (title, url, element) => {
 			if (navigator.canShare) {
@@ -732,6 +734,10 @@ add_action(
 	}
 );
 
+
+/**
+ * Traduções na interface (plugin Polylang)
+ */
 add_action('init', function() {
 	pll_register_string( 'por', 'por' );
 	pll_register_string( 'Sobre', 'Sobre' );

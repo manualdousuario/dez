@@ -41,7 +41,11 @@
 <?php dez_post_thumbnail(); ?>
 
 <div class="entry-content">
-	<?php the_content(); ?>
+	<?php if ( is_search() && ! has_post_format() ) :
+		echo the_excerpt();
+	else :
+		echo the_content(); 
+	endif ?>
 
 	<?php if ( !is_page() ) : ?>
 		<p class="entry-footer"><button class="compartilhe" onClick="compartilharPost('<?php echo esc_html( get_the_title() ); ?>', '<?php echo esc_url( get_permalink() ); ?>', this);">
