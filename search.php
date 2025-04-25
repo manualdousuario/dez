@@ -14,10 +14,9 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<p>Resultados da pesquisa por</p>
-				<?php get_search_form(); ?>
-			</header><!-- .page-header -->
+			<p class="ctx" style="margin-bottom: var(--med-salto-medio);">
+				Resultados da pesquisa por <strong><?php echo get_search_query(); ?></strong>
+			</p><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
