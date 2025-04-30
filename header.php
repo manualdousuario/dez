@@ -9,6 +9,13 @@
  * @package Dez
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Previne acessos diretos ao tema
+}
+
+get_header();
+
+$current_lang = get_bloginfo( 'language' );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> data-theme="">
@@ -24,22 +31,21 @@
 
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
 
-	<?php $currentlang = get_bloginfo( 'language' );
-	if ( $currentlang == 'pt-BR' ) : ?>
+	<?php if ( 'pt-BR' === $current_lang ) : ?>
 		<div class="top-bar">
 			<h3>
-				<a href="https://manualdousuario.net/">
-					<img src="https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif" height="38" width="33" alt>
+				<a href="<?php echo esc_url( 'https://manualdousuario.net/' ); ?>">
+					<img src="<?php echo esc_url( 'https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif' ); ?>" height="38" width="33" alt="<?php esc_attr_e( 'Logo Manual do Usuário', 'dez' ); ?>">
 				</a>
 			</h3>
 			<ul>
-				<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
-				<li class="apoie"><a href="https://manualdousuario.net/apoie/">⭐️<span>Assine</span></a></li>
-				<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
-				<li><a href="https://manualdousuario.net/podcast/">Podcasts</a></li>
-				<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
-				<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Diretório de newsletters</a></li>
-				<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
+				<li><a href="<?php echo esc_url( 'https://manualdousuario.net/orbita/' ); ?>">Órbita</a></li>
+				<li class="apoie"><a href="<?php echo esc_url( 'https://manualdousuario.net/apoie/' ); ?>">⭐️<span>Assine</span></a></li>
+				<li><a href="<?php echo esc_url( 'https://pcdomanual.com/' ); ?>">PC do Manual</a></li>
+				<li><a href="<?php echo esc_url( 'https://manualdousuario.net/podcast/' ); ?>">Podcasts</a></li>
+				<li><a href="<?php echo esc_url( 'https://manualdousuario.net/loja/' ); ?>">Lojinha</a></li>
+				<li><a href="<?php echo esc_url( 'https://manualdousuario.net/newsletters-brasileiras/' ); ?>">Diretório de newsletters</a></li>
+				<li><a href="<?php echo esc_url( 'https://lerama.pcdomanual.com' ); ?>">Lerama</a></li>
 			</ul>
 		</div>
 	<?php endif; ?>
@@ -53,8 +59,8 @@
 					$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
 					?>
 					<<?php echo esc_html( $title_tag ); ?> class="site-title">
-					<?php if ( $currentlang == 'en-US' ) : ?>
-						<a href="https://manualdousuario.net/en/">Manual do Usuário</a>
+					<?php if ( 'en-US' === $current_lang ) : ?>
+						<a href="<?php echo esc_url( 'https://manualdousuario.net/en/' ); ?>">Manual do Usuário</a>
 					<?php else : ?>
 						Manual do Usuário
 					<?php endif; ?>
@@ -73,41 +79,41 @@
 				// Órbita menu configuration.
 				$orbita_items = array(
 					array(
-						'title' => 'Comentários por e-mail',
-						'url'   => '/notificacoes-email/',
+						'title' => esc_html__( 'Comentários por e-mail', 'dez' ),
+						'url'   => esc_url( '/notificacoes-email/' ),
 					),
 					array(
-						'title' => 'Meus posts',
-						'url'   => '/orbita/meus-posts/',
+						'title' => esc_html__( 'Meus posts', 'dez' ),
+						'url'   => esc_url( '/orbita/meus-posts/' ),
 					),
 					array(
-						'title' => 'Meus comentários',
-						'url'   => '/orbita/meus-comentarios/',
+						'title' => esc_html__( 'Meus comentários', 'dez' ),
+						'url'   => esc_url( '/orbita/meus-comentarios/' ),
 					),
 				);
 
 				$icon_nav = '<ul id="dark-mode-toggle">';
 				$icon_nav .= '<li>';
-				$icon_nav .= '<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>';
+				$icon_nav .= '<a href="#" onClick="setDezTheme(event)">' . esc_html__( 'Alternar Tema (Claro ou Escuro)', 'dez' ) . '</a>';
 				$icon_nav .= '</li>';
 				$icon_nav .= '</ul>';
 
-				if( $currentlang=="pt-BR" ) {
+				if ( 'pt-BR' === $current_lang ) {
 					$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 
 					// User Navigation.
 					$icon_nav .= '<ul>';
 					$icon_nav .= '<li class="page_item page_item_has_children">';
 					$icon_nav .= '<input type="checkbox" id="menu-toggle"/>';
-					$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-usuario" alt="Menu do Usuário" title="Menu do Usuário"></a></label>';
+					$icon_nav .= '<label class="menu-toggle-icon" for="menu-toggle"><a name="menu-usuario" alt="' . esc_attr__( 'Menu do Usuário', 'dez' ) . '" title="' . esc_attr__( 'Menu do Usuário', 'dez' ) . '"></a></label>';
 					$icon_nav .= '<ul id="menu-toggle-list" class="children">';
 
 					// Profile/Sign in items.
 					$icon_nav .= '<li class="page_item">';
 					if ( is_user_logged_in() ) {
-						$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">Editar perfil</a>';
+						$icon_nav .= '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">' . esc_html__( 'Editar perfil', 'dez' ) . '</a>';
 					} else {
-						$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+						$icon_nav .= '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">' . esc_html__( 'Entrar', 'dez' ) . '</a>';
 					}
 					$icon_nav .= '</li>';
 
@@ -117,9 +123,9 @@
 						foreach ( $orbita_items as $orbita_item ) {
 							$icon_nav .= '<li class="page_item"><a href="' . esc_url( $orbita_item['url'] ) . '">' . esc_html( $orbita_item['title'] ) . '</a></li>';
 						}
-						$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+						$icon_nav .= '<li class="page_item"><a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">' . esc_html__( 'Sair', 'dez' ) . '</a>';
 					} else {
-						$icon_nav .= '<li class="page_item"><a href="/cadastro/">Cadastrar</a>';
+						$icon_nav .= '<li class="page_item"><a href="' . esc_url( '/cadastro/' ) . '">' . esc_html__( 'Cadastrar', 'dez' ) . '</a>';
 					}
 
 					$icon_nav .= '</li>';
@@ -129,8 +135,7 @@
 					$icon_nav .= '</div>';
 				}
 
-
-				echo $icon_nav;
+				echo wp_kses_post( $icon_nav );
 				?>
 			</nav>
 		</header>

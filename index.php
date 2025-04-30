@@ -11,44 +11,43 @@
  *
  * @package Dez
  */
-if ( !defined( 'ABSPATH' ) ) exit; /* Previne acessos diretos ao tema que disparam um erro fatal: https://stackoverflow.com/questions/47877136/call-to-undefined-wordpress-function-get-header-errors-but-header-is-still-di */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Previne acessos diretos ao tema
+}
+
 get_header();
+
+// Verifica o idioma atual uma única vez
+$current_lang = get_bloginfo( 'language' );
+$newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'newsletter-post-en';
 ?>
 
 <main id="primary" class="site-main">
-
 	<?php
 	$count = 0;
 	if ( have_posts() ) :
-
 		while ( have_posts() ) :
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			$currentlang = get_bloginfo( 'language' );
+			// Exibe o shortcode da newsletter apenas na primeira página e no primeiro post
+			if ( ! is_paged() && 0 === $count ) {
+				echo do_shortcode( "[sc name=\"{$newsletter_shortcode}\"][/sc]" );
+			}
 
-			if ( ( ! is_paged() && $count == 0 ) && $currentlang == 'pt-BR' ) :
-				echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
-			elseif ( ( ! is_paged() && $count == 0 ) && $currentlang == 'en-US' ) :
-				echo do_shortcode( '[sc name="newsletter-post-en"][/sc]' ); 
-			endif;
+			$count++;
+		endwhile;
 
-	$count++;
+		the_posts_navigation( array( 
+			'class' => 'link-alt',
+		) );
 
-endwhile;
-
-the_posts_navigation( array( 
-	'class' => 'link-alt',
-) );
-
-else :
-
-	get_template_part( 'template-parts/content', 'none' );
-
-endif;
-?>
-
+	else :
+		get_template_part( 'template-parts/content', 'none' );
+	endif;
+	?>
 </main><!-- #main -->
 
 <?php
