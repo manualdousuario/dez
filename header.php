@@ -26,27 +26,39 @@
 
 	<?php $currentlang = get_bloginfo( 'language' );
 	if ( $currentlang == 'pt-BR' ) : ?>
-		<ul class="top-bar">
-			<li><a href="https://manualdousuario.net/">Blog</a></li>
-			<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
-			<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
-			<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
-			<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Diretório de newsletters</a></li>
-			<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
-		</ul>
+		<div class="top-bar">
+			<h3>
+				<a href="https://manualdousuario.net/">
+					<img src="https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif" height="38" width="33" alt>
+				</a>
+			</h3>
+			<ul>
+				<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
+				<li class="apoie"><a href="https://manualdousuario.net/apoie/">⭐️<span>Assine</span></a></li>
+				<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
+				<li><a href="https://manualdousuario.net/podcast/">Podcasts</a></li>
+				<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
+				<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Diretório de newsletters</a></li>
+				<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
+			</ul>
+		</div>
 	<?php endif; ?>
 
 	<div id="page" class="site">
 		<header id="masthead" class="site-header">
 			<!-- Logo -->
 			<div class="site-branding">
-				<img src="/wp-content/themes/dez/img/logo-manual-do-usuario.png" width="33" height="38" class="site-logo" alt>
 				<div class="branding-text">
 					<?php
 					$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
 					?>
 					<<?php echo esc_html( $title_tag ); ?> class="site-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Manual do Usuário</a></<?php echo esc_html( $title_tag ); ?>>
+					<?php if ( $currentlang == 'en-US' ) : ?>
+						<a href="https://manualdousuario.net/en/">Manual do Usuário</a>
+					<?php else : ?>
+						Manual do Usuário
+					<?php endif; ?>
+					</<?php echo esc_html( $title_tag ); ?>>
 					<div class="site-rg">
 						<?php pll_e('por'); ?> Rodrigo Ghedin
 					</div>
@@ -54,18 +66,6 @@
 			</div>
 
 			<?php get_search_form(); ?>
-
-			<nav id="site-navigation" class="main-navigation">
-				<!-- Text Navigation -->
-				<?php	wp_nav_menu(
-					array(
-						'theme_location'	=> 'menu-principal',
-						'menu_id'					=> 'primary-menu',
-						'container'				=> false,
-						'menu_class'			=> 'nav-menu',
-					)
-				); ?>
-			</nav>
 
 			<!-- Icon Navigation -->
 			<nav class="icons-navigation main-navigation">
@@ -91,8 +91,6 @@
 				$icon_nav .= '<a href="#" onClick="setDezTheme(event)">Alternar Tema (Claro ou Escuro)</a>';
 				$icon_nav .= '</li>';
 				$icon_nav .= '</ul>';
-
-				$currentlang = get_bloginfo( 'language' );
 
 				if( $currentlang=="pt-BR" ) {
 					$icon_nav .= '<div id="secondary-menu" class="menu-item">';

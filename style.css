@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.8.3
+Version: 3.8.4
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -321,6 +321,13 @@ button:active {
 	transform: translateY(2px);
 }
 
+/* Correção para botões do player de áudio nativo/HTML */
+.mejs-button button {
+	background-color: transparent !important;
+	border: 0 !important;
+	min-height: auto;
+}
+
 /* Links
 --------------------------------------------- */
 
@@ -408,39 +415,84 @@ figure img.alignright {
 }
 
 .top-bar {
-	list-style: none;
-	background: var(--cor-destaques);
+	background: hsl(0, 0%, 97%);
 	box-shadow: 0 4px 10px hsl(0, 0%, 92%);
 	font-size: 14px;
-	font-family: var(--ff-monospace);
-	white-space: nowrap;
-	overflow-x: auto;
-	overflow-y: hidden;
+	font-family: ui-monospace, monospace;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	column-gap: 1.5rem;
 	margin-bottom: 2lh;
 	padding-inline: 1rem;
-	height: 50px;
+	height: 36px;
+}
+.top-bar * {
+	margin: 0;
+	padding: 0;
+}
+
+.top-bar h3 {
+	margin-top: 10px;
+}
+.top-bar h3 img {
+	max-width: 33px;
+	height: 38px;
+}
+
+.top-bar ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: nowrap;
+	column-gap: 1rem;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
 	scrollbar-width: none; /* Firefox */
 }
 .top-bar li {
 	margin: 0;
 }
+.top-bar ul li a {
+	padding: 10px 6px;
+}
 
-a {
+.top-bar a {
 	flex-shrink: 0;
 }
 .top-bar a:active {
 	font-weight: bold;
 }
-a:visited {
+.top-bar a:visited {
 	color: var(--cor-link-ori);
+}
+.top-bar .apoie a {
+	text-decoration: none;
+}
+.top-bar .apoie a span {
+	text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+	.top-bar {
+		justify-content: start;
+		padding-right: 0;
+	}
+	.top-bar {
+		column-gap: 1rem;
+	}
+	.top-bar ul {
+		column-gap: .5rem;
+		padding-right: 1rem;
+	}
 }
 
 [data-theme="dark"] .top-bar {
+	background-color: hsl(0, 0%, 18%);
 	box-shadow: none;
+}
+[data-theme="dark"] .top-bar h3 img {
+	filter: invert(1);
 }
 
 .top-bar::-webkit-scrollbar {
@@ -477,19 +529,9 @@ a:visited {
 	height: auto;
 	font-family: var(--ff-serif);
 	font-size:var(--fs-1);
-	line-height: 1;
-}
-.site-title a,
-.site-title a:visited,
-.site-title a:hover {
-	text-decoration: none;
-	color: var(--cor-fonte);
 	font-weight: 600;
 	letter-spacing: -1px;
-}
-.site-title a:hover {
-	color: var(--cor-link-meta-est);
-	filter: opacity(80%);
+	line-height: 1;
 }
 .site-rg {
 	font-size: .95rem;
@@ -736,14 +778,24 @@ article:not(.type-page) .entry-header,
 
 .entry-meta {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
 }
+.entry-meta * {
+	flex: 1;
+}
 
 .comment-link {
 	order: 3;
+	flex: 0;
+}
+
+.entry-spons0r {
+	text-align: right;
+	color: red;
+	font-weight: bold;
 }
 
 .entry-footer {
@@ -1284,10 +1336,6 @@ div.apoie-blocos div.apoie-blocos-mensal h3 {
 .alignright .wp-video,
 article.format-link .entry-content > figure img {
 	border-radius: var(--med-borda);
-	box-shadow: 2px 2px 8px #c3c3c3;
-}
-article.format-link .entry-content > figure {
-	margin-top: -2rem;
 }
 
 .format-link p.link span {
@@ -1643,10 +1691,6 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0 .5rem;
 	}
 
-	.top-bar {
-		justify-content: start;
-	}
-
 	.site-header {
 		margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-medio);
 		justify-content: space-between;
@@ -1756,10 +1800,6 @@ table.dataTable-table tr:nth-child(even) {
 }
 
 @media (max-width: 479px) {
-	.site-branding {
-		width: 100%;
-	}
-
 	.post-thumbnail,
 	article.format-link .entry-content > figure,
 	.format-image .entry-content > figure {
