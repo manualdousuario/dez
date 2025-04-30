@@ -37,6 +37,11 @@
 	<!-- Exclude patterns. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/dist/*</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>*.min.css</exclude-pattern>
+	<exclude-pattern>*.cache.php</exclude-pattern>
 
 
 	<!--
@@ -76,7 +81,7 @@
 	<!-- Set the minimum supported WP version. This is used by several sniffs.
 		 The minimum version set here should be in line with the minimum WP version
 		 as set in the "Requires at least" tag in the readme.txt file. -->
-	<config name="minimum_supported_wp_version" value="4.5"/>
+	<config name="minimum_supported_wp_version" value="5.9"/>
 
 	<rule ref="WordPress.Arrays.MultipleStatementAlignment">
 		<properties>
@@ -104,7 +109,12 @@
 	#############################################################################
 	-->
 
-	<config name="testVersion" value="5.6-"/>
-	<rule ref="PHPCompatibilityWP"/>
+	<config name="testVersion" value="7.4-"/>
+	<rule ref="PHPCompatibilityWP">
+		<exclude name="PHPCompatibility.Classes.NewClasses.intlDateFormatterFound"/>
+		<exclude name="PHPCompatibility.Constants.NewConstants.intl_icu_versionFound"/>
+		<exclude name="PHPCompatibility.Constants.NewConstants.intl_idna_variant_2003Found"/>
+		<exclude name="PHPCompatibility.Constants.NewConstants.intl_idna_variant_uts46Found"/>
+	</rule>
 
 </ruleset>
