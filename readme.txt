@@ -1,11 +1,11 @@
 === Dez ===
 
-Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Joselito Júnior
+Contributores: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Joselito Júnior
 Tags: featured-images, threaded-comments
 
-Requires at least: 4.5
+Requires at least: 5.9
 Tested up to: 8.2
-Requires PHP: 5.6
+Requires PHP: 7.4
 Stable tag: 3.8.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -19,7 +19,7 @@ Manual do Usuário Theme
 = Requirements =
 
 - Node.js 16+
-- PHP 5.6+
+- PHP 7.4+
 - npm 9.7+
 - composer 2.5+
 
@@ -35,31 +35,25 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 
 More information: https://github.com/Automattic/_s
 
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
-
 == Changelog ==
 
-= 3.8.4 - Abr 30 2025 =
+= 3.8.4 - 30/4/2025 =
 * Adiciona identificador de posts patrocinados.
 * Refatoramento do `template-parts/content.php` pelo Claude (IA).
 
-= 3.8.3 - Abr 25 2025 =
+= 3.8.3 - 25/4/2025 =
 * Adiciona barra global.
 
-= 3.8.2 - Abr 16 2025 =
+= 3.8.2 - 16/4/2025 =
 * Adiciona suporte à tag `details`.
 * Altera formatação do título do site.
 
-= 3.8.1 - Abr 14 2025 =
+= 3.8.1 - 14/4/2025 =
 * Altera chamada do script do Alô para segmentar leitores da versão em inglês.
 * Altera (simplifica) e rebatiza para `dez_pre_http_request_block` a função `ltv_pre_http_request_block`.
 * Remove resquício do `searchIcon` no `functions.php`.
 
-= 3.8 - Abr 7 2025 =
+= 3.8 - 7/4/2025 =
 * Prepara o tema para a versão em inglês do Manual do Usuário (depende do plugin Polylang).
 * Altera menus (principal e rodapé) para sistema nativo do WordPress.
 * Altera ícones para padronizados do Bootstrap.
@@ -68,15 +62,15 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Corrige erros de acessibilidade (texto alternativo no logo, link para pular para o conteúdo).
 * Remove propriedade `transition` dos formulários para mitigar defeito ao alternar aparência (clara/escura).
 
-= 3.7.2 - Abr 4 2025 =
+= 3.7.2 - 4/4/2025 =
 * Correções e alterações no `style.css`.
 
-= 3.7.1 - Mar 24 2025 =
-* Corrige apresentação do post type “quote”.
+= 3.7.1 - 24/3/2025 =
+* Corrige apresentação do post type "quote".
 * Reorganiza `entry-header` e botão de compartilhamento.
 * Altera alguns detalhes do `style.css`.
 
-= 3.7 - Mar 21 2025 =
+= 3.7 - 21/3/2025 =
 * Reorganiza `functions.php`.
 * Reorganiza formatação de formulários.
 * Reorganiza cabeçalho em telas pequenas.
@@ -87,47 +81,47 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Simplifica função `dez_post_thumbnail()`.
 * Remove pergunta de verificação para formulários do plugin HTML Forms (v3.6.8).
 
-= 3.6.8 - Fev 27 2025 =
+= 3.6.8 - 27/2/2025 =
 * Adiciona pergunta de verificação para formulários do plugin HTML Forms.
 
-= 3.6.7.1 - Fev 20 2025 =
+= 3.6.7.1 - 20/2/2025 =
 * Corrige tamanhos das fontes
 
-= 3.6.7 - Fev 20 2025 =
+= 3.6.7 - 20/2/2025 =
 * Altera tipografia.
 
-= 3.6.6 - Fev 10 2025 =
+= 3.6.6 - 10/2/2025 =
 * Corrige alinhamento das classes `.alignleft` e `.alignright` em telas pequenas (centraliza e adiciona `display: inline-block`).
 
-= 3.6.5 - Fev 6 2025 =
+= 3.6.5 - 6/2/2025 =
 * Corrige menu do usuário em telas pequenas (<370px).
 * Corrige caixas legadas (`.ctx-`) no modo escuro.
 * Move função que adiciona classes à tag `body` para o `functions.php`.
 * Exclui ícone do fogo (`icone-fogo.svg`).
 * Exclui arquivos sem uso (`inc/template-functions.php` e `languages/*`).
 
-= 3.6.4.1 - Fev 3 2025 =
+= 3.6.4.1 - 3/2/2025 =
 * Ajustes nas cores (`:root`).
 
-= 3.6.4 - Fev 3 2025 =
+= 3.6.4 - 3/2/2025 =
 * Altera tipografia para melhorar legibilidade.
-* Altera cores de fundo para melhorar proporção de contraste (“contrast ratio”).
+* Altera cores de fundo para melhorar proporção de contraste ("contrast ratio").
 * Altera texto dos links de navegação da capa (`the_posts_navigation` em `index.php`).
 
-= 3.6.3 - Jan 30 2025 =
+= 3.6.3 - 30/1/2025 =
 * Acrescenta link para loja no menu principal (`header.php`).
 * Corrige alinhamento vertical das tags `<sub>` e `<sup>`.
 * Remove destaque para novos comentários (v3.6).
 * Remove algumas linhas sem uso do `style.css`.
 
-= 3.6.2 - Jan 29 2025 =
+= 3.6.2 - 29/1/2025 =
 * Corrige um `if` mal feito no `template-tags/content.php` que causava um erro fatal em alguns locais da aplicação.
 
-= 3.6.1 - Jan 29 2025 =
+= 3.6.1 - 29/1/2025 =
 * Corrige uso do `style.min.css` no arquivo `functions.php`.
 * Corrige ícone da classe `.compartilhe` no modo escuro.
 
-= 3.6 - Jan 29 2025 =
+= 3.6 - 29/1/2025 =
 * Acrescenta destaque para novos comentários desde a última visita (classe `os_sincelastvisit_comment_class` no `functions.php`), apenas para leitores cadastrados.
 * Acrescenta atributo `display: none` à classe `.comment-awaiting-moderation`.
 * Acrescenta suporte ao plugin Favorites.
@@ -136,20 +130,20 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Corrige cor da class `.podcast_player` no modo escuro.
 * Remove banner no `header.php` introduzido na v3.5.3.
 
-= 3.5.3 - Jan 18 2025 =
+= 3.5.3 - 18/1/2025 =
 * Acrescenta banner ao `header.php` com botão para removê-lo de modo persistente usando localStorage.
 
-= 3.5.2 - Jan 17 2025 =
-* Remove script “hard coded” no `header.php` para atribuir posts ao autor #1 no Mastodon em prol de plugin que estende funcionalidade a todas as pessoas cadastradas.
+= 3.5.2 - 17/1/2025 =
+* Remove script "hard coded" no `header.php` para atribuir posts ao autor #1 no Mastodon em prol de plugin que estende funcionalidade a todas as pessoas cadastradas.
 
-= 3.5.1 - Jan 16 2025 =
+= 3.5.1 - 16/1/2025 =
 * Corrige margem inferior da classe `.footnotes`
 
-= 3.5 - Jan 15 2025 =
+= 3.5 - 15/1/2025 =
 * Menu de compartilhamento nos posts usando a API Web Share.
 
-= 3.4.4 - Dez 26 2024 =
-* Acrescenta atribuição do fediverso manual para usuário “Rodrigo Ghedin” no `header.php`.
+= 3.4.4 - 26/12/2024 =
+* Acrescenta atribuição do fediverso manual para usuário "Rodrigo Ghedin" no `header.php`.
 * Acrescenta código para remover estilo inline do Gutenberg, anúncio do plugin Seriously Simple Podcasting no admin e para estender o fechamento automático de comentários ao custo post type do Órbita no `functions.php`.
 * Acrescenta ícones de plataformas sociais no rodapé (`footer.php`).
 * Acrescenta formulário de inscrição da newsletter na capa e após posts (`single.php`).
@@ -160,10 +154,10 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Altera estilo da classe `.ctx`.
 * Altera vários detalhes de estilo no `style.css`/`style.min.css`.
 
-= 3.4.3 - Oct 20 2024 =
+= 3.4.3 - 20/10/2024 =
 * Adiciona `text-wrap: balance` a cabeçalhos `h1` e `h2`.
 * Adiciona cores diferentes para caixas (`.ctx`) de patrocinadores (`.oferecimento`).
-* Adiciona selo de “Destaque” para posts fixos (sticky) em `template-parts/content.php`.
+* Adiciona selo de "Destaque" para posts fixos (sticky) em `template-parts/content.php`.
 * Altera cabeçalho (`header.php`).
 * Altera `functions.php` para carregar jQuery apenas em páginas com comentários.
 * Reformula visual da classe `.ctx`.
@@ -171,18 +165,18 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Remove classe `.ctx-parceiros`.
 * Remove barra fixa no topo do site.
 * Remove biblioteca littleFoot.
-* Remove aviso de “Comentários fechados” (`comments.php`).
+* Remove aviso de "Comentários fechados" (`comments.php`).
 * Diversas alterações pequenas no CSS.
 
-= 3.4.2 - Ago 17 2024 =
-* Altera prazos de validade do login (7 dias sem “lembrar-me”; 28 dias com).
+= 3.4.2 - 17/8/2024 =
+* Altera prazos de validade do login (7 dias sem "lembrar-me"; 28 dias com).
 * Remove código para honrar Do Not track do Jetpack Stats (por desuso).
 * Reduz de 8rem para 5rem o tamanho máximo da fonte na classe `.numeros-enormes`.
 * Remoção da classe `.ctx-parcerias`.
 * Mudança estética no cabeçalho.
 * Alterações de textos no rodapé.
 
-= 3.4.1 - Jul 27 2024 =
+= 3.4.1 - 27/7/2024 =
 * Corrige cor de fundo do `label` da classe `.ctx-parceiros`.
 * Padroniza formatação dos de links de navegação (`.posts-navigation a`).
 * Altera cabeçalho da página de resultados da pesquisa (`.search-results .page-header`).
@@ -193,7 +187,7 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Acrescenta link para mesas no menu principal e nova classe `.menu-item-novo`.
 * Reduz fonte do seletor em formulários para não gerar barra de rolagem horizontal em posts com comentários devido ao seletor de notificações por e-mail de novos comentários.
 
-= 3.4 - Jul 5 2024 =
+= 3.4 - 5/7/2024 =
 * Simplifica o cabeçalho a fim de ocupar menos espaço vertical em telas pequenas.
 * Remove adornos do menu principal e do ícone do menu do usuário.
 * Move ícone da aparência (claro/escuro) para o menu do usuário.
@@ -202,12 +196,12 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Remove sublinhado do ícone de curtir comentários (plugin Just Likes and Dislikes).
 * Limpa classes no CSS sem uso.
 
-= 3.3.1 - Jun 22 2024 =
+= 3.3.1 - 22/6/2024 =
 * Corrige conflito da nova classe `.data` com o Órbita. (Altera a classe para 
 `.data-home`).
 * Formata classe para faixa no topo do site (`.dfad_pos_1`)
 
-= 3.3 - Jun 21 2024 =
+= 3.3 - 21/6/2024 =
 * Acrescenta blocos do plugin Shortcoder à capa (`index.php`): 1) aviso de conteúdos novos às sextas-feiras no topo; e 2) newsletters do diretório no meio dos posts
 * Exibe datas apenas uma vez por dia na capa (`the_date();` em `template-parts/content.php`) e remove datas dos posts individuais, mantendo-as dentro dos posts
 * Adiciona função/condicional `shortcode_exists()` onde precisava
@@ -219,17 +213,17 @@ Dez includes support for WooCommerce and for Infinite Scroll in Jetpack.
 * Ajustes no `style.css` para o plugin Just Likes and Dislikes
 * Bloqueia o carregamento do arquivo `jlad-frontend.css`, do plugin Just Likes and Dislikes, no front-end (via `functions.php`)
 
-= 3.2.3 - Jun 7 2024 =
+= 3.2.3 - 7/6/2024 =
 * Restabelece o carregamento do jQuery no front-end, bloqueando o jQuery Migrate
 * Acrescenta classes no CSS para o plugin Just Like Dislike
 * Pequenos ajustes/simplificação da parte de formulários no CSS
 * Remove imagens sem uso do diretório `/img`
 
-= 3.2.2.3 - May 26 2024 =
+= 3.2.2.3 - 26/5/2024 =
 * Reorganiza links do rodapé
 * Destaca ícone do menu do usuário
 
-= 3.2.2.2 - May 11 2024 =
+= 3.2.2.2 - 11/5/2024 =
 * Restaura link da política de privacidade no `footer.php`
 * Corrige espaçamento de lista dentro de lista (`li ul`)
 * Acrescenta `margin-bottom` em `.wp-audio-shortcode` (player de podcast)
@@ -239,15 +233,15 @@ borda superior da janela
 * Acrescenta atributo `has:` para encurtar `line-height` da tag `small` 
 dentro de parágrafos
 
-= 3.2.2.1 - May 3 2024 =
+= 3.2.2.1 - 3/5/2024 =
 * Corrige tamanho do título dos podcasts na capa
 * Corrige `scroll-behavior: smooth` para uso universal
 
-= 3.2.2 - May 2 2024 =
+= 3.2.2 - 2/5/2024 =
 * Corrige coloração do `p:last-child` dos blocos `ctx-*`
 * Volta a exibir podcasts como posts normais na capa
 
-= 3.2.1 - April 27 2024 =
+= 3.2.1 - 27/4/2024 =
 * Remove abas Painel e Jetpack para usuários que não são admin
 * Ajusta blocos `ctx-*` para telas pequenas
 * Acrescenta bloco `ctx-parceiros`
@@ -255,29 +249,29 @@ dentro de parágrafos
 * Acrescenta duas linhas ao `functions.php` para desativar carregamento 
 do arquivo não usado `styles.min.css` com id `wp-components-css`, do Gutenberg
 
-= 3.2 - April 21 2024 =
+= 3.2 - 21/4/2024 =
 * Acrescenta links para regras de convivência e do Órbita no formulário 
 de comentários para usuários logados
 * Acrescenta `column-gap` nos links de navegação (post anterior e próximo) 
 das conversas do Órbita
 * Pequenos ajustes no CSS de formulários
 
-= 3.1 - April 15 2024 =
+= 3.1 - 15/4/2024 =
 * Adiciona opção de busca no header e padroniza o form de todo site
 * Adiciona Mapa no menu de usuário
 * Deixa código do header legível
 
-= 3.0.2 - April 13 2024 =
+= 3.0.2 - 13/4/2024 =
 * Altera retorno de itens nos feeds dos podcasts (`functions.php`);
-* Corrige estilo do link “Todas as conversas” (Órbita) na capa (`index.php`);
+* Corrige estilo do link "Todas as conversas" (Órbita) na capa (`index.php`);
 * Remove CSS inline do plugin ActivityPub (`functions.php`);
 * Remove `parsedown.php` (sem uso).
 
-= 3.0.1 - April 7 2024 =
+= 3.0.1 - 7/4/2024 =
 * Remove snippets de Markdown em comentáriso do `functions.php` 
 devido a falha na renderização de HTML nos comentários.
 
-= 3.0 - April 2 2024 =
+= 3.0 - 2/4/2024 =
 * Correção da chamada do littlefoot.js no `functions.php`
 * Inclusão de Markdown nos comentários via `functions.php`
 * Refatoração e simplificação do `style.css`
@@ -288,14 +282,14 @@ devido a falha na renderização de HTML nos comentários.
 * Remoção da família de fontes sem serifa
 * Remove gambiarra do formato AVIF do `functions.php`
 
-= 2.9 - March 09 2024 =
+= 2.9 - 9/3/2024 =
 * Adiciona classe `.link` ao link especial do post format Link
 * Melhorias no menu principal em telas pequenas
 * Altera função para remover todos os estilos 
 adicionados pelo plugin ActivityPub
 * Remove cor de fundo diferente para `.category-aplicativos`
 
-= 2.8.1 - March 09 2024 =
+= 2.8.1 - 9/3/2024 =
 * Acrescenta suporte a post format `link`
 * Aumenta densidade do leiaute
 * Reverte cores dos links no modo claro
@@ -303,12 +297,12 @@ adicionados pelo plugin ActivityPub
 * Joga para baixo destaques do Órbita na capa
 * Estende cabeçalho especial para mais páginas
 
-= 2.7 - February 07 2024 =
-* Corrige alinhamento do botão “Apoie”
+= 2.7 - 7/2/2024 =
+* Corrige alinhamento do botão "Apoie"
 * Altera fonte padrão para com serifa e adiciona Noto Serif na variável `--ff-serif`
 * Altera cores dos links para padrões do HTML (`--cor-link-ori` e `--cor-link-vis` no tema claro)
 
-= 2.6 - February 03 2024 =
+= 2.6 - 3/2/2024 =
 * Adiciona seletor de modo claro/escuro no menu principal
 * Corrige margens dos últimos elementos (ul, ol, li, p)
 * Corrige form da newsletter no rodapé em telas pequenas (@MatFantinel)
@@ -319,13 +313,13 @@ não havia sido implementado na 2.5
 * Acrescenta meta tag no cabeçalho para bloquear robô do Bing Chat/Copilot (via 
 https://searchengineland.com/bing-adds-controls-for-webmasters-to-disallow-their-content-in-bing-chat-432174)
 
-= 2.5 - January 20 2024 =
+= 2.5 - 20/1/2024 =
 * Acrescenta link para gerenciar comentários no menu do usuário
 * Acrescenta cor distinta no cabeçalho dos comentários vindos do fediverso/Mastodon (tema claro)
-* Corrige cor da seta “voltar ao topo” no modo escuro
+* Corrige cor da seta "voltar ao topo" no modo escuro
 * Transforma bloco pós-posts (`single`) em um shortcode (do plugin Shortcode)
 
-= 2.4 - January 13 2024 =
+= 2.4 - 13/1/2024 =
 * Identifica comentários vindos do fediverso/Mastodon
 * Estende imagens alinhadas à direita ou esquerda em telas pequenas (`<350px`)
 * Remove atributos do cabeçalho em telas pequenas (`<350px`)
@@ -333,72 +327,72 @@ https://searchengineland.com/bing-adds-controls-for-webmasters-to-disallow-their
 * Acrescenta link permanente no post type `quote`
 * Altera leiaute da tag `blockquote`
 
-= 2.3 - January 5 2024 =
+= 2.3 - 5/1/2024 =
 * Simplifica rodapé (`footer.php`)
 * Acrescenta formulário de pesquisa no rodapé
-* Remove item “Busca” do menu principal
+* Remove item "Busca" do menu principal
 * Acrescenta formulário de pesquisa nos resultados da pesquisa
 
-= 2.2.4 - December 9 2023 =
+= 2.2.4 - 9/12/2023 =
 * Acrescenta suporte a imagens AVIF
 * Acrescenta async ao JavaScript do littlefootjs
 
-= 2.2.2 - December 4 2023 = 
+= 2.2.2 - 4/12/2023 = 
 * Streamline comments meta box
 
-= 2.2.1 - December 3 2023 = 
+= 2.2.1 - 3/12/2023 = 
 * Replace verified check with a *.svg file
 
-= 2.2 - December 2 2023 = 
+= 2.2 - 2/12/2023 = 
 * Add comments icons
 
-= 2.1.6 - December 1 2023 =
+= 2.1.6 - 1/12/2023 =
 * Restrict highlight image to single posts
 
-= 2.1.5 - November 30 2023 =
+= 2.1.5 - 30/11/2023 =
 * Remove some old/unused stuff from style.css
 
-= 2.1.4 - November 30 2023 =
+= 2.1.4 - 30/11/2023 =
 * Change comments layout to remove Gravatar
 
-= 2.1.3 - November 30 2023 =
+= 2.1.3 - 30/11/2023 =
 * Add rel="preload" to style.min.css
 
-= 2.1.2 - November 28 2023 =
+= 2.1.2 - 28/11/2023 =
 * Fix footer distance in mobile view (<620px)
 * Add social links and newsletter form to footer
 * Fix differences in distance between blocks (8rem as a standard)
 * Simplify padding around some elements
 * Hide more fields in user profile
 
-= 2.1.1 - November 25 2023 =
+= 2.1.1 - 25/11/2023 =
 * Small fixes in CSS
 * Remove manifest.webmanifest
 * Fix Manual/Órbita header height difference
 
-= 2.1 - November 18 2023 = 
+= 2.1 - 18/11/2023 = 
 * theme.json and functions.php reorganized
 * Social icons changed for smaller versions/files
 * footer.php changed
 * Many layout fixes
 
-= 2.0 - October 27 2023 =
+= 2.0 - 27/10/2023 =
 * CSS refactored
 * littlefoot.js updated to 4.0.1
 
-= 1.1 - August 25 2023 =
+= 1.1 - 25/8/2023 =
 * Fix Dynamic/Hidden Menu
 
-= 1.0.22 - August 07 2023 =
+= 1.0.22 - 7/8/2023 =
 * Fix Dynamic Menu
 
-= 1.0.21 - July 12 2023 =
+= 1.0.21 - 12/7/2023 =
 * Add Dynamic Menu
 
-= 1.0.20 - July 05 2023 =
+= 1.0.20 - 5/7/2023 =
 * Code review
 
-= 1.0 - May 12 2015 =
+= 1.0 - 12/5/2015 =
 * Initial release
 
 == Credits ==
