@@ -44,8 +44,6 @@ function dez_setup() {
 }
 add_action( 'after_setup_theme', 'dez_setup' );
 
-require get_template_directory() . '/inc/template-tags.php';
-
 /**
  * Carrega folha de estilo principal (style.css) com rel="preload"
  */
@@ -175,7 +173,6 @@ add_filter( 'use_block_editor_for_post', '__return_false', 5 );
 add_filter( 'should_load_separate_core_block_assets', '__return_true', 5 );
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 ); 
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' ); // Remove Gutenberg
 
 add_filter( 'use_widgets_block_editor', '__return_false' ); // Remove widgets de blocos
 
@@ -447,7 +444,7 @@ add_filter( 'comment_form_default_fields', 'dez_mensagem_cookies_comentarios' );
 
 
 /**
- * Remove campo “website” do formulário de comentários.
+ * Remove campo "website" do formulário de comentários.
  */
 function dez_remove_campo_website_comentarios( $fields ) {
 	if ( isset( $fields['url'] ) ) {
@@ -518,7 +515,7 @@ add_action( 'wp_footer', 'dez_script_alo' );
  * Scripts de rodapé em páginas específicas.
  */
 function dez_scripts_rodape_especiais() {
-	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link “Responder” */ ?>
+	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link "Responder" */ ?>
 		<script type="text/javascript">
 			const comments = document.querySelectorAll(".comment");
 

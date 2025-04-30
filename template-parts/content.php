@@ -7,6 +7,47 @@
  * @package Dez
  */
 
+if (!function_exists('dez_post_thumbnail')) :
+	/**
+	 * Displays an optional post thumbnail.
+	 *
+	 * Wraps the post thumbnail in an anchor element on index views, or a div
+	 * element when on single views.
+	 */
+	function dez_post_thumbnail() {
+		if (is_singular() && has_post_thumbnail()) : ?>
+			<div class="post-thumbnail">
+				<?php the_post_thumbnail(array(1440, 960)); ?>
+			</div><!-- .post-thumbnail -->
+		<?php endif;
+	}
+endif;
+
+if (!function_exists('dez_display_no_results')) :
+	/**
+	 * Displays a message that posts cannot be found
+	 */
+	function dez_display_no_results() {
+		?>
+		<section class="no-results not-found">
+			<header class="entry-header">
+				<h1 class="entry-title">Sem resultados 🤔</h1>
+			</header><!-- .page-header -->
+
+			<div class="entry-content">
+				<?php if (is_search()) : ?>
+					<p>O termo que você pesquisou não existe no arquivo do <strong>Manual do Usuário</strong>. Quer tentar outra vez?</p>
+				<?php else : ?>
+					<p>A página que você tentou acessar não existe ou foi apagada. Que tal tentar uma pesquisa?</p>
+				<?php endif; ?>
+				<p><?php get_search_form(); ?></p>
+				<p>Ou então dê uma olhada no <a href="/arquivo/">mapa do site</a>.</p>
+			</div><!-- .page-content -->
+		</section><!-- .no-results -->
+		<?php
+	}
+endif;
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
