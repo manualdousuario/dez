@@ -216,7 +216,7 @@ function dez_css_styling_dashboard() {
 li#wp-admin-bar-koko-analytics,
 li#wp-admin-bar-customize,
 .wp-admin-bar-reader,
-#wpadminbar li#wp-admin-bar-wpcom-logo,
+#wp-admin-bar-wpcom-logo,
 #contextual-help-link-wrap,
 #wp-admin-bar-help-center,
 #ssp-sidebar,
@@ -894,3 +894,128 @@ function dez_clear_comments_cache_on_status_change($new_status, $old_status, $co
     }
 }
 add_action('transition_comment_status', 'dez_clear_comments_cache_on_status_change', 10, 3);
+
+/**
+ * Otimiza as tabelas do banco de dados
+ */
+function dez_optimize_database() {
+    global $wpdb;
+    
+    // Lista de tabelas para otimizar
+    $tables = array(
+        $wpdb->posts,
+        $wpdb->postmeta,
+        $wpdb->comments,
+        $wpdb->commentmeta,
+        $wpdb->options,
+        $wpdb->terms,
+        $wpdb->term_relationships,
+        $wpdb->term_taxonomy
+    );
+    
+    foreach ($tables as $table) {
+        $wpdb->query("OPTIMIZE TABLE $table");
+    }
+}
+add_action('wp_scheduled_delete', 'dez_optimize_database');
+
+/**
+ * Limpa dados antigos do banco de dados
+ */
+function dez_cleanup_database() {
+    global $wpdb;
+    
+    // Limpa revisões antigas (mantém as últimas 5)
+    $wpdb->query("
+        DELETE FROM $wpdb->posts 
+        WHERE post_type = 'revision' 
+        AND post_date < DATE_SUB(NOW(), INTERVAL 30 DAY)
+        AND ID NOT IN (
+            SELECT ID FROM (
+                SELECT ID FROM $wpdb->posts 
+                WHERE post_type = 'revision' 
+                ORDER BY post_date DESC 
+                LIMIT 5
+            ) AS temp
+        )
+    ");
+    
+    // Limpa transients expirados
+    $wpdb->query("
+        DELETE FROM $wpdb->options 
+        WHERE option_name LIKE '_transient_%' 
+        AND option_value < NOW()
+    ");
+    
+    // Limpa transients timeout expirados
+    $wpdb->query("
+        DELETE FROM $wpdb->options 
+        WHERE option_name LIKE '_transient_timeout_%' 
+        AND option_value < NOW()
+    ");
+}
+add_action('wp_scheduled_delete', 'dez_cleanup_database');
+
+/**
+ * Otimiza consultas de posts
+ */
+function dez_optimize_post_queries($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        // Limita o número de posts por página
+        if ($query->is_home() || $query->is_archive() || $query->is_search()) {
+            $query->set('posts_per_page', 30);
+        }
+        
+        // Otimiza consultas de meta
+        $query->set('update_post_meta_cache', true);
+        $query->set('update_post_term_cache', true);
+        
+        // Desativa contagem de posts em arquivos
+        if ($query->is_archive() || $query->is_search()) {
+            $query->set('no_found_rows', true);
+        }
+    }
+    return $query;
+}
+add_action('pre_get_posts', 'dez_optimize_post_queries');
+
+/**
+ * Otimiza consultas de comentários
+ */
+function dez_optimize_comment_queries($query) {
+    if (!is_admin()) {
+        // Remove limite de comentários por página
+        $query->set('number', 0);
+        
+        // Otimiza cache de comentários
+        $query->set('update_comment_meta_cache', true);
+    }
+    return $query;
+}
+add_filter('comments_template_query_args', 'dez_optimize_comment_queries');
+
+/**
+ * Adiciona índices para otimização
+ */
+function dez_add_database_indexes() {
+    global $wpdb;
+    
+    // Índice para meta_key em postmeta
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_postmeta_meta_key 
+        ON $wpdb->postmeta (meta_key)
+    ");
+    
+    // Índice para comment_post_ID em comments
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_comments_post_id 
+        ON $wpdb->comments (comment_post_ID)
+    ");
+    
+    // Índice para option_name em options
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_options_name 
+        ON $wpdb->options (option_name)
+    ");
+}
+register_activation_hook(__FILE__, 'dez_add_database_indexes');
