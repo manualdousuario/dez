@@ -41,57 +41,57 @@ get_header();
 					<section class="archive-categories">
 						<h2><?php esc_html_e( 'Seções', 'dez' ); ?></h2>
 						<ul class="category-list">
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
+					<?php
+					wp_list_categories(
+						array(
+							'orderby'    => 'count',
+							'order'      => 'DESC',
 									'show_count' => true,
-									'title_li'   => '',
-									'number'     => 0,
+							'title_li'   => '',
+							'number'     => 0,
 									'echo'       => true,
-								)
-							);
-							?>
-						</ul>
+						)
+					);
+					?>
+				</ul>
 					</section>
 
 					<section class="archive-dates">
 						<h2><?php esc_html_e( 'Por datas', 'dez' ); ?></h2>
 						<ul class="archive-list">
-							<?php
+					<?php
 							wp_get_archives(
 								array(
-									'type'            => 'yearly',
-									'limit'           => '',
-									'format'          => 'html',
-									'before'          => '',
-									'after'           => '',
+						'type'            => 'yearly',
+						'limit'           => '',
+						'format'          => 'html',
+						'before'          => '',
+						'after'           => '',
 									'show_post_count' => true,
 									'echo'            => true,
-									'order'           => 'DESC',
-									'post_type'       => 'post',
+						'order'           => 'DESC',
+						'post_type'       => 'post',
 								)
-							);
-							?>
-						</ul>
+					);
+					?>
+				</ul>
 
 						<h2><?php esc_html_e( 'Assuntos populares', 'dez' ); ?></h2>
 						<div class="tag-cloud">
-							<?php
-							wp_tag_cloud(
-								array(
-									'smallest' => 12,
-									'largest'  => 32,
-									'unit'     => 'px',
-									'number'   => 30,
-									'orderby'  => 'name',
-									'order'    => 'ASC',
-									'taxonomy' => 'post_tag',
+				<?php
+				wp_tag_cloud(
+					array(
+						'smallest' => 12,
+						'largest'  => 32,
+						'unit'     => 'px',
+						'number'   => 30,
+						'orderby'  => 'name',
+						'order'    => 'ASC',
+						'taxonomy' => 'post_tag',
 									'echo'     => true,
-								)
-							);
-							?>
+					)
+				);
+				?>
 						</div>
 					</section>
 				</div>
