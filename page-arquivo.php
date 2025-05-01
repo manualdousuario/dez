@@ -1,11 +1,9 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template para exibir a página de arquivo do blog
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * Este template exibe uma visão geral do blog com seções, arquivos por data
+ * e nuvem de tags. É uma variação específica para páginas de arquivo.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -15,52 +13,71 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" role="main" aria-label="<?php esc_attr_e( 'Arquivo do Blog', 'dez' ); ?>">
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header class="entry-header">
-				<h1>Mapa do <strong>Manual do Usuário</strong></h1>
+				<h1 class="entry-title">
+					<?php
+					/* translators: %s: Nome do blog */
+					printf( esc_html__( 'Mapa do %s', 'dez' ), '<strong>' . esc_html( get_bloginfo( 'name' ) ) . '</strong>' );
+					?>
+				</h1>
 			</header><!-- .entry-header -->
 
-			<div class="entry-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-				<p style="flex-basis: 100%">No ar desde 15 de outubro de 2013, o <strong>Manual do Usuário</strong> já publicou milhares de posts. Abaixo, há alguns filtros para te ajudar a encontrar algo ou apenas navegar no nosso histórico.</p>
+			<div class="entry-content archive-content">
+				<p class="archive-description">
+					<?php
+					/* translators: %1$s: Data de início, %2$s: Nome do blog */
+					printf(
+						esc_html__( 'No ar desde %1$s, o %2$s já publicou milhares de posts. Abaixo, há alguns filtros para te ajudar a encontrar algo ou apenas navegar no nosso histórico.', 'dez' ),
+						'15 de outubro de 2013',
+						'<strong>' . esc_html( get_bloginfo( 'name' ) ) . '</strong>'
+					);
+					?>
+				</p>
 
-				<div style="flex-basis: 50%"><h2>Seções</h2>
-				<ul>
+				<div class="archive-sections">
+					<section class="archive-categories">
+						<h2><?php esc_html_e( 'Seções', 'dez' ); ?></h2>
+						<ul class="category-list">
 					<?php
 					wp_list_categories(
 						array(
 							'orderby'    => 'count',
 							'order'      => 'DESC',
-							'show_count' => 1,
+									'show_count' => true,
 							'title_li'   => '',
 							'number'     => 0,
+									'echo'       => true,
 						)
 					);
 					?>
 				</ul>
-				</div>
+					</section>
 
-				<div style="flex-basis: 50%;">
-				<h2>Por datas</h2>
-				<ul style="margin-bottom: var(--med-salto-medio);">
+					<section class="archive-dates">
+						<h2><?php esc_html_e( 'Por datas', 'dez' ); ?></h2>
+						<ul class="archive-list">
 					<?php
-					$args = array(
+							wp_get_archives(
+								array(
 						'type'            => 'yearly',
 						'limit'           => '',
 						'format'          => 'html',
 						'before'          => '',
 						'after'           => '',
-						'show_post_count' => 1,
-						'echo'            => 1,
+									'show_post_count' => true,
+									'echo'            => true,
 						'order'           => 'DESC',
 						'post_type'       => 'post',
+								)
 					);
-					wp_get_archives( $args );
 					?>
 				</ul>
 
-				<h2>Assuntos populares</h2>
+						<h2><?php esc_html_e( 'Assuntos populares', 'dez' ); ?></h2>
+						<div class="tag-cloud">
 				<?php
 				wp_tag_cloud(
 					array(
@@ -71,16 +88,19 @@ get_header();
 						'orderby'  => 'name',
 						'order'    => 'ASC',
 						'taxonomy' => 'post_tag',
+									'echo'     => true,
 					)
 				);
 				?>
+						</div>
+					</section>
 				</div>
 
-			</div><!-- .page-content -->
+			</div><!-- .entry-content -->
 
 		</article><!-- #post-<?php the_ID(); ?> -->
 
-	</main><!-- #main -->
+	</main><!-- #primary -->
 
 <?php
 get_footer();

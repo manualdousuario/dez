@@ -10,13 +10,18 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" role="main" aria-label="<?php esc_attr_e( 'Conteúdo principal', 'dez' ); ?>">
 
 		<?php if ( have_posts() ) : ?>
 
-			<p class="ctx" style="margin-bottom: var(--med-salto-medio);">
-				Resultados da pesquisa por <strong><?php echo get_search_query(); ?></strong>
-			</p><!-- .page-header -->
+			<header class="page-header">
+				<h1 class="page-title">
+					<?php
+					/* translators: %s: search query. */
+					printf( esc_html__( 'Resultados da pesquisa por: %s', 'dez' ), '<span>' . get_search_query() . '</span>' );
+					?>
+				</h1>
+			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
@@ -32,7 +37,11 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_navigation( array(
+				'prev_text' => esc_html__( 'Página anterior', 'dez' ),
+				'next_text' => esc_html__( 'Próxima página', 'dez' ),
+				'screen_reader_text' => esc_html__( 'Navegação entre posts', 'dez' ),
+			) );
 
 		else :
 
@@ -41,7 +50,7 @@ get_header();
 		endif;
 		?>
 
-	</main><!-- #main -->
+	</main><!-- #primary -->
 
 <?php
 get_footer();

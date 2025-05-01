@@ -3,6 +3,26 @@
         "plugin:@wordpress/eslint-plugin/esnext"
     ],
     "env": {
-        "browser": true
-    }
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "no-unused-vars": "warn",
+        "prefer-const": "warn",
+        "no-var": "warn"
+    },
+    "ignorePatterns": [
+        "*.min.js",
+        "vendor/**",
+        "node_modules/**",
+        "build/**",
+        "dist/**"
+    ]
 }

@@ -44,7 +44,68 @@ function dez_setup() {
 }
 add_action( 'after_setup_theme', 'dez_setup' );
 
-require get_template_directory() . '/inc/template-tags.php';
+/**
+ * Cache de transients para otimização de desempenho
+ */
+
+/**
+ * Obtém o idioma atual com cache
+ *
+ * @return string O código do idioma atual
+ */
+function dez_get_current_lang() {
+    $cache_key = 'dez_current_lang';
+    $cached_lang = get_transient( $cache_key );
+    
+    if ( false === $cached_lang ) {
+        $cached_lang = get_bloginfo( 'language' );
+        set_transient( $cache_key, $cached_lang, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_lang;
+}
+
+/**
+ * Obtém o menu de navegação com cache
+ *
+ * @param string $location Localização do menu
+ * @return string HTML do menu
+ */
+function dez_get_cached_menu( $location ) {
+    $cache_key = 'dez_menu_' . $location;
+    $cached_menu = get_transient( $cache_key );
+    
+    if ( false === $cached_menu ) {
+        ob_start();
+        wp_nav_menu(
+            array(
+                'theme_location' => $location,
+                'echo' => false,
+            )
+        );
+        $cached_menu = ob_get_clean();
+        set_transient( $cache_key, $cached_menu, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_menu;
+}
+
+/**
+ * Limpa o cache de menus quando um menu é atualizado
+ */
+function dez_clear_menu_cache( $menu_id, $menu_data = array() ) {
+    delete_transient( 'dez_menu_menu-principal' );
+    delete_transient( 'dez_menu_menu-rodape' );
+}
+add_action( 'wp_update_nav_menu', 'dez_clear_menu_cache' );
+
+/**
+ * Limpa o cache de idioma quando o idioma é alterado
+ */
+function dez_clear_lang_cache() {
+    delete_transient( 'dez_current_lang' );
+}
+add_action( 'pll_language_defined', 'dez_clear_lang_cache' );
 
 /**
  * Carrega folha de estilo principal (style.css) com rel="preload"
@@ -61,16 +122,38 @@ function dez_preload_style ($preload_resources) {
 add_filter('wp_preload_resources', 'dez_preload_style');
 
 /**
+ * Adiciona defer aos scripts não críticos
+ */
+function dez_script_loader_tag($tag, $handle, $src) {
+    // Lista de scripts que não devem ter defer
+    $scripts_no_defer = array(
+        'dez-dark-mode' // Script crítico para a funcionalidade do tema escuro
+    );
+    
+    if (in_array($handle, $scripts_no_defer)) {
+        return $tag;
+    }
+    
+    // Adiciona defer para scripts que não são módulos
+    if (strpos($tag, 'type="module"') === false) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    
+    return $tag;
+}
+add_filter('script_loader_tag', 'dez_script_loader_tag', 10, 3);
+
+/**
  * Adiciona estilos e scripts
  */
 function dez_enqueue_assets() {
 	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_script( 'comment-reply', '', array(), false, true );
 	}
 
-	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
+	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array(), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'dez_enqueue_assets' );
 
@@ -155,7 +238,7 @@ function dez_css_styling_dashboard() {
 li#wp-admin-bar-koko-analytics,
 li#wp-admin-bar-customize,
 .wp-admin-bar-reader,
-#wpadminbar li#wp-admin-bar-wpcom-logo,
+#wp-admin-bar-wpcom-logo,
 #contextual-help-link-wrap,
 #wp-admin-bar-help-center,
 #ssp-sidebar,
@@ -175,7 +258,6 @@ add_filter( 'use_block_editor_for_post', '__return_false', 5 );
 add_filter( 'should_load_separate_core_block_assets', '__return_true', 5 );
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 ); 
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' ); // Remove Gutenberg
 
 add_filter( 'use_widgets_block_editor', '__return_false' ); // Remove widgets de blocos
 
@@ -447,7 +529,7 @@ add_filter( 'comment_form_default_fields', 'dez_mensagem_cookies_comentarios' );
 
 
 /**
- * Remove campo “website” do formulário de comentários.
+ * Remove campo "website" do formulário de comentários.
  */
 function dez_remove_campo_website_comentarios( $fields ) {
 	if ( isset( $fields['url'] ) ) {
@@ -518,61 +600,63 @@ add_action( 'wp_footer', 'dez_script_alo' );
  * Scripts de rodapé em páginas específicas.
  */
 function dez_scripts_rodape_especiais() {
-	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link “Responder” */ ?>
-		<script type="text/javascript">
-			const comments = document.querySelectorAll(".comment");
+	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link "Responder" */ ?>
+		<script type="text/javascript" defer>
+			document.addEventListener('DOMContentLoaded', function() {
+				const comments = document.querySelectorAll(".comment");
 
-			comments.forEach(function(element, index) {
-				const toggleButton = document.createElement("div");
-				const commentMeta = element.querySelector(".comment-meta");
-				const currentComment = element.querySelector(".comment-content");
-				const commentAuthor = element.querySelector(".comment-author");
-				const commentMetadata = element.querySelector(".comment-metadata");
-				const childComments = element.querySelector("ol.children");
-				const replyLink = element.querySelector(".reply");
+				comments.forEach(function(element, index) {
+					const toggleButton = document.createElement("div");
+					const commentMeta = element.querySelector(".comment-meta");
+					const currentComment = element.querySelector(".comment-content");
+					const commentAuthor = element.querySelector(".comment-author");
+					const commentMetadata = element.querySelector(".comment-metadata");
+					const childComments = element.querySelector("ol.children");
+					const replyLink = element.querySelector(".reply");
 
-				commentMeta.append(toggleButton);
-				commentMeta.style.position = "relative";
-				toggleButton.innerHTML = "➖";
-				toggleButton.style.cssText =
-				"position: absolute; right: .6rem; top: 50%; transform: translateY(-50%); cursor: pointer; font-family: -apple-system, sans-serif";
+					commentMeta.append(toggleButton);
+					commentMeta.style.position = "relative";
+					toggleButton.innerHTML = "➖";
+					toggleButton.style.cssText =
+					"position: absolute; right: .6rem; top: 50%; transform: translateY(-50%); cursor: pointer; font-family: -apple-system, sans-serif";
 
-				toggleButton.addEventListener("click", function(event) {
-					if (currentComment.style.display === "none") {
-						toggleButton.innerHTML = "➖";
-						currentComment.style.display = "block";
-						commentMeta.style.marginBottom = "1em";
-						commentAuthor.style.opacity = "1";
-						commentMetadata.style.opacity = "1";
-					} else {
-						toggleButton.innerHTML = "➕";
-						currentComment.style.display = "none";
-						commentMeta.style.marginBottom = "-20px";
-						commentAuthor.style.opacity = "0.4";
-						commentMetadata.style.opacity = "0.4";
-					}
-
-					if (childComments) {
-						if (childComments.style.display === "none") {
-							childComments.style.display = "block";
+					toggleButton.addEventListener("click", function(event) {
+						if (currentComment.style.display === "none") {
+							toggleButton.innerHTML = "➖";
+							currentComment.style.display = "block";
+							commentMeta.style.marginBottom = "1em";
+							commentAuthor.style.opacity = "1";
+							commentMetadata.style.opacity = "1";
 						} else {
-							childComments.style.display = "none";
+							toggleButton.innerHTML = "➕";
+							currentComment.style.display = "none";
+							commentMeta.style.marginBottom = "-20px";
+							commentAuthor.style.opacity = "0.4";
+							commentMetadata.style.opacity = "0.4";
 						}
-					}
 
-					if (replyLink) {
-						if (replyLink.style.display === "none") {
-							replyLink.style.display = "initial";
-						} else {
-							replyLink.style.display = "none";
+						if (childComments) {
+							if (childComments.style.display === "none") {
+								childComments.style.display = "block";
+							} else {
+								childComments.style.display = "none";
+							}
 						}
-					}
+
+						if (replyLink) {
+							if (replyLink.style.display === "none") {
+								replyLink.style.display = "initial";
+							} else {
+								replyLink.style.display = "none";
+							}
+						}
+					});
 				});
-			});			
+			});
 		</script>
 
-		<script type="text/javascript">
-			window.addEventListener('load', function() {
+		<script type="text/javascript" defer>
+			document.addEventListener('DOMContentLoaded', function() {
 				document.getElementById('comments').addEventListener('touchstart', function(e) {
 					if (e.target.className === 'comment-reply-link') {
 						e.stopPropagation();
@@ -582,10 +666,10 @@ function dez_scripts_rodape_especiais() {
 		</script>
 
 	<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
-		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" />
+		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" defer></script>
 
-		<script type="module">
-			window.onload = () => {
+		<script type="module" defer>
+			document.addEventListener('DOMContentLoaded', function() {
 				function shuffleArray(array) {
 					for (var i = array.length - 1; i > 0; i--) {
 						var j = Math.floor(Math.random() * (i + 1));
@@ -596,31 +680,31 @@ function dez_scripts_rodape_especiais() {
 				}
 
 				const table = document.querySelector('table');
-  const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
-  shuffleArray(rows);
+				const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
+				shuffleArray(rows);
 
-  for (const row of rows) {
-  	table.querySelector('tbody').appendChild(row);
-  }
+				for (const row of rows) {
+					table.querySelector('tbody').appendChild(row);
+				}
 
-  const dataTable = new simpleDatatables.DataTable("table", {
-  	searchable: true,
-  	fixedHeight: false,
-  	columns: [{
-  		select: [4, 5],
-  		hidden: true
-  	}],
-  	perPage: 50,
-  	perPageSelect: [20, 50, 100],
-  	labels: {
-  		placeholder: "Pesquisar…",
-  		perPage: "{select} itens por página",
-  		noRows: "Nada encontrado",
-  		info: "Mostrando {start} a {end} de {rows} itens",
-  	}
-  })
-}
-</script>
+				const dataTable = new simpleDatatables.DataTable("table", {
+					searchable: true,
+					fixedHeight: false,
+					columns: [{
+						select: [4, 5],
+						hidden: true
+					}],
+					perPage: 50,
+					perPageSelect: [20, 50, 100],
+					labels: {
+						placeholder: "Pesquisar…",
+						perPage: "{select} itens por página",
+						noRows: "Nada encontrado",
+						info: "Mostrando {start} a {end} de {rows} itens",
+					}
+				})
+			});
+		</script>
 <?php }
 }
 add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
@@ -628,47 +712,51 @@ add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
 function dez_scripts_rodape_gerais() { ?>
 	<script defer src="https://umami.manualdousuario.net/script.js" data-website-id="bd0b3698-4f84-4b35-ad28-73090b456682"></script>
 
-	<script type="text/javascript">
-		const compartilharPost = (title, url, element) => {
-			if (navigator.canShare) {
-				const shareData = {
-					title: title,
-					url: url
-				}
-				navigator.share(shareData)
-			} else {
-				navigator.clipboard.writeText(`${url}`)
-				.then(() => {
-					const span = element.querySelector('span');
-					if (span) {
-						span.textContent = "Link copiado";
+	<script type="text/javascript" defer>
+		document.addEventListener('DOMContentLoaded', function() {
+			const compartilharPost = (title, url, element) => {
+				if (navigator.canShare) {
+					const shareData = {
+						title: title,
+						url: url
 					}
-					setTimeout(() => {
-						span.textContent = "Compartilhe";
-					}, 3000);
-				})
-				.catch(err => {
-					console.error('Erro ao copiar o link: ', err);
-				});
+					navigator.share(shareData)
+				} else {
+					navigator.clipboard.writeText(`${url}`)
+					.then(() => {
+						const span = element.querySelector('span');
+						if (span) {
+							span.textContent = "Link copiado";
+						}
+						setTimeout(() => {
+							span.textContent = "Compartilhe";
+						}, 3000);
+					})
+					.catch(err => {
+						console.error('Erro ao copiar o link: ', err);
+					});
+				}
 			}
-		}			
+		});
 	</script>
 
-	<script type="text/javascript">
-		window.addEventListener('scroll', function() {
-			var elementosParaRevelar = document.querySelectorAll('.top');
-			var alturaParaRevelar = 100;
+	<script type="text/javascript" defer>
+		document.addEventListener('DOMContentLoaded', function() {
+			window.addEventListener('scroll', function() {
+				var elementosParaRevelar = document.querySelectorAll('.top');
+				var alturaParaRevelar = 100;
 
-			elementosParaRevelar.forEach(function(elemento) {
-				var posicaoVertical = window.scrollY || window.pageYOffset;
+				elementosParaRevelar.forEach(function(elemento) {
+					var posicaoVertical = window.scrollY || window.pageYOffset;
 
-				if (posicaoVertical >= alturaParaRevelar) {
-					elemento.classList.add('top-visivel');
-				} else {
-					elemento.classList.remove('top-visivel');
-				}
+					if (posicaoVertical >= alturaParaRevelar) {
+						elemento.classList.add('top-visivel');
+					} else {
+						elemento.classList.remove('top-visivel');
+					}
+				});
 			});
-		});			
+		});
 	</script>
 	<noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
 <?php }
@@ -745,3 +833,300 @@ add_action('init', function() {
 	pll_register_string( 'Associado à', 'Associado à' );
 	pll_register_string( 'Apoio', 'Apoio' );
 });
+
+/**
+ * Obtém informações do blog com cache
+ *
+ * @param string $info Tipo de informação a ser obtida
+ * @return string Valor da informação
+ */
+function dez_get_cached_bloginfo( $info ) {
+    $cache_key = 'dez_bloginfo_' . $info;
+    $cached_value = get_transient( $cache_key );
+    
+    if ( false === $cached_value ) {
+        $cached_value = get_bloginfo( $info );
+        set_transient( $cache_key, $cached_value, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_value;
+}
+
+/**
+ * Obtém os comentários de um post com cache
+ *
+ * @param int $post_id ID do post
+ * @return array Lista de comentários
+ */
+function dez_get_cached_comments($post_id) {
+    $cache_key = 'dez_comments_' . $post_id;
+    $cached_comments = get_transient($cache_key);
+    
+    if (false === $cached_comments) {
+        $comments = get_comments(array(
+            'post_id' => $post_id,
+            'status' => 'approve',
+            'order' => 'ASC',
+            'type' => 'comment'
+        ));
+        
+        $cached_comments = array();
+        foreach ($comments as $comment) {
+            $cached_comments[] = array(
+                'comment_ID' => $comment->comment_ID,
+                'comment_author' => $comment->comment_author,
+                'comment_author_email' => $comment->comment_author_email,
+                'comment_author_url' => $comment->comment_author_url,
+                'comment_content' => $comment->comment_content,
+                'comment_date' => $comment->comment_date,
+                'comment_date_gmt' => $comment->comment_date_gmt,
+                'comment_parent' => $comment->comment_parent,
+                'user_id' => $comment->user_id
+            );
+        }
+        
+        set_transient($cache_key, $cached_comments, MONTH_IN_SECONDS);
+    }
+    
+    return $cached_comments;
+}
+
+/**
+ * Limpa o cache de comentários quando um novo comentário é adicionado
+ */
+function dez_clear_comments_cache($comment_id, $comment_approved) {
+    $comment = get_comment($comment_id);
+    if ($comment) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('comment_post', 'dez_clear_comments_cache', 10, 2);
+
+/**
+ * Limpa o cache de comentários quando um comentário é atualizado
+ */
+function dez_clear_comments_cache_on_update($comment_id) {
+    $comment = get_comment($comment_id);
+    if ($comment) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('edit_comment', 'dez_clear_comments_cache_on_update');
+
+/**
+ * Limpa o cache de comentários quando um comentário é aprovado/reprovado
+ */
+function dez_clear_comments_cache_on_status_change($new_status, $old_status, $comment) {
+    if ($new_status !== $old_status) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('transition_comment_status', 'dez_clear_comments_cache_on_status_change', 10, 3);
+
+/**
+ * Otimiza as tabelas do banco de dados
+ */
+function dez_optimize_database() {
+    global $wpdb;
+    
+    // Lista de tabelas para otimizar
+    $tables = array(
+        $wpdb->posts,
+        $wpdb->postmeta,
+        $wpdb->comments,
+        $wpdb->commentmeta,
+        $wpdb->options,
+        $wpdb->terms,
+        $wpdb->term_relationships,
+        $wpdb->term_taxonomy
+    );
+    
+    foreach ($tables as $table) {
+        $wpdb->query("OPTIMIZE TABLE $table");
+    }
+}
+add_action('wp_scheduled_delete', 'dez_optimize_database');
+
+/**
+ * Limpa dados antigos do banco de dados
+ */
+function dez_cleanup_database() {
+    global $wpdb;
+    
+    // Limpa revisões antigas (mantém as últimas 5)
+    $wpdb->query("
+        DELETE FROM $wpdb->posts 
+        WHERE post_type = 'revision' 
+        AND post_date < DATE_SUB(NOW(), INTERVAL 30 DAY)
+        AND ID NOT IN (
+            SELECT ID FROM (
+                SELECT ID FROM $wpdb->posts 
+                WHERE post_type = 'revision' 
+                ORDER BY post_date DESC 
+                LIMIT 5
+            ) AS temp
+        )
+    ");
+    
+    // Limpa transients expirados
+    $wpdb->query("
+        DELETE FROM $wpdb->options 
+        WHERE option_name LIKE '_transient_%' 
+        AND option_value < NOW()
+    ");
+    
+    // Limpa transients timeout expirados
+    $wpdb->query("
+        DELETE FROM $wpdb->options 
+        WHERE option_name LIKE '_transient_timeout_%' 
+        AND option_value < NOW()
+    ");
+}
+add_action('wp_scheduled_delete', 'dez_cleanup_database');
+
+/**
+ * Otimizações de cache e performance
+ */
+function dez_optimize_cache() {
+    // Remove versão do WordPress dos recursos
+    add_filter('style_loader_src', 'dez_remove_version', 9999);
+    add_filter('script_loader_src', 'dez_remove_version', 9999);
+    
+    // Adiciona headers de cache para recursos estáticos
+    add_action('send_headers', 'dez_add_cache_headers');
+    
+    // Otimiza consultas de posts
+    add_action('pre_get_posts', 'dez_optimize_post_queries');
+    
+    // Limpa cache quando necessário
+    add_action('save_post', 'dez_clear_cache_on_update');
+    add_action('comment_post', 'dez_clear_cache_on_update');
+}
+
+/**
+ * Remove versão do WordPress dos recursos
+ */
+function dez_remove_version($src) {
+    if (strpos($src, 'ver=')) {
+        $src = remove_query_arg('ver', $src);
+    }
+    return $src;
+}
+
+/**
+ * Adiciona headers de cache para recursos estáticos
+ */
+function dez_add_cache_headers() {
+    if (!is_admin()) {
+        // Cache por 1 semana para recursos estáticos
+        $cache_time = 7 * 24 * 60 * 60; // 1 semana em segundos
+        
+        // Aplica apenas para recursos estáticos
+        if (preg_match('/\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/', $_SERVER['REQUEST_URI'])) {
+            header('Cache-Control: public, max-age=' . $cache_time);
+            header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $cache_time) . ' GMT');
+        }
+    }
+}
+
+/**
+ * Otimiza consultas de posts
+ */
+function dez_optimize_post_queries($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        // Limita o número de posts por página
+        if ($query->is_home() || $query->is_archive() || $query->is_search()) {
+            $query->set('posts_per_page', 30);
+        }
+        
+        // Otimiza consultas de meta
+        $query->set('update_post_meta_cache', true);
+        $query->set('update_post_term_cache', true);
+        
+        // Desativa contagem de posts em arquivos
+        if ($query->is_archive() || $query->is_search()) {
+            $query->set('no_found_rows', true);
+        }
+    }
+    return $query;
+}
+
+/**
+ * Limpa cache quando conteúdo é atualizado
+ */
+function dez_clear_cache_on_update() {
+    // Limpa cache do WordPress
+    wp_cache_flush();
+    
+    // Limpa cache do Cloudflare se estiver configurado
+    if (function_exists('cloudflare_purge_cache')) {
+        cloudflare_purge_cache();
+    }
+}
+
+// Inicializa otimizações
+add_action('init', 'dez_optimize_cache');
+
+/**
+ * Adiciona índices para otimização
+ */
+function dez_add_database_indexes() {
+    global $wpdb;
+    
+    // Índice para meta_key em postmeta
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_postmeta_meta_key 
+        ON $wpdb->postmeta (meta_key)
+    ");
+    
+    // Índice para comment_post_ID em comments
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_comments_post_id 
+        ON $wpdb->comments (comment_post_ID)
+    ");
+    
+    // Índice para option_name em options
+    $wpdb->query("
+        CREATE INDEX IF NOT EXISTS idx_options_name 
+        ON $wpdb->options (option_name)
+    ");
+}
+register_activation_hook(__FILE__, 'dez_add_database_indexes');
+
+/**
+ * Adiciona nonce ao formulário de busca
+ */
+function dez_search_form_nonce() {
+    wp_nonce_field('dez_search_form', 'dez_search_nonce');
+}
+add_action('get_search_form', 'dez_search_form_nonce');
+
+/**
+ * Verifica nonce do formulário de busca
+ */
+function dez_verify_search_nonce() {
+    if (isset($_GET['s']) && !wp_verify_nonce($_GET['dez_search_nonce'], 'dez_search_form')) {
+        wp_die('Ação de segurança inválida.');
+    }
+}
+add_action('template_redirect', 'dez_verify_search_nonce');
+
+/**
+ * Adiciona nonce ao formulário de comentários
+ */
+function dez_comment_form_nonce($fields) {
+    $fields['nonce'] = wp_nonce_field('dez_comment_form', 'dez_comment_nonce', true, false);
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'dez_comment_form_nonce');
+
+/**
+ * Verifica nonce do formulário de comentários
+ */
+function dez_verify_comment_nonce($commentdata) {
+    if (!isset($_POST['dez_comment_nonce']) || !wp_verify_nonce($_POST['dez_comment_nonce'], 'dez_comment_form')) {
+        wp_die('Ação de segurança inválida.');
+    }
+    return $commentdata;
+}
+add_filter('preprocess_comment', 'dez_verify_comment_nonce');
