@@ -823,3 +823,74 @@ function dez_get_cached_bloginfo( $info ) {
     
     return $cached_value;
 }
+
+/**
+ * Obtém os comentários de um post com cache
+ *
+ * @param int $post_id ID do post
+ * @return array Lista de comentários
+ */
+function dez_get_cached_comments($post_id) {
+    $cache_key = 'dez_comments_' . $post_id;
+    $cached_comments = get_transient($cache_key);
+    
+    if (false === $cached_comments) {
+        $comments = get_comments(array(
+            'post_id' => $post_id,
+            'status' => 'approve',
+            'order' => 'ASC',
+            'type' => 'comment'
+        ));
+        
+        $cached_comments = array();
+        foreach ($comments as $comment) {
+            $cached_comments[] = array(
+                'comment_ID' => $comment->comment_ID,
+                'comment_author' => $comment->comment_author,
+                'comment_author_email' => $comment->comment_author_email,
+                'comment_author_url' => $comment->comment_author_url,
+                'comment_content' => $comment->comment_content,
+                'comment_date' => $comment->comment_date,
+                'comment_date_gmt' => $comment->comment_date_gmt,
+                'comment_parent' => $comment->comment_parent,
+                'user_id' => $comment->user_id
+            );
+        }
+        
+        set_transient($cache_key, $cached_comments, MONTH_IN_SECONDS);
+    }
+    
+    return $cached_comments;
+}
+
+/**
+ * Limpa o cache de comentários quando um novo comentário é adicionado
+ */
+function dez_clear_comments_cache($comment_id, $comment_approved) {
+    $comment = get_comment($comment_id);
+    if ($comment) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('comment_post', 'dez_clear_comments_cache', 10, 2);
+
+/**
+ * Limpa o cache de comentários quando um comentário é atualizado
+ */
+function dez_clear_comments_cache_on_update($comment_id) {
+    $comment = get_comment($comment_id);
+    if ($comment) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('edit_comment', 'dez_clear_comments_cache_on_update');
+
+/**
+ * Limpa o cache de comentários quando um comentário é aprovado/reprovado
+ */
+function dez_clear_comments_cache_on_status_change($new_status, $old_status, $comment) {
+    if ($new_status !== $old_status) {
+        delete_transient('dez_comments_' . $comment->comment_post_ID);
+    }
+}
+add_action('transition_comment_status', 'dez_clear_comments_cache_on_status_change', 10, 3);

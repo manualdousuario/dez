@@ -34,12 +34,14 @@ if ( post_password_required() ) {
 		)
 	);
 
-	if ( have_comments() ) :
+	$comments = dez_get_cached_comments(get_the_ID());
+	$comment_count = count($comments);
+
+	if ( $comment_count > 0 ) :
 		?>
 		<h2 class="comments-title">
 			<?php
-			$dez_comment_count = get_comments_number();
-			if ( '1' === $dez_comment_count ) {
+			if ( 1 === $comment_count ) {
 				printf(
 					/* translators: 1: título do post */
 					esc_html__( '1 comentário', 'dez' )
@@ -47,8 +49,8 @@ if ( post_password_required() ) {
 			} else {
 				printf(
 					/* translators: 1: número de comentários, 2: título do post */
-					esc_html( _nx( '1 comentário', '%1$s comentários', $dez_comment_count, 'comments title', 'dez' ) ),
-					number_format_i18n( $dez_comment_count )
+					esc_html( _nx( '1 comentário', '%1$s comentários', $comment_count, 'comments title', 'dez' ) ),
+					number_format_i18n( $comment_count )
 				);
 			}
 			?>
@@ -65,15 +67,19 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list" role="list">
 			<?php
-			wp_list_comments(
-				array(
-					'style'      => 'ol',
-					'short_ping' => true,
-					'avatar_size' => 60,
-					'format'     => 'html5',
-					'type'       => 'comment',
-				)
-			);
+			foreach ($comments as $comment) {
+				$comment_obj = new WP_Comment($comment);
+				wp_list_comments(
+					array(
+						'style'      => 'ol',
+						'short_ping' => true,
+						'avatar_size' => 60,
+						'format'     => 'html5',
+						'type'       => 'comment',
+					),
+					array($comment_obj)
+				);
+			}
 			?>
 		</ol><!-- .comment-list -->
 
