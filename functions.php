@@ -122,16 +122,38 @@ function dez_preload_style ($preload_resources) {
 add_filter('wp_preload_resources', 'dez_preload_style');
 
 /**
+ * Adiciona defer aos scripts não críticos
+ */
+function dez_script_loader_tag($tag, $handle, $src) {
+    // Lista de scripts que não devem ter defer
+    $scripts_no_defer = array(
+        'dez-dark-mode' // Script crítico para a funcionalidade do tema escuro
+    );
+    
+    if (in_array($handle, $scripts_no_defer)) {
+        return $tag;
+    }
+    
+    // Adiciona defer para scripts que não são módulos
+    if (strpos($tag, 'type="module"') === false) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    
+    return $tag;
+}
+add_filter('script_loader_tag', 'dez_script_loader_tag', 10, 3);
+
+/**
  * Adiciona estilos e scripts
  */
 function dez_enqueue_assets() {
 	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_script( 'comment-reply', '', array(), false, true );
 	}
 
-	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
+	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array(), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'dez_enqueue_assets' );
 
@@ -579,60 +601,62 @@ add_action( 'wp_footer', 'dez_script_alo' );
  */
 function dez_scripts_rodape_especiais() {
 	if ( have_comments() ) { /* Contrair/expandir threads + Diminuir sensibilidade do link "Responder" */ ?>
-		<script type="text/javascript">
-			const comments = document.querySelectorAll(".comment");
+		<script type="text/javascript" defer>
+			document.addEventListener('DOMContentLoaded', function() {
+				const comments = document.querySelectorAll(".comment");
 
-			comments.forEach(function(element, index) {
-				const toggleButton = document.createElement("div");
-				const commentMeta = element.querySelector(".comment-meta");
-				const currentComment = element.querySelector(".comment-content");
-				const commentAuthor = element.querySelector(".comment-author");
-				const commentMetadata = element.querySelector(".comment-metadata");
-				const childComments = element.querySelector("ol.children");
-				const replyLink = element.querySelector(".reply");
+				comments.forEach(function(element, index) {
+					const toggleButton = document.createElement("div");
+					const commentMeta = element.querySelector(".comment-meta");
+					const currentComment = element.querySelector(".comment-content");
+					const commentAuthor = element.querySelector(".comment-author");
+					const commentMetadata = element.querySelector(".comment-metadata");
+					const childComments = element.querySelector("ol.children");
+					const replyLink = element.querySelector(".reply");
 
-				commentMeta.append(toggleButton);
-				commentMeta.style.position = "relative";
-				toggleButton.innerHTML = "➖";
-				toggleButton.style.cssText =
-				"position: absolute; right: .6rem; top: 50%; transform: translateY(-50%); cursor: pointer; font-family: -apple-system, sans-serif";
+					commentMeta.append(toggleButton);
+					commentMeta.style.position = "relative";
+					toggleButton.innerHTML = "➖";
+					toggleButton.style.cssText =
+					"position: absolute; right: .6rem; top: 50%; transform: translateY(-50%); cursor: pointer; font-family: -apple-system, sans-serif";
 
-				toggleButton.addEventListener("click", function(event) {
-					if (currentComment.style.display === "none") {
-						toggleButton.innerHTML = "➖";
-						currentComment.style.display = "block";
-						commentMeta.style.marginBottom = "1em";
-						commentAuthor.style.opacity = "1";
-						commentMetadata.style.opacity = "1";
-					} else {
-						toggleButton.innerHTML = "➕";
-						currentComment.style.display = "none";
-						commentMeta.style.marginBottom = "-20px";
-						commentAuthor.style.opacity = "0.4";
-						commentMetadata.style.opacity = "0.4";
-					}
-
-					if (childComments) {
-						if (childComments.style.display === "none") {
-							childComments.style.display = "block";
+					toggleButton.addEventListener("click", function(event) {
+						if (currentComment.style.display === "none") {
+							toggleButton.innerHTML = "➖";
+							currentComment.style.display = "block";
+							commentMeta.style.marginBottom = "1em";
+							commentAuthor.style.opacity = "1";
+							commentMetadata.style.opacity = "1";
 						} else {
-							childComments.style.display = "none";
+							toggleButton.innerHTML = "➕";
+							currentComment.style.display = "none";
+							commentMeta.style.marginBottom = "-20px";
+							commentAuthor.style.opacity = "0.4";
+							commentMetadata.style.opacity = "0.4";
 						}
-					}
 
-					if (replyLink) {
-						if (replyLink.style.display === "none") {
-							replyLink.style.display = "initial";
-						} else {
-							replyLink.style.display = "none";
+						if (childComments) {
+							if (childComments.style.display === "none") {
+								childComments.style.display = "block";
+							} else {
+								childComments.style.display = "none";
+							}
 						}
-					}
+
+						if (replyLink) {
+							if (replyLink.style.display === "none") {
+								replyLink.style.display = "initial";
+							} else {
+								replyLink.style.display = "none";
+							}
+						}
+					});
 				});
-			});			
+			});
 		</script>
 
-		<script type="text/javascript">
-			window.addEventListener('load', function() {
+		<script type="text/javascript" defer>
+			document.addEventListener('DOMContentLoaded', function() {
 				document.getElementById('comments').addEventListener('touchstart', function(e) {
 					if (e.target.className === 'comment-reply-link') {
 						e.stopPropagation();
@@ -642,10 +666,10 @@ function dez_scripts_rodape_especiais() {
 		</script>
 
 	<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
-		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" />
+		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" defer></script>
 
-		<script type="module">
-			window.onload = () => {
+		<script type="module" defer>
+			document.addEventListener('DOMContentLoaded', function() {
 				function shuffleArray(array) {
 					for (var i = array.length - 1; i > 0; i--) {
 						var j = Math.floor(Math.random() * (i + 1));
@@ -656,31 +680,31 @@ function dez_scripts_rodape_especiais() {
 				}
 
 				const table = document.querySelector('table');
-  const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
-  shuffleArray(rows);
+				const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
+				shuffleArray(rows);
 
-  for (const row of rows) {
-  	table.querySelector('tbody').appendChild(row);
-  }
+				for (const row of rows) {
+					table.querySelector('tbody').appendChild(row);
+				}
 
-  const dataTable = new simpleDatatables.DataTable("table", {
-  	searchable: true,
-  	fixedHeight: false,
-  	columns: [{
-  		select: [4, 5],
-  		hidden: true
-  	}],
-  	perPage: 50,
-  	perPageSelect: [20, 50, 100],
-  	labels: {
-  		placeholder: "Pesquisar…",
-  		perPage: "{select} itens por página",
-  		noRows: "Nada encontrado",
-  		info: "Mostrando {start} a {end} de {rows} itens",
-  	}
-  })
-}
-</script>
+				const dataTable = new simpleDatatables.DataTable("table", {
+					searchable: true,
+					fixedHeight: false,
+					columns: [{
+						select: [4, 5],
+						hidden: true
+					}],
+					perPage: 50,
+					perPageSelect: [20, 50, 100],
+					labels: {
+						placeholder: "Pesquisar…",
+						perPage: "{select} itens por página",
+						noRows: "Nada encontrado",
+						info: "Mostrando {start} a {end} de {rows} itens",
+					}
+				})
+			});
+		</script>
 <?php }
 }
 add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
@@ -688,47 +712,51 @@ add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
 function dez_scripts_rodape_gerais() { ?>
 	<script defer src="https://umami.manualdousuario.net/script.js" data-website-id="bd0b3698-4f84-4b35-ad28-73090b456682"></script>
 
-	<script type="text/javascript">
-		const compartilharPost = (title, url, element) => {
-			if (navigator.canShare) {
-				const shareData = {
-					title: title,
-					url: url
-				}
-				navigator.share(shareData)
-			} else {
-				navigator.clipboard.writeText(`${url}`)
-				.then(() => {
-					const span = element.querySelector('span');
-					if (span) {
-						span.textContent = "Link copiado";
+	<script type="text/javascript" defer>
+		document.addEventListener('DOMContentLoaded', function() {
+			const compartilharPost = (title, url, element) => {
+				if (navigator.canShare) {
+					const shareData = {
+						title: title,
+						url: url
 					}
-					setTimeout(() => {
-						span.textContent = "Compartilhe";
-					}, 3000);
-				})
-				.catch(err => {
-					console.error('Erro ao copiar o link: ', err);
-				});
+					navigator.share(shareData)
+				} else {
+					navigator.clipboard.writeText(`${url}`)
+					.then(() => {
+						const span = element.querySelector('span');
+						if (span) {
+							span.textContent = "Link copiado";
+						}
+						setTimeout(() => {
+							span.textContent = "Compartilhe";
+						}, 3000);
+					})
+					.catch(err => {
+						console.error('Erro ao copiar o link: ', err);
+					});
+				}
 			}
-		}			
+		});
 	</script>
 
-	<script type="text/javascript">
-		window.addEventListener('scroll', function() {
-			var elementosParaRevelar = document.querySelectorAll('.top');
-			var alturaParaRevelar = 100;
+	<script type="text/javascript" defer>
+		document.addEventListener('DOMContentLoaded', function() {
+			window.addEventListener('scroll', function() {
+				var elementosParaRevelar = document.querySelectorAll('.top');
+				var alturaParaRevelar = 100;
 
-			elementosParaRevelar.forEach(function(elemento) {
-				var posicaoVertical = window.scrollY || window.pageYOffset;
+				elementosParaRevelar.forEach(function(elemento) {
+					var posicaoVertical = window.scrollY || window.pageYOffset;
 
-				if (posicaoVertical >= alturaParaRevelar) {
-					elemento.classList.add('top-visivel');
-				} else {
-					elemento.classList.remove('top-visivel');
-				}
+					if (posicaoVertical >= alturaParaRevelar) {
+						elemento.classList.add('top-visivel');
+					} else {
+						elemento.classList.remove('top-visivel');
+					}
+				});
 			});
-		});			
+		});
 	</script>
 	<noscript><style>.top{opacity:.5}.top:hover{opacity:1}</style></noscript>
 <?php }
