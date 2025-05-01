@@ -805,3 +805,21 @@ add_action('init', function() {
 	pll_register_string( 'Associado à', 'Associado à' );
 	pll_register_string( 'Apoio', 'Apoio' );
 });
+
+/**
+ * Obtém informações do blog com cache
+ *
+ * @param string $info Tipo de informação a ser obtida
+ * @return string Valor da informação
+ */
+function dez_get_cached_bloginfo( $info ) {
+    $cache_key = 'dez_bloginfo_' . $info;
+    $cached_value = get_transient( $cache_key );
+    
+    if ( false === $cached_value ) {
+        $cached_value = get_bloginfo( $info );
+        set_transient( $cache_key, $cached_value, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_value;
+}

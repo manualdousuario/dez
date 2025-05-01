@@ -58,9 +58,9 @@ $current_lang = dez_get_current_lang();
 					?>
 					<<?php echo esc_html( $title_tag ); ?> class="site-title">
 					<?php if ( 'en-US' === $current_lang ) : ?>
-						<a href="<?php echo esc_url( 'https://manualdousuario.net/en/' ); ?>">Manual do Usuário</a>
+						<a href="<?php echo esc_url( dez_get_cached_bloginfo( 'url' ) . '/en/' ); ?>"><?php echo esc_html( dez_get_cached_bloginfo( 'name' ) ); ?></a>
 					<?php else : ?>
-						Manual do Usuário
+						<?php echo esc_html( dez_get_cached_bloginfo( 'name' ) ); ?>
 					<?php endif; ?>
 					</<?php echo esc_html( $title_tag ); ?>>
 					<div class="site-rg">
