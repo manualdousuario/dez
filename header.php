@@ -23,6 +23,12 @@ $current_lang = dez_get_current_lang();
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noarchive">
+	
+	<!-- Preload de recursos críticos -->
+	<link rel="preload" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/style.min.css' ); ?>" as="style">
+	<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() . '/js/darkMode.min.js' ); ?>" as="script">
+	<link rel="preload" href="<?php echo esc_url( 'https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif' ); ?>" as="image" type="image/avif">
+	
 	<?php wp_head(); ?>
 </head>
 
