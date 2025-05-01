@@ -985,6 +985,51 @@ function dez_cleanup_database() {
 add_action('wp_scheduled_delete', 'dez_cleanup_database');
 
 /**
+ * Otimizações de cache e performance
+ */
+function dez_optimize_cache() {
+    // Remove versão do WordPress dos recursos
+    add_filter('style_loader_src', 'dez_remove_version', 9999);
+    add_filter('script_loader_src', 'dez_remove_version', 9999);
+    
+    // Adiciona headers de cache para recursos estáticos
+    add_action('send_headers', 'dez_add_cache_headers');
+    
+    // Otimiza consultas de posts
+    add_action('pre_get_posts', 'dez_optimize_post_queries');
+    
+    // Limpa cache quando necessário
+    add_action('save_post', 'dez_clear_cache_on_update');
+    add_action('comment_post', 'dez_clear_cache_on_update');
+}
+
+/**
+ * Remove versão do WordPress dos recursos
+ */
+function dez_remove_version($src) {
+    if (strpos($src, 'ver=')) {
+        $src = remove_query_arg('ver', $src);
+    }
+    return $src;
+}
+
+/**
+ * Adiciona headers de cache para recursos estáticos
+ */
+function dez_add_cache_headers() {
+    if (!is_admin()) {
+        // Cache por 1 semana para recursos estáticos
+        $cache_time = 7 * 24 * 60 * 60; // 1 semana em segundos
+        
+        // Aplica apenas para recursos estáticos
+        if (preg_match('/\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/', $_SERVER['REQUEST_URI'])) {
+            header('Cache-Control: public, max-age=' . $cache_time);
+            header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $cache_time) . ' GMT');
+        }
+    }
+}
+
+/**
  * Otimiza consultas de posts
  */
 function dez_optimize_post_queries($query) {
@@ -1005,22 +1050,22 @@ function dez_optimize_post_queries($query) {
     }
     return $query;
 }
-add_action('pre_get_posts', 'dez_optimize_post_queries');
 
 /**
- * Otimiza consultas de comentários
+ * Limpa cache quando conteúdo é atualizado
  */
-function dez_optimize_comment_queries($query) {
-    if (!is_admin()) {
-        // Remove limite de comentários por página
-        $query->set('number', 0);
-        
-        // Otimiza cache de comentários
-        $query->set('update_comment_meta_cache', true);
+function dez_clear_cache_on_update() {
+    // Limpa cache do WordPress
+    wp_cache_flush();
+    
+    // Limpa cache do Cloudflare se estiver configurado
+    if (function_exists('cloudflare_purge_cache')) {
+        cloudflare_purge_cache();
     }
-    return $query;
 }
-add_filter('comments_template_query_args', 'dez_optimize_comment_queries');
+
+// Inicializa otimizações
+add_action('init', 'dez_optimize_cache');
 
 /**
  * Adiciona índices para otimização
