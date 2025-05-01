@@ -1,6 +1,9 @@
 <?php
 /**
- * The template for displaying archive pages
+ * Template para exibir páginas de arquivo
+ *
+ * Este template é usado para exibir páginas de arquivo, como categorias,
+ * tags, autores, datas e tipos de post personalizados.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,7 +13,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" role="main" aria-label="<?php esc_attr_e( 'Conteúdo do Arquivo', 'dez' ); ?>">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -22,29 +25,35 @@ get_header();
 			</header><!-- .page-header -->
 
 			<?php
-			/* Start the Loop */
+			/* Início do Loop */
 			while ( have_posts() ) :
 				the_post();
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				/**
+				 * Inclui o template part específico para o tipo de post
+				 * Se você quiser sobrescrever isso em um tema filho, crie um arquivo
+				 * chamado content-___.php (onde ___ é o nome do Post Type) e ele será usado no lugar deste.
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
 			endwhile;
 
-			the_posts_navigation();
+			// Navegação entre posts
+			the_posts_navigation( array(
+				'prev_text' => esc_html__( 'Página anterior', 'dez' ),
+				'next_text' => esc_html__( 'Próxima página', 'dez' ),
+				'screen_reader_text' => esc_html__( 'Navegação entre posts', 'dez' ),
+			) );
 
 		else :
 
+			// Se não houver posts, exibe o template de "nenhum resultado"
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
 		?>
 
-	</main><!-- #main -->
+	</main><!-- #primary -->
 
 <?php
 get_footer();

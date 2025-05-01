@@ -1,9 +1,9 @@
 <?php
 /**
- * The template for displaying comments
+ * Template para exibir comentários
  *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
+ * Este template exibe a área da página que contém tanto os comentários atuais
+ * quanto o formulário de comentários.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -11,24 +11,26 @@
  */
 
 /*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
+ * Se o post atual estiver protegido por senha e
+ * o visitante ainda não tiver inserido a senha,
+ * retornamos antecipadamente sem carregar os comentários.
  */
 if ( post_password_required() ) {
 	return;
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area" aria-label="<?php esc_attr_e( 'Seção de Comentários', 'dez' ); ?>">
 
 	<?php
-	// You can start editing here -- including this comment!
-
+	// Formulário de comentários
 	comment_form(
 		array(
-			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-			'title_reply_after'  => '</h2>',
+			'title_reply_before'   => '<h2 id="reply-title" class="comment-reply-title">',
+			'title_reply_after'    => '</h2>',
+			'title_reply'          => esc_html__( 'Deixe um comentário', 'dez' ),
+			'label_submit'         => esc_html__( 'Enviar comentário', 'dez' ),
+			'comment_notes_before' => '<p class="comment-notes">' . esc_html__( 'Seu endereço de e-mail não será publicado.', 'dez' ) . '</p>',
 		)
 	);
 
@@ -39,37 +41,51 @@ if ( post_password_required() ) {
 			$dez_comment_count = get_comments_number();
 			if ( '1' === $dez_comment_count ) {
 				printf(
-					/* translators: 1: title. */
-					esc_html__( '1 comentário' )
+					/* translators: 1: título do post */
+					esc_html__( '1 comentário', 'dez' )
 				);
 			} else {
 				printf(
-					/* translators: 1: comment count number, 2: title. */
+					/* translators: 1: número de comentários, 2: título do post */
 					esc_html( _nx( '1 comentário', '%1$s comentários', $dez_comment_count, 'comments title', 'dez' ) ),
-					number_format_i18n( $dez_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					number_format_i18n( $dez_comment_count )
 				);
 			}
 			?>
 		</h2><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
+		<?php
+		// Navegação entre comentários
+		the_comments_navigation( array(
+			'prev_text' => esc_html__( 'Comentários anteriores', 'dez' ),
+			'next_text' => esc_html__( 'Próximos comentários', 'dez' ),
+			'screen_reader_text' => esc_html__( 'Navegação entre comentários', 'dez' ),
+		) );
+		?>
 
-		<ol class="comment-list">
+		<ol class="comment-list" role="list">
 			<?php
 			wp_list_comments(
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'avatar_size' => 60,
+					'format'     => 'html5',
+					'type'       => 'comment',
 				)
 			);
 			?>
 		</ol><!-- .comment-list -->
 
 		<?php
-		the_comments_navigation();
+		// Navegação entre comentários
+		the_comments_navigation( array(
+			'prev_text' => esc_html__( 'Comentários anteriores', 'dez' ),
+			'next_text' => esc_html__( 'Próximos comentários', 'dez' ),
+			'screen_reader_text' => esc_html__( 'Navegação entre comentários', 'dez' ),
+		) );
 
 	endif; // Check for have_comments().
-
 	?>
 
 </div><!-- #comments -->

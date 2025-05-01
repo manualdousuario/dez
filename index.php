@@ -23,7 +23,7 @@ $current_lang = get_bloginfo( 'language' );
 $newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'newsletter-post-en';
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main" role="main" aria-label="<?php esc_attr_e( 'Conteúdo Principal', 'dez' ); ?>">
 	<?php
 	$count = 0;
 	if ( have_posts() ) :
@@ -40,7 +40,11 @@ $newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'new
 			$count++;
 		endwhile;
 
-		the_posts_navigation( array( 
+		// Navegação entre posts
+		the_posts_navigation( array(
+			'prev_text' => esc_html__( 'Página anterior', 'dez' ),
+			'next_text' => esc_html__( 'Próxima página', 'dez' ),
+			'screen_reader_text' => esc_html__( 'Navegação entre posts', 'dez' ),
 			'class' => 'link-alt',
 		) );
 
@@ -48,7 +52,7 @@ $newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'new
 		get_template_part( 'template-parts/content', 'none' );
 	endif;
 	?>
-</main><!-- #main -->
+</main><!-- #primary -->
 
 <?php
 get_footer();

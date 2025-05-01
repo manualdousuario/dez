@@ -1,8 +1,11 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * Template para exibir a página de erro 404
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * Este template é exibido quando o WordPress não consegue encontrar
+ * o conteúdo solicitado.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Dez
  */
@@ -10,28 +13,43 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" role="main" aria-label="<?php esc_attr_e( 'Página de Erro 404', 'dez' ); ?>">
 
 		<section class="error-404 not-found">
-			<header class="entry-header">
-				<h1 class="entry-title">Ops, algo deu errado…</h1>
-			</header><!-- .entry-header -->
+			<header class="page-header">
+				<h1 class="page-title"><?php esc_html_e( 'Página não encontrada', 'dez' ); ?></h1>
+			</header><!-- .page-header -->
 
-			<div class="entry-content">
-				<p>A página que você tentou acessar não existe, foi excluída ou está em outro lugar. Use a pesquisa para tentar encontrá-la:</p>
+			<div class="page-content">
+				<p><?php esc_html_e( 'Parece que nada foi encontrado neste local. Talvez tente uma busca?', 'dez' ); ?></p>
 
-					<?php
-					get_search_form();
-					?>
+				<?php
+				get_search_form(
+					array(
+						'aria_label' => esc_attr__( 'Buscar no site', 'dez' ),
+					)
+				);
+				?>
 
-				<p>Se preferir, dê uma olhada no <a href="/arquivo/">mapa do site</a> ou retorne à <a href="/">página inicial</a>.</p>
-
-				<p>Acredita ter se deparado com um erro? <a href="mailto:ghedin@manualdousuario.net">Mande um e-mail</a> (e obrigado!).
-
+				<div class="error-404-links">
+					<h2><?php esc_html_e( 'Navegação rápida', 'dez' ); ?></h2>
+					<ul>
+						<li>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+								<?php esc_html_e( 'Página inicial', 'dez' ); ?>
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>">
+								<?php esc_html_e( 'Blog', 'dez' ); ?>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
-	</main><!-- #main -->
+	</main><!-- #primary -->
 
 <?php
 get_footer();
