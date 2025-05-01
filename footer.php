@@ -16,13 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <footer id="colophon" class="site-footer">
 	<?php
-	wp_nav_menu(
-		array(
-			'theme_location' => 'menu-rodape',
-			'menu_id'        => 'footer-links',
-			'container'      => 'false',
-		)
-	);
+	echo dez_get_cached_menu( 'menu-rodape' );
 	?>
 	<p><?php pll_e('Associado à'); ?> <a href="<?php echo esc_url( 'https://ajor.org.br/' ); ?>">Ajor</a></p>
 	<p><?php pll_e('Apoio'); ?>: <a href="<?php echo esc_url( 'https://buttondown.email/?utm_campaign=manual&amp;utm_source=footer' ); ?>">Buttondown</a> &middot; <a href="<?php echo esc_url( 'https://www.teramundi.com/' ); ?>">Teramundi</a></p>

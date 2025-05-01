@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 // Verifica o idioma atual uma única vez
-$current_lang = get_bloginfo( 'language' );
+$current_lang = dez_get_current_lang();
 $newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'newsletter-post-en';
 ?>
 
@@ -37,21 +37,21 @@ $newsletter_shortcode = ( 'pt-BR' === $current_lang ) ? 'newsletter-post' : 'new
 				echo do_shortcode( "[sc name=\"{$newsletter_shortcode}\"][/sc]" );
 			}
 
-			$count++;
-		endwhile;
+	$count++;
+endwhile;
 
 		// Navegação entre posts
-		the_posts_navigation( array(
+the_posts_navigation( array( 
 			'prev_text' => esc_html__( 'Página anterior', 'dez' ),
 			'next_text' => esc_html__( 'Próxima página', 'dez' ),
 			'screen_reader_text' => esc_html__( 'Navegação entre posts', 'dez' ),
-			'class' => 'link-alt',
-		) );
+	'class' => 'link-alt',
+) );
 
-	else :
-		get_template_part( 'template-parts/content', 'none' );
-	endif;
-	?>
+else :
+	get_template_part( 'template-parts/content', 'none' );
+endif;
+?>
 </main><!-- #primary -->
 
 <?php

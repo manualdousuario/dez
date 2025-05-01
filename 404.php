@@ -23,7 +23,7 @@ get_header();
 			<div class="page-content">
 				<p><?php esc_html_e( 'Parece que nada foi encontrado neste local. Talvez tente uma busca?', 'dez' ); ?></p>
 
-				<?php
+					<?php
 				get_search_form(
 					array(
 						'aria_label' => esc_attr__( 'Buscar no site', 'dez' ),

@@ -45,6 +45,69 @@ function dez_setup() {
 add_action( 'after_setup_theme', 'dez_setup' );
 
 /**
+ * Cache de transients para otimização de desempenho
+ */
+
+/**
+ * Obtém o idioma atual com cache
+ *
+ * @return string O código do idioma atual
+ */
+function dez_get_current_lang() {
+    $cache_key = 'dez_current_lang';
+    $cached_lang = get_transient( $cache_key );
+    
+    if ( false === $cached_lang ) {
+        $cached_lang = get_bloginfo( 'language' );
+        set_transient( $cache_key, $cached_lang, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_lang;
+}
+
+/**
+ * Obtém o menu de navegação com cache
+ *
+ * @param string $location Localização do menu
+ * @return string HTML do menu
+ */
+function dez_get_cached_menu( $location ) {
+    $cache_key = 'dez_menu_' . $location;
+    $cached_menu = get_transient( $cache_key );
+    
+    if ( false === $cached_menu ) {
+        ob_start();
+        wp_nav_menu(
+            array(
+                'theme_location' => $location,
+                'echo' => false,
+            )
+        );
+        $cached_menu = ob_get_clean();
+        set_transient( $cache_key, $cached_menu, MONTH_IN_SECONDS );
+    }
+    
+    return $cached_menu;
+}
+
+/**
+ * Limpa o cache de menus quando um menu é atualizado
+ */
+function dez_clear_menu_cache( $menu_id, $menu_data = array() ) {
+    delete_transient( 'dez_menu_menu-principal' );
+    delete_transient( 'dez_menu_menu-rodape' );
+}
+add_action( 'wp_update_nav_menu', 'dez_clear_menu_cache' );
+
+/**
+ * Limpa o cache de idioma quando o idioma é alterado
+ */
+function dez_clear_lang_cache() {
+    delete_transient( 'dez_current_lang' );
+}
+add_action( 'pll_language_defined', 'dez_clear_lang_cache' );
+
+/**
  * Carrega folha de estilo principal (style.css) com rel="preload"
  */
 function dez_preload_style ($preload_resources) {

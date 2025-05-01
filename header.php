@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$current_lang = get_bloginfo( 'language' );
+$current_lang = dez_get_current_lang();
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> data-theme="">
