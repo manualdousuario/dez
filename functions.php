@@ -1019,3 +1019,41 @@ function dez_add_database_indexes() {
     ");
 }
 register_activation_hook(__FILE__, 'dez_add_database_indexes');
+
+/**
+ * Adiciona nonce ao formulário de busca
+ */
+function dez_search_form_nonce() {
+    wp_nonce_field('dez_search_form', 'dez_search_nonce');
+}
+add_action('get_search_form', 'dez_search_form_nonce');
+
+/**
+ * Verifica nonce do formulário de busca
+ */
+function dez_verify_search_nonce() {
+    if (isset($_GET['s']) && !wp_verify_nonce($_GET['dez_search_nonce'], 'dez_search_form')) {
+        wp_die('Ação de segurança inválida.');
+    }
+}
+add_action('template_redirect', 'dez_verify_search_nonce');
+
+/**
+ * Adiciona nonce ao formulário de comentários
+ */
+function dez_comment_form_nonce($fields) {
+    $fields['nonce'] = wp_nonce_field('dez_comment_form', 'dez_comment_nonce', true, false);
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'dez_comment_form_nonce');
+
+/**
+ * Verifica nonce do formulário de comentários
+ */
+function dez_verify_comment_nonce($commentdata) {
+    if (!isset($_POST['dez_comment_nonce']) || !wp_verify_nonce($_POST['dez_comment_nonce'], 'dez_comment_form')) {
+        wp_die('Ação de segurança inválida.');
+    }
+    return $commentdata;
+}
+add_filter('preprocess_comment', 'dez_verify_comment_nonce');
