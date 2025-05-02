@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.8.4
+Version: 3.8.5
 Tested up to: 8.2
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -508,7 +508,7 @@ figure img.alignright {
 	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
-	margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-grande);
+	margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-medio);
 	padding-bottom: var(--med-salto-pequeno);
 	border-bottom: 1px dashed var(--cor-bordas);
 }
@@ -772,8 +772,8 @@ article:not(.type-page) .entry-header,
 .entry-header h1,
 .entry-header h2 {
 	font-size: var(--fs-4);
-	line-height: 1.4;
-	margin: .5rem 0 var(--med-salto-pequeno);
+	line-height: 1.25;
+	margin: 0 0 var(--med-salto-pequeno);
 }
 
 .entry-meta {
@@ -1343,6 +1343,26 @@ article.format-link .entry-content > figure img {
 	font-size: var(--fs-0);
 }
 
+/* Tag de patrocínios
+--------------------------------------------- */
+.patrocinio-okkre2025 {
+	display: flex;
+	justify-content: center;
+	column-gap: .5rem;
+	font-size: var(--fs-0);
+	align-items: center;
+	margin-bottom: var(--med-salto-medio);
+	background-color: var(--cor-destaques);
+	padding: .25rem .5rem;
+	border-radius: var(--med-borda);
+	line-height: 1.4;
+}
+
+.patrocinio-okkre2025 img {
+	height: 24px;
+	width: auto;
+}
+
 /* display: none
 --------------------------------------------- */
 
@@ -1692,7 +1712,6 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.site-header {
-		margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-medio);
 		justify-content: space-between;
 		gap: 1rem .5rem;
 	}

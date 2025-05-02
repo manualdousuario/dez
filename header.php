@@ -17,6 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noarchive">
 	<?php wp_head(); ?>
+	<link rel="preconnect" href="https://umami.manualdousuario.net/" crossorigin>
+	<link rel="preconnect" href="https://alo.manualdousuario.net/" crossorigin>
 </head>
 
 <body <?php body_class(); ?>>
@@ -28,7 +30,7 @@
 	if ( $currentlang == 'pt-BR' ) : ?>
 		<div class="top-bar">
 			<h3>
-				<a href="https://manualdousuario.net/">
+				<a href="https://manualdousuario.net/" aria-label="Página inicial do blog.">
 					<img src="https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif" height="38" width="33" alt>
 				</a>
 			</h3>
@@ -134,3 +136,7 @@
 				?>
 			</nav>
 		</header>
+
+		<?php if ( shortcode_exists( 'sc' ) ) {
+			echo do_shortcode('[sc name="anuncio-global"][/sc]');
+		} ?>
