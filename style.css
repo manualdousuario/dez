@@ -4,9 +4,9 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.8.5
-Tested up to: 8.2
-Requires PHP: 5.6
+Version: 3.8.6
+Tested up to: 6.8.1
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: GNU General Public License v2 or later
 Text Domain: dez
@@ -1348,19 +1348,23 @@ article.format-link .entry-content > figure img {
 .patrocinio-okkre2025 {
 	display: flex;
 	justify-content: center;
-	column-gap: .5rem;
-	font-size: var(--fs-0);
+	column-gap: 1rem;
 	align-items: center;
-	margin-bottom: var(--med-salto-medio);
 	background-color: var(--cor-destaques);
-	padding: .25rem .5rem;
+	padding: .5rem 1rem;
+	margin: 0 -1rem var(--med-salto-medio);
 	border-radius: var(--med-borda);
-	line-height: 1.4;
 }
 
 .patrocinio-okkre2025 img {
-	height: 24px;
+	height: 36px;
 	width: auto;
+}
+
+.buttondown {
+	justify-content: start;
+	background-color: var(--cor-atencao);
+	max-width: var(--med-comp-linha);
 }
 
 /* display: none
@@ -1743,7 +1747,8 @@ table.dataTable-table tr:nth-child(even) {
 	.podcast_player,
 	.format-link .link,
 	.comment-form-alert,
-	details {
+	details,
+	.patrocinio-okkre2025 {
 		margin: 0 -.5rem var(--med-salto-pequeno);
 		padding: 1rem .5rem;
 		border-radius: 0;
@@ -1753,6 +1758,9 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.comment-form-alert {
 		max-width: initial;
+	}
+	.patrocinio-okkre2025 {
+		margin-bottom: var(--med-salto-medio) !important;
 	}
 
 	.box-meta {

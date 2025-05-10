@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.8.5' );
+	define( '_S_VERSION', '3.8.6' );
 }
 
 function dez_setup() {
@@ -251,29 +251,6 @@ add_action( 'wp_head', 'dez_favicons' );
 
 
 /**
- * Exibe custom post types nos arquivos no front-end.
- */
-function dez_custom_posts_arquivos( $query ) {
-	if ( ! is_admin() && ( $query->is_date || $query->is_author ) ) {
-		$query->set( 'post_type', array( 'post', 'podcast' ) ); }
-		remove_action( 'pre_get_posts', 'custom_post_author_archive' );
-	}
-	add_action( 'pre_get_posts', 'dez_custom_posts_arquivos' );
-
-
-/**
- * Define quais post types aparecem na pesquisa.
- */
-function dez_pesquisar_post_types( $query ) {
-	if ( $query->is_search ) {
-		$query->set( 'post_type', array( 'post', 'page', 'podcast' ) );
-	}
-	return $query;
-}
-add_filter( 'the_search_query', 'dez_pesquisar_post_types' );
-
-
-/**
  * Adiciona classe .hfeed nos posts
  */
 function dez_body_classes( $classes ) {
@@ -511,7 +488,7 @@ function dez_script_alo() {
 			const aloClient = new aloSDK(aloConfig);
 		</script>
 	<?php } }
-add_action( 'wp_footer', 'dez_script_alo' );
+	add_action( 'wp_footer', 'dez_script_alo' );
 
 
 /**
@@ -582,7 +559,7 @@ function dez_scripts_rodape_especiais() {
 		</script>
 
 	<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
-		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript" />
+		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript"></script>
 
 		<script type="module">
 			window.onload = () => {
@@ -596,31 +573,27 @@ function dez_scripts_rodape_especiais() {
 				}
 
 				const table = document.querySelector('table');
-  const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
-  shuffleArray(rows);
+const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
+shuffleArray(rows);
 
-  for (const row of rows) {
-  	table.querySelector('tbody').appendChild(row);
-  }
-
-  const dataTable = new simpleDatatables.DataTable("table", {
-  	searchable: true,
-  	fixedHeight: false,
-  	columns: [{
-  		select: [4, 5],
-  		hidden: true
-  	}],
-  	perPage: 50,
-  	perPageSelect: [20, 50, 100],
-  	labels: {
-  		placeholder: "Pesquisar…",
-  		perPage: "{select} itens por página",
-  		noRows: "Nada encontrado",
-  		info: "Mostrando {start} a {end} de {rows} itens",
-  	}
-  })
+for (const row of rows) {
+	table.querySelector('tbody').appendChild(row);
 }
-</script>
+
+const dataTable = new simpleDatatables.DataTable("table", {
+	searchable: true,
+	fixedHeight: false,
+	columns: [ { select: [4, 5], hidden: true } ],
+	perPage: 50,
+	perPageSelect: [20, 50, 100],
+	labels: {
+		placeholder: "Pesquisar…",
+		perPage: "{select} itens por página",
+		noRows: "Nada encontrado",
+		info: "Mostrando {start} a {end} de {rows} itens",
+	}
+})
+} </script>
 <?php }
 }
 add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
@@ -674,16 +647,6 @@ function dez_scripts_rodape_gerais() { ?>
 <?php }
 add_action( 'wp_footer', 'dez_scripts_rodape_gerais' );
 
-/**
- * Reduz a carga no banco de dados ao acessar wp-admin/edit-comment.php
- */
-function dez_comments_any_status($comment_query) {
-	if (empty($comment_query->query_vars['status'])) {
-		$comment_query->query_vars['status'] = 'any';
-	}
-}
-add_action('pre_get_comments', 'dez_comments_any_status');
-
 
 /**
  * Bloqueia chamadas da HTTP API. Complementa o plugin HTTP Requests Manager
@@ -711,7 +674,7 @@ function dez_pre_http_request_block( $preempt, $args, $url ) {
 /**
  * Desativa e-mail de novo usuário para admin
  */
-function wpcode_send_new_user_notifications( $user_id, $notify = 'user' ) {
+function dez_notificacao_novo_usuario( $user_id, $notify = 'user' ) {
 	if ( empty( $notify ) || 'admin' === $notify ) {
 		return;
 	} elseif ( 'both' === $notify ) {
@@ -729,8 +692,8 @@ add_action(
 		remove_action( 'edit_user_created_user', 'wp_send_new_user_notifications' );
 
 		// Replace with custom function that only sends to user.
-		add_action( 'register_new_user', 'wpcode_send_new_user_notifications' );
-		add_action( 'edit_user_created_user', 'wpcode_send_new_user_notifications', 10, 2 );
+		add_action( 'register_new_user', 'dez_notificacao_novo_usuario' );
+		add_action( 'edit_user_created_user', 'dez_notificacao_novo_usuario', 10, 2 );
 	}
 );
 
