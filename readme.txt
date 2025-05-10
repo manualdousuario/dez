@@ -3,10 +3,10 @@
 Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Joselito Júnior
 Tags: featured-images, threaded-comments
 
-Requires at least: 4.5
-Tested up to: 8.2
-Requires PHP: 5.6
-Stable tag: 3.8.5
+Requires at least: 5.9
+Tested up to: 6.8.1
+Requires PHP: 7.4
+Stable tag: 3.8.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -19,7 +19,7 @@ Manual do Usuário Theme
 = Requirements =
 
 - Node.js 16+
-- PHP 5.6+
+- PHP 7.4+
 - npm 9.7+
 - composer 2.5+
 
@@ -36,6 +36,11 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.8.6 - 10/5/2025 =
+* Altera requisitos mínimos (WordPress 5.9, PHP 7.4).
+* Remove funções que alteram queries no `functions.php`.
+* Ajustes diversos no `style.css`.
 
 = 3.8.5 - 2/5/2025 =
 * Restaura logo na barra global.
