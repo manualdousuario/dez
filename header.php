@@ -19,6 +19,8 @@
 	<?php wp_head(); ?>
 	<link rel="preconnect" href="https://umami.manualdousuario.net/" crossorigin>
 	<link rel="preconnect" href="https://alo.manualdousuario.net/" crossorigin>
+
+	<link rel="manifest" href="/manifest.json">
 </head>
 
 <body <?php body_class(); ?>>
@@ -28,22 +30,15 @@
 
 	<?php $currentlang = get_bloginfo( 'language' );
 	if ( $currentlang == 'pt-BR' ) : ?>
-		<div class="top-bar">
-			<h3>
-				<a href="https://manualdousuario.net/" aria-label="Página inicial do blog.">
-					<img src="https://manualdousuario.net/wp-content/themes/dez/img/logo-manual-top-bar.avif" height="38" width="33" alt>
-				</a>
-			</h3>
-			<ul>
-				<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
-				<li class="apoie"><a href="https://manualdousuario.net/apoie/">⭐️<span>Assine</span></a></li>
-				<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
-				<li><a href="https://manualdousuario.net/podcast/">Podcasts</a></li>
-				<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
-				<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Diretório de newsletters</a></li>
-				<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
-			</ul>
-		</div>
+		<ul class="top-bar">
+			<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
+			<li class="apoie"><a href="https://manualdousuario.net/apoie/">⭐️<span>Assine</span></a></li>
+			<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
+			<li><a href="https://manualdousuario.net/podcast/">Podcasts</a></li>
+			<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
+			<li><a href="https://manualdousuario.net/newsletters-brasileiras/">Newsletters BR</a></li>
+			<li><a href="https://lerama.pcdomanual.com">Lerama</a></li>
+		</ul>
 	<?php endif; ?>
 
 	<div id="page" class="site">
@@ -58,7 +53,7 @@
 					<?php if ( $currentlang == 'en-US' ) : ?>
 						<a href="https://manualdousuario.net/en/">Manual do Usuário</a>
 					<?php else : ?>
-						Manual do Usuário
+						<a href="https://manualdousuario.net/">Manual do Usuário</a>
 					<?php endif; ?>
 					</<?php echo esc_html( $title_tag ); ?>>
 					<div class="site-rg">
@@ -135,8 +130,7 @@
 				echo $icon_nav;
 				?>
 			</nav>
+			<?php if ( shortcode_exists( 'sc' ) ) {
+				echo do_shortcode('[sc name="anuncio-global"][/sc]');
+			} ?>
 		</header>
-
-		<?php if ( shortcode_exists( 'sc' ) ) {
-			echo do_shortcode('[sc name="anuncio-global"][/sc]');
-		} ?>

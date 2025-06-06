@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.8.6' );
+	define( '_S_VERSION', '3.9' );
 }
 
 function dez_setup() {
@@ -558,21 +558,201 @@ function dez_scripts_rodape_especiais() {
 			});
 		</script>
 
-	<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
-		<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript"></script>
-
-		<script type="module">
-			window.onload = () => {
-				function shuffleArray(array) {
-					for (var i = array.length - 1; i > 0; i--) {
-						var j = Math.floor(Math.random() * (i + 1));
-						var temp = array[i];
-						array[i] = array[j];
-						array[j] = temp;
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+	var maxLength = 600; // Define o comprimento máximo
+	
+	// Seleciona todos os comentários
+	var comments = document.querySelectorAll(".comment-content, .comment-text");
+	
+	comments.forEach(function(comment) {
+		// Pega o texto sem HTML para contar caracteres
+		var plainText = (comment.textContent || comment.innerText).trim();
+		
+		if (plainText.length > maxLength) {
+			// Salva o HTML original
+			var originalHTML = comment.innerHTML;
+			
+			// Encontra posição de corte respeitando palavras
+			var cutPos = maxLength;
+			var lastSpace = plainText.lastIndexOf("&nbsp;", maxLength);
+			if (lastSpace !== -1) {
+				cutPos = lastSpace;
+			}
+			
+			// Cria versão truncada preservando HTML
+			var tempDiv = document.createElement('div');
+			tempDiv.innerHTML = originalHTML;
+			var shortHTML = truncateHTML(tempDiv, cutPos);
+			
+			// Cria a estrutura HTML
+			var wrapper = document.createElement("div");
+			wrapper.className = "comment-wrapper";
+			
+			var collapsedDiv = document.createElement("div");
+			collapsedDiv.className = "collapsed-comment";
+			collapsedDiv.innerHTML = shortHTML;
+			
+			// Função para encontrar o último parágrafo na div
+			function findLastParagraph(container) {
+				var allPs = container.querySelectorAll('p');
+				if (allPs.length === 0) return null;
+				
+				// Filtra apenas os parágrafos que são descendentes diretos ou estão no último nível
+				var lastP = null;
+				var maxDepth = -1;
+				
+				for (var i = allPs.length - 1; i >= 0; i--) {
+					var p = allPs[i];
+					var depth = 0;
+					var parent = p.parentNode;
+					
+					// Calcula a profundidade do parágrafo
+					while (parent !== container) {
+						depth++;
+						parent = parent.parentNode;
+					}
+					
+					// Se é o primeiro parágrafo ou está na mesma profundidade do último encontrado
+					if (lastP === null || depth <= maxDepth) {
+						lastP = p;
+						maxDepth = depth;
+						break; // Como estamos indo de trás para frente, o primeiro que encontrarmos é o último
 					}
 				}
+				
+				return lastP;
+			}
+			
+			// Insere o "Read more" no final do último parágrafo
+			var lastP = findLastParagraph(collapsedDiv);
+			if (lastP) {
+				lastP.innerHTML += '…&nbsp;<a href="#" class="read-more">Expandir&nbsp;&raquo;</a>';
+			} else {
+				// Se não há parágrafos, adiciona no final
+				collapsedDiv.innerHTML += '<p>…&nbsp;<a href="#" class="read-more">Expandir&nbsp;&raquo;</a></p>';
+			}
+			
+			var fullDiv = document.createElement("div");
+			fullDiv.className = "full-comment";
+			fullDiv.style.display = "none";
+			fullDiv.innerHTML = originalHTML;
+			
+			// Insere o "Read less" no final do último parágrafo
+			var lastPFull = findLastParagraph(fullDiv);
+			if (lastPFull) {
+				lastPFull.innerHTML += '&nbsp;<a href="#" class="read-less">&laquo;&nbsp;Contrair</a>';
+			} else {
+				// Se não há parágrafos, adiciona no final
+				fullDiv.innerHTML += '<p><a href="#" class="read-less">&laquo;&nbsp;Contrair</a></p>';
+			}
+			
+			wrapper.appendChild(collapsedDiv);
+			wrapper.appendChild(fullDiv);
+			
+			// Substitui o conteúdo original
+			comment.innerHTML = "";
+			comment.appendChild(wrapper);
+		}
+	});
+	
+	// Função para truncar HTML preservando tags
+	function truncateHTML(element, maxLength) {
+		var textLength = 0;
+		var result = '';
+		
+		function processNode(node) {
+			if (textLength >= maxLength) return false;
+			
+			if (node.nodeType === 3) { // Text node
+				var text = node.textContent;
+				var remaining = maxLength - textLength;
+				
+				if (text.length <= remaining) {
+					result += text;
+					textLength += text.length;
+					return true;
+				} else {
+					// Corta no último espaço
+					var cutText = text.substring(0, remaining);
+					var lastSpace = cutText.lastIndexOf(' ');
+					if (lastSpace !== -1) {
+						cutText = cutText.substring(0, lastSpace);
+					}
+					result += cutText;
+					textLength = maxLength;
+					return false;
+				}
+			} else if (node.nodeType === 1) { // Element node
+				var tagName = node.tagName.toLowerCase();
+				result += '<' + tagName;
+				
+				// Adiciona atributos
+				for (var i = 0; i < node.attributes.length; i++) {
+					var attr = node.attributes[i];
+					result += ' ' + attr.name + '="' + attr.value + '"';
+				}
+				result += '>';
+				
+				// Processa filhos
+				var shouldContinue = true;
+				for (var j = 0; j < node.childNodes.length && shouldContinue; j++) {
+					shouldContinue = processNode(node.childNodes[j]);
+				}
+				
+				result += '</' + tagName + '>';
+				return shouldContinue;
+			}
+			return true;
+		}
+		
+		for (var i = 0; i < element.childNodes.length; i++) {
+			if (!processNode(element.childNodes[i])) break;
+		}
+		
+		return result;
+	}
+	
+	// Event delegation para os links
+	document.addEventListener("click", function(e) {
+		if (e.target.classList.contains("read-more")) {
+			e.preventDefault();
+			var wrapper = e.target.closest(".comment-wrapper");
+			var collapsed = wrapper.querySelector(".collapsed-comment");
+			var full = wrapper.querySelector(".full-comment");
+			
+			collapsed.style.display = "none";
+			full.style.display = "block";
+		}
+		
+		if (e.target.classList.contains("read-less")) {
+			e.preventDefault();
+			var wrapper = e.target.closest(".comment-wrapper");
+			var collapsed = wrapper.querySelector(".collapsed-comment");
+			var full = wrapper.querySelector(".full-comment");
+			
+			full.style.display = "none";
+			collapsed.style.display = "block";
+		}
+	});
+});
+</script>
 
-				const table = document.querySelector('table');
+<?php } elseif ( is_page( '25504' ) || is_single( '32681' ) ) { /* Tabela dinâmica do diretório de newsletters */ ?>
+	<script src="/wp-content/themes/dez/js/jsDelivr.js" type="text/javascript"></script>
+
+	<script type="module">
+		window.onload = () => {
+			function shuffleArray(array) {
+				for (var i = array.length - 1; i > 0; i--) {
+					var j = Math.floor(Math.random() * (i + 1));
+					var temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+			}
+
+			const table = document.querySelector('table');
 const rows = Array.from(table.querySelectorAll("tr")).slice(1); // pula o cabeçalho
 shuffleArray(rows);
 

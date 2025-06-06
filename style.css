@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.8.6
+Version: 3.9
 Tested up to: 6.8.1
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -44,6 +44,7 @@ TABELA DE CONTEÚDO
 	- display: none
 	- Formulário de entrevista do diretório de newsletters
 # Plugins
+	- Algolia
 	- StCR
 	- Órbita
 	- Seriously Simple Podcasting
@@ -415,44 +416,28 @@ figure img.alignright {
 }
 
 .top-bar {
+	list-style: none;
 	background: hsl(0, 0%, 97%);
 	box-shadow: 0 4px 10px hsl(0, 0%, 92%);
 	font-size: 14px;
 	font-family: ui-monospace, monospace;
+	height: 36px;
+	padding-inline: .5rem;
 	display: flex;
+	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: center;
-	column-gap: 1.5rem;
-	margin-bottom: 2lh;
-	padding-inline: 1rem;
-	height: 36px;
+	column-gap: 1rem;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: none;
 }
 .top-bar * {
 	margin: 0;
 	padding: 0;
 }
 
-.top-bar h3 {
-	margin-top: 10px;
-}
-.top-bar h3 img {
-	max-width: 33px;
-	height: 38px;
-}
-
-.top-bar ul {
-	list-style: none;
-	display: flex;
-	flex-wrap: nowrap;
-	column-gap: 1rem;
-	white-space: nowrap;
-	overflow-x: auto;
-	overflow-y: hidden;
-	scrollbar-width: none; /* Firefox */
-}
-.top-bar li {
-	margin: 0;
-}
 .top-bar ul li a {
 	padding: 10px 6px;
 }
@@ -460,11 +445,13 @@ figure img.alignright {
 .top-bar a {
 	flex-shrink: 0;
 }
-.top-bar a:active {
-	font-weight: bold;
-}
-.top-bar a:visited {
+.top-bar a:visited,
+.site-title a:visited {
 	color: var(--cor-link-ori);
+}
+.top-bar a:hover,
+.site-title a:hover {
+	color: var(--cor-link-est);
 }
 .top-bar .apoie a {
 	text-decoration: none;
@@ -476,14 +463,10 @@ figure img.alignright {
 @media (max-width: 900px) {
 	.top-bar {
 		justify-content: start;
-		padding-right: 0;
-	}
-	.top-bar {
-		column-gap: 1rem;
 	}
 	.top-bar ul {
 		column-gap: .5rem;
-		padding-right: 1rem;
+		padding-inline: 1rem;
 	}
 }
 
@@ -505,12 +488,10 @@ figure img.alignright {
 .site-header {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	gap: var(--med-salto-pequeno);
 	justify-content: space-between;
 	align-items: center;
-	margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-medio);
-	padding-bottom: var(--med-salto-pequeno);
-	border-bottom: 1px dashed var(--cor-bordas);
+	margin: calc(var(--med-salto-pequeno) * 1.5) 0 var(--med-salto-grande);
 }
 
 .site-branding {
@@ -528,13 +509,13 @@ figure img.alignright {
 	margin: 0;
 	height: auto;
 	font-family: var(--ff-serif);
-	font-size:var(--fs-1);
+	font-size:var(--fs-2);
 	font-weight: 600;
 	letter-spacing: -1px;
 	line-height: 1;
 }
 .site-rg {
-	font-size: .95rem;
+	font-size: 1.05rem;
 	line-height: 1;
 }
 
@@ -607,13 +588,14 @@ article.hentry li:last-child {
 	display: flex;
 	justify-content: center;
 	margin: var(--med-salto-grande) 0;
+	width: 100%;
+	background-color: var(--cor-destaques);
+	border-radius: var(--med-borda);
 }
 
 .ctx-newsletter {
-	background-color: var(--cor-destaques);
-	border-radius: var(--med-borda);
 	padding: .5rem 1rem .75rem;
-	min-width: fit-content;
+	width: fit-content;
 }
 
 .ctx-newsletter > p:first-child,
@@ -771,7 +753,7 @@ article:not(.type-page) .entry-header,
 
 .entry-header h1,
 .entry-header h2 {
-	font-size: var(--fs-4);
+	font-size: var(--fs-3);
 	line-height: 1.25;
 	margin: 0 0 var(--med-salto-pequeno);
 }
@@ -910,9 +892,6 @@ div.ctx-editor p:last-child {
 	margin-bottom: 0;
 }
 
-.category-promocoes .entry-meta {
-	display: none;
-}
 .category-promocoes .entry-title {
 	font-size: var(--fs-2);
 	display: initial !important;
@@ -999,6 +978,10 @@ ol.comment-list,
 	max-width: 100%;
 }
 
+b.fn {
+	font-weight: normal;
+}
+
 .comment-content ul,
 .comment-content ol {
 	margin-left: var(--med-salto-pequeno);
@@ -1043,9 +1026,8 @@ ol.children {
 	align-items: center;
 	justify-content: space-between;
 	column-gap: 1rem;
-	padding: 1rem 3rem 1rem 1rem;
+	padding: .35rem 3rem .35rem .85rem;
 	margin-bottom: var(--med-salto-pequeno);
-	line-height: 1;
 	border-radius: var(--med-borda);
 	background-color: var(--cor-destaques);
 }
@@ -1202,9 +1184,6 @@ input[type="search"].search-field {
 	color: transparent;
 }
 
-input[type="submit"].search-submit {
-	display: none;
-}
 
 /* Páginas especiais
 --------------------------------------------- */
@@ -1350,10 +1329,11 @@ article.format-link .entry-content > figure img {
 	justify-content: center;
 	column-gap: 1rem;
 	align-items: center;
-	background-color: var(--cor-destaques);
-	padding: .5rem 1rem;
-	margin: 0 -1rem var(--med-salto-medio);
+	padding: var(--med-salto-pequeno) .5rem .5rem .5rem;
+	margin: 0;
 	border-radius: var(--med-borda);
+	width: 100%;
+	border-top: 1px dashed var(--cor-bordas);
 }
 
 .patrocinio-okkre2025 img {
@@ -1365,24 +1345,30 @@ article.format-link .entry-content > figure img {
 	justify-content: start;
 	background-color: var(--cor-atencao);
 	max-width: var(--med-comp-linha);
+	margin: 0 -1rem var(--med-salto-medio) !important;
+	padding: .35rem 1rem !important;
+	border: none;
 }
 
-/* display: none
+/* display: none (acessível)
 --------------------------------------------- */
 
 .entry-meta span.author-1,
 .entry-meta span.author-4,
 .screen-reader-text,
-article.format-aside .entry-title,
-article.format-link .entry-title,
-article.format-image .entry-title,
 .comment-form-author label,
 .comment-form-email label,
 .comment-form-comment label,
 span.required-field-message,
 .says,
-#menu-toggle {
-	display: none;
+#menu-toggle,
+input[type="submit"].search-submit,
+.category-promocoes .entry-meta {
+	visibility: hidden;
+	width: 1px;
+	height: 1px;
+	position: absolute;
+	overflow: hidden;
 }
 
 /* Formulário de entrevista do diretório de newsletters
@@ -1403,6 +1389,48 @@ span.required-field-message,
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
+
+/* Algolia
+--------------------------------------------- */
+
+#ais-main,
+#ais-facets {
+	padding: 0 !important;
+}
+#ais-facets {
+	width: initial !important;
+	margin-left: 1rem;
+}
+
+#algolia-search-box input {
+	border: 1px solid var(--cor-bordas) !important;
+	padding: 0 .5rem 0 2rem !important;
+	background: url(/wp-content/themes/dez/img/icone-pesquisar.svg) no-repeat 6px !important;
+	background-size: 20px !important;
+}
+
+.algolia-search-box-wrapper .search-icon {
+	display: none;
+}
+
+.ais-hits--thumbnail {
+	float: initial !important;
+	margin-right: 0 !important;
+}
+
+#algolia-pagination {
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
+}
+.ais-Pagination {
+	text-align: center;
+}
+li.ais-Pagination-item {
+	margin: 0 0 0 1rem;
+}
+li:first-child.ais-Pagination-item {
+	margin: 0;
+}
 
 /* StCR
 --------------------------------------------- */
@@ -1715,9 +1743,10 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0 .5rem;
 	}
 
-	.site-header {
-		justify-content: space-between;
-		gap: 1rem .5rem;
+	.buttondown {
+		width: auto;
+		margin: 0 -.5rem var(--med-salto-medio) !important;
+		padding: .35rem .5rem !important;
 	}
 
 	.site-branding {
@@ -1750,7 +1779,7 @@ table.dataTable-table tr:nth-child(even) {
 	details,
 	.patrocinio-okkre2025 {
 		margin: 0 -.5rem var(--med-salto-pequeno);
-		padding: 1rem .5rem;
+		padding: .75rem .5rem;
 		border-radius: 0;
 	}
 	.podcast_player {
@@ -1760,7 +1789,8 @@ table.dataTable-table tr:nth-child(even) {
 		max-width: initial;
 	}
 	.patrocinio-okkre2025 {
-		margin-bottom: var(--med-salto-medio) !important;
+		order: 4;
+		flex-grow: 1;
 	}
 
 	.box-meta {
@@ -1769,11 +1799,6 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0;
 		border-radius: 0;
 		margin: var(--med-salto-grande) -.5rem;
-	}
-
-	.ctx-newsletter {
-		width: 100%;
-		border-radius: 0;
 	}
 
 	.ctx-newsletter > p:last-child {
@@ -1893,7 +1918,7 @@ table.dataTable-table tr:nth-child(even) {
 	--cor-link-vis: rgb(171, 136, 255);
 	--cor-link-est: rgb(166, 189, 255);
 
-	--cor-atencao: hsl(360, 87%, 26%);
+	--cor-atencao: hsl(360, 100%, 14%);
 
 	--cor-bordas: rgb(68, 68, 68);
 	--cor-destaques: hsl(0, 0%, 18%);
