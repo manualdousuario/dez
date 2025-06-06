@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 3.8.6
+Stable tag: 3.9
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,13 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.9 - 6/6/2025 =
+* Simplifica barra global.
+* Limita exibição na capa de posts da tag `links-do-dia` a apenas um (mais recente).
+* Restaura títulos de post types que estavam ocultos (acessibilidade).
+* Altera comentários para contrair textos com +500 caracteres.
+* Vários pequenos ajustes cosméticos.
 
 = 3.8.6 - 10/5/2025 =
 * Altera requisitos mínimos (WordPress 5.9, PHP 7.4).
