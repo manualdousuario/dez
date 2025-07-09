@@ -1,0 +1,26 @@
+{
+  "short_name": "Manual",
+  "name": "Manual do Usuário",
+  "description": "Apenas mais um blog de tecnologia.",
+  "theme_color": "#F0F0F0",
+  "categories": ["news", "social"],
+  "start_url": "/",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "app-icon.png",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Órbita",
+      "url": "/orbita/"
+    },
+    {
+      "name": "Podcasts",
+      "url": "/podcast/"
+    }
+  ]
+}

@@ -12,6 +12,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
+		// Verifica se temos um post válido antes de prosseguir
+		if (!get_post()) {
+			return;
+		}
+		
 		// Armazena valores comumente usados em variáveis para evitar chamadas repetidas
 		$permalink = esc_url(get_permalink());
 		$post_date = get_the_date();
@@ -52,7 +57,7 @@
 				echo '<span class="entry-spons0r">' . esc_html__('* Patrocinado', 'dez') . '</span>';
 			} else {
 				$author_id = get_the_author_meta('ID');
-				echo '<span class="author-' . absint($author_id) . '">' . esc_html(get_the_author()) . '</span>';
+				echo '<span class="autoria author-' . absint($author_id) . '">' . esc_html(get_the_author()) . '</span>';
 			}
 			?>
 		</div><!-- .entry-meta -->
@@ -83,7 +88,7 @@
 <?php
 // Exibição do shortcode de newsletter em posts individuais
 $current_lang = get_bloginfo('language');
-if (is_single() && shortcode_exists('sc')) {
+if (is_single() && shortcode_exists('sc') && get_post()) {
 	$shortcode_name = ($current_lang == 'pt-BR') ? 'newsletter-post' : 'newsletter-post-en';
 	echo do_shortcode('[sc name="' . esc_attr($shortcode_name) . '"][/sc]');
 }
