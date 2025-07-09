@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.9' );
+	define( '_S_VERSION', '3.9.1' );
 }
 
 function dez_setup() {
@@ -88,6 +88,8 @@ function dez_dequeue_assets() {
 	wp_dequeue_style( 'activitypub-follow-me-style' ); // ActivityPub
 	wp_dequeue_style( 'akismet' );
 	wp_dequeue_style( 'akismet-widget-style' ); // Akismet
+	wp_dequeue_style( 'wpcom-admin-bar' );
+	wp_dequeue_style( 'launch-banner' );
 
 	wp_dequeue_script( 'jquery');
 	wp_dequeue_script( 'wp-embed' );
@@ -95,7 +97,9 @@ function dez_dequeue_assets() {
 
 	wp_dequeue_script( 'jp-tracks' );
 	wp_dequeue_script( 'jetpack-mu-wpcom-settings' );
-	wp_dequeue_script( 'bilmur' ); // Jetpack
+	wp_dequeue_script( 'bilmur' ); 
+	wp_deregister_script( 'adminbar-launch-button' );
+	wp_deregister_script( 'jp-tracks-functions' ); // Jetpack
 }
 add_action( 'wp_enqueue_scripts', 'dez_dequeue_assets' );
 
@@ -114,6 +118,8 @@ function dez_dequeue_assets_dashboard() {
 	wp_dequeue_style( 'jetpack-core-color-schemes-overrides-sidebar-notice' );
 	wp_dequeue_style( 'command-palette-styles' );
 	wp_dequeue_style( 'wpcomsh-admin-style' );
+	wp_dequeue_style( 'activitypub-reactions-style-inline' );
+	wp_dequeue_style( 'activitypub-reply-style-inline' );
 
 	wp_dequeue_script( 'jetpack-accessible-focus' );
 	wp_dequeue_script( 'help-center-translations' );
@@ -170,12 +176,14 @@ add_action( 'admin_head', 'dez_css_styling_dashboard' );
 /**
  * Filtros
  */
-add_filter( 'gutenberg_can_edit_post', '__return_false', 5 );
-add_filter( 'use_block_editor_for_post', '__return_false', 5 ); 
+add_filter( 'use_block_editor_for_post', '__return_false', 10 ); 
+add_filter( 'use_block_editor_for_post_type', '__return_false', 10 ); 
 add_filter( 'should_load_separate_core_block_assets', '__return_true', 5 );
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 ); 
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' ); // Remove Gutenberg
+
+add_filter( 'show_admin_bar', 'is_blog_admin' ); // Remove assets da barra de admin
 
 add_filter( 'use_widgets_block_editor', '__return_false' ); // Remove widgets de blocos
 
@@ -480,7 +488,7 @@ function dez_script_alo() {
 
 			const aloConfig = {
 				registrationMode: 'auto',
-				registrationDelay: 15000,
+				registrationDelay: 210000,
 				customSegments: {
 					tag: '<?= $section; ?>'
 				},
@@ -559,7 +567,7 @@ function dez_scripts_rodape_especiais() {
 		</script>
 
 		<script type="text/javascript">
-			document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
 	var maxLength = 600; // Define o comprimento máximo
 	
 	// Seleciona todos os comentários
@@ -573,17 +581,8 @@ function dez_scripts_rodape_especiais() {
 			// Salva o HTML original
 			var originalHTML = comment.innerHTML;
 			
-			// Encontra posição de corte respeitando palavras
-			var cutPos = maxLength;
-			var lastSpace = plainText.lastIndexOf("&nbsp;", maxLength);
-			if (lastSpace !== -1) {
-				cutPos = lastSpace;
-			}
-			
-			// Cria versão truncada preservando HTML
-			var tempDiv = document.createElement('div');
-			tempDiv.innerHTML = originalHTML;
-			var shortHTML = truncateHTML(tempDiv, cutPos);
+			// Cria versão truncada de forma mais simples
+			var shortHTML = createTruncatedVersion(originalHTML, plainText, maxLength);
 			
 			// Cria a estrutura HTML
 			var wrapper = document.createElement("div");
@@ -593,59 +592,16 @@ function dez_scripts_rodape_especiais() {
 			collapsedDiv.className = "collapsed-comment";
 			collapsedDiv.innerHTML = shortHTML;
 			
-			// Função para encontrar o último parágrafo na div
-			function findLastParagraph(container) {
-				var allPs = container.querySelectorAll('p');
-				if (allPs.length === 0) return null;
-				
-				// Filtra apenas os parágrafos que são descendentes diretos ou estão no último nível
-				var lastP = null;
-				var maxDepth = -1;
-				
-				for (var i = allPs.length - 1; i >= 0; i--) {
-					var p = allPs[i];
-					var depth = 0;
-					var parent = p.parentNode;
-					
-					// Calcula a profundidade do parágrafo
-					while (parent !== container) {
-						depth++;
-						parent = parent.parentNode;
-					}
-					
-					// Se é o primeiro parágrafo ou está na mesma profundidade do último encontrado
-					if (lastP === null || depth <= maxDepth) {
-						lastP = p;
-						maxDepth = depth;
-						break; // Como estamos indo de trás para frente, o primeiro que encontrarmos é o último
-					}
-				}
-				
-				return lastP;
-			}
-			
-			// Insere o "Read more" no final do último parágrafo
-			var lastP = findLastParagraph(collapsedDiv);
-			if (lastP) {
-				lastP.innerHTML += '…&nbsp;<a href="#" class="read-more">Expandir&nbsp;&raquo;</a>';
-			} else {
-				// Se não há parágrafos, adiciona no final
-				collapsedDiv.innerHTML += '<p>…&nbsp;<a href="#" class="read-more">Expandir&nbsp;&raquo;</a></p>';
-			}
+			// Adiciona o link "Expandir" no final
+			addExpandLink(collapsedDiv);
 			
 			var fullDiv = document.createElement("div");
 			fullDiv.className = "full-comment";
 			fullDiv.style.display = "none";
 			fullDiv.innerHTML = originalHTML;
 			
-			// Insere o "Read less" no final do último parágrafo
-			var lastPFull = findLastParagraph(fullDiv);
-			if (lastPFull) {
-				lastPFull.innerHTML += '&nbsp;<a href="#" class="read-less">&laquo;&nbsp;Contrair</a>';
-			} else {
-				// Se não há parágrafos, adiciona no final
-				fullDiv.innerHTML += '<p><a href="#" class="read-less">&laquo;&nbsp;Contrair</a></p>';
-			}
+			// Adiciona o link "Contrair" no final
+			addContractLink(fullDiv);
 			
 			wrapper.appendChild(collapsedDiv);
 			wrapper.appendChild(fullDiv);
@@ -656,61 +612,131 @@ function dez_scripts_rodape_especiais() {
 		}
 	});
 	
-	// Função para truncar HTML preservando tags
-	function truncateHTML(element, maxLength) {
-		var textLength = 0;
-		var result = '';
+	// Função para criar versão truncada preservando a estrutura
+	function createTruncatedVersion(html, plainText, maxLength) {
+		// Encontra a posição de corte respeitando palavras
+		var cutPos = maxLength;
+		var lastSpace = plainText.lastIndexOf(" ", maxLength);
+		if (lastSpace !== -1 && lastSpace > maxLength * 0.8) {
+			cutPos = lastSpace;
+		}
 		
-		function processNode(node) {
-			if (textLength >= maxLength) return false;
+		// Cria um elemento temporário para manipular o HTML
+		var temp = document.createElement('div');
+		temp.innerHTML = html;
+		
+		// Trunca o texto preservando as tags
+		var currentLength = 0;
+		var truncated = false;
+		
+		function truncateNode(node) {
+			if (truncated) return;
 			
 			if (node.nodeType === 3) { // Text node
 				var text = node.textContent;
-				var remaining = maxLength - textLength;
-				
-				if (text.length <= remaining) {
-					result += text;
-					textLength += text.length;
-					return true;
-				} else {
-					// Corta no último espaço
-					var cutText = text.substring(0, remaining);
-					var lastSpace = cutText.lastIndexOf(' ');
-					if (lastSpace !== -1) {
-						cutText = cutText.substring(0, lastSpace);
+				if (currentLength + text.length > cutPos) {
+					var remaining = cutPos - currentLength;
+					if (remaining > 0) {
+						var cutText = text.substring(0, remaining);
+						// Corta na última palavra
+						var lastSpace = cutText.lastIndexOf(' ');
+						if (lastSpace !== -1 && lastSpace > remaining * 0.8) {
+							cutText = cutText.substring(0, lastSpace);
+						}
+						node.textContent = cutText;
+					} else {
+						node.textContent = '';
 					}
-					result += cutText;
-					textLength = maxLength;
-					return false;
+					truncated = true;
+				} else {
+					currentLength += text.length;
 				}
 			} else if (node.nodeType === 1) { // Element node
-				var tagName = node.tagName.toLowerCase();
-				result += '<' + tagName;
-				
-				// Adiciona atributos
-				for (var i = 0; i < node.attributes.length; i++) {
-					var attr = node.attributes[i];
-					result += ' ' + attr.name + '="' + attr.value + '"';
+				var children = Array.from(node.childNodes);
+				for (var i = 0; i < children.length; i++) {
+					truncateNode(children[i]);
+					if (truncated) {
+						// Remove nós seguintes se já truncamos
+						for (var j = i + 1; j < children.length; j++) {
+							node.removeChild(children[j]);
+						}
+						break;
+					}
 				}
-				result += '>';
-				
-				// Processa filhos
-				var shouldContinue = true;
-				for (var j = 0; j < node.childNodes.length && shouldContinue; j++) {
-					shouldContinue = processNode(node.childNodes[j]);
-				}
-				
-				result += '</' + tagName + '>';
-				return shouldContinue;
 			}
-			return true;
 		}
 		
-		for (var i = 0; i < element.childNodes.length; i++) {
-			if (!processNode(element.childNodes[i])) break;
+		var children = Array.from(temp.childNodes);
+		for (var i = 0; i < children.length; i++) {
+			truncateNode(children[i]);
+			if (truncated) {
+				// Remove elementos seguintes se já truncamos
+				for (var j = i + 1; j < children.length; j++) {
+					temp.removeChild(children[j]);
+				}
+				break;
+			}
 		}
 		
-		return result;
+		return temp.innerHTML;
+	}
+	
+	// Função para adicionar link "Expandir"
+	function addExpandLink(container) {
+		var expandLink = '…&nbsp;<a href="#" class="read-more">Expandir&nbsp;&raquo;</a>';
+		
+		// Procura pelo último elemento que contém texto
+		var walker = document.createTreeWalker(
+			container,
+			NodeFilter.SHOW_TEXT,
+			null,
+			false
+		);
+		
+		var lastTextNode = null;
+		var node;
+		while (node = walker.nextNode()) {
+			if (node.textContent.trim()) {
+				lastTextNode = node;
+			}
+		}
+		
+		if (lastTextNode && lastTextNode.parentNode) {
+			// Adiciona o link no elemento pai do último nó de texto
+			lastTextNode.parentNode.innerHTML += expandLink;
+		} else {
+			// Fallback: adiciona no final do container
+			container.innerHTML += expandLink;
+		}
+	}
+	
+	// Função para adicionar link "Contrair"
+	function addContractLink(container) {
+		var contractLink = '&nbsp;<a href="#" class="read-less">&laquo;&nbsp;Contrair</a>';
+		
+		// Procura pelo último elemento que contém texto
+		var walker = document.createTreeWalker(
+			container,
+			NodeFilter.SHOW_TEXT,
+			null,
+			false
+		);
+		
+		var lastTextNode = null;
+		var node;
+		while (node = walker.nextNode()) {
+			if (node.textContent.trim()) {
+				lastTextNode = node;
+			}
+		}
+		
+		if (lastTextNode && lastTextNode.parentNode) {
+			// Adiciona o link no elemento pai do último nó de texto
+			lastTextNode.parentNode.innerHTML += contractLink;
+		} else {
+			// Fallback: adiciona no final do container
+			container.innerHTML += contractLink;
+		}
 	}
 	
 	// Event delegation para os links
@@ -887,4 +913,11 @@ add_action('init', function() {
 	pll_register_string( 'Compartilhe', 'Compartilhe' );
 	pll_register_string( 'Associado à', 'Associado à' );
 	pll_register_string( 'Apoio', 'Apoio' );
+});
+
+
+add_action( 'template_redirect', function() {
+	ob_start( function( $buffer ) {
+		return preg_replace( '#<style[^>]+id=[\'"]jetpack-global-styles-frontend-style-inline-css[\'"][^>]*>.*?</style>#s', '', $buffer );
+	});
 });
