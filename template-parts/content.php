@@ -18,6 +18,8 @@
 		// Exibe os títulos com estrutura condicional otimizada
 		if (is_singular()) {
 			the_title('<h1 class="p-name">', '</h1>');
+		} elseif (has_post_format('quote') && !is_singular()) {
+			the_title('<h2 class="p-name">', '</h2>');
 		} else {
 			the_title('<h2 class="p-name"><a href="' . $permalink . '" rel="bookmark">', '</a></h2>');
 		}
@@ -57,7 +59,7 @@
 		}
 		?>
 
-		<?php if ( !is_page() ) : ?>
+		<?php if (!is_page()) : ?>
 			<p class="entry-footer">
 				<button class="compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);">
 					<?php pll_e('Compartilhe'); ?>
@@ -65,7 +67,7 @@
 			</p>
 		<?php endif; ?>
 
-	</div><!-- .e-content -->
+	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php
