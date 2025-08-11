@@ -11,10 +11,10 @@
 
 <section class="no-results not-found">
 	<header class="entry-header">
-		<h1 class="entry-title">Sem resultados 🤔</h1>
+		<h1 class="p-name">Sem resultados 🤔</h1>
 	</header><!-- .page-header -->
 
-	<div class="entry-content">
+	<div class="e-content">
 		<?php
 		if ( is_search() ) :
 			?>

@@ -24,7 +24,6 @@
 	<p>2013–<?php echo esc_html( gmdate( 'Y' ) ); ?> &middot; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA 4.0</a></p>
 	<p><a href="https://celere.dev"><img src="/wp-content/themes/dez/img/celere-badge-escuro.svg" alt="Otimizado por Célere" width="190" height="27" loading="lazy" /></a></p>
 </footer>
-</div><!-- #page -->
 
 <a href="#" class="top" title="Voltar ao topo"></a>
 

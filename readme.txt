@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 3.9.1
+Stable tag: 3.10
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,12 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.10 - 11/8/2025 =
+* Altera capa do site (index.php).
+* Implementa tags compatíveis com microformato (h-entry).
+* Reformula barra do topo.
+* Pequenos ajustes em CSS e simplificação da estrutura.
 
 = 3.9.1 - 9/7/2025 =
 * Várias pequenas alterações.

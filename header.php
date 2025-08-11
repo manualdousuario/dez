@@ -30,9 +30,9 @@
 
 	<?php $currentlang = get_bloginfo( 'language' );
 	if ( $currentlang == 'pt-BR' ) : ?>
-		<ul class="top-bar">
+		<ul class="top-bar link-alt">
 			<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
-			<li class="apoie"><a href="https://manualdousuario.net/apoie/">⭐️<span>Assine</span></a></li>
+			<li class="apoie"><a href="https://manualdousuario.net/apoie/"><strong>Assine</strong></a></li>
 			<li><a href="https://pcdomanual.com/">PC do Manual</a></li>
 			<li><a href="https://manualdousuario.net/podcast/">Podcasts</a></li>
 			<li><a href="https://manualdousuario.net/loja/">Lojinha</a></li>
@@ -41,7 +41,7 @@
 		</ul>
 	<?php endif; ?>
 
-	<div id="page" class="site">
+
 		<header id="masthead" class="site-header">
 			<!-- Logo -->
 			<div class="site-branding">

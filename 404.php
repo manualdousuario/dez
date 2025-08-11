@@ -14,10 +14,10 @@ get_header();
 
 		<section class="error-404 not-found">
 			<header class="entry-header">
-				<h1 class="entry-title">Ops, algo deu errado…</h1>
+				<h1 class="p-name">Ops, algo deu errado…</h1>
 			</header><!-- .entry-header -->
 
-			<div class="entry-content">
+			<div class="e-content">
 				<p>A página que você tentou acessar não existe, foi excluída ou está em outro lugar. Use a pesquisa para tentar encontrá-la:</p>
 
 					<?php
