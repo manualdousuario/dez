@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.9.1' );
+	define( '_S_VERSION', '3.10' );
 }
 
 function dez_setup() {
@@ -70,7 +70,9 @@ function dez_enqueue_assets() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array() );
+	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array(), 1.0, array(
+				'strategy'  => 'defer',
+		) );
 }
 add_action( 'wp_enqueue_scripts', 'dez_enqueue_assets' );
 
@@ -907,13 +909,15 @@ add_action(
 /**
  * Traduções na interface (plugin Polylang)
  */
-add_action('init', function() {
-	pll_register_string( 'por', 'por' );
-	pll_register_string( 'Sobre', 'Sobre' );
-	pll_register_string( 'Compartilhe', 'Compartilhe' );
-	pll_register_string( 'Associado à', 'Associado à' );
-	pll_register_string( 'Apoio', 'Apoio' );
-});
+function dez_after_setup_theme() {
+    if ( function_exists( 'pll_register_string' ) ) {
+        pll_register_string( 'por', 'por', 'dez', false );
+        pll_register_string( 'Sobre', 'Sobre', 'dez', false );
+        pll_register_string( 'AssociadoA', 'Associado à', 'dez', false );
+        pll_register_string( 'Apoio', 'Apoio', 'dez', false );
+    }
+}
+ add_action( 'after_setup_theme', 'dez_after_setup_theme' );
 
 
 add_action( 'template_redirect', function() {

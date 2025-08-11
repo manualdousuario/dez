@@ -22,7 +22,7 @@ get_header();
 			<h1>Mapa do <strong>Manual do Usuário</strong></h1>
 		</header><!-- .entry-header -->
 
-		<div class="entry-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+		<div class="e-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 			<p style="flex-basis: 100%">No ar desde 15 de outubro de 2013, o <strong>Manual do Usuário</strong> já publicou milhares de posts. Abaixo, há alguns filtros para te ajudar a encontrar algo ou apenas navegar no nosso histórico.</p>
 
 			<div style="flex-basis: 1005">
