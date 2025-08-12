@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.10.1
+Version: 3.10.2
 Tested up to: 6.8.1
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -771,7 +771,7 @@ article:not(.type-page) .entry-header,
 
 .entry-spons0r {
 	text-align: right;
-	color: red;
+	color: hsl(0, 100%, 36%);
 	font-weight: bold;
 }
 
@@ -1796,9 +1796,8 @@ table.dataTable-table tr:nth-child(even) {
 	details,
 	.patrocinio-okkre2025,
 	.oferecimento {
-		margin: 0 0 var(--med-salto-pequeno);
+		margin: 0 -.5rem var(--med-salto-pequeno);
 		padding: .25rem .5rem;
-		border-radius: 0;
 		max-width: none;
 		width: initial;
 	}
@@ -1856,8 +1855,6 @@ table.dataTable-table tr:nth-child(even) {
 	.comment-meta {
 		flex-direction: column;
 		align-items: start;
-		row-gap: .25rem;
-		border-radius: 0;
 		padding: .5rem .5rem;
 	}
 	.comment-content,
@@ -1896,6 +1893,11 @@ table.dataTable-table tr:nth-child(even) {
 		margin-top: 0;
 	}
 
+	.wp-caption img[class*=wp-image-] {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
 	.alignleft,
 	.alignright {
 		float: initial;
@@ -1912,6 +1914,10 @@ table.dataTable-table tr:nth-child(even) {
 		margin-inline: auto;
 	}
 
+	.comment-meta {
+		border-radius: 0;
+	}
+
 	.site-footer p:last-child {
 		text-align: left;
 	}
@@ -1922,12 +1928,9 @@ table.dataTable-table tr:nth-child(even) {
 
 	.site-header,
 	.site-footer,
-	.blog article.hentry,
 	.navigation,
-	.wp-singular article.post,
-	.comments-area,
-	.search article,
-	.archive .site-main {
+	.site-main article,
+	.comments-area {
 		padding: 0 .5rem;
 	}
 
@@ -1943,6 +1946,21 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: initial;
 		box-shadow: none;
 		border-inline: 0;
+	}
+
+	.ctx,
+	.ctx-transparencia,
+	.ctx-atualizacao,
+	.ctx-atencao,
+	.ctx-dica,
+	.ctx-editor,
+	.podcast_player,
+	.format-link .link,
+	.comment-form-alert,
+	details,
+	.patrocinio-okkre2025,
+	.oferecimento {
+		border-radius: 0;
 	}
 }
 
@@ -1993,6 +2011,10 @@ table.dataTable-table tr:nth-child(even) {
 
 [data-theme="dark"] .post-thumbnail img {
 	box-shadow: none;
+}
+
+[data-theme="dark"] .entry-spons0r {
+	color: hsl(0, 100%, 76%);
 }
 
 /* Elementos interativos no modo dark (exceto botões) */
