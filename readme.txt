@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 3.10.1
+Stable tag: 3.10.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,9 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.10.2 - 12/8/2025 =
+* Pequenas correções de alinhamento.
 
 = 3.10.1 - 11/8/2025 =
 * Reverte capa do site (index.php) para estilo blog.
