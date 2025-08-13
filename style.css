@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.10.2
+Version: 3.10.3
 Tested up to: 6.8.1
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -172,8 +172,9 @@ svg {
 
 blockquote {
 	margin: 0 0 var(--med-salto-pequeno) 0;
-	border-left: .5rem solid var(--cor-bordas);
-	padding: 0 0 0 1rem;
+	border-left: 4px solid var(--cor-bordas);
+	border-radius: var(--med-borda);
+	padding: 0 0 0 .5rem;
 	max-width: var(--med-comp-linha);
 }
 
@@ -732,7 +733,7 @@ p.hf-message {
 	margin-top: var(--med-salto-medio);
 }
 
-.blog article.hentry {
+article.hentry {
 	margin-bottom: var(--med-salto-grande);
 }
 
@@ -1531,6 +1532,11 @@ li:first-child.ais-Pagination-item {
 	align-items: start;
 }
 
+.orbita-list li {
+	gap: 0 .5rem;
+	margin: 0 0 var(--med-salto-pequeno);
+}
+
 .orbita-list .vote {
 	line-height: 1;
 	min-width: 1.5rem;
@@ -1550,6 +1556,7 @@ li:first-child.ais-Pagination-item {
 
 ol.orbita-list .title {
 	text-wrap: balance;
+	line-height: 1.4;
 }
 
 .orbita-list .meta .title .domain {
@@ -1757,11 +1764,6 @@ table.dataTable-table tr:nth-child(even) {
 		--fs-5: 2rem;
 	}
 
-	blockquote {
-		margin: 0 -.5rem var(--med-salto-pequeno);
-		padding: 0 .5rem 0 1rem;
-	}
-
 	.site {
 		padding: 0 .5rem;
 	}
@@ -1929,7 +1931,7 @@ table.dataTable-table tr:nth-child(even) {
 	.site-header,
 	.site-footer,
 	.navigation,
-	.site-main article,
+	.site-main article.hentry,
 	.comments-area {
 		padding: 0 .5rem;
 	}
