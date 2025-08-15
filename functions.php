@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.10.3' );
+	define( '_S_VERSION', '3.10.4' );
 }
 
 function dez_setup() {
@@ -198,7 +198,7 @@ remove_action( 'wp_head', 'wp_resource_hints', 2 ); // Desabilita dns-prefetch n
 
 add_filter( 'login_display_language_dropdown', '__return_false' );
 add_filter( 'auth_cookie_expiration', function () {
-	return 28 * DAY_IN_SECONDS; // 30 days in seconds.
+	return 2 * YEAR_IN_SECONDS; // 2 years in seconds.
 } );
 
 add_filter( 'xmlrpc_enabled', '__return_false' );
