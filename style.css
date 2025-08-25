@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.10.4
+Version: 3.10.5
 Tested up to: 6.8.1
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -484,7 +484,9 @@ figure img.alignright {
 	gap: var(--med-salto-pequeno);
 	justify-content: space-between;
 	align-items: center;
-	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-grande);
+	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-medio);
+	padding-bottom: var(--med-salto-medio);
+	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 .site-branding {
@@ -562,6 +564,29 @@ ul.nav-menu {
 	margin: 0;
 }
 
+/*
+ * EthicalAds
+ */
+
+[data-ea-type=image].loaded {
+	margin-bottom: var(--med-salto-medio);
+}
+
+[data-ea-type=image].loaded,
+[data-ea-publisher]:not([data-ea-type]).loaded,
+.ea-type-image {
+	width: 100%;
+}
+
+[data-ea-type=image].loaded.horizontal .ea-content,
+[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,
+.ea-type-image.horizontal .ea-content,
+[data-ea-type=image].loaded.horizontal .ea-callout,
+[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,
+.ea-type-image.horizontal .ea-callout {
+	margin: 0 auto !important;
+}
+
 /* Corpo
 --------------------------------------------- */
 
@@ -579,7 +604,7 @@ article.hentry li:last-child {
 .ctx-newsletter {
 	width: fit-content;
 	padding: var(--med-salto-pequeno) var(--med-salto-medio);
-	margin: var(--med-salto-grande) auto;
+	margin: var(--med-salto-medio) auto var(--med-salto-grande);
 	background-color: var(--cor-destaques);
 	border-radius: var(--med-borda);
 	box-shadow: 6px 6px 10px hsl(0, 0%, 92%);
@@ -737,6 +762,10 @@ p.hf-message {
 article.hentry {
 	margin-bottom: var(--med-salto-grande);
 }
+.hfeed article.hentry {
+	border-bottom: 1px dashed var(--cor-bordas);
+	padding-bottom: var(--med-salto-pequeno);
+}
 
 /* Post
 --------------------------------------------- */
@@ -758,16 +787,15 @@ article:not(.type-page) .entry-header,
 .entry-meta {
 	display: flex;
 	flex-wrap: nowrap;
-	gap: 1rem;
+	gap: 2rem;
 	justify-content: space-between;
 	align-items: center;
 }
-.entry-meta * {
-	max-width: fit-content;
+.entry-meta time {
+	flex-basis: 100%;;
 }
 
 .comment-link {
-	order: 3;
 	flex: 0;
 }
 
@@ -791,7 +819,7 @@ article:not(.type-page) .entry-header,
 	color: var(--cor-link-meta);
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	min-height: 24px;
+	min-height: 28px;
 }
 .compartilhe:hover {
 	color: var(--cor-link-meta-est);
@@ -800,6 +828,7 @@ article:not(.type-page) .entry-header,
 .compartilhe:hover {
 	border: none;
 	background-color: transparent;
+	padding-inline: 10px;
 }
 
 .e-content h2 {
@@ -817,6 +846,7 @@ article:not(.type-page) .entry-header,
 }
 .post-thumbnail img {
 	box-shadow: 4px 4px 16px hsl(0, 0%, 85%);
+	border-radius: var(--med-borda);
 }
 
 .footnotes {
@@ -1896,7 +1926,12 @@ table.dataTable-table tr:nth-child(even) {
 		margin-top: 0;
 	}
 
-	.wp-caption img[class*=wp-image-] {
+	.entry-meta {
+		gap: 1rem;
+	}
+
+	.wp-caption img[class*=wp-image-],
+	.post-thumbnail img {
 		border-radius: 0;
 		box-shadow: none;
 	}
@@ -1936,6 +1971,22 @@ table.dataTable-table tr:nth-child(even) {
 	.comments-area,
 	#ais-wrapper {
 		padding: 0 .5rem;
+	}
+	.site-header {
+		padding: 0 .5rem calc(var(--med-salto-pequeno) * 1.5);
+		margin-bottom: calc(var(--med-salto-pequeno) * 1.5);
+	}
+	.site-main article.hentry {
+		padding: 0 .5rem var(--med-salto-pequeno);
+	}
+
+	/*
+	 * Ethical Ads
+	 */
+	[data-ea-type=image].loaded,
+	[data-ea-publisher]:not([data-ea-type]).loaded,
+	.ea-type-image {
+		margin-bottom: calc(var(--med-salto-pequeno) * 1.5);
 	}
 
 	.site-main article.hentry {
