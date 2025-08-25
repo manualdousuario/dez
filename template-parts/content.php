@@ -32,6 +32,10 @@
 				<time class="dt-published" datetime="<?php echo get_the_date( 'Y-m-d' ); echo '&nbsp;'; echo get_the_time( 'H:m:s' ); ?>"><?php echo get_the_date(); echo ',&nbsp;'; echo get_the_time(); ?></time>
 			<?php } ?>
 
+			<?php if (!is_page()) : ?>
+					<button class="compartilhe" aria-label="Compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);"></button>
+			<?php endif; ?>
+
 			<?php // Link para comentários
 			if ( comments_open() || get_comments_number() ) {
 				comments_popup_link('0', '1', '%', 'comment-link', '');
@@ -58,14 +62,6 @@
 			the_content();
 		}
 		?>
-
-		<?php if (!is_page()) : ?>
-			<p class="entry-footer">
-				<button class="compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);">
-					<?php pll_e('Compartilhe'); ?>
-				</button>
-			</p>
-		<?php endif; ?>
 
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

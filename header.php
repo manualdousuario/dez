@@ -18,9 +18,14 @@
 	<meta name="robots" content="noarchive">
 	<?php wp_head(); ?>
 	<link rel="preconnect" href="https://umami.manualdousuario.net/" crossorigin>
-	<link rel="preconnect" href="https://alo.manualdousuario.net/" crossorigin>
+	<link rel="preconnect" href="https://alo.pcdomanual.com/" crossorigin>
 
 	<link rel="manifest" href="/manifest.json">
+
+	<?php $currentlang = get_bloginfo( 'language' );
+		if ( $currentlang == 'en-US' ) : ?>
+	<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+		<?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -28,8 +33,7 @@
 
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
 
-	<?php $currentlang = get_bloginfo( 'language' );
-	if ( $currentlang == 'pt-BR' ) : ?>
+	<?php if ( $currentlang == 'pt-BR' ) : ?>
 		<ul class="top-bar link-alt">
 			<li><a href="https://manualdousuario.net/orbita/">Órbita</a></li>
 			<li class="apoie"><a href="https://manualdousuario.net/apoie/"><strong>Assine</strong></a></li>
@@ -130,7 +134,11 @@
 				echo $icon_nav;
 				?>
 			</nav>
-			<?php if ( shortcode_exists( 'sc' ) ) {
-				echo do_shortcode('[sc name="anuncio-global"][/sc]');
-			} ?>
 		</header>
+
+	<?php $currentlang = get_bloginfo( 'language' );
+	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
+	elseif ( $currentlang == 'en-US' ) :
+		echo '<div class="horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
+	endif; ?>

@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 3.10.4
+Stable tag: 3.10.5
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,13 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.10.5 - 25/8/2025 =
+* Implementa anúncio do EthicalAds (somente na versão em inglês).
+* Arredonda cantos da imagem destacada em telas grandes.
+* Sobe botão de compartilhamento para os meta dados do topo (.entry-meta).
+* Corrige o preconnect do Alô (domínio estava errado).
+* Corrige posicionamento do box social (.ctx-newsletter).
 
 = 3.10.4 - 15/8/2025 =
 * Corrige página de resultados da busca.
