@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.10.5' );
+	define( '_S_VERSION', '3.10.6' );
 }
 
 function dez_setup() {
@@ -455,6 +455,7 @@ function dez_script_alo() {
 	}
 
 	if ( is_page( 'notificacoes' ) ) { ?>
+		<script src="https://alo.pcdomanual.com/Firebase"></script>
 		<script type="module">
 			import aloSDK from 'https://alo.pcdomanual.com/clientSDK';
 
@@ -485,6 +486,7 @@ function dez_script_alo() {
 			});			
 		</script> 
 	<?php } else { ?>
+		<script src="https://alo.pcdomanual.com/Firebase"></script>
 		<script type="module">
 			import aloSDK from 'https://alo.pcdomanual.com/clientSDK';
 
