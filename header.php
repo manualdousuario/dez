@@ -140,5 +140,5 @@
 	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
 		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
 	elseif ( $currentlang == 'en-US' ) :
-		echo '<div class="horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
+		echo '<div class="adaptive-css horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
 	endif; ?>
