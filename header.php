@@ -136,8 +136,7 @@
 			</nav>
 		</header>
 
-	<?php $currentlang = get_bloginfo( 'language' );
-	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
 		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
 	elseif ( $currentlang == 'en-US' ) :
 		echo '<div class="adaptive-css horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
