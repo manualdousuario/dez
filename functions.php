@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.10.8' );
+	define( '_S_VERSION', '3.11' );
 }
 
 function dez_setup() {
@@ -69,10 +69,6 @@ function dez_enqueue_assets() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	wp_enqueue_script( 'dez-dark-mode', get_template_directory_uri() . '/js/darkMode.min.js', array(), 1.0, array(
-				'strategy'  => 'defer',
-		) );
 }
 add_action( 'wp_enqueue_scripts', 'dez_enqueue_assets' );
 

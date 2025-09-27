@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.10.8
+Version: 3.11
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -472,11 +472,6 @@ figure img.alignright {
 	}
 }
 
-[data-theme="dark"] .top-bar {
-	background-color: hsl(0, 0%, 18%);
-	box-shadow: none;
-}
-
 .top-bar::-webkit-scrollbar {
 	display: none; /* Chrome/Safari */
 }
@@ -762,17 +757,6 @@ p.hf-message {
 	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/20px transparent;
 }
 
-[data-theme="dark"] #dark-mode-toggle li a::before,
-[data-theme="dark"] .menu-toggle-icon a::before,
-[data-theme="dark"] .search-form label::before,
-[data-theme="dark"] .dt-published::before,
-[data-theme="dark"] .p-author::before,
-[data-theme="dark"] .comment-link::before,
-[data-theme="dark"] .compartilhe::before,
-[data-theme="dark"] .lang-item::before {
-	filter: invert();
-}
-
 /* Capa
 --------------------------------------------- */
 .blog .navigation {
@@ -1003,11 +987,6 @@ div.ctx-editor p:last-child {
 	border-radius: var(--med-borda);
 	padding: .5rem .75rem;
 	font-style: initial;
-}
-
-[data-theme="dark"] .comment-form-alert {
-	background-color: hsl(360, 100%, 10%) !important;
-	border-color: hsl(360, 100%, 22%);
 }
 
 .comment-form-cookies-consent,
@@ -1444,18 +1423,6 @@ article.format-link .e-content > figure img {
 	border-color: hsl(216, 100%, 90%);
 }
 
-[data-theme="dark"] .of-celere {
-	background-color: hsl(272, 100%, 16%);
-	border-color: hsl(272, 90%, 37%);
-}
-[data-theme="dark"] .of-celere img {
-	filter: grayscale() invert();
-}
-[data-theme="dark"] .of-buttondown {
-	background-color: hsl(215, 100%, 17%) !important;
-	border-color: hsl(215, 99%, 34%) !important;
-}
-
 /* display: none (acessível)
 --------------------------------------------- */
 
@@ -1673,12 +1640,6 @@ a.sem-paywall {
 
 #orbita_post_url {
 	width: 100%;
-}
-
-[data-theme="dark"] .orbita-list .vote button,
-[data-theme="dark"] .orbita_post .orbita-meta button {
-	color: var(--cor-chapada) !important;
-	border: none;
 }
 
 /* Seriously Simple Podcasting
@@ -2132,111 +2093,152 @@ table.dataTable-table tr:nth-child(even) {
 # Modo escuro
 --------------------------------------------------------------*/
 
-[data-theme="dark"]:root {
-	--cor-pagina: hsl(0, 0%, 11%);
-	--cor-fonte: hsl(0, 0%, 84%);
-	--cor-chapada: hsl(0, 0%, 0%);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--cor-pagina: hsl(0, 0%, 11%);
+		--cor-fonte: hsl(0, 0%, 84%);
+		--cor-chapada: hsl(0, 0%, 0%);
 
-	--cor-link-meta: rgb(194, 210, 255);
-	--cor-link-meta-est: rgb(235, 240, 255);
-	--cor-link-ori: rgb(108, 147, 255);
-	--cor-link-vis: rgb(171, 136, 255);
-	--cor-link-est: rgb(166, 189, 255);
+		--cor-link-meta: rgb(194, 210, 255);
+		--cor-link-meta-est: rgb(235, 240, 255);
+		--cor-link-ori: rgb(108, 147, 255);
+		--cor-link-vis: rgb(171, 136, 255);
+		--cor-link-est: rgb(166, 189, 255);
 
-	--cor-atencao: hsl(360, 100%, 14%);
+		--cor-atencao: hsl(360, 100%, 14%);
 
-	--cor-bordas: rgb(68, 68, 68);
-	--cor-destaques: hsl(0, 0%, 18%);
-}
+		--cor-bordas: rgb(68, 68, 68);
+		--cor-destaques: hsl(0, 0%, 18%);
+	}
 
-[data-theme="dark"] .site-title img,
-[data-theme="dark"] .gridicon,
-[data-theme="dark"] .site-logo {
-	filter: invert();
-}
+	.site-title img,
+	.gridicon,
+	.site-logo {
+		filter: invert();
+	}
 
-[data-theme="dark"] .post-thumbnail img {
-	box-shadow: none;
-}
+	.post-thumbnail img {
+		box-shadow: none;
+	}
 
-[data-theme="dark"] .entry-spons0r {
-	color: hsl(0, 100%, 76%);
-}
-[data-theme="dark"] .patrocinio-okkre2025 {
-	border-color: hsl(0, 100%, 30%);
-}
+	.entry-spons0r {
+		color: hsl(0, 100%, 76%);
+	}
+	.patrocinio-okkre2025 {
+		border-color: hsl(0, 100%, 30%);
+	}
 
-/* Elementos interativos no modo dark (exceto botões) */
-[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
-[data-theme="dark"] textarea,
-[data-theme="dark"] select {
-	background-color: var(--cor-chapada);
-	color: var(--cor-fonte);
-}
+	/* Elementos interativos no modo dark (exceto botões) */
+	input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+	textarea,
+	select {
+		background-color: var(--cor-chapada);
+		color: var(--cor-fonte);
+	}
 
-/* Botões no modo dark: estado normal com fundo branco */
-[data-theme="dark"] input[type="reset"],
-[data-theme="dark"] input[type="submit"]:not(.search-submit),
-[data-theme="dark"] button:not(.compartilhe) {
-	background-color: hsl(210, 26%, 30%);
-	color: var(--cor-link-meta-est);
-	border: 1px solid hsl(210, 26%, 30%);
-}
+	/* Botões no modo dark: estado normal com fundo branco */
+	input[type="reset"],
+	input[type="submit"]:not(.search-submit),
+	button:not(.compartilhe) {
+		background-color: hsl(210, 26%, 30%);
+		color: var(--cor-link-meta-est);
+		border: 1px solid hsl(210, 26%, 30%);
+	}
 
-/* Hover para botões no modo dark */
-[data-theme="dark"] input[type="reset"]:hover,
-[data-theme="dark"] input[type="submit"]:hover:not(.search-submit),
-[data-theme="dark"] button:hover:not(.compartilhe) {
-	background-color: hsl(210, 30%, 45%);
-	border-color: hsl(210, 30%, 45%);
-	color: #ffffff;
-}
+	/* Hover para botões no modo dark */
+	input[type="reset"]:hover,
+	input[type="submit"]:hover:not(.search-submit),
+	button:hover:not(.compartilhe) {
+		background-color: hsl(210, 30%, 45%);
+		border-color: hsl(210, 30%, 45%);
+		color: #ffffff;
+	}
 
-/* Focus para botões no modo dark */
-[data-theme="dark"] input[type="reset"]:focus,
-[data-theme="dark"] input[type="submit"]:focus,
-[data-theme="dark"] button:focus {
-	border-color: #2c3e50;
-	box-shadow: 0 0 0 3px rgba(55, 90, 127, 0.5);
-}
+	/* Focus para botões no modo dark */
+	input[type="reset"]:focus,
+	input[type="submit"]:focus,
+	button:focus {
+		border-color: #2c3e50;
+		box-shadow: 0 0 0 3px rgba(55, 90, 127, 0.5);
+	}
 
-/* Estados de foco para campos específicos no tema dark */
-[data-theme="dark"] input[type="email"],
-[data-theme="dark"] input[type="search"],
-[data-theme="dark"] input[type="url"],
-[data-theme="dark"] input[type="number"],
-[data-theme="dark"] input[type="text"],
-[data-theme="dark"] textarea {
-	background-color: var(--cor-destaques);
-	color: var(--cor-fonte);
-}
+	/* Estados de foco para campos específicos no tema dark */
+	input[type="email"],
+	input[type="search"],
+	input[type="url"],
+	input[type="number"],
+	input[type="text"],
+	textarea {
+		background-color: var(--cor-destaques);
+		color: var(--cor-fonte);
+	}
 
-[data-theme="dark"] .podcast_player,
-[data-theme="dark"] .format-link .link,
-[data-theme="dark"] details {
-	background-color: var(--cor-destaques);
-}
+	.podcast_player,
+	.format-link .link,
+	details {
+		background-color: var(--cor-destaques);
+	}
 
-[data-theme="dark"] .podcast_player {
-	box-shadow: none;
-}
+	.podcast_player {
+		box-shadow: none;
+	}
 
-[data-theme="dark"] .ctx-newsletter {
-	box-shadow: none;
-}
+	.ctx-newsletter {
+		box-shadow: none;
+	}
 
-[data-theme="dark"] article.format-link .e-content > figure img,
-[data-theme="dark"] article.format-image .e-content > figure img {
-	box-shadow: none;
-}
+	article.format-link .e-content > figure img,
+	article.format-image .e-content > figure img {
+		box-shadow: none;
+	}
 
-[data-theme="dark"] .novo {
-	color: #ffc1c6;
-}
+	.novo {
+		color: #ffc1c6;
+	}
 
-[data-theme="dark"] .top:before {
-	border-top: 5px solid var(--cor-destaques);
-	border-right: 5px solid var(--cor-destaques);
+	.top:before {
+		border-top: 5px solid var(--cor-destaques);
+		border-right: 5px solid var(--cor-destaques);
+	}
+
+	.top-bar {
+		background-color: hsl(0, 0%, 18%);
+		box-shadow: none;
+	}
+
+	#dark-mode-toggle li a::before,
+	.menu-toggle-icon a::before,
+	.search-form label::before,
+	.dt-published::before,
+	.p-author::before,
+	.comment-link::before,
+	.compartilhe::before,
+	.lang-item::before {
+		filter: invert();
+	}
+
+	.comment-form-alert {
+		background-color: hsl(360, 100%, 10%) !important;
+		border-color: hsl(360, 100%, 22%);
+	}
+
+	.of-celere {
+		background-color: hsl(272, 100%, 16%);
+		border-color: hsl(272, 90%, 37%);
+	}
+	.of-celere img {
+		filter: grayscale() invert();
+	}
+	.of-buttondown {
+		background-color: hsl(215, 100%, 17%) !important;
+		border-color: hsl(215, 99%, 34%) !important;
+	}
+
+	.orbita-list .vote button,
+	.orbita_post .orbita-meta button {
+		color: var(--cor-chapada) !important;
+		border: none;
+	}
 }
 
 /*--------------------------------------------------------------
