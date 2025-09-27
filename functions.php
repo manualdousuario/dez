@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '3.10.7' );
+	define( '_S_VERSION', '3.10.8' );
 }
 
 function dez_setup() {
@@ -92,6 +92,7 @@ function dez_dequeue_assets() {
 	wp_dequeue_style( 'akismet-widget-style' ); // Akismet
 	wp_dequeue_style( 'wpcom-admin-bar' );
 	wp_dequeue_style( 'launch-banner' );
+	wp_dequeue_style( 'image-sizes' ); // Remove Unused Plugin code.
 
 	wp_dequeue_script( 'jquery');
 	wp_dequeue_script( 'wp-embed' );
@@ -147,6 +148,7 @@ function dez_dequeue_assets_dashboard() {
 }
 add_action( 'admin_enqueue_scripts', 'dez_dequeue_assets_dashboard', 999 );
 
+remove_filter( 'the_content', 'apply_block_hooks_to_content_from_post_object', 8 );
 remove_action( 'admin_footer', 'wpcomsh_footer_rum_js' );
 
 
@@ -187,6 +189,7 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' ); // Remov
 
 add_filter( 'show_admin_bar', 'is_blog_admin' ); // Remove assets da barra de admin
 
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 add_filter( 'use_widgets_block_editor', '__return_false' ); // Remove widgets de blocos
 
 add_filter( 'user_can_richedit', '__return_false' ); // Desativa editor visual do TinyMCE
@@ -229,6 +232,11 @@ remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
 remove_action( 'wp_head', 'rest_output_link_wp_head' );
 remove_action( 'template_redirect', 'rest_output_link_header', 11 ); // Desativa links da API REST
 
+function dequeue_akismet_js() {
+    remove_action( 'comment_form', array( 'Akismet', 'load_form_js' ) );
+} 
+add_action( 'init', 'dequeue_akismet_js', 99 );
+
 add_filter( 'jetpack_implode_frontend_css', '__return_false', 99 ); // Jetpack
 
 add_filter( 'activitypub_site_supports_blocks', '__return_false' ); // ActivityPub
@@ -244,6 +252,8 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 	$list[] = 'orbita_post';
 	return $list;
 } ); // Estende o fechamento automático de comentários para o Órbita.
+
+remove_filter( 'the_content', 'prepend_attachment' );
 
 remove_action( 'wp_footer', 'wpcomsh_footer_rum_js' );
 
@@ -332,6 +342,17 @@ add_action( 'init', function () {
 		return $urls;
 	}, 10, 2 );
 } );
+
+//	More formatting crap.
+add_action("init", function() {
+	remove_filter( "the_content", "convert_smilies", 20 );
+	foreach ( array( "the_content", "the_title", "wp_title", "document_title" ) as $filter ) {
+		remove_filter( $filter, "capital_P_dangit", 11 );
+	}
+	remove_filter( "comment_text", "capital_P_dangit", 31 );	//	No idea why this is separate
+	remove_filter( "the_content",  "do_blocks", 9 );
+}, 11);
+
 
 
 /**

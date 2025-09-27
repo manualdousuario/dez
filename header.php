@@ -60,9 +60,6 @@
 						<a href="https://manualdousuario.net/">Manual do Usuário</a>
 					<?php endif; ?>
 					</<?php echo esc_html( $title_tag ); ?>>
-					<div class="site-rg">
-						<?php pll_e('por'); ?> Rodrigo Ghedin
-					</div>
 				</div>
 			</div>
 

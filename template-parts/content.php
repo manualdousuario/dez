@@ -32,21 +32,21 @@
 				<time class="dt-published" datetime="<?php echo get_the_date( 'Y-m-d' ); echo '&nbsp;'; echo get_the_time( 'H:m:s' ); ?>"><?php echo get_the_date(); echo ',&nbsp;'; echo get_the_time(); ?></time>
 			<?php } ?>
 
-			<?php if (!is_page()) : ?>
+			<?php // Dados de autoria
+			if ( in_category('patrocinios') ) {
+				echo '<span class="entry-spons0r">' . esc_html__('* Patrocinado', 'dez') . '</span>';
+			} else {
+				$author_id = get_the_author_meta( 'ID' );
+				echo '<span class="p-author h-card author-' . absint($author_id) . '">' . esc_html(get_the_author()) . '</span>';
+			}
+
+			if (!is_page()) : ?>
 					<button class="compartilhe" aria-label="Compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);"></button>
 			<?php endif; ?>
 
 			<?php // Link para comentários
 			if ( comments_open() || get_comments_number() ) {
 				comments_popup_link('0', '1', '%', 'comment-link', '');
-			}
-
-			// Dados de autoria
-			if ( in_category('patrocinios') ) {
-				echo '<span class="entry-spons0r">' . esc_html__('* Patrocinado', 'dez') . '</span>';
-			} else {
-				$author_id = get_the_author_meta( 'ID' );
-				echo '<span class="p-author h-card author-' . absint($author_id) . '">' . esc_html(get_the_author()) . '</span>';
 			}
 			?>
 		</div><!-- .entry-meta -->

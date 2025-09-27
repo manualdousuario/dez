@@ -57,13 +57,16 @@ get_header(); ?>
 		'next_text' => '&laquo; Recentes',
 	) );
 
+	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+		echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
+	endif;
+	
 else :
 
 	get_template_part( 'template-parts/content', 'none' );
 
 endif;
 ?>
-
 </main><!-- #main -->
 
 <?php
