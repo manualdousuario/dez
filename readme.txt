@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 3.10.7
+Stable tag: 3.10.8
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,7 +37,15 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 3.10.7 - 12/9/2025 =
+= 3.10.8 - 22/9/2025 =
+* Simplifica cabeçalho e aumenta largura da barra de pesquisa.
+* Corrige margens de posts do Órbita.
+* Atualiza caixa da Célere (`.of-celere`).
+* Algumas adições ao `functions.php` daqui: https://gitlab.com/edent/blog-theme/-/blob/master/includes/remove.php
+* Remove formatação de comentários do ActivityPub.
+* Adiciona suporte inicial ao box de promoções e descontos.
+
+= 3.10.7 - 13/9/2025 =
 * Altera bordas e posicionamento de caixas (`.ctx`, `.oferecimento`).
 * Altera leiaute do título de citações (`.format-quote .p-name`).
 * Altera barra principal do Órbita.

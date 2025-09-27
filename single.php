@@ -10,22 +10,25 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+	<?php
+	while ( have_posts() ) :
+		the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+		get_template_part( 'template-parts/content', get_post_type() );
 
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
+		endif;
 
-		endwhile; // End of the loop.
-		?>
+	endwhile; // End of the loop.
 
-	</main><!-- #main -->
+	 $currentlang = get_bloginfo( 'language' );
+	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+		echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
+	endif; ?>
+</main><!-- #main -->
 
-<?php
-get_footer();
+	<?php
+	get_footer();

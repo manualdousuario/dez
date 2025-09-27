@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.10.7
+Version: 3.10.8
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -236,6 +236,10 @@ details {
 	cursor: pointer;
 }
 
+details[open] summary {
+	margin-bottom: var(--med-salto-pequeno);
+}
+
 /* Formulários
 --------------------------------------------- */
 
@@ -413,7 +417,8 @@ figure img.alignright {
 .site-header,
 .site-main,
 .site-footer,
-#ais-wrapper {
+#ais-wrapper,
+.patrocinio-okkre2025 {
 	max-width: 900px;
 	margin-inline: auto;
 	padding: 0 1rem;
@@ -482,19 +487,15 @@ figure img.alignright {
 .site-header {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--med-salto-pequeno);
+	gap: var(--med-salto-medio);
 	justify-content: space-between;
 	align-items: center;
 	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-medio);
-	padding-bottom: var(--med-salto-medio);
-	border-bottom: 1px dashed var(--cor-bordas);
 }
 
-.site-branding {
-	display: flex; 
-	column-gap: .75rem;
-	align-items: center;
-	width: fit-content;
+.site-branding,
+.icons-navigation {
+	flex: 0 0 auto;
 }
 .branding-text {
 	display: flex;
@@ -513,6 +514,16 @@ figure img.alignright {
 .site-rg {
 	font-size: 1.05rem;
 	line-height: 1;
+}
+
+.site-header .search-form {
+	flex: 1 1 auto;
+}
+.site-header .search-form label {
+	width: 100%;
+}
+.site-header input[type=submit].search-submit {
+	display: none;
 }
 
 .main-navigation {
@@ -540,12 +551,6 @@ figure img.alignright {
 	font-size: var(--fs-0);
 	position: relative;
 	margin: 0;
-}
-
-.icons-navigation {
-	flex-grow: 0;
-	gap: 1.25rem;
-	align-items: center;
 }
 
 ul.nav-menu {
@@ -663,6 +668,17 @@ p.hf-message {
 
 .ctx-newsletter a:visited {
 	color: var(--cor-link-ori);
+}
+
+.box-promocoes {
+	margin: var(--med-salto-grande) auto;
+	padding: 1rem 1.5rem;
+}
+.box-promocoes ul {
+	list-style: none;
+}
+.box-promocoes ul li {
+	margin: 0 0 1rem 0;
 }
 
 .novo {
@@ -796,12 +812,14 @@ article:not(.type-page) .entry-header,
 	justify-content: space-between;
 	align-items: center;
 }
-.entry-meta time {
-	flex-basis: 100%;;
-}
-
+.entry-meta time,
+.compartilhe,
 .comment-link {
-	flex: 0;
+	flex: 0 0 auto;
+}
+.p-author,
+.entry-spons0r {
+	flex: 1 1 auto;
 }
 
 .entry-spons0r {
@@ -1089,12 +1107,8 @@ ol.children {
 	border-radius: var(--med-borda);
 	background-color: var(--cor-destaques);
 }
-.activitypub-comment .comment-meta {
-	background-color: hsl(252, 100%, 96%);;
-}
 
-.byuser>.comment-body>footer>.comment-author>.fn:after,
-.activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
+.byuser>.comment-body>footer>.comment-author>.fn:after {
 	background-size: 26px;
 	display: inline-block;
 	width: 26px;
@@ -1109,12 +1123,6 @@ ol.children {
 }
 .byuser>.comment-body>footer>.comment-author>.fn:after {
 	background-image: url('/wp-content/themes/dez/img/selo-verificado.svg');
-}
-.activitypub-comment>.comment-body>footer>.comment-author>.fn:after {
-	background-image: url('/wp-content/themes/dez/img/icone-mastodon.svg');
-	background-size: 22px;
-	width: 22px;
-	left: 8px;
 }
 
 .comment-awaiting-moderation {
@@ -1259,12 +1267,13 @@ input[type="search"].search-field {
 }
 
 .page-id-39568 .p-name,
-.page-id-20602 .p-name,
+.page-id-20602 .entry-header,
 .page-id-19958 .p-name,
 .page-id-6971 .p-name,
 .page-id-33255 .p-name,
 .page-id-25504 .p-name,
-.page-id-56363 .p-name { /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
+.page-id-56363 .p-name,
+.page-template-default .entry-meta { /* Leiaute especial de páginas (Sobre, Patrocine etc.) */
 	display:none;
 }
 
@@ -1393,16 +1402,32 @@ article.format-link .e-content > figure img {
 .patrocinio-okkre2025 {
 	display: flex;
 	justify-content: center;
-	column-gap: 1rem;
 	align-items: center;
-	padding: var(--med-salto-pequeno) .5rem .5rem .5rem;
-	margin: 0;
+	padding: 0 1rem 0 0;
+	margin: 0 auto var(--med-salto-medio);
 	border-radius: var(--med-borda);
-	width: 100%;
-	border-top: 1px dashed var(--cor-bordas);
+	max-width: fit-content;
+	height: 40px;
+	border: 1px solid hsl(0, 100%, 90%);
+	background-color: var(--cor-atencao);
 }
 
-.patrocinio-okkre2025 img {
+.oferecimento {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	column-gap: 0;
+	width: fit-content;
+	height: 40px;
+	margin: calc( 2 * var(--med-salto-pequeno) ) auto;
+	padding: 0 1rem 0 0 !important;
+	border: 1px solid transparent;
+	border-radius: var(--med-borda);
+	line-height: 1;
+}
+
+.patrocinio-okkre2025 img,
+.oferecimento img {
 	height: 46px;
 	width: auto;
 	top: 0;
@@ -1410,19 +1435,9 @@ article.format-link .e-content > figure img {
 	left: -1rem;
 }
 
-.oferecimento {
-	justify-content: start;
-	column-gap: 0;
-	margin: calc( 2 * var(--med-salto-pequeno) ) auto;
-	padding: 0 1rem 0 0 !important;
-	border: 1px solid transparent;
-	width: fit-content;
-	height: 40px;
-	line-height: 1;
-}
-
 .of-celere {
 	background-color: hsl(272, 100%, 97%);
+	border-color: hsl(272, 78%, 89%);
 }
 .of-buttondown {
 	background-color: hsl(215, 100%, 97%);
@@ -1431,9 +1446,10 @@ article.format-link .e-content > figure img {
 
 [data-theme="dark"] .of-celere {
 	background-color: hsl(272, 100%, 16%);
+	border-color: hsl(272, 90%, 37%);
 }
 [data-theme="dark"] .of-celere img {
-	filter: grayscale() invert(.9);
+	filter: grayscale() invert();
 }
 [data-theme="dark"] .of-buttondown {
 	background-color: hsl(215, 100%, 17%) !important;
@@ -1443,8 +1459,6 @@ article.format-link .e-content > figure img {
 /* display: none (acessível)
 --------------------------------------------- */
 
-.entry-meta span.author-1,
-.entry-meta span.author-4,
 .screen-reader-text,
 .comment-form-author label,
 .comment-form-email label,
@@ -1609,6 +1623,10 @@ li:first-child.ais-Pagination-item {
 	align-items: start;
 }
 
+.single-orbita_post article.orbita_post {
+	border-bottom: 1px dashed var(--cor-bordas);
+}
+
 .orbita-list li {
 	gap: 0 .5rem;
 	margin: 0 0 var(--med-salto-pequeno);
@@ -1648,8 +1666,6 @@ a.sem-paywall {
 
 .single-orbita_post .comments-area {
 	margin: var(--med-salto-medio) 0 var(--med-salto-pequeno);
-	padding-top: var(--med-salto-medio);
-	border-top: 1px dashed var(--cor-bordas);
 }
 .single-orbita_post .comment-respond {
 	margin: 0 0 var(--med-salto-medio);
@@ -1839,9 +1855,6 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0 .5rem;
 	}
 
-	.site-branding {
-		width: fit-content;
-	}
 	#site-navigation {
 		order: 2;
 		min-height: fit-content;
@@ -1852,9 +1865,6 @@ table.dataTable-table tr:nth-child(even) {
 	.search-form {
 		order: 4;
 		width: 100%;
-	}
-	.search-form label {
-		display: flex;
 	}
 
 	.podcast_player,
@@ -1961,7 +1971,12 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	.entry-meta {
-		gap: 1rem;
+		gap: .5rem 1rem;
+		flex-wrap: wrap;
+	}
+	.entry-meta time {
+		flex: 1 1 auto;
+		order: 4;
 	}
 
 	.wp-caption img[class*=wp-image-],
@@ -1986,6 +2001,10 @@ table.dataTable-table tr:nth-child(even) {
 		margin-inline: auto;
 	}
 
+	.box-promocoes {
+		padding-inline: .5rem;
+	}
+
 	.comment-meta {
 		border-radius: 0;
 	}
@@ -2007,8 +2026,9 @@ table.dataTable-table tr:nth-child(even) {
 		padding: 0 .5rem;
 	}
 	.site-header {
-		padding: 0 .5rem calc(var(--med-salto-pequeno) * 1.5);
-		margin-bottom: calc(var(--med-salto-pequeno) * 1.5);
+		margin-bottom: var(--med-salto-medio);
+		padding: 0 .5rem;
+		gap: var(--med-salto-pequeno);
 	}
 	.site-main article.hentry {
 		padding: 0 .5rem var(--med-salto-pequeno);
@@ -2063,15 +2083,20 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: 0;
 		border-inline: none;
 	}
-	.oferecimento {
+	.oferecimento,
+	.patrocinio-okkre2025 {
 		margin: calc(2 * var(--med-salto-pequeno)) -.5rem !important;
 		padding: .35rem .5rem !important;
 		height: auto;
 		line-height: 1.4;
 		column-gap: .5rem;
 	}
-	.patrocinio-okkre2025 img {
+	.patrocinio-okkre2025 img,
+	.oferecimento img {
 		position: initial;
+	}
+	.patrocinio-okkre2025 {
+		margin-inline: 0 !important;
 	}
 	.type-page .ctx-newsletter {
 		margin-inline: -.5rem;
@@ -2130,20 +2155,15 @@ table.dataTable-table tr:nth-child(even) {
 	filter: invert();
 }
 
-[data-theme="dark"] .activitypub-comment .comment-meta {
-	background-color: hsl(240, 100%, 12%);
-}
-
-[data-theme="dark"] .activitypub-comment > .comment-body > footer > .comment-author > .fn:after {
-	filter: invert(1);
-}
-
 [data-theme="dark"] .post-thumbnail img {
 	box-shadow: none;
 }
 
 [data-theme="dark"] .entry-spons0r {
 	color: hsl(0, 100%, 76%);
+}
+[data-theme="dark"] .patrocinio-okkre2025 {
+	border-color: hsl(0, 100%, 30%);
 }
 
 /* Elementos interativos no modo dark (exceto botões) */
@@ -2354,8 +2374,7 @@ table.dataTable-table tr:nth-child(even) {
 	}
 
 	p,
-	li,
-	.oferecimento {
+	li {
 		max-width: 100%;
 	}
 
