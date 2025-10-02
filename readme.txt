@@ -37,8 +37,9 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 3.11.1 - 28/9/2025 =
+= 3.11.1 - 2/10/2025 =
 * Remove resquícios do modo escuro com JavaScript.
+* Ajustes no cabeçalho.
 
 = 3.11 - 27/9/2025 =
 * Altera o modo escuro do JavaScript para CSS puro.
