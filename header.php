@@ -65,6 +65,7 @@
 
 			<?php get_search_form(); ?>
 
+			<?php if ( $currentlang == 'pt-BR' ) : ?>
 			<!-- Icon Navigation -->
 			<nav class="icons-navigation main-navigation">
 				<?php
@@ -84,6 +85,7 @@
 					),
 				);
 
+				$icon_nav = '';
 				if( $currentlang=="pt-BR" ) {
 					$icon_nav .= '<div id="secondary-menu" class="menu-item">';
 
@@ -125,6 +127,7 @@
 				echo $icon_nav;
 				?>
 			</nav>
+			<?php endif; ?>
 		</header>
 
 	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :

@@ -485,7 +485,7 @@ figure img.alignright {
 	gap: var(--med-salto-medio);
 	justify-content: space-between;
 	align-items: center;
-	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-medio);
+	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-grande);
 }
 
 .site-branding,
@@ -2212,6 +2212,11 @@ table.dataTable-table tr:nth-child(even) {
 	.orbita_post .orbita-meta button {
 		color: var(--cor-chapada) !important;
 		border: none;
+		filter: invert();
+	}
+
+	.orbita-list .meta .title .domain {
+		color: hsl(0, 0%, 66%);
 	}
 }
 
