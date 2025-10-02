@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 3.11.1
+Stable tag: 3.11.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,9 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 3.11.2 - 2/10/2025 =
+* Corrige padding do `code`.
 
 = 3.11.1 - 2/10/2025 =
 * Remove resquícios do modo escuro com JavaScript.
