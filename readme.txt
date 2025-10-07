@@ -37,8 +37,10 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 3.11.2 - 2/10/2025 =
-* Corrige padding do `code`.
+= 3.12 - 7/10/2025 =
+* Diversifica leiautes de formatos de posts.
+* Diminui um pouco o tamanho das fontes.
+* Corrige padding da tag `code`.
 
 = 3.11.1 - 2/10/2025 =
 * Remove resquícios do modo escuro com JavaScript.

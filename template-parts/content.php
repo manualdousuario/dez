@@ -35,9 +35,6 @@
 			<?php // Dados de autoria
 			if ( in_category('patrocinios') ) {
 				echo '<span class="entry-spons0r">' . esc_html__('* Patrocinado', 'dez') . '</span>';
-			} else {
-				$author_id = get_the_author_meta( 'ID' );
-				echo '<span class="p-author h-card author-' . absint($author_id) . '">' . esc_html(get_the_author()) . '</span>';
 			}
 
 			if (!is_page()) : ?>
@@ -55,8 +52,11 @@
 	<?php dez_post_thumbnail(); ?>
 
 	<div class="e-content">
-		<?php
-		if ( is_search() && !has_post_format() ) {
+		<?php if ( get_the_author_meta('ID') != 1 ) { ?>
+			<p class="p-author">por <?php echo esc_html(get_the_author()); ?></p>
+		<?php } ?>
+
+		<?php if ( is_search() && !has_post_format() ) {
 			the_excerpt();
 		} else {
 			the_content();
