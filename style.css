@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.11.2
+Version: 3.12
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -76,11 +76,11 @@ TABELA DE CONTEÚDO
 	--ff-serif: Georgia, serif;
 	--ff-monospace: ui-monospace, monospace;
 
-	--fs-0: 1rem;
-	--fs-1: 1.3rem;
-	--fs-2: 1.55rem;
-	--fs-3: 1.85rem;
-	--fs-4: 2.25rem;
+	--fs-0: .9rem;
+	--fs-1: 1.2rem;
+	--fs-2: 1.45rem;
+	--fs-3: 1.75rem;
+	--fs-4: 2.05rem;
 	--fs-5: 2.45rem;
 	--fs-6: 3.15rem;
 
@@ -202,9 +202,6 @@ kbd {
 	font-family: var(--ff-monospace);
 	background: var(--cor-destaques);
 	border-radius: var(--med-borda);
-}
-code {
-	padding: 0;
 }
 kbd {
 	border: 1px solid var(--cor-bordas);
@@ -376,7 +373,7 @@ a.comment-reply-link,
 .posts-navigation a {
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
-	line-height: 1.4;
+	line-height: 2;
 }
 a.comment-metadata {
 	text-transform: initial;
@@ -679,7 +676,6 @@ p.hf-message {
 .menu-toggle-icon a,
 .search-form label,
 .dt-published,
-.p-author,
 .comment-link,
 .compartilhe,
 .lang-item {
@@ -690,7 +686,6 @@ p.hf-message {
 .menu-toggle-icon a::before,
 .search-form label::before,
 .dt-published::before,
-.p-author::before,
 .comment-link::before,
 .compartilhe::before,
 .lang-item::before {
@@ -716,23 +711,19 @@ p.hf-message {
 
 .dt-published:before,
 .posts-do-dia:before {
-	background: url(/wp-content/themes/dez/img/icone-calendario.svg) no-repeat 0/18px transparent;
-}
-
-.p-author::before {
-	background: url(/wp-content/themes/dez/img/icone-autoria.svg) no-repeat 0/20px transparent;
+	background: url(/wp-content/themes/dez/img/icone-calendario.svg) no-repeat 0/16px transparent;
 }
 
 .comment-link::before {
-	background: url("/wp-content/themes/dez/img/icone-comentarios.svg") no-repeat 0/20px transparent;
+	background: url("/wp-content/themes/dez/img/icone-comentarios.svg") no-repeat 0/18px transparent;
 }
 
 .compartilhe::before {
-	background: url(/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat 0/20px transparent;
+	background: url(/wp-content/themes/dez/img/icone-compartilhar.svg) no-repeat 0/18px transparent;
 }
 
 .lang-item::before {
-	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/20px transparent;
+	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/18px transparent;
 }
 
 /* Capa
@@ -756,7 +747,7 @@ article.hentry {
 article:not(.type-page) .entry-header,
 .format-quote .entry-meta {
 	margin-bottom: var(--med-salto-pequeno);
-	padding-bottom: var(--med-salto-pequeno);
+	padding-bottom: calc( var(--med-salto-pequeno) * .25 );
 	border-bottom: 1px dashed var(--cor-bordas);
 }
 
@@ -766,6 +757,12 @@ article:not(.type-page) .entry-header,
 	line-height: 1.25;
 	margin: 0 0 var(--med-salto-pequeno);
 }
+.format-aside .entry-header h1,
+.format-aside .entry-header h2,
+.format-link .entry-header h1,
+.format-link .entry-header h2 {
+	display: none;
+}
 
 .entry-meta {
 	display: flex;
@@ -774,12 +771,11 @@ article:not(.type-page) .entry-header,
 	justify-content: space-between;
 	align-items: center;
 }
-.entry-meta time,
 .compartilhe,
 .comment-link {
 	flex: 0 0 auto;
 }
-.p-author,
+.entry-meta time,
 .entry-spons0r {
 	flex: 1 1 auto;
 }
@@ -929,6 +925,10 @@ div.ctx-editor p:last-child {
 
 .single .comment-navigation {
 	margin-bottom: 4rem;
+}
+
+.p-author {
+	font-style: italic;
 }
 
 /* Comentários
@@ -1913,10 +1913,6 @@ table.dataTable-table tr:nth-child(even) {
 		gap: .5rem 1rem;
 		flex-wrap: wrap;
 	}
-	.entry-meta time {
-		flex: 1 1 auto;
-		order: 4;
-	}
 
 	.wp-caption img[class*=wp-image-],
 	.post-thumbnail img {
@@ -2187,7 +2183,6 @@ table.dataTable-table tr:nth-child(even) {
 	.menu-toggle-icon a::before,
 	.search-form label::before,
 	.dt-published::before,
-	.p-author::before,
 	.comment-link::before,
 	.compartilhe::before,
 	.lang-item::before {
