@@ -49,6 +49,7 @@
 		<header id="masthead" class="site-header">
 			<!-- Logo -->
 			<div class="site-branding">
+				<img src="/wp-content/themes/dez/img/logo-manual-do-usuario.png" alt />
 				<div class="branding-text">
 					<?php
 					$title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
@@ -65,8 +66,6 @@
 					</div>
 				</div>
 			</div>
-
-			<?php get_search_form(); ?>
 
 			<?php if ( $currentlang == 'pt-BR' ) : ?>
 			<!-- Icon Navigation -->
