@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.12
+Version: 3.12.1
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -172,8 +172,9 @@ svg {
 
 blockquote {
 	margin: 0 0 var(--med-salto-pequeno) 0;
-	border-left: 1rem solid var(--cor-bordas);
-	padding: 0 0 0 var(--med-salto-pequeno);
+	border-left: .25rem solid var(--cor-bordas);
+	border-radius: var(--med-borda);
+	padding: 0 0 0 1rem;
 	max-width: var(--med-comp-linha);
 }
 
@@ -485,7 +486,7 @@ figure img.alignright {
 	gap: var(--med-salto-medio);
 	justify-content: space-between;
 	align-items: center;
-	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-grande);
+	margin: calc(var(--med-salto-pequeno) * 1.5) auto var(--med-salto-medio);
 }
 
 .site-branding,
@@ -1955,7 +1956,6 @@ table.dataTable-table tr:nth-child(even) {
 	.site-header,
 	.site-footer,
 	.navigation,
-	.site-main article.hentry,
 	.comments-area,
 	#ais-wrapper {
 		padding: 0 .5rem;
@@ -1967,6 +1967,7 @@ table.dataTable-table tr:nth-child(even) {
 	}
 	.site-main article.hentry {
 		padding: 0 .5rem var(--med-salto-pequeno);
+		margin-bottom: var(--med-salto-grande);
 	}
 
 	/*
@@ -1976,10 +1977,6 @@ table.dataTable-table tr:nth-child(even) {
 	[data-ea-publisher]:not([data-ea-type]).loaded,
 	.ea-type-image {
 		margin-bottom: calc(var(--med-salto-pequeno) * 1.5);
-	}
-
-	.site-main article.hentry {
-		margin-bottom: var(--med-salto-grande);
 	}
 
 	.site-footer {
@@ -2016,11 +2013,11 @@ table.dataTable-table tr:nth-child(even) {
 		margin: 0 -.5rem var(--med-salto-pequeno);
 		padding: .25rem .5rem;
 		border-radius: 0;
-		border-inline: none;
+		border-inline-color: transparent;
 	}
 	.oferecimento,
 	.patrocinio-okkre2025 {
-		margin: calc(2 * var(--med-salto-pequeno)) -.5rem !important;
+		margin: var(--med-salto-medio) -.5rem !important;
 		padding: .35rem .5rem !important;
 		height: auto;
 		line-height: 1.4;

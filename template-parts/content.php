@@ -26,11 +26,17 @@
 		?>
 
 		<div class="entry-meta link-alt">
-			<?php
-			// Estrutura simplificada para metadata
-			if ( !is_page() ) { ?>
-				<time class="dt-published" datetime="<?php echo get_the_date( 'Y-m-d' ); echo '&nbsp;'; echo get_the_time( 'H:m:s' ); ?>"><?php echo get_the_date(); echo ',&nbsp;'; echo get_the_time(); ?></time>
-			<?php } ?>
+			<?php	if ( ! is_page() ) {
+				if ( has_post_format( array( 'aside', 'link' ) ) ) { ?>
+					<time class="dt-published" datetime="<?php echo get_the_date( 'Y-m-d' ) . ' ' . get_the_time( 'H:m:s' ); ?>">
+						<a href="<?php the_permalink(); ?>"><?php echo get_the_date() . ', ' . get_the_time(); ?></a>
+					</time>
+				<?php } else { ?>
+					<time class="dt-published" datetime="<?php echo get_the_date( 'Y-m-d' ) . ' ' . get_the_time( 'H:m:s' ); ?>">
+						<?php echo get_the_date() . ', ' . get_the_time(); ?>
+					</time>
+				<?php }
+			} ?>
 
 			<?php // Dados de autoria
 			if ( in_category('patrocinios') ) {
@@ -38,7 +44,7 @@
 			}
 
 			if (!is_page()) : ?>
-					<button class="compartilhe" aria-label="Compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);"></button>
+				<button class="compartilhe" aria-label="Compartilhe" onClick="compartilharPost('<?php echo esc_js(get_the_title()); ?>', '<?php echo esc_js($permalink); ?>', this);"></button>
 			<?php endif; ?>
 
 			<?php // Link para comentários
