@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 3.12.1
+Version: 3.13
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -420,7 +420,7 @@ figure img.alignright {
 .site-footer,
 #ais-wrapper,
 .patrocinio-okkre2025 {
-	max-width: 900px;
+	max-width: 800px;
 	margin-inline: auto;
 	padding: 0 1rem;
 }
@@ -493,6 +493,11 @@ figure img.alignright {
 .icons-navigation {
 	flex: 0 0 auto;
 }
+.site-branding {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+}
 .branding-text {
 	display: flex;
 	flex-direction: column;
@@ -511,15 +516,10 @@ figure img.alignright {
 	font-size: 1.05rem;
 	line-height: 1;
 }
-
-.site-header .search-form {
-	flex: 1 1 auto;
-}
-.site-header .search-form label {
-	width: 100%;
-}
-.site-header input[type=submit].search-submit {
-	display: none;
+.site-branding img,
+.site-branding img {
+	height: 1.5lh;
+	width: auto;
 }
 
 .main-navigation {
@@ -1131,10 +1131,11 @@ ol.children {
 --------------------------------------------- */
 
 .site-footer {
+	display: flex;
+	justify-content: space-between;
 	margin: var(--med-salto-grande) auto 0;
-	padding: var(--med-salto-pequeno) 0 0;
+	padding: var(--med-salto-pequeno) var(--med-salto-pequeno) 0;
 	border-top: 1px dashed var(--cor-bordas);
-	text-align: center;
 	font-family: var(--ff-monospace);
 	font-size: var(--fs-0);
 }
@@ -1146,12 +1147,34 @@ ol.children {
 .site-footer ul {
 	list-style: none;
 	display: flex;
-	justify-content: center;
 	gap: .5rem var(--med-salto-pequeno);
 	flex-wrap: wrap;
 }
 .site-footer li {
 	margin: 0;
+}
+
+@media (max-width: 640px) {
+	.site-footer {
+		flex-direction: column;
+		padding-top: var(--med-salto-pequeno);
+	}
+
+	.site-footer p:last-child {
+		text-align: left;
+	}
+
+	.site-footer .search-form {
+		order: 1;
+		width: 100%;
+		margin-block: var(--med-salto-pequeno);
+	}
+	.footer-credits {
+		order: 2;
+	}
+	.site-footer .search-form label {
+		width: 100%;
+	}
 }
 
 .top {
@@ -1802,10 +1825,6 @@ table.dataTable-table tr:nth-child(even) {
 	.icons-navigation {
 		order: 3;
 	}
-	.search-form {
-		order: 4;
-		width: 100%;
-	}
 
 	.podcast_player,
 	.format-link .link,
@@ -1945,10 +1964,6 @@ table.dataTable-table tr:nth-child(even) {
 		border-radius: 0;
 	}
 
-	.site-footer p:last-child {
-		text-align: left;
-	}
-
 	.site-main {
 		padding: 0;
 	}
@@ -1977,10 +1992,6 @@ table.dataTable-table tr:nth-child(even) {
 	[data-ea-publisher]:not([data-ea-type]).loaded,
 	.ea-type-image {
 		margin-bottom: calc(var(--med-salto-pequeno) * 1.5);
-	}
-
-	.site-footer {
-		padding-top: var(--med-salto-pequeno);
 	}
 
 	#ais-wrapper {
