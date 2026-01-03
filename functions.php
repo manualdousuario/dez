@@ -66,19 +66,34 @@ function dez_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'dez_enqueue_assets' );
 
 /**
- * Remoções
+ * Remove estilos e scripts
  */
-/*add_filter( 'user_can_richedit', '__return_false' ); // Desativa editor visual do TinyMCE
-add_filter( 'login_display_language_dropdown', '__return_false' );
-add_filter( 'xmlrpc_enabled', '__return_false' );
+function dez_dequeue_assets() {
+	wp_dequeue_style( 'wp-components' );
+	wp_dequeue_style( 'global-styles' );
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'classic-theme-styles' );
+	wp_dequeue_style( 'stcr-style' ); // Plugin, Subscribe to Comments Reloaded
+	wp_dequeue_style( 'activitypub-followers-style' );
+	wp_dequeue_style( 'activitypub-follow-me-style' ); // ActivityPub
+	wp_dequeue_style( 'akismet' );
+	wp_dequeue_style( 'akismet-widget-style' ); // Akismet
+	wp_dequeue_style( 'wpcom-admin-bar' );
+	wp_dequeue_style( 'launch-banner' );
+	wp_dequeue_style( 'image-sizes' ); // Remove Unused Plugin code.
 
-remove_action( 'wp_head', 'wp_generator' );
-remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-remove_action( 'wp_head', 'rsd_link' );
-remove_action( 'wp_head', 'wp_pingback_url' );
-remove_action( 'wp_head', 'wlwmanifest_link');
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-remove_action( 'wp_head', 'wp_resource_hints', 2 ); // Desabilita dns-prefetch no cabeçalho
+	wp_dequeue_script( 'jquery');
+	wp_dequeue_script( 'wp-embed' );
+	wp_dequeue_script( 'wp-mediaelement' );
+
+	wp_dequeue_script( 'jp-tracks' );
+	wp_dequeue_script( 'jetpack-mu-wpcom-settings' );
+	wp_dequeue_script( 'bilmur' ); 
+	wp_deregister_script( 'adminbar-launch-button' );
+	wp_deregister_script( 'jp-tracks-functions' ); // Jetpack
+}
+add_action( 'wp_enqueue_scripts', 'dez_dequeue_assets' );
 
 /**
  * Expiração de cookies de autenticação.
