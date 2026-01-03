@@ -55,14 +55,19 @@
 		</div>
 
 		<?php if ( $currentlang == 'pt-BR' ) : ?> 
-		<nav role="navigation" aria-label="Menu principal">
-			<ul>
-				<li><a href="/apoie" class="assine">Apoie</a></li>
-				<li><a href="/categoria/bastidores">Bastidores</a></li>
-				<li><a href="/orbita">Órbita</a></li>
-				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
-			</ul>
-		</nav>
+			<nav role="navigation" aria-label="Menu principal">
+				<ul>
+					<li><a href="/apoie" class="assine">Apoie</a></li>
+					<li><a href="/categoria/bastidores">Bastidores</a></li>
+					<li><a href="/orbita">Órbita</a></li>
+					<li><?php if ( is_user_logged_in() ) {
+						echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+					} else {
+						echo '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+					} ?></li>
+					<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
+				</ul>
+			</nav>
 		<?php endif; ?>
 	</header>
 
