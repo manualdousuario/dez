@@ -30,28 +30,28 @@ get_header(); ?>
 			if ( ( ! is_paged() && $count == 0 ) && $currentlang == 'pt-BR' ) :
 				echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
 			elseif ( ( ! is_paged() && $count == 0 ) && $currentlang == 'en-US' ) :
-			echo do_shortcode( '[sc name="newsletter-post"][/sc]' );  // XXX voltar para newsletter-post-en
+				echo do_shortcode( '[sc name="newsletter-post-en"][/sc]' );
+			endif;
+
+			$count++;
+
+		endwhile;
+
+		the_posts_navigation( array( 
+			'prev_text' => 'Antigos &raquo;',
+			'next_text' => '&laquo; Recentes',
+		) );
+
+		if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+			echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
 		endif;
+		
+	else :
 
-		$count++;
+		get_template_part( 'template-parts/content', 'none' );
 
-	endwhile;
-
-	the_posts_navigation( array( 
-		'prev_text' => 'Antigos &raquo;',
-		'next_text' => '&laquo; Recentes',
-	) );
-
-	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
-		echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
 	endif;
-	
-else :
-
-	get_template_part( 'template-parts/content', 'none' );
-
-endif;
-?>
+	?>
 </main><!-- #main -->
 
 <?php
