@@ -40,11 +40,11 @@ function dez_setup() {
 add_action( 'after_setup_theme', 'dez_setup' );
 
 /**
- * Carrega folha de estilo principal (style.css) com rel="preload"
+ * Carrega folha de estilo principal (style.min.css) com rel="preload"
  */
 function dez_preload_style ($preload_resources) {
 	$preload_resources[] = array(
-		'href' => get_stylesheet_directory_uri() . '/style.css?ver=' . filemtime( get_stylesheet_directory() . '/style.css' ),
+		'href' => get_stylesheet_directory_uri() . '/style.min.css?ver=' . filemtime( get_stylesheet_directory() . '/style.min.css' ),
 		'as' => 'style',
 		'type' => 'text/css',
 		'media' => 'all',
@@ -57,7 +57,7 @@ add_filter('wp_preload_resources', 'dez_preload_style');
  * Adiciona estilos e scripts
  */
 function dez_enqueue_assets() {
-	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.css', [], filemtime( get_stylesheet_directory() . '/style.css' ) );
+	wp_enqueue_style( 'dez-style', get_stylesheet_directory_uri() . '/style.min.css', [], filemtime( get_stylesheet_directory() . '/style.min.css' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
