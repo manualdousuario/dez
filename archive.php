@@ -17,7 +17,7 @@ get_header();
 			<header class="page-header">
 				<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
+				the_archive_description();
 				?>
 			</header><!-- .page-header -->
 
@@ -31,12 +31,16 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile;
 
 			the_posts_navigation();
 
+			$currentlang = get_bloginfo( 'language' );
+			if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+				echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
+			endif;
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );

@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 3.12.1
+Stable tag: 4.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,15 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 4.0 - 3/2/2026 =
+* Divide as chamadas de posts por post formats no `./template-tags`.
+* Cria leiautes para o post format “link”.
+* Adiciona parâmetros UTM aos feeds principais e cria variações sem.
+* Oculta da capa posts da categoria “Bastidores”.
+* Restaura widgets na página “Painel” do painel administrativo.
+* Redução e racionalização do `functions.php`.
+* Redução e otimização do CSS.
 
 = 3.12.1 - 7/10/2025 =
 * Restaura “por Rodrigo Ghedin” no cabeçalho.
