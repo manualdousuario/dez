@@ -1606,6 +1606,8 @@ input[type="submit"].search-submit,
 
 .orbita_post .orbita-meta {
 	align-items: start;
+	font-family: var(--ff-monospace);
+	font-size: var(--fs-0);
 }
 
 .single-orbita_post article.orbita_post {
