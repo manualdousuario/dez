@@ -16,9 +16,17 @@
 		$link_url = get_post_meta(get_the_ID(), 'link_url', true);
 		
 		if (is_singular()) {
-			the_title('<h1 class="p-name"><a href="' . esc_url($link_url) . '" rel="bookmark">', '</a>&nbsp;<span class="link-site"><img src="/wp-content/themes/dez/img/icone-link-externo.svg" width="32" height="32" alt>&nbsp;' . get_post_meta(get_the_ID(), 'link_site', true) . '</span></h1>');
+			if ($link_url) {
+				the_title('<h1 class="p-name"><a href="' . esc_url($link_url) . '" rel="bookmark">', '</a>&nbsp;<span class="link-site"><img src="/wp-content/themes/dez/img/icone-link-externo.svg" width="32" height="32" alt>&nbsp;' . get_post_meta(get_the_ID(), 'link_site', true) . '</span></h1>');
+			} else {
+				the_title('<h1 class="p-name">', '</h1>');
+			}
 		} else {
-			the_title('<h2 class="p-name"><a href="' . esc_url($link_url) . '" rel="bookmark">', '</a>&nbsp;<span class="link-site"><img src="/wp-content/themes/dez/img/icone-link-externo.svg" width="32" height="32" alt>&nbsp;' . get_post_meta(get_the_ID(), 'link_site', true) . '</span></h2>');
+			if ($link_url) {
+				the_title('<h2 class="p-name"><a href="' . esc_url($link_url) . '" rel="bookmark">', '</a>&nbsp;<span class="link-site"><img src="/wp-content/themes/dez/img/icone-link-externo.svg" width="32" height="32" alt>&nbsp;' . get_post_meta(get_the_ID(), 'link_site', true) . '</span></h2>');
+			} else {
+				the_title('<h2 class="p-name"><a href="' . $permalink . '" rel="bookmark">', '</a></h2>');
+			}
 		}
 		?>
 
