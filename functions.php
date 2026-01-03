@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '4.0' );
+	define( '_S_VERSION', '4.0.1' );
 }
 
 function dez_setup() {
@@ -375,7 +375,7 @@ add_filter('get_the_archive_title', function($title) {
  */
 add_action('pre_get_posts', function($query) {
 	if ($query->is_home() && $query->is_main_query()) {
-        $query->set('cat', '-15'); // XXX Corrigir a ID da categoria
+        $query->set('cat', '-1');
     }
 });
 
