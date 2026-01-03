@@ -42,6 +42,7 @@ More information: https://github.com/Automattic/_s
 * Corrige os links da página de assinatura e do Órbita no menu principal.
 * Restaura link para entrar/sair do WordPress/Órbita no menu principal.
 * Restaura remoções de estilos e scripts no `functions.php`.
+* Corrige os parâmetros UTM dos feeds no `functions.php`.
 
 = 4.0 - 3/2/2026 =
 * Divide as chamadas de posts por post formats no `./template-tags`.

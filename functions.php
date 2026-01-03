@@ -402,14 +402,10 @@ function dez_feeds_utm($permalink) {
 	
 	$utm_params = array(
 		'utm_source' => 'rss',
-		'utm_medium' => 'feed'
+		'utm_medium' => 'feed',
+		'utm_campaign' => 'interna',
+		'utm_content' => 'blog'
 	);
-	
-	if ($post->post_type === 'orbita_post') {
-		$utm_params['utm_campaign'] = 'orbita';
-	} else {
-		$utm_params['utm_campaign'] = 'blog';
-	}
 	
 	return add_query_arg($utm_params, $permalink);
 }
@@ -426,7 +422,8 @@ function dez_adicionar_feeds_sem_utm($content) {
 	$utm_params = array(
 		'utm_source' => 'rss',
 		'utm_medium' => 'feed',
-		'utm_campaign' => ($post->post_type === 'orbita_post') ? 'orbita' : 'blog'
+		'utm_campaign' => 'interna',
+		'utm_content' => 'blog'
 	);
 	
 	$link_utm = add_query_arg($utm_params, $link_original);
@@ -438,14 +435,6 @@ add_filter('the_content', 'dez_adicionar_feeds_sem_utm');
 
 add_action('init', function() {
 	add_feed('sem-utm', function() {
-		remove_filter('the_permalink_rss', 'dez_feeds_utm');
-		remove_filter('the_content', 'dez_adicionar_feeds_sem_utm');
-		load_template(ABSPATH . WPINC . '/feed-rss2.php');
-	});
-
-	add_feed('orbita-sem-utm', function() {
-		global $wp_query;
-		$wp_query->set('post_type', 'orbita_post');
 		remove_filter('the_permalink_rss', 'dez_feeds_utm');
 		remove_filter('the_content', 'dez_adicionar_feeds_sem_utm');
 		load_template(ABSPATH . WPINC . '/feed-rss2.php');
