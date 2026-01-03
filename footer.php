@@ -15,7 +15,6 @@
 	<nav class="footer-menu" role="navigation" aria-label="Menu do rodapé">
 		<ul>
 			<li><a href="/sobre/">Sobre</a></li>
-			<li><a href="/loja/">Lojinha</a></li>
 			<li><a href="https://manualdousuario.net/patrocine/">Patrocínio</a></li>
 			<li><a rel="privacy-policy" href="https://manualdousuario.net/politica-de-privacidade/">Privacidade</a></li>
 			<li><a href="mailto:ghedin@manualdousuario.net">Contato</a></li>
