@@ -265,7 +265,7 @@ dd {
 	padding-left: 2rem;
 }
 dd::last-child {
-	margin: 0;
+	margin: 0 !important;
 }
 dd::before {
 	content: '⤷';
