@@ -18,7 +18,12 @@
 			<li><a href="https://manualdousuario.net/patrocine/">Patrocínio</a></li>
 			<li><a rel="privacy-policy" href="https://manualdousuario.net/politica-de-privacidade/">Privacidade</a></li>
 			<li><a href="mailto:ghedin@manualdousuario.net">Contato</a></li>
-			<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
+			<?php $currentlang = get_bloginfo( 'language' );
+			if ( $currentlang == 'pt-BR' ) : ?>
+				<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
+			<? else : ?>
+				<li class="lang-item"><a href="https://manualdousuario.net/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+			<? endif; ?>
 		</ul>
 	</nav>
 
