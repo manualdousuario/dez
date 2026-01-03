@@ -890,7 +890,8 @@ div.ctx-editor p:last-child {
 
 .comments-area {
 	margin-top: var(--med-salto-grande);
-	padding-inline: .5rem;
+	padding: 0 .5rem var(--med-salto-pequeno);
+	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 .comment-respond {
@@ -913,6 +914,11 @@ div.ctx-editor p:last-child {
 
 .comment:last-child,
 .comment:last-child article {
+	margin-bottom: 0 !important;
+}
+
+.comment-form,
+p.form-submit {
 	margin-bottom: 0;
 }
 
@@ -959,8 +965,6 @@ div.ctx-editor p:last-child {
 
 .comments-area ol {
 	list-style: none;
-	padding: 0 .5rem var(--med-salto-pequeno);
-	border-bottom: 1px dashed var(--cor-bordas);
 }
 ol.comment-list,
 .comment-list li {
