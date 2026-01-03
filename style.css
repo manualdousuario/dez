@@ -618,7 +618,7 @@ p.hf-message {
 
 .box-promocoes {
 	margin: var(--med-salto-grande) auto;
-	padding: 1rem 1.5rem;
+	padding: 1rem .5rem;
 }
 .box-promocoes ul {
 	list-style: none;
