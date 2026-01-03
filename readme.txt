@@ -39,10 +39,11 @@ More information: https://github.com/Automattic/_s
 
 = 4.0.1 - 3/2/2026 =
 * Corrige overflow horizontal em telas pequenas.
+* Corrige padding-inline do cabeçalho das páginas de arquivo (`.page-header`).
 * Corrige os links da página de assinatura e do Órbita no menu principal.
+* Corrige os parâmetros UTM dos feeds no `functions.php`.
 * Restaura link para entrar/sair do WordPress/Órbita no menu principal.
 * Restaura remoções de estilos e scripts no `functions.php`.
-* Corrige os parâmetros UTM dos feeds no `functions.php`.
 
 = 4.0 - 3/2/2026 =
 * Divide as chamadas de posts por post formats no `./template-tags`.

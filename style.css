@@ -1220,6 +1220,7 @@ input[type="search"].search-field {
 .page-header { /* Páginas de arquivos */
 	border-bottom: 1px dashed var(--cor-bordas);
 	margin-bottom: var(--med-salto-grande);
+	padding-inline: .5rem;
 }
 
 .page-id-38122 label {
