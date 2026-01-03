@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.0.1 - 3/2/2026 =
 * Corrige overflow horizontal em telas pequenas.
+* Corrige os links da página de assinatura e do Órbita no menu principal.
 
 = 4.0 - 3/2/2026 =
 * Divide as chamadas de posts por post formats no `./template-tags`.

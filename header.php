@@ -59,7 +59,7 @@
 			<ul>
 				<li><a href="/apoie" class="assine">Apoie</a></li>
 				<li><a href="/categoria/bastidores">Bastidores</a></li>
-				<li><a href="https://orbita.social.br">Órbita</a></li>
+				<li><a href="/orbita">Órbita</a></li>
 				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
 			</ul>
 		</nav>
