@@ -54,16 +54,16 @@
 			</div>
 		</div>
 
-		<?php // XXX Remover este comentário. if ( $currentlang == 'pt-BR' ) : ?> 
+		<?php if ( $currentlang == 'pt-BR' ) : ?> 
 		<nav role="navigation" aria-label="Menu principal">
 			<ul>
-				<li><a href="/assine" class="assine">Apoie</a></li>
+				<li><a href="/apoie" class="assine">Apoie</a></li>
 				<li><a href="/categoria/bastidores">Bastidores</a></li>
 				<li><a href="https://orbita.social.br">Órbita</a></li>
 				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
 			</ul>
 		</nav>
-		<?php // XXX Este também. endif; ?>
+		<?php endif; ?>
 	</header>
 
 	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
