@@ -42,6 +42,7 @@ More information: https://github.com/Automattic/_s
 * Corrige padding-inline do cabeçalho das páginas de arquivo (`.page-header`).
 * Corrige os links da página de assinatura e do Órbita no menu principal.
 * Corrige os parâmetros UTM dos feeds no `functions.php`.
+* Corrige espaçamento entre comentários.
 * Restaura link para entrar/sair do WordPress/Órbita no menu principal.
 * Restaura remoções de estilos e scripts no `functions.php`.
 
