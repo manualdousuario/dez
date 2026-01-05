@@ -34,7 +34,6 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dez' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<!-- Logo -->
 		<div class="site-branding">
 			<img src="/wp-content/themes/dez/img/logo-manual-do-usuario.png" width="38" height="44" alt="">
 			<div class="branding-text">
@@ -53,23 +52,23 @@
 				</span>
 			</div>
 		</div>
-
-		<?php if ( $currentlang == 'pt-BR' ) : ?> 
-			<nav role="navigation" aria-label="Menu principal">
-				<ul>
-					<li><a href="/apoie" class="assine">Apoie</a></li>
-					<li><a href="/categoria/bastidores">Bastidores</a></li>
-					<li><a href="/orbita">Órbita</a></li>
-					<li><?php if ( is_user_logged_in() ) {
-						echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
-					} else {
-						echo '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
-					} ?></li>
-					<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
-				</ul>
-			</nav>
-		<?php endif; ?>
+		<div class="botao-apoie"><a href="/apoie" class="assine">Apoie</a></div>
 	</header>
+
+	<?php if ( $currentlang == 'pt-BR' ) : ?> 
+		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
+			<ul>
+				<li><a href="/categoria/bastidores">Bastidores</a></li>
+				<li><a href="/orbita">Órbita</a></li>
+				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
+				<li class="entrar-sair"><?php if ( is_user_logged_in() ) {
+					echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+				} else {
+					echo '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+				} ?></li>
+			</ul>
+		</nav>
+	<?php endif; ?>
 
 	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
 		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
