@@ -268,7 +268,7 @@ dd::last-child {
 	margin: 0 !important;
 }
 dd::before {
-	content: '&#10551;';
+	content: '\2937';
 	position: absolute;
 	margin-left: -1.75rem;
 	margin-top: -.1rem;
