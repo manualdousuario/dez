@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,7 +37,9 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.0.1 - 5/2/2026 =
+= 4.0.2 - 5/1/2026 =
+
+= 4.0.1 - 5/1/2026 =
 * Altera orientação do menu principal em telas pequenas.
 * Corrige overflow horizontal em telas pequenas.
 * Corrige padding-inline do cabeçalho das páginas de arquivo (`.page-header`).
