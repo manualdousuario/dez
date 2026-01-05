@@ -432,6 +432,13 @@ header.site-header a:visited {
 	color: var(--cor-link-ori);
 }
 
+html[lang="en-US"] header.site-header {
+	margin-bottom: var(--med-salto-grande);
+}
+html[lang="en-US"] .botao-apoie {
+	display: none;
+}
+
 .site-branding {
 	display: flex;
 	gap: .75rem;
