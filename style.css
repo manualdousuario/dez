@@ -900,11 +900,11 @@ div.ctx-editor p::last-child {
 
 .comments-area {
 	margin-top: var(--med-salto-grande);
-	padding: 0 .5rem;
+	padding: 0 .5rem var(--med-salto-pequeno);
 	border-bottom: 1px dashed var(--cor-bordas);
 }
 
-.comment-respond {
+.comments-area > .comment-respond:not(:only-child) {
 	margin: var(--med-salto-pequeno) 0 var(--med-salto-medio);
 	padding-bottom: var(--med-salto-medio);
 	border-bottom: 1px dashed var(--cor-bordas);
@@ -957,6 +957,7 @@ p.form-submit {
 
 .comment-form-comment {
 	max-width: 100%;
+	display: flex;
 }
 
 .comment-form-author,
@@ -1000,11 +1001,12 @@ b.fn {
 .comment-list .depth-1 {
 	margin: 0 0 var(--med-salto-medio) 0;
 }
-.comment-list li.depth-1::last-child {
-	margin-bottom: 0;
-}
 .comment-list article {
 	margin: 0 0 var(--med-salto-pequeno) 0;
+}
+.comment-list li.depth-1:last-child,
+.comment-list li.depth-1:last-child article.comment-body {
+	margin-bottom: 0;
 }
 
 ol.children {

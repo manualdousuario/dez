@@ -38,6 +38,7 @@ More information: https://github.com/Automattic/_s
 == Changelog ==
 
 = 4.0.2 - 5/1/2026 =
+* Corrige o espaçamento entre blocos dos comentários quando há ou não comentários.
 
 = 4.0.1 - 5/1/2026 =
 * Altera orientação do menu principal em telas pequenas.
