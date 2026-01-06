@@ -96,6 +96,48 @@ function dez_dequeue_assets() {
 add_action( 'wp_enqueue_scripts', 'dez_dequeue_assets' );
 
 /**
+ * Disable the emojis in WordPress.
+ */
+add_action( 'init', function () {
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+	// Remove from TinyMCE.
+	add_filter( 'tiny_mce_plugins', function ( $plugins ) {
+		if ( is_array( $plugins ) ) {
+			return array_diff( $plugins, array( 'wpemoji' ) );
+		} else {
+			return array();
+		}
+	} );
+
+	// Remove from dns-prefetch.
+	add_filter( 'wp_resource_hints', function ( $urls, $relation_type ) {
+		if ( 'dns-prefetch' === $relation_type ) {
+			$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+			$urls          = array_diff( $urls, array( $emoji_svg_url ) );
+		}
+
+		return $urls;
+	}, 10, 2 );
+} );
+
+//	More formatting crap.
+add_action("init", function() {
+	remove_filter( "the_content", "convert_smilies", 20 );
+	foreach ( array( "the_content", "the_title", "wp_title", "document_title" ) as $filter ) {
+		remove_filter( $filter, "capital_P_dangit", 11 );
+	}
+	remove_filter( "comment_text", "capital_P_dangit", 31 );	//	No idea why this is separate
+	remove_filter( "the_content",  "do_blocks", 9 );
+}, 11);
+
+/**
  * Expiração de cookies de autenticação.
  */
 add_filter( 'auth_cookie_expiration', function () {
