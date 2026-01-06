@@ -40,6 +40,7 @@ More information: https://github.com/Automattic/_s
 = 4.0.2 - 5/1/2026 =
 * Corrige o espaçamento entre blocos dos comentários quando há ou não comentários.
 * Corrige pseudo-classes (?) :before e :after, removendo um dos dois pontos (por algum motivo, não estava funcionando com dois).
+* Restaura snippet que remove emojis personalizados do WordPress.
 
 = 4.0.1 - 5/1/2026 =
 * Altera orientação do menu principal em telas pequenas.
