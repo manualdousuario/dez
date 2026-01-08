@@ -1004,9 +1004,15 @@ b.fn {
 .comment-list article {
 	margin: 0 0 var(--med-salto-pequeno) 0;
 }
-.comment-list li.depth-1:last-child,
-.comment-list li.depth-1:last-child article.comment-body {
+ol.children li.comment:last-child article.comment-body,
+ol.comment-list li.comment:last-child,
+ol.comment-list li.comment:only-child article.comment-body,
+ol.comment-list li.comment:only-child {
 	margin-bottom: 0;
+}
+
+ol.children li.comment article {
+	margin-bottom: var(--med-salto-medio);
 }
 
 ol.children {
