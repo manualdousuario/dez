@@ -1351,7 +1351,7 @@ article.format-quote,
 	justify-content: start;
 	gap: .75rem;
 	align-items: center;
-	margin: 0 0 0 .9rem;
+	margin: 0 0 var(--med-salto-pequeno) .9rem;
 	font-style: italic;
 }
 .format-quote .e-content p:first-child img {
