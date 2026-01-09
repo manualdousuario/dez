@@ -428,15 +428,6 @@ add_filter('get_the_archive_title', function($title) {
 });
 
 /**
- * Oculta posts da categoria “Bastidores” da capa do site
- */
-add_action('pre_get_posts', function($query) {
-	if ($query->is_home() && $query->is_main_query()) {
-        $query->set('cat', '-1');
-    }
-});
-
-/**
  * Parâmetros UTM nos feeds (feito pelo Claude)
  */
 function dez_feeds_utm($permalink) {

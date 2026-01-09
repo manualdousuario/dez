@@ -37,12 +37,13 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.0.2 - 7/1/2026 =
+= 4.0.2 - 9/1/2026 =
 * Corrige o espaçamento entre blocos dos comentários quando há ou não comentários.
 * Corrige espaçamento após o crédito de posts de citação (`.format-quote`).
 * Corrige pseudo-classes (?) :before e :after, removendo um dos dois pontos (por algum motivo, não estava funcionando com dois).
 * Corrige margem inferior do último comentário e de comentário único.
 * Restaura snippet que remove emojis personalizados do WordPress.
+* Restaura posts da categoria “Bastidores” (1) na capa do blog.
 
 = 4.0.1 - 5/1/2026 =
 * Altera orientação do menu principal em telas pequenas.
