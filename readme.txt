@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.1
+Stable tag: 4.1.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,9 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 4.1.1 - 10/1/2026 =
+* Remove “Bastidores” do menu principal.
 
 = 4.1 - 10/1/2026 =
 * Adiciona quadrado sólido para indicar o fim de um post.
