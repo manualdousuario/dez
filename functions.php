@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '4.0.2' );
+	define( '_S_VERSION', '4.1' );
 }
 
 function dez_setup() {
@@ -425,15 +425,6 @@ add_filter('get_the_archive_title', function($title) {
 		$title = get_the_date();
 	}
 	return $title;
-});
-
-/**
- * Oculta posts da categoria “Bastidores” da capa do site
- */
-add_action('pre_get_posts', function($query) {
-	if ($query->is_home() && $query->is_main_query()) {
-        $query->set('cat', '-1');
-    }
 });
 
 /**

@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 4.0.2
+Version: 4.1
 Tested up to: 6.8.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -264,7 +264,7 @@ dd {
 	margin-bottom: var(--med-salto-pequeno);
 	padding-left: 2rem;
 }
-dd::last-child {
+dd:last-child {
 	margin: 0 !important;
 }
 dd:before {
@@ -559,11 +559,11 @@ html[lang="en-US"] .botao-apoie {
 /* Corpo
 --------------------------------------------- */
 
-article.hentry p::last-child,
-article.hentry blockquote::last-child,
-article.hentry ul::last-child,
-article.hentry ol::last-child,
-article.hentry li::last-child {
+article.hentry p:last-child,
+article.hentry blockquote:last-child,
+article.hentry ul:last-child,
+article.hentry ol:last-child,
+article.hentry li:last-child {
 	margin-bottom: 0;
 }
 
@@ -576,12 +576,12 @@ article.hentry li::last-child {
 	margin: var(--med-salto-grande) auto 0 auto;
 }
 
-.ctx-newsletter > p::first-child,
-.ctx-newsletter > p::last-child,
+.ctx-newsletter > p:first-child,
+.ctx-newsletter > p:last-child,
 p.hf-message {
 	margin-bottom: var(--med-salto-pequeno);
 }
-.ctx-newsletter > p::last-child {
+.ctx-newsletter > p:last-child {
 	margin-bottom: 0;
 	text-wrap: balance;
 }
@@ -615,7 +615,7 @@ p.hf-message {
 	.ctx-newsletter .hf-fields-wrap p {
 		margin-bottom: calc(var(--med-salto-pequeno) / 2);
 	}
-	.ctx-newsletter > p::last-child {
+	.ctx-newsletter > p:last-child {
 		text-wrap: auto;
 	}
 	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
@@ -786,10 +786,19 @@ article:not(.type-page) .entry-header,
 .e-content h4 {
 	margin: calc(2 * var(--med-salto-pequeno)) 0 var(--med-salto-pequeno);
 }
-.e-content > p::last-child:has(a.more-link) {
+.e-content > p:last-child:has(a.more-link) {
 	padding-left: .5rem;
 }
 
+/* Quadrado sólido no final de um post. */
+article.type-post div.e-content>:last-child:not(:has(> a.more-link)):after {
+	content: '\25FE';
+	position: relative;
+	top: 1px;
+}
+article.format-quote div.e-content>:only-child:after {
+	display: none;
+}
 
 .post-thumbnail {
 	margin: 0 0 2rem;
@@ -865,13 +874,13 @@ details {
 	font-style: italic;
 }
 
-div.podcast_player p::last-child,
-div.ctx p::last-child,
-div.ctx-transparencia p::last-child,
-div.ctx-atualizacao p::last-child,
-div.ctx-atencao p::last-child,
-div.ctx-dica p::last-child,
-div.ctx-editor p::last-child {
+div.podcast_player p:last-child,
+div.ctx p:last-child,
+div.ctx-transparencia p:last-child,
+div.ctx-atualizacao p:last-child,
+div.ctx-atencao p:last-child,
+div.ctx-dica p:last-child,
+div.ctx-editor p:last-child {
 	margin-bottom: 0;
 }
 
@@ -910,7 +919,7 @@ div.ctx-editor p::last-child {
 	border-bottom: 1px dashed var(--cor-bordas);
 }
 
-.comment-respond::last-child {
+.comment-respond:last-child {
 	margin: 0;
 	padding-bottom: 0;
 	border-bottom: none;
@@ -1004,10 +1013,10 @@ b.fn {
 .comment-list article {
 	margin: 0 0 var(--med-salto-pequeno) 0;
 }
-ol.children li.comment:last-child article.comment-body,
-ol.comment-list li.comment:last-child,
-ol.comment-list li.comment:only-child article.comment-body,
-ol.comment-list li.comment:only-child {
+ol.children li.depth-1:last-child article.comment-body,
+ol.comment-list li.depth-1:last-child,
+ol.comment-list li.depth-1:only-child article.comment-body,
+ol.comment-list li.depth-1:only-child {
 	margin-bottom: 0;
 }
 
@@ -1143,7 +1152,7 @@ ol.children {
 	  margin-bottom: 0;
 	}
 
-	.footer-credits p::last-child {
+	.footer-credits p:last-child {
 		margin-bottom: 0;
 	}
 
@@ -1156,7 +1165,7 @@ ol.children {
 		width: 100%;
 		order: 1;
 	}
-	.footer-menu p::last-child {
+	.footer-menu p:last-child {
 		margin: 0;
 	}
 	.footer-credits .search-form label {
@@ -1251,13 +1260,13 @@ input[type="search"].search-field {
 	display:none;
 }
 
-.page-id-39568 .e-content > p::first-child,
-.page-id-20602 .e-content > p::first-child,
-.page-id-19958 .e-content > p::first-child,
-.page-id-6971 .e-content > p::first-child,
-.page-id-33255 .e-content > p::first-child,
-.page-id-25504 .e-content > p::first-child,
-.page-id-56363 .e-content > p::first-child {
+.page-id-39568 .e-content > p:first-child,
+.page-id-20602 .e-content > p:first-child,
+.page-id-19958 .e-content > p:first-child,
+.page-id-6971 .e-content > p:first-child,
+.page-id-33255 .e-content > p:first-child,
+.page-id-25504 .e-content > p:first-child,
+.page-id-56363 .e-content > p:first-child {
 	font-size: var(--fs-3);
 	font-family: var(--ff-serif);
 	line-height: 1.4;
@@ -1562,10 +1571,10 @@ input[type="submit"].search-submit,
 	text-align: left !important;
 	padding: .5rem;
 }
-.stcr-subscription-list td::first-child {
+.stcr-subscription-list td:first-child {
 	width: 20px;
 }
-.stcr-subscription-list td::last-child {
+.stcr-subscription-list td:last-child {
 	width: 130px;
 }
 
@@ -1969,7 +1978,7 @@ a.sem-paywall {
 	.compartilhe,
 	.comment-respond,
 	.reply,
-	.comment-meta div::last-child,
+	.comment-meta div:last-child,
 	footer {
 		display: none;
 	}
