@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.1.1 - 10/1/2026 =
 * Remove “Bastidores” do menu principal.
+* Estende o fechamento automático de comentários para o Órbita (`functions.php`).
 
 = 4.1 - 10/1/2026 =
 * Adiciona quadrado sólido para indicar o fim de um post.

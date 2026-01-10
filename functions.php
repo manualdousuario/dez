@@ -428,6 +428,14 @@ add_filter('get_the_archive_title', function($title) {
 });
 
 /**
+ * Estende o fechamento automático de comentários para o Órbita
+ */
+add_filter( 'close_comments_for_post_types', function( $list ) {
+	$list[] = 'orbita_post';
+	return $list;
+} );
+
+/**
  * Parâmetros UTM nos feeds (feito pelo Claude)
  */
 function dez_feeds_utm($permalink) {
