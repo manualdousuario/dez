@@ -58,7 +58,6 @@
 	<?php if ( $currentlang == 'pt-BR' ) : ?> 
 		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
 			<ul>
-				<li><a href="/categoria/bastidores">Bastidores</a></li>
 				<li><a href="/orbita">Órbita</a></li>
 				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
 				<li class="entrar-sair"><?php if ( is_user_logged_in() ) {
