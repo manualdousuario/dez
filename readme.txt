@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.0.2
+Stable tag: 4.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,7 +37,8 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.0.2 - 9/1/2026 =
+= 4.1 - 10/1/2026 =
+* Adiciona quadrado sólido para indicar o fim de um post.
 * Corrige o espaçamento entre blocos dos comentários quando há ou não comentários.
 * Corrige espaçamento após o crédito de posts de citação (`.format-quote`).
 * Corrige pseudo-classes (?) :before e :after, removendo um dos dois pontos (por algum motivo, não estava funcionando com dois).

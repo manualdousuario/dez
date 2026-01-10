@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '4.0.2' );
+	define( '_S_VERSION', '4.1' );
 }
 
 function dez_setup() {
