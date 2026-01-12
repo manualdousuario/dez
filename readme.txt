@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.1.1 - 12/1/2026 =
 * Adiciona link de cadastro no menu principal.
+* Corrige CTA dos patrocínios (`.patrocinio-okkre2025`).
 * Remove “Bastidores” do menu principal.
 * Estende o fechamento automático de comentários para o Órbita (`functions.php`).
 
