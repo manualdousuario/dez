@@ -63,7 +63,8 @@
 				<li class="entrar-sair"><?php if ( is_user_logged_in() ) {
 					echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
 				} else {
-					echo '<a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+					echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+				} ?></li>
 				} ?></li>
 			</ul>
 		</nav>
