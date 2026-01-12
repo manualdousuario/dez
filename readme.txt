@@ -37,8 +37,10 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.1.1 - 10/1/2026 =
+= 4.1.1 - 12/1/2026 =
+* Adiciona link de cadastro no menu principal.
 * Remove “Bastidores” do menu principal.
+* Estende o fechamento automático de comentários para o Órbita (`functions.php`).
 
 = 4.1 - 10/1/2026 =
 * Adiciona quadrado sólido para indicar o fim de um post.
