@@ -1442,13 +1442,17 @@ article.format-link .e-content > figure img {
 /* Tag de patrocínios
 --------------------------------------------- */
 .patrocinio-okkre2025 {
-	border: 1px dashed var(--cor-bordas);
+	width: 100%;
+	border-block: 1px dashed var(--cor-bordas);
 	text-align: center;
-	width: fit-content;
-	border-radius: var(--med-borda);
 	background-color: var(--cor-destaques);
 	padding: .2rem 1rem;
-	margin: 0 auto var(--med-salto-medio);
+	margin: -4rem auto var(--med-salto-medio);
+}
+
+.patrocinio-okkre2025 p {
+	margin: auto;
+	text-wrap: balance;
 }
 
 .oferecimento {
