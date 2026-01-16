@@ -437,7 +437,7 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
 
 /**
  * Parâmetros UTM nos feeds (feito pelo Claude)
- */
+ *
 function dez_feeds_utm($permalink) {
 	global $post;
 	
@@ -488,4 +488,4 @@ add_action('init', function() {
 		remove_filter('the_content', 'dez_adicionar_feeds_sem_utm');
 		load_template(ABSPATH . WPINC . '/feed-rss2.php');
 	});
-});
+}); */

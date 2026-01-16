@@ -37,10 +37,13 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.1.1 - 12/1/2026 =
+= 4.1.1 - 16/1/2026 =
 * Adiciona link de cadastro no menu principal.
+* Adiciona versão em inglês do menu do rodapé.
+* Adiciona estilo especial à página de patrocínios em inglês (/en/sponsorship).
 * Corrige CTA dos patrocínios (`.patrocinio-okkre2025`).
 * Remove “Bastidores” do menu principal.
+* Remove parâmetros UTM dos feeds.
 * Estende o fechamento automático de comentários para o Órbita (`functions.php`).
 
 = 4.1 - 10/1/2026 =
