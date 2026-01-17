@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,7 +37,9 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.1.1 - 16/1/2026 =
+= 4.1.2 - 24/1/2026 =
+
+= 4.1.1 - 17/1/2026 =
 * Adiciona link de cadastro no menu principal.
 * Adiciona versão em inglês do menu do rodapé.
 * Adiciona estilo especial à página de patrocínios em inglês (/en/sponsorship).
