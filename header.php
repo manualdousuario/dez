@@ -65,7 +65,6 @@
 				} else {
 					echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
 				} ?></li>
-				} ?></li>
 			</ul>
 		</nav>
 	<?php endif; ?>

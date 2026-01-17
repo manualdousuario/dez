@@ -38,6 +38,7 @@ More information: https://github.com/Automattic/_s
 == Changelog ==
 
 = 4.1.2 - 24/1/2026 =
+* Corrige linha duplicada no menu principal.
 
 = 4.1.1 - 17/1/2026 =
 * Adiciona link de cadastro no menu principal.
