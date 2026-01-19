@@ -719,8 +719,8 @@ article:not(.type-page) .entry-header,
 
 .entry-header h1,
 .entry-header h2 {
-	font-size: var(--fs-3);
-	line-height: 1.25;
+	font-size: var(--fs-5);
+	line-height: calc(var(--fs-4) * 1.5);
 	margin: 0 0 var(--med-salto-pequeno);
 }
 
@@ -773,10 +773,12 @@ article:not(.type-page) .entry-header,
 }
 
 .e-content h2 {
-	font-size: var(--fs-4);
+	font-size: var(--fs-3);
+	line-height: calc(var(--fs-3) * 1.5);
 }
 .e-content h3 {
 	font-size: var(--fs-2);
+	line-height: calc(var(--fs-2) * 1.5);
 }
 .e-content h4 {
 	font-size: var(--fs-1);
