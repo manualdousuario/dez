@@ -967,6 +967,7 @@ p.form-submit {
 .comment-form-comment {
 	max-width: 100%;
 	display: flex;
+	flex-direction: column;
 }
 
 .comment-form-author,
