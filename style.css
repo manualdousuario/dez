@@ -1334,6 +1334,7 @@ article.format-quote,
 .format-quote h2.p-name,
 .format-quote h1.p-name {
 	margin: 0;
+	font-size: var(--fs-3);
 }
 
 .format-quote .p-name {
