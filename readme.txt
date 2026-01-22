@@ -40,7 +40,7 @@ More information: https://github.com/Automattic/_s
 = 4.1.2 - 24/1/2026 =
 * Corrige linha duplicada no menu principal.
 * Corrige posição das dicas de Markdown na textarea do formulário de contato.
-* Altera tamanhos das fontes de títulos (h1–h3).
+* Altera tamanhos das fontes de títulos (h1–h3) e títulos do post format “quote”.
 
 = 4.1.1 - 17/1/2026 =
 * Adiciona link de cadastro no menu principal.
