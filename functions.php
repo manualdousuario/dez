@@ -316,7 +316,7 @@ function dez_script_alo() {
 
 			const aloConfig = {
 				registrationMode: 'auto',
-				registrationDelay: 210000,
+				registrationDelay: 40000,
 				customSegments: {
 					tag: '<?= $section; ?>'
 				},

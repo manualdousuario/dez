@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.1.3 - 31/1/2026 =
 * Corrige espaçamento entre linhas de títulos do post format “quote”.
+* Reduz atraso para oferta de notificações push de 3min30s para 40s.
 
 = 4.1.2 - 24/1/2026 =
 * Corrige linha duplicada no menu principal.
