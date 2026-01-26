@@ -580,47 +580,32 @@ article.hentry li:last-child {
 .ctx-newsletter > p:last-child,
 p.hf-message {
 	margin-bottom: var(--med-salto-pequeno);
+	text-wrap: balance;
 }
 .ctx-newsletter > p:last-child {
 	margin-bottom: 0;
-	text-wrap: balance;
-}
-p.hf-message {
-	margin: 1rem 0 0 0;
 }
 
-.ctx-newsletter .hf-fields-wrap {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 0 .5rem;
+.embeddable-buttondown-form label,
+.embeddable-buttondown-form p,
+.embeddable-buttondown-form span {
+	display: block;
+	margin-bottom: 1rem;
 }
-.ctx-newsletter .hf-fields-wrap p {
-	margin-bottom: 0;
-}
-.ctx-newsletter .hf-fields-wrap label {
-	display: none;
-}
-.ctx-newsletter .hf-fields-wrap p:nth-child(2) {
-	flex-grow: 2;
+.embeddable-buttondown-form p label,
+.embeddable-buttondown-form span {
+	margin-bottom: .5rem;
 }
 
-@media (max-width: 480px) {
-	.ctx-newsletter {
-		padding: 0 .5rem var(--med-salto-pequeno);
-	}
-	.ctx-newsletter .hf-fields-wrap {
-		display: initial;
-	}
-	.ctx-newsletter .hf-fields-wrap p {
-		margin-bottom: calc(var(--med-salto-pequeno) / 2);
-	}
-	.ctx-newsletter > p:last-child {
-		text-wrap: auto;
-	}
-	.ctx-newsletter .hf-fields-wrap p:nth-child(3) {
-		margin-inline: auto;
-	}
+.embeddable-buttondown-form input[type="submit"] {
+	display: block;
+}
+.embeddable-buttondown-form input[type="checkbox"] {
+	position: relative;
+	bottom: 3px;
+	margin-right: 4px;
+	left: 2px;
+	transform: scale(1.3);
 }
 
 .box-promocoes {
