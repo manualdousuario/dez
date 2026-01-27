@@ -586,6 +586,11 @@ p.hf-message {
 	margin-bottom: 0;
 }
 
+div.e-content > div.ctx-newsletter:only-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
 .embeddable-buttondown-form label,
 .embeddable-buttondown-form p,
 .embeddable-buttondown-form span {
@@ -1003,7 +1008,6 @@ b.fn {
 }
 ol.children li.depth-1:last-child article.comment-body,
 ol.comment-list li.depth-1:last-child,
-ol.comment-list li.depth-1:only-child article.comment-body,
 ol.comment-list li.depth-1:only-child {
 	margin-bottom: 0;
 }
@@ -1135,9 +1139,9 @@ ol.children {
 
 	.site-footer ul {
 		display: flex;
-	  flex-wrap: wrap;
-	  gap: 1rem 2rem;
-	  margin-bottom: 0;
+		flex-wrap: wrap;
+		gap: 1rem 2rem;
+		margin-bottom: 0;
 	}
 
 	.footer-credits p:last-child {
