@@ -41,6 +41,7 @@ More information: https://github.com/Automattic/_s
 * Corrige espaçamento entre linhas de títulos do post format “quote”.
 * Corrige espaçamento nos comentários e borda inferior do bloco da newsletter.
 * Altera formatação do bloco de inscrição na newsletter (.ctx-newsletter).
+* Estende formulário da newsletter para todos os post formats.
 * Reduz atraso para oferta de notificações push de 3min30s para 40s.
 
 = 4.1.2 - 24/1/2026 =

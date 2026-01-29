@@ -18,13 +18,20 @@ get_header();
 
 		get_template_part( 'template-parts/content', get_post_format() );
 
+		$currentlang = get_bloginfo( 'language' );
+
+		if ( ( ! is_paged() && $count == 0 ) && $currentlang == 'pt-BR' ) :
+			echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
+		elseif ( ( ! is_paged() && $count == 0 ) && $currentlang == 'en-US' ) :
+			echo do_shortcode( '[sc name="newsletter-post-en"][/sc]' );
+		endif;
+
 		if ( comments_open() || get_comments_number() ) :
 			comments_template();
 		endif;
 
 	endwhile; // End of the loop.
 
-	 $currentlang = get_bloginfo( 'language' );
 	if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
 		echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
 	endif; ?>

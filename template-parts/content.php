@@ -60,11 +60,3 @@
 
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
-
-<?php
-// Exibição do shortcode de newsletter em posts individuais
-$current_lang = get_bloginfo( 'language' );
-if ( is_single() && shortcode_exists('sc') && get_post() ) {
-	$shortcode_name = ( $current_lang == 'pt-BR' ) ? 'newsletter-post' : 'newsletter-post-en';
-	echo do_shortcode( '[sc name="' . esc_attr($shortcode_name) . '"][/sc]' );
-} ?>
