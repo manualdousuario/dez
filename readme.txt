@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.1.3
+Stable tag: 4.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,7 +37,8 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.1.3 - 31/1/2026 =
+= 4.2 - 31/1/2026 =
+* Reorganiza a chamada de todos os post formats dentro do content.php.
 * Corrige espaçamento entre linhas de títulos do post format “quote”.
 * Corrige espaçamento nos comentários e borda inferior do bloco da newsletter.
 * Altera formatação do bloco de inscrição na newsletter (.ctx-newsletter).
