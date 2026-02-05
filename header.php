@@ -15,6 +15,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="text-scale" content="scale">
 	<meta name="robots" content="noarchive">
 	<?php wp_head(); ?>
 	<link rel="preconnect" href="https://umami.pcdomanual.com/" crossorigin>

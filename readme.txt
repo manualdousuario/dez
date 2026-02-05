@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.2.1 - 6/2/2026 =
 * Corrige chamada da template-part content.php nas páginas (page.php)
+* Adiciona suporte à meta tag “text-scale”.
 
 = 4.2 - 2/2/2026 =
 * Reorganiza a chamada de todos os post formats dentro do content.php.
