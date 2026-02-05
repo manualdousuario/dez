@@ -20,9 +20,9 @@ get_header();
 
 		$currentlang = get_bloginfo( 'language' );
 
-		if ( ( ! is_paged() && $count == 0 ) && $currentlang == 'pt-BR' ) :
+		if ( $currentlang == 'pt-BR' ) :
 			echo do_shortcode( '[sc name="newsletter-post"][/sc]' ); 
-		elseif ( ( ! is_paged() && $count == 0 ) && $currentlang == 'en-US' ) :
+		elseif ( $currentlang == 'en-US' ) :
 			echo do_shortcode( '[sc name="newsletter-post-en"][/sc]' );
 		endif;
 

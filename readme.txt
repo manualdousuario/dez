@@ -38,7 +38,8 @@ More information: https://github.com/Automattic/_s
 == Changelog ==
 
 = 4.2.1 - 6/2/2026 =
-* Corrige chamada da template-part content.php nas páginas (page.php)
+* Corrige chamada da template-part content.php nas páginas (page.php).
+* Corrige o if da chamada do formulário da newsletter no single.php.
 * Adiciona suporte à meta tag “text-scale”.
 
 = 4.2 - 2/2/2026 =
