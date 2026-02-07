@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.2.1
+Stable tag: 4.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
