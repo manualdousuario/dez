@@ -11,6 +11,10 @@
  *
  * @package Dez
  */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Impede acesso direto
+}
+
 get_header(); ?>
 
 <main id="primary" class="site-main">

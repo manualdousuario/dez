@@ -37,10 +37,11 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.2.1 - 6/2/2026 =
+= 4.2.1 - 7/2/2026 =
 * Corrige chamada da template-part content.php nas páginas (page.php).
 * Corrige chamada do content.php no search.php e archive.php.
 * Corrige o if da chamada do formulário da newsletter no single.php.
+* Adiciona código no início do index.php para evitar erro fatal na chamada do get_header().
 * Adiciona suporte à meta tag “text-scale”.
 
 = 4.2 - 2/2/2026 =
