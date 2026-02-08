@@ -53,7 +53,7 @@
 				</span>
 			</div>
 		</div>
-		<div class="botao-apoie"><a href="/apoie" class="assine">Apoie</a></div>
+		<div class="botao-apoie">Este blog depende de você para existir. <strong><a href="/apoie" class="assine">Apoie</a>!</strong> (Você ainda ganha alguns mimos.)</div>
 	</header>
 
 	<?php if ( $currentlang == 'pt-BR' ) : ?> 

@@ -468,6 +468,28 @@ html[lang="en-US"] .botao-apoie {
 	width: auto;
 }
 
+.botao-apoie {
+	max-width: 50%;
+	text-align: right;
+	line-height: 1.2;
+	text-wrap: balance;
+}
+
+@media (max-width: 480px) {
+	header.site-header {
+		flex-direction: column;
+		align-items: start;
+		row-gap: var(--med-salto-pequeno);
+	}
+
+	.botao-apoie {
+		max-width: 100%;
+		border-top: 1px dashed var(--cor-bordas);
+		padding: var(--med-salto-pequeno) 0 0;
+		text-align: initial;
+	}
+}
+
 .main-navigation {
 	max-width: var(--med-largura-pagina);
 	padding: 0 .5rem var(--med-salto-pequeno);
