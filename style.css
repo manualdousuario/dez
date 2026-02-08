@@ -58,18 +58,18 @@ TABELA DE CONTEÚDO
 --------------------------------------------------------------*/
 
 :root {
-	--cor-pagina: light-dark(hsl(0, 0%, 99%), hsl(0, 0%, 11%));
-	--cor-fonte: light-dark(hsl(0, 0%, 10%), hsl(0, 0%, 84%));
-	--cor-destaques: light-dark(hsl(0, 0%, 97%), hsl(0, 0%, 18%));
-	--cor-bordas: light-dark(hsl(0, 0%, 87%), rgb(68, 68, 68));
-	--cor-chapada: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 0%));
-	--cor-atencao: light-dark(hsl(360, 100%, 97%), hsl(360, 100%, 14%));
+	--cor-pagina: hsl(0, 0%, 99%);
+	--cor-fonte: hsl(0, 0%, 10%);
+	--cor-destaques: hsl(0, 0%, 97%);
+	--cor-bordas: hsl(0, 0%, 87%);
+	--cor-chapada: hsl(0, 0%, 100%);
+	--cor-atencao: hsl(360, 100%, 97%);
 
-	--cor-link-ori: light-dark(hsl(229, 100%, 39%), rgb(108, 147, 255));
-	--cor-link-vis: light-dark(hsl(259, 42%, 35%), rgb(171, 136, 255));
-	--cor-link-est: light-dark(hsl(240, 63%, 27%), rgb(166, 189, 255));
-	--cor-link-meta: light-dark(hsl(0, 0%, 30%), rgb(194, 210, 255));
-	--cor-link-meta-est: light-dark(hsl(0, 0%, 50%), rgb(235, 240, 255));
+	--cor-link-ori: hsl(229, 100%, 39%);
+	--cor-link-vis: hsl(259, 42%, 35%);
+	--cor-link-est: hsl(240, 63%, 27%);
+	--cor-link-meta: hsl(0, 0%, 30%);
+	--cor-link-meta-est: hsl(0, 0%, 50%);
 
 	--ff-serif: Georgia, serif;
 	--ff-monospace: ui-monospace, monospace;
@@ -1375,7 +1375,7 @@ article.format-link .p-name {
 	column-gap: .75rem;*/
 }
 article.format-link .link-site {
-	color: light-dark(hsl(244, 23.1%, 38.2%), hsl(244, 43%, 75%));
+	color: hsl(244, 23.1%, 38.2%);
 }
 article.format-link .link-site img {
 	opacity: .6;
@@ -1392,6 +1392,9 @@ article.format-link .link-site img {
 }
 
 @media (prefers-color-scheme: dark) {
+	article.format-link .link-site {
+		color: hsl(244, 43%, 75%);
+	}
 	article.format-link .link-site img {
 		filter: invert();
 	}
@@ -1812,6 +1815,20 @@ a.sem-paywall {
 --------------------------------------------------------------*/
 
 @media (prefers-color-scheme: dark) {
+	:root {
+		--cor-pagina: hsl(0, 0%, 11%);
+		--cor-fonte: hsl(0, 0%, 84%);
+		--cor-destaques: hsl(0, 0%, 18%);
+		--cor-bordas: rgb(68, 68, 68);
+		--cor-chapada: hsl(0, 0%, 0%);
+		--cor-atencao: hsl(360, 100%, 14%);
+
+		--cor-link-ori: rgb(108, 147, 255);
+		--cor-link-vis: rgb(171, 136, 255);
+		--cor-link-est: rgb(166, 189, 255);
+		--cor-link-meta: rgb(194, 210, 255);
+		--cor-link-meta-est: rgb(235, 240, 255);
+	}
 	.post-thumbnail img {
 		box-shadow: none;
 	}
