@@ -4,9 +4,9 @@ Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Jose
 Tags: featured-images, threaded-comments
 
 Requires at least: 5.9
-Tested up to: 6.8.2
+Tested up to: 6.9.1
 Requires PHP: 7.4
-Stable tag: 4.2
+Stable tag: 4.2.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -38,16 +38,17 @@ More information: https://github.com/Automattic/_s
 == Changelog ==
 
 = 4.2.1 - 7/2/2026 =
-* Corrige chamada da template-part content.php nas páginas (page.php).
-* Corrige chamada do content.php no search.php e archive.php.
-* Corrige o if da chamada do formulário da newsletter no single.php.
-* Adiciona código no início do index.php para evitar erro fatal na chamada do get_header().
-* Adiciona suporte à meta tag “text-scale”.
+* Remove a função light-dark() para melhorar compatibilidade com navegadores antigos.
 
 = 4.2 - 2/2/2026 =
+* Adiciona código no início do index.php para evitar erro fatal na chamada do get_header().
+* Adiciona suporte à meta tag “text-scale”.
 * Reorganiza a chamada de todos os post formats dentro do content.php.
 * Corrige espaçamento entre linhas de títulos do post format “quote”.
 * Corrige espaçamento nos comentários e borda inferior do bloco da newsletter.
+* Corrige chamada da template-part content.php nas páginas (page.php).
+* Corrige chamada do content.php no search.php e archive.php.
+* Corrige o if da chamada do formulário da newsletter no single.php.
 * Altera formatação do bloco de inscrição na newsletter (.ctx-newsletter).
 * Estende formulário da newsletter para todos os post formats.
 * Reduz atraso para oferta de notificações push de 3min30s para 40s.
