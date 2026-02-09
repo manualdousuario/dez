@@ -37,7 +37,8 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.2.1 - 7/2/2026 =
+= 4.2.1 - 14/2/2026 =
+* Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.
 * Remove a função light-dark() para melhorar compatibilidade com navegadores antigos.
 * Altera CTA para assinatura no cabeçalho.
 

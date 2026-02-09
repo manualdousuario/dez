@@ -46,8 +46,23 @@ get_header(); ?>
 			'next_text' => '&laquo; Recentes',
 		) );
 
-		if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
-			echo do_shortcode( '[sc name="box-promocoes"][/sc]' ); 
+		$textoes_query = new WP_Query(array(
+			'tag_id' => 2259,
+			'posts_per_page' => 10,
+			'post__not_in' => array(get_the_ID())
+		));
+
+		if ($textoes_query->have_posts()) : ?>
+			<div class="ultimos-textoes">
+				<h2>Últimos textões</h2>
+				<ul>
+					<?php while ($textoes_query->have_posts()) : $textoes_query->the_post(); ?>
+						<li><a href="<?php the_permalink(); ?>?utm_campaign=interna&utm_content=textoes"><?php the_title(); ?></a></li>
+					<?php endwhile; ?>
+				</ul>
+			</div>
+			<?php 
+			wp_reset_postdata();
 		endif;
 		
 	else :

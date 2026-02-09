@@ -1114,6 +1114,14 @@ ol.children {
 /* Rodapé
 --------------------------------------------- */
 
+div.ultimos-textoes {
+	margin-top: var(--med-salto-grande);
+	padding: 0 .5rem;
+}
+body.single div.ultimos-textoes {
+	margin-top: var(--med-salto-medio);
+}
+
 .site-footer {
 	max-width: var(--med-largura-pagina);
 	display: flex;
