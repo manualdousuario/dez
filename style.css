@@ -1398,14 +1398,9 @@ article.format-quote,
 	}
 }
 
-article.format-link .p-name {
-	/*display: flex;
-	align-items: center;
-	justify-content: left;
-	column-gap: .75rem;*/
-}
 article.format-link .link-site {
 	color: hsl(244, 23.1%, 38.2%);
+	word-wrap: anywhere;
 }
 article.format-link .link-site img {
 	opacity: .6;
