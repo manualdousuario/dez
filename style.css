@@ -996,6 +996,12 @@ p.form-submit {
 .comments-area ol {
 	list-style: none;
 }
+
+.markdown-comments-help { /* Do plugin Markdown Comments for WordPress */
+	font-size: var(--fs-0);
+	font-family: var(--ff-monospace);
+}
+
 ol.comment-list,
 .comment-list li {
 	margin: 0;

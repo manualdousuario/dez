@@ -37,8 +37,9 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.2.1 - 14/2/2026 =
+= 4.2.1 - 13/2/2026 =
 * Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.
+* Adiciona CSS para o plugin de Markdown nos comentários (.markdown-comments-help).
 * Corrige barra de rolagem horizontal no texto .link-site.
 * Remove a função light-dark() para melhorar compatibilidade com navegadores antigos.
 * Altera CTA para assinatura no cabeçalho.
