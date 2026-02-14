@@ -37,9 +37,6 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.3 - 21/2/2026 =
-* Adiciona painel deslizante para os comentários.
-
 = 4.2.1 - 13/2/2026 =
 * Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.
 * Adiciona CSS para o plugin de Markdown nos comentários (.markdown-comments-help).
