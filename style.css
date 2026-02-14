@@ -1120,12 +1120,16 @@ ol.children {
 /* Rodapé
 --------------------------------------------- */
 
-div.ultimos-textoes {
-	margin-top: var(--med-salto-grande);
-	padding: 0 .5rem;
+.listas-posts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+	margin-block: var(--med-salto-grande);
 }
-body.single div.ultimos-textoes {
-	margin-top: var(--med-salto-medio);
+
+div.listas-posts-lista {
+	padding: 0 .5rem;
+	flex: 1 1 300px;
 }
 
 .site-footer {
