@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.9.1
 Requires PHP: 7.4
-Stable tag: 4.2.1
+Stable tag: 4.2.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,8 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 4.2.2 - 21/2/2026 =
 
 = 4.2.1 - 13/2/2026 =
 * Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.
