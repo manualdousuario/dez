@@ -1131,6 +1131,12 @@ div.listas-posts-lista {
 	padding: 0 .5rem;
 	flex: 1 1 300px;
 }
+div.listas-posts-lista ul li {
+	list-style: none;
+	margin: 0 0 calc(var(--med-salto-pequeno) * .75);
+	padding: 0 0 calc(var(--med-salto-pequeno) * .75);
+	border-bottom: 1px dashed var(--cor-bordas);
+}
 
 .site-footer {
 	max-width: var(--med-largura-pagina);

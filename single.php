@@ -40,12 +40,21 @@ get_header();
 
 	$aleatorios_query = new WP_Query(array(
 		'tag__not_in' => array(2259, 1984, 1559),
+		'category__not_in' => array(97),
 		'posts_per_page' => 5,
 		'orderby'        => 'rand',
 		'post__not_in'   => array(get_the_ID()),
 		'date_query'     => array(
 			array(
 				'after' => '12 months ago'
+			)
+		),
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'post_format',
+				'field'    => 'slug',
+				'terms'    => 'post-format-quote',
+				'operator' => 'NOT IN'
 			)
 		)
 	)); ?>
@@ -69,7 +78,7 @@ get_header();
 				<h2>Posts aleatórios</h2>
 				<ul>
 					<?php while ($aleatorios_query->have_posts()) : $aleatorios_query->the_post(); ?>
-						<li><a href="<?php the_permalink(); ?>?utm_campaign=interna&utm_content=aleatorios"><?php the_title(); ?></a></li>
+						<li><a href="<?php the_permalink(); ?>?utm_campaign=interna&utm_content=aleatorios"><?php the_title(); ?></a> <span style="font-family: var(--ff-monospace); font-size: var(--fs-0);"><?php echo get_the_date(); ?></span></li>
 					<?php endwhile; ?>
 				</ul>
 			</div>
