@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.2.2 - 21/2/2026 =
 * Adiciona lista de posts aleatórios no rodapé da página.
+* Adiciona formatação para página do grupo de leitura (/leituras).
 
 = 4.2.1 - 13/2/2026 =
 * Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.

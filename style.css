@@ -1313,6 +1313,47 @@ input[type="search"].search-field {
 	max-width: 100%;
 }
 
+/* Grupo de leitura, /leituras */
+body.page-id-62447 div.e-content p.leituras-data { 
+	margin-bottom: -.5rem;
+	font-size: var(--fs-0);
+	font-family: var(--ff-monospace);
+	display: block;
+	color: var(--cor-link-meta-est);
+}
+
+body.page-id-62447 div.e-content h2 {
+	margin-top: 0;
+}
+body.page-id-62447 div.e-content .leituras-atual:after {
+	content: "";
+	width: 18px;
+	height: 18px;
+	background-color: red;
+	border-radius: 100px;
+	margin-left: 6px;
+	animation-name: blink;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	display: inline-block;
+	position: relative;
+	top: 2px;
+}
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+body.page-id-62447 div.e-content ul.leituras-agenda li {
+	list-style: none;
+	margin-left: 0;
+}
+body.page-id-62447 div.e-content ul.leituras-agenda li time {
+	font-size: var(--fs-0);
+	font-family: var(--ff-monospace);
+}
+
 /* Apoie (Página ID 20602)
 --------------------------------------------- */
 
