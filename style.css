@@ -435,9 +435,6 @@ header.site-header a:visited {
 html[lang="en-US"] header.site-header {
 	margin-bottom: var(--med-salto-grande);
 }
-html[lang="en-US"] .botao-apoie {
-	display: none;
-}
 
 .site-branding {
 	display: flex;
@@ -466,28 +463,6 @@ html[lang="en-US"] .botao-apoie {
 .site-branding img {
 	height: 1.5lh;
 	width: auto;
-}
-
-.botao-apoie {
-	max-width: 50%;
-	text-align: right;
-	line-height: 1.2;
-	text-wrap: balance;
-}
-
-@media (max-width: 480px) {
-	header.site-header {
-		flex-direction: column;
-		align-items: start;
-		row-gap: var(--med-salto-pequeno);
-	}
-
-	.botao-apoie {
-		max-width: 100%;
-		border-top: 1px dashed var(--cor-bordas);
-		padding: var(--med-salto-pequeno) 0 0;
-		text-align: initial;
-	}
 }
 
 .main-navigation {
@@ -711,7 +686,7 @@ div.e-content > div.ctx-newsletter:only-child {
 }
 
 article.hentry {
-	margin-bottom: var(--med-salto-grande);
+	margin-bottom: var(--med-salto-medio);
 	padding: 0 .5rem var(--med-salto-pequeno);
 	border-bottom: 1px dashed var(--cor-bordas);
 }

@@ -53,7 +53,13 @@
 				</span>
 			</div>
 		</div>
-		<div class="botao-apoie">Este blog depende de você para existir. <strong><a href="/apoie" class="assine">Apoie</a>!</strong> (Você ainda ganha alguns mimos.)</div>
+		<?php if ( $currentlang == 'pt-BR' ) : ?> 
+			<?php if ( is_user_logged_in() ) {
+				echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+			} else {
+				echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+			} ?>
+		<?php endif; ?>
 	</header>
 
 	<?php if ( $currentlang == 'pt-BR' ) : ?> 
@@ -61,12 +67,8 @@
 			<ul>
 				<li><a href="/orbita">Órbita</a></li>
 				<li><a href="/leituras">Grupo de leitura</a></li>
-				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
-				<li class="entrar-sair"><?php if ( is_user_logged_in() ) {
-					echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
-				} else {
-					echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
-				} ?></li>
+				<li><a href="/leituras">Livros</a></li>
+				<li><a href="/apoie">Apoie</a></li>
 			</ul>
 		</nav>
 	<?php endif; ?>
