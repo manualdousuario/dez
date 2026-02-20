@@ -60,6 +60,7 @@
 		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
 			<ul>
 				<li><a href="/orbita">Órbita</a></li>
+				<li><a href="/leituras">Grupo de leitura</a></li>
 				<li><a href="/mais">Mais&nbsp;&raquo;</a></li>
 				<li class="entrar-sair"><?php if ( is_user_logged_in() ) {
 					echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
