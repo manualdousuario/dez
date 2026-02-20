@@ -24,7 +24,7 @@
 			<? else : ?>
 				<li><a href="/en/sponsorship/">Sponsorship</a></li>
 				<li><a href="mailto:ghedin@manualdousuario.net">Contact</a></li>
-				<li class="lang-item"><a href="https://manualdousuario.net/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+				<li class="lang-item"><a href="https://manualdousuario.net/?lang=pt" hreflang="pt-BR" lang="pt-BR">Português</a></li>
 			<? endif; ?>
 		</ul>
 	</nav>
