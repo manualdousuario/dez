@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.9.1
 Requires PHP: 7.4
-Stable tag: 4.2.2
+Stable tag: 4.2.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -37,11 +37,15 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
+= 4.2.3 - 28/2/2026 =
+* Ajusta margem superior da classe .ctx-newsletter.
+
 = 4.2.2 - 21/2/2026 =
 * Adiciona lista de posts aleatórios no rodapé da página.
 * Adiciona formatação para página do grupo de leitura (/leituras).
 * Adiciona link para o grupo de leitura no menu principal.
 * Adiciona parâmetro para forçar idioma pt_BR (?lang=pt) no link do rodapé.
+* Restaura links de navegação para posts antigos na capa.
 
 = 4.2.1 - 13/2/2026 =
 * Adiciona lista dos dez últimos textões no rodapé da capa e dos posts.
