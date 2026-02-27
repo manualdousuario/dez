@@ -473,16 +473,19 @@ html[lang="en-US"] header.site-header {
 
 .main-navigation ul {
 	display: flex;
-	gap: var(--med-salto-pequeno);
+	gap: 0;
 	list-style: none;
 	margin: 0;
 	font-family: var(--ff-monospace);
 	font-size: calc(var(--fs-0) * 1.1);
 	line-height: 1;
+	justify-content: center;
 }
 .main-navigation li {
 	margin: 0;
 	position: relative;
+	flex: fit-content;
+	text-align: center;
 }
 .main-navigation li.entrar-sair {
 	width: fill-available;
@@ -492,6 +495,9 @@ html[lang="en-US"] header.site-header {
 @media (max-width: 480px) {
 	.main-navigation ul {
 		font-size: var(--fs-0);
+		gap: .75rem .5rem;
+		flex-wrap: wrap;
+		line-height: 1.25;
 	}
 }
 
