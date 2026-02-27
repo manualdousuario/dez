@@ -67,7 +67,7 @@
 			<ul>
 				<li><a href="/orbita">Órbita</a></li>
 				<li><a href="/leituras">Grupo de leitura</a></li>
-				<li><a href="/leituras">Livros</a></li>
+				<li><a href="/mais">Extras</a></li>
 				<li><a href="/apoie">Apoie</a></li>
 			</ul>
 		</nav>
