@@ -41,6 +41,7 @@ More information: https://github.com/Automattic/_s
 * Adiciona header para ativar CORS no site inteiro.
 * Estende fechamento automático de comentários aos podcasts.
 * Restabelece link para a página “mais” no menu principal.
+* Ajusta menu principal.
 * Ajusta margem superior da classe .ctx-newsletter.
 
 = 4.2.2 - 21/2/2026 =
