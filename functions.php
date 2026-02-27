@@ -432,60 +432,14 @@ add_filter('get_the_archive_title', function($title) {
  */
 add_filter( 'close_comments_for_post_types', function( $list ) {
 	$list[] = 'orbita_post';
+	$list[] = 'podcast';
 	return $list;
 } );
 
 /**
- * Parâmetros UTM nos feeds (feito pelo Claude)
- *
-function dez_feeds_utm($permalink) {
-	global $post;
-	
-	$utm_params = array(
-		'utm_source' => 'rss',
-		'utm_medium' => 'feed',
-		'utm_campaign' => 'interna',
-		'utm_content' => 'blog'
-	);
-	
-	return add_query_arg($utm_params, $permalink);
-}
-add_filter('the_permalink_rss', 'dez_feeds_utm');
-
-function dez_adicionar_feeds_sem_utm($content) {
-	if (!is_feed()) {
-		return $content;
-	}
-	
-	global $post;
-	$link_original = get_permalink($post->ID);
-	
-	$utm_params = array(
-		'utm_source' => 'rss',
-		'utm_medium' => 'feed',
-		'utm_campaign' => 'interna',
-		'utm_content' => 'blog'
-	);
-	
-	$link_utm = add_query_arg($utm_params, $link_original);
-	$content = str_replace($link_original, $link_utm, $content);
-	
-	return $content;
-}
-add_filter('the_content', 'dez_adicionar_feeds_sem_utm');
-
-add_action('init', function() {
-	add_feed('sem-utm', function() {
-		remove_filter('the_permalink_rss', 'dez_feeds_utm');
-		remove_filter('the_content', 'dez_adicionar_feeds_sem_utm');
-		load_template(ABSPATH . WPINC . '/feed-rss2.php');
-	});
-
-	add_feed('en-sem-utm', function() {
-		global $wp_query;
-		$wp_query->set('lang', 'en');
-		remove_filter('the_permalink_rss', 'dez_feeds_utm');
-		remove_filter('the_content', 'dez_adicionar_feeds_sem_utm');
-		load_template(ABSPATH . WPINC . '/feed-rss2.php');
-	});
-}); */
+ * Adiciona CORS a todas as páginas https://www.blogsareback.com/guides/enable-cors
+ */
+add_action('send_headers', function() {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, HEAD, OPTIONS');
+});
