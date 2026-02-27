@@ -38,6 +38,8 @@ More information: https://github.com/Automattic/_s
 == Changelog ==
 
 = 4.2.3 - 28/2/2026 =
+* Adiciona header para ativar CORS no site inteiro.
+* Estende fechamento automático de comentários aos podcasts.
 * Ajusta margem superior da classe .ctx-newsletter.
 
 = 4.2.2 - 21/2/2026 =
