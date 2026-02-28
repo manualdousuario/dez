@@ -692,7 +692,7 @@ div.e-content > div.ctx-newsletter:only-child {
 }
 
 article.hentry {
-	margin-bottom: var(--med-salto-medio);
+	margin-bottom: var(--med-salto-grande);
 	padding: 0 .5rem var(--med-salto-pequeno);
 	border-bottom: 1px dashed var(--cor-bordas);
 }
