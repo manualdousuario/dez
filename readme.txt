@@ -42,6 +42,7 @@ More information: https://github.com/Automattic/_s
 * Estende fechamento automático de comentários aos podcasts.
 * Restabelece link para a página “mais” no menu principal.
 * Ajusta menu principal.
+* Ajusta espaçamento entre posts (article.hentry).
 * Ajusta margem superior da classe .ctx-newsletter.
 
 = 4.2.2 - 21/2/2026 =
