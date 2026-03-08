@@ -65,10 +65,14 @@
 	<?php if ( $currentlang == 'pt-BR' ) : ?> 
 		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
 			<ul>
+				<li><a href="/acompanhe">Newsletter</a></li>
 				<li><a href="/orbita">Órbita</a></li>
+				<li><a href="/podcast">Podcasts</a></li>
 				<li><a href="/leituras">Grupo de leitura</a></li>
-				<li><a href="/mais">Extras</a></li>
-				<li><a href="/apoie">Apoie</a></li>
+				<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
+				<li><a href="/sobre">Sobre</a></li>
+				<li><a href="/apoie"><strong>Assine</strong></a></li>
+				<li><a href="/mais">Mais…</a></li>
 			</ul>
 		</nav>
 	<?php endif; ?>
