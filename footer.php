@@ -16,8 +16,7 @@
 		<ul>
 			<?php $currentlang = get_bloginfo( 'language' );
 			if ( $currentlang == 'pt-BR' ) : ?>
-				<li><a href="/sobre/">Sobre</a></li>
-				<li><a href="/patrocine/">Patrocínio</a></li>
+				<li><a href="/patrocine/">Anuncie</a></li>
 				<li><a rel="privacy-policy" href="/politica-de-privacidade/">Privacidade</a></li>
 				<li><a href="mailto:ghedin@manualdousuario.net">Contato</a></li>
 				<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>

@@ -4,7 +4,7 @@ Theme URI: https://manualdousuario.net/
 Author: Rodrigo Ghedin
 Author URI: https://rodrigo.ghed.in/
 Description: Manual do Usuário Theme
-Version: 4.2.3
+Version: 4.3
 Tested up to: 6.9.1
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -469,22 +469,22 @@ html[lang="en-US"] header.site-header {
 	max-width: var(--med-largura-pagina);
 	padding: 0 .5rem var(--med-salto-pequeno);
 	margin: 0 auto var(--med-salto-grande);
+	border-bottom: 1px dashed var(--cor-bordas);
 }
 
 .main-navigation ul {
 	display: flex;
-	gap: 0;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem 2rem;
 	list-style: none;
 	margin: 0;
 	font-family: var(--ff-monospace);
 	font-size: calc(var(--fs-0) * 1.1);
 	line-height: 1;
-	justify-content: center;
 }
 .main-navigation li {
 	margin: 0;
-	position: relative;
-	flex: fit-content;
 	text-align: center;
 }
 .main-navigation li.entrar-sair {
@@ -495,8 +495,6 @@ html[lang="en-US"] header.site-header {
 @media (max-width: 480px) {
 	.main-navigation ul {
 		font-size: var(--fs-0);
-		gap: .75rem .5rem;
-		flex-wrap: wrap;
 		line-height: 1.25;
 	}
 }
@@ -640,16 +638,22 @@ div.e-content > div.ctx-newsletter:only-child {
 .dt-published,
 .comment-link,
 .compartilhe,
-.lang-item {
+.lang-item,
+.link-externo {
 	position: relative;
 	z-index: 1;
 	padding-left: 24px;
 }
+.link-externo {
+	padding-inline: 0 24px;
+}
+
 .search-form label:before,
 .dt-published:before,
 .comment-link:before,
 .compartilhe:before,
-.lang-item:before {
+.lang-item:before,
+.link-externo:after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -657,6 +661,9 @@ div.e-content > div.ctx-newsletter:only-child {
 	bottom: 0;
 	left: 0;
 	z-index: -1;
+}
+.link-externo:after {
+	left: 85%;
 }
 
 .search-form label:before {
@@ -680,6 +687,11 @@ div.e-content > div.ctx-newsletter:only-child {
 
 .lang-item:before {
 	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/18px transparent;
+}
+
+.link-externo:after { /* Ícone: https://www.svgrepo.com/svg/491630/external-link */
+	background: url(/wp-content/themes/dez/img/icone-link-externo.svg) no-repeat 0/18px transparent;
+	opacity: 0.5;
 }
 
 /* Capa
