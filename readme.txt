@@ -6,7 +6,7 @@ Tags: featured-images, threaded-comments
 Requires at least: 5.9
 Tested up to: 6.9.1
 Requires PHP: 7.4
-Stable tag: 4.3
+Stable tag: 4.3.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -36,6 +36,9 @@ $ npm run bundle - Generate a ZIP archive for distribution, excluding developmen
 More information: https://github.com/Automattic/_s
 
 == Changelog ==
+
+= 4.3.1 - 14/3/2026 =
+* Adiciona aviso de tags HTML permitidas no formulário de comentários.
 
 = 4.3 - 7/3/2026 =
 * Expande menu principal.
