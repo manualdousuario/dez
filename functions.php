@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '4.3' );
+	define( '_S_VERSION', '4.3.1' );
 }
 
 function dez_setup() {
@@ -75,8 +75,6 @@ function dez_dequeue_assets() {
 	wp_dequeue_style( 'wp-block-library-theme' );
 	wp_dequeue_style( 'classic-theme-styles' );
 	wp_dequeue_style( 'stcr-style' ); // Plugin, Subscribe to Comments Reloaded
-	wp_dequeue_style( 'activitypub-followers-style' );
-	wp_dequeue_style( 'activitypub-follow-me-style' ); // ActivityPub
 	wp_dequeue_style( 'akismet' );
 	wp_dequeue_style( 'akismet-widget-style' ); // Akismet
 	wp_dequeue_style( 'wpcom-admin-bar' );
@@ -215,6 +213,38 @@ function dez_mensagem_form_comentarios( $defaults ) {
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'dez_mensagem_form_comentarios' );
+
+/**
+ * Adiciona aviso de tags HTML permitidas nos comentários.
+ */
+function meu_tema_allowed_comment_tags() {
+	return [
+		'b'          => [],
+		'strong'     => [],
+		'i'          => [],
+		'em'         => [],
+		'a'          => [ 'href' => [] ],
+		'ul'         => [],
+		'ol'         => [],
+		'li'         => [],
+		'code'       => [],
+		'cite'       => [],
+		'blockquote' => [],
+	];
+}
+
+// Filtrar o conteúdo do comentário
+add_filter( 'pre_comment_content', function( $content ) {
+	return wp_kses( $content, meu_tema_allowed_comment_tags() );
+});
+
+// Atualizar o aviso no formulário
+add_filter( 'comment_form_defaults', function( $defaults ) {
+	$tags = array_keys( meu_tema_allowed_comment_tags() );
+	$tags_str = implode( ' ', array_map( fn($t) => "&lt;$t&gt;", $tags ) );
+	$defaults['comment_notes_after'] = "<p class=\"allowed-tags\">Tags HTML permitidas: $tags_str</p>";
+	return $defaults;
+});
 
 /**
  * Acrescenta placeholders nos campos do formulário de comentários
@@ -440,6 +470,6 @@ add_filter( 'close_comments_for_post_types', function( $list ) {
  * Adiciona CORS a todas as páginas https://www.blogsareback.com/guides/enable-cors
  */
 add_action('send_headers', function() {
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, HEAD, OPTIONS');
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, HEAD, OPTIONS');
 });
