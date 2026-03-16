@@ -4,9 +4,9 @@ Contributors: automattic, Rodrigo Ghedin, Clarissa Mendes, Renan Altendorf, Jose
 Tags: featured-images, threaded-comments
 
 Requires at least: 5.9
-Tested up to: 6.9.1
+Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 4.3.1
+Stable tag: 4.3.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -39,6 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.3.1 - 14/3/2026 =
 * Adiciona aviso de tags HTML permitidas no formulário de comentários.
+* Altera espaçamento entre itens do menu principal em telas pequenas.
 
 = 4.3 - 7/3/2026 =
 * Expande menu principal.
