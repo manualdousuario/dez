@@ -40,6 +40,7 @@ More information: https://github.com/Automattic/_s
 = 4.3.1 - 14/3/2026 =
 * Adiciona aviso de tags HTML permitidas no formulário de comentários.
 * Altera espaçamento entre itens do menu principal em telas pequenas.
+* Ajustes na exibição de imagens dentro dos posts.
 
 = 4.3 - 7/3/2026 =
 * Expande menu principal.

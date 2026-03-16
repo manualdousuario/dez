@@ -810,8 +810,6 @@ article.format-quote div.e-content>:only-child:after {
 
 .post-thumbnail {
 	margin: 0 0 2rem;
-}
-.post-thumbnail img {
 	box-shadow: 4px 4px 16px hsl(0, 0%, 85%);
 	border-radius: var(--med-borda);
 }
@@ -836,10 +834,10 @@ sup a {
 
 caption,
 .wp-caption .wp-caption-text {
-	padding: .25rem .5rem;
+	padding: .25rem .5rem 0;
 	font-family: "SF Pro", "Noto Sans", Arial, sans-serif;
 	font-size: var(--fs-0);
-	text-align: right;
+	text-align: center;
 }
 
 .wp-video {
@@ -1835,6 +1833,9 @@ a.sem-paywall {
 	.format-image .e-content > figure {
 		margin: 0 -50vw var(--med-salto-pequeno) !important;
 	}
+	.post-thumbnail {
+		border-radius: 0;
+	}
 
 	article.format-link .e-content > figure,
 	.format-image .e-content > figure,
@@ -1849,18 +1850,12 @@ a.sem-paywall {
 		flex-wrap: wrap;
 	}
 
-	.wp-caption img[class*=wp-image-],
-	.post-thumbnail img {
-		border-radius: 0;
-		box-shadow: none;
-	}
-
 	.alignleft,
 	.alignright {
 		float: initial;
 		margin-left: auto;
 		display: inline-block;
-		width: 100%;
+		width: 100% !important;
 		text-align: center;
 	}
 
