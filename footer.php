@@ -19,11 +19,9 @@
 				<li><a href="/patrocine/">Anuncie</a></li>
 				<li><a rel="privacy-policy" href="/politica-de-privacidade/">Privacidade</a></li>
 				<li><a href="mailto:ghedin@manualdousuario.net">Contato</a></li>
-				<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
 			<? else : ?>
 				<li><a href="/en/sponsorship/">Sponsorship</a></li>
-				<li><a href="mailto:ghedin@manualdousuario.net">Contact</a></li>
-				<li class="lang-item"><a href="https://manualdousuario.net/?lang=pt" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+				<li><a href="mailto:ghedin@manualdousuario.net">Contact me</a></li>
 			<? endif; ?>
 		</ul>
 	</nav>

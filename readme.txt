@@ -42,6 +42,7 @@ More information: https://github.com/Automattic/_s
 * Altera espaçamento entre itens do menu principal em telas pequenas.
 * Ajustes na exibição de imagens dentro dos posts.
 * Remove suporte a widgets.
+* Move seletor de idioma do rodapé para o menu principal.
 
 = 4.3 - 7/3/2026 =
 * Expande menu principal.

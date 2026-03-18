@@ -62,9 +62,9 @@
 		<?php endif; ?>
 	</header>
 
-	<?php if ( $currentlang == 'pt-BR' ) : ?> 
 		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
 			<ul>
+				<?php if ( $currentlang == 'pt-BR' ) : ?> 
 				<li><a href="/acompanhe">Newsletter</a></li>
 				<li><a href="/orbita">Órbita</a></li>
 				<li><a href="/podcast">Podcasts</a></li>
@@ -72,10 +72,15 @@
 				<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
 				<li><a href="/sobre">Sobre</a></li>
 				<li><a href="/apoie"><strong>Assine</strong></a></li>
+					<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
 				<li><a href="/mais">Mais…</a></li>
+				<?php else : ?>
+				<li><a href="/en/about">About</a></li>
+				<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
+				<li class="lang-item"><a href="https://manualdousuario.net/?lang=pt" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+				<?php endif; ?>
 			</ul>
 		</nav>
-	<?php endif; ?>
 
 	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
 		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
