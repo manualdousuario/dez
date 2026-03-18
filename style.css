@@ -432,9 +432,9 @@ header.site-header a:visited {
 	color: var(--cor-link-ori);
 }
 
-html[lang="en-US"] header.site-header {
+/*html[lang="en-US"] header.site-header {
 	margin-bottom: var(--med-salto-grande);
-}
+}*/
 
 .site-branding {
 	display: flex;
@@ -481,7 +481,7 @@ html[lang="en-US"] header.site-header {
 	margin: 0;
 	font-family: var(--ff-monospace);
 	font-size: calc(var(--fs-0) * 1.1);
-	line-height: 1;
+	line-height: 1.2;
 }
 .main-navigation li {
 	margin: 0;
@@ -643,7 +643,10 @@ div.e-content > div.ctx-newsletter:only-child {
 .link-externo {
 	position: relative;
 	z-index: 1;
-	padding-left: 24px;
+	padding-left: 22px;
+}
+.lang-item {
+	padding-left: 20px;
 }
 .link-externo {
 	padding-inline: 0 24px;
@@ -687,7 +690,8 @@ div.e-content > div.ctx-newsletter:only-child {
 }
 
 .lang-item:before {
-	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/18px transparent;
+	background: url(/wp-content/themes/dez/img/icone-idioma.svg) no-repeat 0/16px transparent;
+	opacity: 0.5;
 }
 
 .link-externo:after { /* Ícone: https://www.svgrepo.com/svg/491630/external-link */
@@ -1971,7 +1975,8 @@ a.sem-paywall {
 	.dt-published:before,
 	.comment-link:before,
 	.compartilhe:before,
-	.lang-item:before {
+	.lang-item:before,
+	.link-externo:before {
 		filter: invert();
 	}
 
