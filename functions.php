@@ -94,6 +94,18 @@ function dez_dequeue_assets() {
 add_action( 'wp_enqueue_scripts', 'dez_dequeue_assets' );
 
 /**
+ * Remove todos os widgets
+ */
+add_action('widgets_init', function() {
+    global $wp_widget_factory;
+    if ( isset($wp_widget_factory->widgets) && is_array($wp_widget_factory->widgets) ) {
+        foreach ( array_keys($wp_widget_factory->widgets) as $widget_class ) {
+            unregister_widget($widget_class);
+        }
+    }
+}, 11);
+
+/**
  * Disable the emojis in WordPress.
  */
 add_action( 'init', function () {
