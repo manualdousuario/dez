@@ -53,6 +53,9 @@
 				</span>
 			</div>
 		</div>
+		<?php if ( shortcode_exists( 'sc' ) ) :
+			echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
+		endif; ?>
 	</header>
 
 	<nav role="navigation" aria-label="Menu principal" class="main-navigation">
@@ -79,9 +82,3 @@
 			<?php endif; ?>
 		</ul>
 	</nav>
-
-	<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
-		echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
-	elseif ( $currentlang == 'en-US' ) :
-		echo '<div class="adaptive-css horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
-	endif; ?>
