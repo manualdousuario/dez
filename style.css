@@ -640,12 +640,14 @@ div.e-content > div.ctx-newsletter:only-child {
 .comment-link,
 .compartilhe,
 .lang-item,
-.link-externo {
+.link-externo,
+.autenticacao {
 	position: relative;
 	z-index: 1;
 	padding-left: 22px;
 }
-.lang-item {
+.lang-item,
+.autenticacao {
 	padding-left: 20px;
 }
 .link-externo {
@@ -657,7 +659,8 @@ div.e-content > div.ctx-newsletter:only-child {
 .comment-link:before,
 .compartilhe:before,
 .lang-item:before,
-.link-externo:after {
+.link-externo:after,
+.autenticacao:before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -665,9 +668,6 @@ div.e-content > div.ctx-newsletter:only-child {
 	bottom: 0;
 	left: 0;
 	z-index: -1;
-}
-.link-externo:after {
-	left: 85%;
 }
 
 .search-form label:before {
@@ -696,6 +696,12 @@ div.e-content > div.ctx-newsletter:only-child {
 
 .link-externo:after { /* Ícone: https://www.svgrepo.com/svg/491630/external-link */
 	background: url(/wp-content/themes/dez/img/icone-link-externo.svg) no-repeat 0/18px transparent;
+	opacity: 0.5;
+	left: 85%;
+}
+
+.autenticacao:before { /* Ícone: https://www.svgrepo.com/svg/529279/user-circle */
+	background: url(/wp-content/themes/dez/img/icone-autenticacao.svg) no-repeat 0/18px transparent;
 	opacity: 0.5;
 }
 

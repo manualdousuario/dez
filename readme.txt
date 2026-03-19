@@ -37,12 +37,13 @@ More information: https://github.com/Automattic/_s
 
 == Changelog ==
 
-= 4.3.1 - 14/3/2026 =
+= 4.4 - 21/3/2026 =
 * Adiciona aviso de tags HTML permitidas no formulário de comentários.
 * Altera espaçamento entre itens do menu principal em telas pequenas.
 * Ajustes na exibição de imagens dentro dos posts.
 * Remove suporte a widgets.
 * Move seletor de idioma do rodapé para o menu principal.
+* Move anúncio para o header.
 
 = 4.3 - 7/3/2026 =
 * Expande menu principal.
