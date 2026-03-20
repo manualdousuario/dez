@@ -468,16 +468,13 @@ header.site-header a:visited {
 	height: 1.5lh;
 	width: auto;
 	float: left;
-	margin-right: var(--med-salto-pequeno);
+	margin-right: calc(var(--med-salto-pequeno) / 2);
+	line-height: 1.6;
 }
 
 @media (max-width: 480px) {
 	.site-branding {
 		border-bottom: 1px dashed var(--cor-bordas);
-	}
-
-	.site-branding img {
-		line-height: 1.6;
 	}
 }
 
