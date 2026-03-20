@@ -39,7 +39,7 @@ More information: https://github.com/Automattic/_s
 
 = 4.4 - 21/3/2026 =
 * Adiciona aviso de tags HTML permitidas no formulário de comentários.
-* Move anúncio para o header.
+* Move anúncio para o header e adiciona script da Upeex.
 * Altera espaçamento entre itens do menu principal em telas pequenas.
 * Ajustes na exibição de imagens dentro dos posts.
 * Remove suporte a widgets.

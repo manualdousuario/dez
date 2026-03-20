@@ -53,32 +53,38 @@
 				</span>
 			</div>
 		</div>
-		<?php if ( shortcode_exists( 'sc' ) ) :
-			echo do_shortcode( '[sc name="anuncio-global"][/sc]' ); 
-		endif; ?>
-	</header>
 
-	<nav role="navigation" aria-label="Menu principal" class="main-navigation">
-		<ul>
-			<?php if ( $currentlang == 'pt-BR' ) : ?> 
-				<li><a href="/acompanhe">Newsletter</a></li>
-				<li><a href="/orbita">Órbita</a></li>
-				<li><a href="/podcast">Podcasts</a></li>
-				<li><a href="/leituras">Grupo de leitura</a></li>
-				<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
-				<li><a href="/sobre">Sobre</a></li>
-				<li><a href="/apoie"><strong>Assine</strong></a></li>
-				<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
-				<li class="autenticacao"><?php if ( is_user_logged_in() ) {
-					echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
-				} else {
-					echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
-				} ?></li>
-				<li><a href="/mais">Mais…</a></li>
-			<?php else : ?>
-				<li><a href="/en/about">About</a></li>
-				<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
-				<li class="lang-item"><a href="https://manualdousuario.net/?lang=pt" hreflang="pt-BR" lang="pt-BR">Português</a></li>
-			<?php endif; ?>
-		</ul>
-	</nav>
+		<div class="patrocinio-okkre2025">
+		<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
+			echo '<ins class="adupeex" data-ad-client="up-ba-332228" data-ad-slot="37872" data-ad-display="square" style="display:block;background-color:#FFF;"></ins>';
+			echo '<script src="https://upeex.com.br/adsupeex.js" async></script>';
+		elseif ( $currentlang == 'en-US' ) :
+			echo '<div class="adaptive-css horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 
+		endif; ?>
+		</div>
+
+		<nav role="navigation" aria-label="Menu principal" class="main-navigation">
+			<ul>
+				<?php if ( $currentlang == 'pt-BR' ) : ?> 
+					<li><a href="/acompanhe">Newsletter</a></li>
+					<li><a href="/orbita">Órbita</a></li>
+					<li><a href="/podcast">Podcasts</a></li>
+					<li><a href="/leituras">Grupo de leitura</a></li>
+					<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
+					<li><a href="/sobre">Sobre</a></li>
+					<li><a href="/apoie"><strong>Assine</strong></a></li>
+					<li class="lang-item"><a href="https://manualdousuario.net/en/" hreflang="en-US" lang="en-US">English</a></li>
+					<li class="autenticacao"><?php if ( is_user_logged_in() ) {
+						echo '<a href="' . esc_url( wp_logout_url( get_permalink() ) ) . '">Sair</a>';
+					} else {
+						echo '<a href="/cadastro/">Cadastrar</a> / <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '">Entrar</a>';
+					} ?></li>
+					<li><a href="/mais">Mais…</a></li>
+				<?php else : ?>
+					<li><a href="/en/about">About</a></li>
+					<li><a href="https://pcdomanual.com/" class="link-externo">PC&nbsp;do&nbsp;Manual</a></li>
+					<li class="lang-item"><a href="https://manualdousuario.net/?lang=pt" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+				<?php endif; ?>
+			</ul>
+		</nav>
+	</header>
