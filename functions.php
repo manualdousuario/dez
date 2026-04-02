@@ -383,7 +383,7 @@ function dez_scripts_rodape_especiais() {
 				}, true);
 			});
 		</script>
-	<? }
+	<?php }
 }
 add_action( 'wp_footer', 'dez_scripts_rodape_especiais' );
 

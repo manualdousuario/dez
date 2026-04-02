@@ -56,7 +56,7 @@
 
 		<div class="patrocinio-okkre2025">
 		<?php if ( shortcode_exists( 'sc' ) && $currentlang == 'pt-BR' ) :
-			echo '<ins class="adupeex" data-ad-client="up-ba-332228" data-ad-slot="37872" data-ad-display="square" style="display:block;background-color:#FFF;"></ins>';
+			echo '<ins class="adupeex" data-ad-client="up-ba-332228" data-ad-slot="37872" data-ad-display="square" style="height: 250px;display: flex;justify-content: center;"></ins>';
 			echo '<script src="https://upeex.com.br/adsupeex.js" async></script>';
 		elseif ( $currentlang == 'en-US' ) :
 			echo '<div class="adaptive-css horizontal" data-ea-publisher="manualdousuarionet" data-ea-type="image"></div>'; 

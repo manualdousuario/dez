@@ -15,14 +15,14 @@
 	<nav class="footer-menu" role="navigation" aria-label="Menu do rodapé">
 		<ul>
 			<?php $currentlang = get_bloginfo( 'language' );
-			if ( $currentlang == 'pt-BR' ) : ?>
+			if ( $currentlang == 'pt-BR' ) { ?>
 				<li><a href="/patrocine/">Anuncie</a></li>
 				<li><a rel="privacy-policy" href="/politica-de-privacidade/">Privacidade</a></li>
 				<li><a href="mailto:ghedin@manualdousuario.net">Contato</a></li>
-			<? else : ?>
+			<?php } else { ?>
 				<li><a href="/en/sponsorship/">Sponsorship</a></li>
 				<li><a href="mailto:ghedin@manualdousuario.net">Contact me</a></li>
-			<? endif; ?>
+			<?php } ?>
 		</ul>
 	</nav>
 

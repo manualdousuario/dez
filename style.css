@@ -113,10 +113,6 @@ TABELA DE CONTEÚDO
 	}
 }
 
-html {
-	color-scheme: light dark;
-}
-
 body {
 	background: var(--cor-pagina);
 	color: var(--cor-fonte);
@@ -420,6 +416,12 @@ figure img.alignright {
 /* Cabeçalho
 --------------------------------------------- */
 
+.site-branding,
+.patrocinio-okkre2025,
+.main-navigation {
+	padding-inline: .5rem;
+}
+
 header.site-header {
 	display: grid;
 	grid-template-columns: 1.4fr .6fr;
@@ -438,7 +440,6 @@ header.site-header a:visited {
 	header.site-header {
 		grid-template-columns: 1fr;
 		max-width: 100%;
-		padding-inline: .5rem;
 	}
 }
 
@@ -486,7 +487,7 @@ header.site-header a:visited {
 @media (max-width: 480px) {
 	.main-navigation {
 		border-top: none;
-		padding: 0;
+		padding-top: 0;
 	}
 }
 
@@ -1538,13 +1539,13 @@ article.format-link .e-content > figure img {
 
 @media (max-width: 480px) {
 	.patrocinio-okkre2025 {
-		justify-self: center;
 		grid-column: auto;
 		grid-row: auto;
 		padding-block: var(--med-salto-pequeno);
 		border-bottom: 1px dashed var(--cor-bordas);
 		width: 100%;
 		margin-bottom: var(--med-salto-pequeno);
+		background-color: var(--cor-destaques);
 	}
 }
 
